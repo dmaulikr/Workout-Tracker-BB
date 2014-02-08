@@ -16,10 +16,45 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    
+    // For In App Purchases - check to see if any transactions were purchased but not completed due to network loss or somethign similar.
+    //[DWT3IAPHelper sharedInstance];
+    
+    //  Configure for iOS 7
+    
+    // style the navigation bar
+    //UIColor* navColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+    
+    //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    
+    UIColor *orange = [UIColor colorWithRed:236/255.0f green:118/255.0f blue:50/255.0f alpha:1.0f];
+    
+    [[UINavigationBar appearance] setBarTintColor:orange];
+    
+    // make the status bar white
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
+    /*
+     UIColor* navColor = [UIColor colorWithRed:0/255.0f green:167/255.0f blue:255/255.0f alpha:1.0f];
+     [[UINavigationBar appearance] setBarTintColor:navColor];
+     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+     
+     // make the status bar white
+     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+     //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+     
+     //[[UITabBar appearance] setBarTintColor:navColor];
+     [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
+     */
+    
+    [[UITabBar appearance] setTintColor:orange];
+    
     return YES;
 }
 
