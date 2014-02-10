@@ -28,9 +28,9 @@
     
     //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
     
-    UIColor *orange = [UIColor colorWithRed:236/255.0f green:118/255.0f blue:50/255.0f alpha:1.0f];
+    UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
     
-    [[UINavigationBar appearance] setBarTintColor:orange];
+    [[UINavigationBar appearance] setBarTintColor:green];
     
     // make the status bar white
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -53,7 +53,7 @@
      [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
      */
     
-    [[UITabBar appearance] setTintColor:orange];
+    [[UITabBar appearance] setTintColor:green];
     
     return YES;
 }

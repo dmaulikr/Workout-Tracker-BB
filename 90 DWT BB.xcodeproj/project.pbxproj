@@ -50,6 +50,17 @@
 		58F21AE718A6E0EA00DE043E /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21AE618A6E0EA00DE043E /* ExerciseViewController.m */; };
 		58F21AEC18A6E12900DE043E /* MainTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21AE918A6E12900DE043E /* MainTBC.m */; };
 		58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21AEB18A6E12900DE043E /* ScrollViewContainer.m */; };
+		58F21AEF18A6E58400DE043E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AEE18A6E58400DE043E /* MediaPlayer.framework */; };
+		58F21AF118A6E5A900DE043E /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF018A6E5A900DE043E /* Twitter.framework */; };
+		58F21AF318A6E5B800DE043E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF218A6E5B800DE043E /* SystemConfiguration.framework */; };
+		58F21AF518A6E5C500DE043E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF418A6E5C500DE043E /* StoreKit.framework */; };
+		58F21AF718A6E5D100DE043E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF618A6E5D100DE043E /* MessageUI.framework */; };
+		58F21AF918A6E5D900DE043E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF818A6E5D900DE043E /* iAd.framework */; };
+		58F21AFB18A6E5E600DE043E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFA18A6E5E600DE043E /* CoreImage.framework */; };
+		58F21AFD18A6E5F400DE043E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFC18A6E5F400DE043E /* AudioToolbox.framework */; };
+		58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFE18A6E60400DE043E /* Social.framework */; };
+		58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0018A6E61400DE043E /* QuartzCore.framework */; };
+		58F21B0318A6E62600DE043E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0218A6E62600DE043E /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +146,17 @@
 		58F21AE918A6E12900DE043E /* MainTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTBC.m; sourceTree = "<group>"; };
 		58F21AEA18A6E12900DE043E /* ScrollViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewContainer.h; sourceTree = "<group>"; };
 		58F21AEB18A6E12900DE043E /* ScrollViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewContainer.m; sourceTree = "<group>"; };
+		58F21AEE18A6E58400DE043E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		58F21AF018A6E5A900DE043E /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		58F21AF218A6E5B800DE043E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58F21AF418A6E5C500DE043E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		58F21AF618A6E5D100DE043E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		58F21AF818A6E5D900DE043E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		58F21AFA18A6E5E600DE043E /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		58F21AFC18A6E5F400DE043E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		58F21AFE18A6E60400DE043E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		58F21B0018A6E61400DE043E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		58F21B0218A6E62600DE043E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +164,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F21B0318A6E62600DE043E /* Security.framework in Frameworks */,
+				58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */,
+				58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */,
+				58F21AFD18A6E5F400DE043E /* AudioToolbox.framework in Frameworks */,
+				58F21AFB18A6E5E600DE043E /* CoreImage.framework in Frameworks */,
+				58F21AF918A6E5D900DE043E /* iAd.framework in Frameworks */,
+				58F21AF718A6E5D100DE043E /* MessageUI.framework in Frameworks */,
+				58F21AF518A6E5C500DE043E /* StoreKit.framework in Frameworks */,
+				58F21AF318A6E5B800DE043E /* SystemConfiguration.framework in Frameworks */,
+				58F21AF118A6E5A900DE043E /* Twitter.framework in Frameworks */,
+				58F21AEF18A6E58400DE043E /* MediaPlayer.framework in Frameworks */,
 				587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */,
 				587CFB67189DD9B8006FA541 /* CoreData.framework in Frameworks */,
 				587CFB65189DD9B8006FA541 /* UIKit.framework in Frameworks */,
@@ -185,6 +218,17 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58F21B0218A6E62600DE043E /* Security.framework */,
+				58F21B0018A6E61400DE043E /* QuartzCore.framework */,
+				58F21AFE18A6E60400DE043E /* Social.framework */,
+				58F21AFC18A6E5F400DE043E /* AudioToolbox.framework */,
+				58F21AFA18A6E5E600DE043E /* CoreImage.framework */,
+				58F21AF818A6E5D900DE043E /* iAd.framework */,
+				58F21AF618A6E5D100DE043E /* MessageUI.framework */,
+				58F21AF418A6E5C500DE043E /* StoreKit.framework */,
+				58F21AF218A6E5B800DE043E /* SystemConfiguration.framework */,
+				58F21AF018A6E5A900DE043E /* Twitter.framework */,
+				58F21AEE18A6E58400DE043E /* MediaPlayer.framework */,
 				587CFB60189DD9B8006FA541 /* Foundation.framework */,
 				587CFB62189DD9B8006FA541 /* CoreGraphics.framework */,
 				587CFB64189DD9B8006FA541 /* UIKit.framework */,
