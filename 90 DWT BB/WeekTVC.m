@@ -41,12 +41,8 @@
                             self.cell9,
                             self.cell10,
                             self.cell11,
-                            self.cell12,
-                            self.cell13,
-                            self.cell14,
-                            self.cell15,
-                            self.cell16,
-                            self.cell17];
+                            self.cell12];
+    
     NSArray *accessoryIcon = @[@YES,
                                 @YES,
                                 @YES,
@@ -58,18 +54,9 @@
                                 @YES,
                                 @YES,
                                 @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
                                 @YES];
+    
     NSArray *cellColor = @[@NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
                            @NO,
                            @NO,
                            @NO,
@@ -106,16 +93,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //NSLog(@"Routine = %@", ((DataNavController *)self.parentViewController).routine);
-    
-    // Return the number of sections.
-    if ([self.navigationItem.title isEqualToString:@"Bulk"]) {
-        return 3;
-    }
-    
-    else {
-        return 4;
-    }
+    return 3;
 }
 
 - (void)findDefaultWorkout
@@ -138,7 +116,7 @@
     else {
         
         // File has not been created so this is the first time the app has been opened or user has not changed workout.
-        ((DataNavController *)self.parentViewController).routine = @"Normal";
+        ((DataNavController *)self.parentViewController).routine = @"Bulk";
         self.navigationItem.title = ((DataNavController *)self.parentViewController).routine;
     }
     
@@ -151,125 +129,55 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *selectedWeek = @"Week";
-    NSString *workoutSegueName = self.navigationItem.title;
     
-    // Month 1
-    if (indexPath.section == 0) {
+    if ([self.navigationItem.title isEqualToString:@"Bulk"]) {
         
-        ((DataNavController *)self.parentViewController).month = @"Month 1";
-        
-        // Segue to normal workout list if week 1-3 is selected.
-        // Segue to recovery workout list if week 4 is selected.
-        if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
+        // Month 1
+        if (indexPath.section == 0) {
             
-            workoutSegueName = [workoutSegueName stringByAppendingString:@" 1-3"];
-        }
-        
-        else {
+            ((DataNavController *)self.parentViewController).month = @"Month 1";
             
-            workoutSegueName = [workoutSegueName stringByAppendingString:@"_4_Light"];
-        }
-        
-        // Get current week
-        for (int i = 0; i < 4; i++) {
-                       
-            if (indexPath.row == i) {
+            // Get current week 1-3
+            for (int i = 0; i < 3; i++) {
                 
-                selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 1];
+                if (indexPath.row == i) {
+                    
+                    selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 1];
+                }
             }
-        }
-    }
-    
-    // Month 2
-    else if (indexPath.section == 1) {
-        
-        ((DataNavController *)self.parentViewController).month = @"Month 2";
-        
-        // Segue to normal workout list if week 5-7 is selected.
-        // Segue to recovery workout list if week 8 is selected.
-        if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@" 5-7"];
-        }
-        
-        else {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@"_8_Light"];
         }
 
-        // Get current week
-        for (int i = 0; i < 4; i++) {
+        // Month 2
+        else if (indexPath.section == 1) {
             
-            if (indexPath.row == i) {
+            ((DataNavController *)self.parentViewController).month = @"Month 2";
+            
+            // Get current week 4-9
+            for (int i = 0; i < 6; i++) {
                 
-                selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 5];
+                if (indexPath.row == i) {
+                    
+                    selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 4];
+                }
+            }
+        }
+        
+        // Month 3
+        else if (indexPath.section == 2) {
+            
+            ((DataNavController *)self.parentViewController).month = @"Month 3";
+            
+            // Get current week 10-12
+            for (int i = 0; i < 3; i++) {
+                
+                if (indexPath.row == i) {
+                    
+                    selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 10];
+                }
             }
         }
     }
-    
-    // Month 3
-    else if (indexPath.section == 2) {
-        
-        ((DataNavController *)self.parentViewController).month = @"Month 3";
-        
-        // Segue to workout 1 list if week 9 or 11 is selected.
-        // Segue to workout 2 list if week 10 or 12 is selected.
-        // Segue to recovery workout list if week 13 is selected.
-        if (indexPath.row == 0 || indexPath.row == 2) {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@" 9+11"];
-        }
-        
-        else if (indexPath.row == 1 || indexPath.row == 3) {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@" 10+12"];
-        }
-        
-        else {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@"_13_Light"];
-        }
-
-        // Get current week
-        for (int i = 0; i < 5; i++) {
-            
-            if (indexPath.row == i) {
-                
-                selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 9];
-            }
-        }
-    }
-    
-    // Month 4
-    else {
-        
-        ((DataNavController *)self.parentViewController).month = @"Month 4";
-        
-        // Segue to normal workout list if week 14-6 is selected.
-        // Segue to recovery workout list if week 17 is selected.
-        if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@" 14-16"];
-        }
-        
-        else {
-            
-            workoutSegueName = [workoutSegueName stringByAppendingString:@"_17_Light"];
-        }
-        
-        // Get current week
-        for (int i = 0; i < 4; i++) {
-            
-            if (indexPath.row == i) {
-                
-                selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 14];
-            }
-        }
-    }
-
     
     ((DataNavController *)self.parentViewController).week = selectedWeek;
-    
-    [self performSegueWithIdentifier:workoutSegueName sender:self];    
 }
 @end

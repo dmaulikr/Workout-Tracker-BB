@@ -61,6 +61,18 @@
 		58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFE18A6E60400DE043E /* Social.framework */; };
 		58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0018A6E61400DE043E /* QuartzCore.framework */; };
 		58F21B0318A6E62600DE043E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0218A6E62600DE043E /* Security.framework */; };
+		A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */; };
+		A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */; };
+		A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DF18AADAE00012E943 /* Bulk_3_TVC.m */; };
+		A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0E218AADAFF0012E943 /* Bulk_4_TVC.m */; };
+		A56DA0E618AADB190012E943 /* Bulk_5_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0E518AADB190012E943 /* Bulk_5_TVC.m */; };
+		A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0E818AADB2A0012E943 /* Bulk_6_TVC.m */; };
+		A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0EB18AADB3F0012E943 /* Bulk_7_TVC.m */; };
+		A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0EE18AADB5E0012E943 /* Bulk_8_TVC.m */; };
+		A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F118AADB710012E943 /* Bulk_9_TVC.m */; };
+		A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F418AADB830012E943 /* Bulk_10_TVC.m */; };
+		A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */; };
+		A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +169,30 @@
 		58F21AFE18A6E60400DE043E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		58F21B0018A6E61400DE043E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58F21B0218A6E62600DE043E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_1_TVC.h; sourceTree = "<group>"; };
+		A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_1_TVC.m; sourceTree = "<group>"; };
+		A56DA0DB18AADA520012E943 /* Bulk_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_2_TVC.h; sourceTree = "<group>"; };
+		A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_2_TVC.m; sourceTree = "<group>"; };
+		A56DA0DE18AADAE00012E943 /* Bulk_3_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_3_TVC.h; sourceTree = "<group>"; };
+		A56DA0DF18AADAE00012E943 /* Bulk_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_3_TVC.m; sourceTree = "<group>"; };
+		A56DA0E118AADAFF0012E943 /* Bulk_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_4_TVC.h; sourceTree = "<group>"; };
+		A56DA0E218AADAFF0012E943 /* Bulk_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_4_TVC.m; sourceTree = "<group>"; };
+		A56DA0E418AADB190012E943 /* Bulk_5_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_5_TVC.h; sourceTree = "<group>"; };
+		A56DA0E518AADB190012E943 /* Bulk_5_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_5_TVC.m; sourceTree = "<group>"; };
+		A56DA0E718AADB2A0012E943 /* Bulk_6_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_6_TVC.h; sourceTree = "<group>"; };
+		A56DA0E818AADB2A0012E943 /* Bulk_6_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_6_TVC.m; sourceTree = "<group>"; };
+		A56DA0EA18AADB3F0012E943 /* Bulk_7_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_7_TVC.h; sourceTree = "<group>"; };
+		A56DA0EB18AADB3F0012E943 /* Bulk_7_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_7_TVC.m; sourceTree = "<group>"; };
+		A56DA0ED18AADB5E0012E943 /* Bulk_8_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_8_TVC.h; sourceTree = "<group>"; };
+		A56DA0EE18AADB5E0012E943 /* Bulk_8_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_8_TVC.m; sourceTree = "<group>"; };
+		A56DA0F018AADB710012E943 /* Bulk_9_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_9_TVC.h; sourceTree = "<group>"; };
+		A56DA0F118AADB710012E943 /* Bulk_9_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_9_TVC.m; sourceTree = "<group>"; };
+		A56DA0F318AADB830012E943 /* Bulk_10_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_10_TVC.h; sourceTree = "<group>"; };
+		A56DA0F418AADB830012E943 /* Bulk_10_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_10_TVC.m; sourceTree = "<group>"; };
+		A56DA0F618AADB9B0012E943 /* Bulk_11_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_11_TVC.h; sourceTree = "<group>"; };
+		A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_11_TVC.m; sourceTree = "<group>"; };
+		A56DA0F918AADBB00012E943 /* Bulk_12_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_12_TVC.h; sourceTree = "<group>"; };
+		A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_12_TVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +368,7 @@
 		58F21AB218A6DF2E00DE043E /* TVC's */ = {
 			isa = PBXGroup;
 			children = (
+				A56DA0D618AAC8E70012E943 /* Workout Lists */,
 				58F21AB318A6DF8E00DE043E /* MeasurementsTVC.h */,
 				58F21AB418A6DF8E00DE043E /* MeasurementsTVC.m */,
 				58F21AB518A6DF8E00DE043E /* PhotoTVC.h */,
@@ -403,6 +440,45 @@
 				58F21AE118A6E08500DE043E /* Workout_AbRipper_ResultsViewController.m */,
 			);
 			name = "Summary's";
+			sourceTree = "<group>";
+		};
+		A56DA0D618AAC8E70012E943 /* Workout Lists */ = {
+			isa = PBXGroup;
+			children = (
+				A56DA0DA18AAC9520012E943 /* Bulk */,
+			);
+			name = "Workout Lists";
+			sourceTree = "<group>";
+		};
+		A56DA0DA18AAC9520012E943 /* Bulk */ = {
+			isa = PBXGroup;
+			children = (
+				A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */,
+				A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */,
+				A56DA0DB18AADA520012E943 /* Bulk_2_TVC.h */,
+				A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */,
+				A56DA0DE18AADAE00012E943 /* Bulk_3_TVC.h */,
+				A56DA0DF18AADAE00012E943 /* Bulk_3_TVC.m */,
+				A56DA0E118AADAFF0012E943 /* Bulk_4_TVC.h */,
+				A56DA0E218AADAFF0012E943 /* Bulk_4_TVC.m */,
+				A56DA0E418AADB190012E943 /* Bulk_5_TVC.h */,
+				A56DA0E518AADB190012E943 /* Bulk_5_TVC.m */,
+				A56DA0E718AADB2A0012E943 /* Bulk_6_TVC.h */,
+				A56DA0E818AADB2A0012E943 /* Bulk_6_TVC.m */,
+				A56DA0EA18AADB3F0012E943 /* Bulk_7_TVC.h */,
+				A56DA0EB18AADB3F0012E943 /* Bulk_7_TVC.m */,
+				A56DA0ED18AADB5E0012E943 /* Bulk_8_TVC.h */,
+				A56DA0EE18AADB5E0012E943 /* Bulk_8_TVC.m */,
+				A56DA0F018AADB710012E943 /* Bulk_9_TVC.h */,
+				A56DA0F118AADB710012E943 /* Bulk_9_TVC.m */,
+				A56DA0F318AADB830012E943 /* Bulk_10_TVC.h */,
+				A56DA0F418AADB830012E943 /* Bulk_10_TVC.m */,
+				A56DA0F618AADB9B0012E943 /* Bulk_11_TVC.h */,
+				A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */,
+				A56DA0F918AADBB00012E943 /* Bulk_12_TVC.h */,
+				A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */,
+			);
+			name = Bulk;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,16 +587,22 @@
 				58F21AE718A6E0EA00DE043E /* ExerciseViewController.m in Sources */,
 				58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */,
 				58F21AB118A6DF2200DE043E /* SettingsNavController.m in Sources */,
+				A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */,
 				58F21ACF18A6E00000DE043E /* WebsiteViewController.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
+				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
 				58F21AD418A6E02F00DE043E /* MeasurementsReportViewController.m in Sources */,
 				58F21AC418A6DF8E00DE043E /* WorkoutListRecoveryTVC.m in Sources */,
 				58F21AAE18A6DF2200DE043E /* DataNavController.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
+				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
 				58F21AD518A6E02F00DE043E /* MeasurementsViewController.m in Sources */,
+				A56DA0E618AADB190012E943 /* Bulk_5_TVC.m in Sources */,
+				A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */,
 				58F21ABF18A6DF8E00DE043E /* MeasurementsTVC.m in Sources */,
+				A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */,
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
 				58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */,
@@ -529,8 +611,14 @@
 				58F21AB018A6DF2200DE043E /* PhotoNavController.m in Sources */,
 				58F21ADB18A6E04F00DE043E /* PresentPhotosViewController.m in Sources */,
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
+				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
+				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
+				A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */,
 				58F21AE418A6E08500DE043E /* Workout_AbRipper_ResultsViewController.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
+				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
+				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
+				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

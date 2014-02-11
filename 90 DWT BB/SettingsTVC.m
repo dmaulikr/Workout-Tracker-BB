@@ -76,7 +76,7 @@
         NSString *workoutTitle = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
         [fileHandle closeFile];
         
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             if ([[self.defaultWorkout titleForSegmentAtIndex:i] isEqualToString:workoutTitle]) {
                 self.defaultWorkout.selectedSegmentIndex = i;
             }
