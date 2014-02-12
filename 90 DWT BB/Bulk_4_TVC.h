@@ -11,4 +11,31 @@
 
 @interface Bulk_4_TVC : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell1;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell2;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell3;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell4;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell5;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell6;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell7;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell8;
+
+@property (weak, nonatomic) IBOutlet UITextField *cell1Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell2Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell3Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell4Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell5Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell6Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell7Box;
+@property (weak, nonatomic) IBOutlet UITextField *cell8Box;
+
+@property (weak, nonatomic) IBOutlet UILabel *cell1Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell2Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell3Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell4Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell5Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell6Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell7Label;
+@property (weak, nonatomic) IBOutlet UILabel *cell8Label;
+
 @end
