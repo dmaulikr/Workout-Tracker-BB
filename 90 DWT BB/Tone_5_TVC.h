@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataNavController.h"
 
 @interface Tone_5_TVC : UITableViewController
 
