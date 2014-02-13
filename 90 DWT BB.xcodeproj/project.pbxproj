@@ -73,6 +73,18 @@
 		A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F418AADB830012E943 /* Bulk_10_TVC.m */; };
 		A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */; };
 		A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */; };
+		A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */; };
+		A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6618AD3523000FD51E /* Tone_2_TVC.m */; };
+		A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6918AD353A000FD51E /* Tone_3_TVC.m */; };
+		A5F1CD7018AD3572000FD51E /* Tone_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6F18AD3572000FD51E /* Tone_4_TVC.m */; };
+		A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD7218AD35AF000FD51E /* Tone_5_TVC.m */; };
+		A5F1CD7618AD35CD000FD51E /* Tone_6_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD7518AD35CD000FD51E /* Tone_6_TVC.m */; };
+		A5F1CD7918AD36EE000FD51E /* Tone_7_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD7818AD36EE000FD51E /* Tone_7_TVC.m */; };
+		A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD7B18AD3B4B000FD51E /* Tone_8_TVC.m */; };
+		A5F1CD7F18AD3B5F000FD51E /* Tone_9_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD7E18AD3B5F000FD51E /* Tone_9_TVC.m */; };
+		A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD8118AD3B72000FD51E /* Tone_10_TVC.m */; };
+		A5F1CD8518AD3B83000FD51E /* Tone_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD8418AD3B83000FD51E /* Tone_11_TVC.m */; };
+		A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD8718AD3B96000FD51E /* Tone_12_TVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +205,30 @@
 		A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_11_TVC.m; sourceTree = "<group>"; };
 		A56DA0F918AADBB00012E943 /* Bulk_12_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_12_TVC.h; sourceTree = "<group>"; };
 		A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_12_TVC.m; sourceTree = "<group>"; };
+		A5F1CD6218AD3505000FD51E /* Tone_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_1_TVC.h; sourceTree = "<group>"; };
+		A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_1_TVC.m; sourceTree = "<group>"; };
+		A5F1CD6518AD3523000FD51E /* Tone_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_2_TVC.h; sourceTree = "<group>"; };
+		A5F1CD6618AD3523000FD51E /* Tone_2_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_2_TVC.m; sourceTree = "<group>"; };
+		A5F1CD6818AD353A000FD51E /* Tone_3_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_3_TVC.h; sourceTree = "<group>"; };
+		A5F1CD6918AD353A000FD51E /* Tone_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_3_TVC.m; sourceTree = "<group>"; };
+		A5F1CD6E18AD3572000FD51E /* Tone_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_4_TVC.h; sourceTree = "<group>"; };
+		A5F1CD6F18AD3572000FD51E /* Tone_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_4_TVC.m; sourceTree = "<group>"; };
+		A5F1CD7118AD35AF000FD51E /* Tone_5_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_5_TVC.h; sourceTree = "<group>"; };
+		A5F1CD7218AD35AF000FD51E /* Tone_5_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_5_TVC.m; sourceTree = "<group>"; };
+		A5F1CD7418AD35CD000FD51E /* Tone_6_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_6_TVC.h; sourceTree = "<group>"; };
+		A5F1CD7518AD35CD000FD51E /* Tone_6_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_6_TVC.m; sourceTree = "<group>"; };
+		A5F1CD7718AD36EE000FD51E /* Tone_7_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_7_TVC.h; sourceTree = "<group>"; };
+		A5F1CD7818AD36EE000FD51E /* Tone_7_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_7_TVC.m; sourceTree = "<group>"; };
+		A5F1CD7A18AD3B4B000FD51E /* Tone_8_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_8_TVC.h; sourceTree = "<group>"; };
+		A5F1CD7B18AD3B4B000FD51E /* Tone_8_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_8_TVC.m; sourceTree = "<group>"; };
+		A5F1CD7D18AD3B5F000FD51E /* Tone_9_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_9_TVC.h; sourceTree = "<group>"; };
+		A5F1CD7E18AD3B5F000FD51E /* Tone_9_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_9_TVC.m; sourceTree = "<group>"; };
+		A5F1CD8018AD3B72000FD51E /* Tone_10_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_10_TVC.h; sourceTree = "<group>"; };
+		A5F1CD8118AD3B72000FD51E /* Tone_10_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_10_TVC.m; sourceTree = "<group>"; };
+		A5F1CD8318AD3B83000FD51E /* Tone_11_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_11_TVC.h; sourceTree = "<group>"; };
+		A5F1CD8418AD3B83000FD51E /* Tone_11_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_11_TVC.m; sourceTree = "<group>"; };
+		A5F1CD8618AD3B96000FD51E /* Tone_12_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_12_TVC.h; sourceTree = "<group>"; };
+		A5F1CD8718AD3B96000FD51E /* Tone_12_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_12_TVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +481,7 @@
 		A56DA0D618AAC8E70012E943 /* Workout Lists */ = {
 			isa = PBXGroup;
 			children = (
+				A5F1CD6118AD34D5000FD51E /* Tone */,
 				A56DA0DA18AAC9520012E943 /* Bulk */,
 			);
 			name = "Workout Lists";
@@ -479,6 +516,37 @@
 				A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */,
 			);
 			name = Bulk;
+			sourceTree = "<group>";
+		};
+		A5F1CD6118AD34D5000FD51E /* Tone */ = {
+			isa = PBXGroup;
+			children = (
+				A5F1CD6218AD3505000FD51E /* Tone_1_TVC.h */,
+				A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */,
+				A5F1CD6518AD3523000FD51E /* Tone_2_TVC.h */,
+				A5F1CD6618AD3523000FD51E /* Tone_2_TVC.m */,
+				A5F1CD6818AD353A000FD51E /* Tone_3_TVC.h */,
+				A5F1CD6918AD353A000FD51E /* Tone_3_TVC.m */,
+				A5F1CD6E18AD3572000FD51E /* Tone_4_TVC.h */,
+				A5F1CD6F18AD3572000FD51E /* Tone_4_TVC.m */,
+				A5F1CD7118AD35AF000FD51E /* Tone_5_TVC.h */,
+				A5F1CD7218AD35AF000FD51E /* Tone_5_TVC.m */,
+				A5F1CD7418AD35CD000FD51E /* Tone_6_TVC.h */,
+				A5F1CD7518AD35CD000FD51E /* Tone_6_TVC.m */,
+				A5F1CD7718AD36EE000FD51E /* Tone_7_TVC.h */,
+				A5F1CD7818AD36EE000FD51E /* Tone_7_TVC.m */,
+				A5F1CD7A18AD3B4B000FD51E /* Tone_8_TVC.h */,
+				A5F1CD7B18AD3B4B000FD51E /* Tone_8_TVC.m */,
+				A5F1CD7D18AD3B5F000FD51E /* Tone_9_TVC.h */,
+				A5F1CD7E18AD3B5F000FD51E /* Tone_9_TVC.m */,
+				A5F1CD8018AD3B72000FD51E /* Tone_10_TVC.h */,
+				A5F1CD8118AD3B72000FD51E /* Tone_10_TVC.m */,
+				A5F1CD8318AD3B83000FD51E /* Tone_11_TVC.h */,
+				A5F1CD8418AD3B83000FD51E /* Tone_11_TVC.m */,
+				A5F1CD8618AD3B96000FD51E /* Tone_12_TVC.h */,
+				A5F1CD8718AD3B96000FD51E /* Tone_12_TVC.m */,
+			);
+			name = Tone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,42 +651,54 @@
 				58F21ACE18A6E00000DE043E /* EmailViewController.m in Sources */,
 				58F21AC118A6DF8E00DE043E /* SettingsTVC.m in Sources */,
 				58F21AC318A6DF8E00DE043E /* WeekTVC.m in Sources */,
+				A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */,
 				587CFB73189DD9B8006FA541 /* AppDelegate.m in Sources */,
 				58F21AE718A6E0EA00DE043E /* ExerciseViewController.m in Sources */,
 				58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */,
 				58F21AB118A6DF2200DE043E /* SettingsNavController.m in Sources */,
 				A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */,
+				A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */,
 				58F21ACF18A6E00000DE043E /* WebsiteViewController.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
+				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,
 				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
 				58F21AD418A6E02F00DE043E /* MeasurementsReportViewController.m in Sources */,
 				58F21AC418A6DF8E00DE043E /* WorkoutListRecoveryTVC.m in Sources */,
+				A5F1CD7F18AD3B5F000FD51E /* Tone_9_TVC.m in Sources */,
 				58F21AAE18A6DF2200DE043E /* DataNavController.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
 				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
 				58F21AD518A6E02F00DE043E /* MeasurementsViewController.m in Sources */,
 				A56DA0E618AADB190012E943 /* Bulk_5_TVC.m in Sources */,
+				A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */,
 				A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */,
+				A5F1CD8518AD3B83000FD51E /* Tone_11_TVC.m in Sources */,
 				58F21ABF18A6DF8E00DE043E /* MeasurementsTVC.m in Sources */,
 				A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */,
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
 				58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */,
 				58F21AEC18A6E12900DE043E /* MainTBC.m in Sources */,
+				A5F1CD7918AD36EE000FD51E /* Tone_7_TVC.m in Sources */,
 				58F21AE218A6E08500DE043E /* NotesViewController.m in Sources */,
 				58F21AB018A6DF2200DE043E /* PhotoNavController.m in Sources */,
+				A5F1CD7618AD35CD000FD51E /* Tone_6_TVC.m in Sources */,
 				58F21ADB18A6E04F00DE043E /* PresentPhotosViewController.m in Sources */,
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
 				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
 				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
 				A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */,
 				58F21AE418A6E08500DE043E /* Workout_AbRipper_ResultsViewController.m in Sources */,
+				A5F1CD7018AD3572000FD51E /* Tone_4_TVC.m in Sources */,
+				A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
+				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
 				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,
+				A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
