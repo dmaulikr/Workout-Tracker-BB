@@ -211,7 +211,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *selectedWeek = @"Week";
     NSString *workoutSegueName = self.navigationItem.title;
     
     if ([self.navigationItem.title isEqualToString:@"Bulk"]) {
@@ -220,53 +219,25 @@
         if (indexPath.section == 0) {
             
             ((DataNavController *)self.parentViewController).month = @"Month 1";
-            
-            // Get current week 1-3
-            for (int i = 0; i < 3; i++) {
-                
-                if (indexPath.row == i) {
-                    
-                    selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 1];
-                }
-            }
         }
 
         // Month 2
         else if (indexPath.section == 1) {
             
             ((DataNavController *)self.parentViewController).month = @"Month 2";
-            
-            // Get current week 4-9
-            for (int i = 0; i < 6; i++) {
-                
-                if (indexPath.row == i) {
-                    
-                    selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 4];
-                }
-            }
         }
         
         // Month 3
         else if (indexPath.section == 2) {
             
             ((DataNavController *)self.parentViewController).month = @"Month 3";
-            
-            // Get current week 10-12
-            for (int i = 0; i < 3; i++) {
-                
-                if (indexPath.row == i) {
-                    
-                    selectedWeek = [selectedWeek stringByAppendingFormat:@" %d", i + 10];
-                }
-            }
         }
     }
-    
-    ((DataNavController *)self.parentViewController).week = selectedWeek;
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellText = selectedCell.textLabel.text;
     
+    ((DataNavController *)self.parentViewController).week = cellText;
     workoutSegueName = [workoutSegueName stringByAppendingFormat:@" %@", cellText];
     
     [self performSegueWithIdentifier:workoutSegueName sender:self];
