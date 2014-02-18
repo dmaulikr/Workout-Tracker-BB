@@ -79,55 +79,61 @@
             
             if (selectedCell.tag == 1) {
                 
-                // Complete Fitness 1
+                // B1: Chest+Tri 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 2) {
                 
-                // Dexterity 1
+                // B1: Legs 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 3) {
                 
-                // Yoga 1
+                // B1: Back+Bi 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 4) {
                 
-                // The Goal 1
+                // B1: Shoulders 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 5) {
                 
-                // Cardio Resistance 1
+                // B3: Cardio 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 6) {
                 
-                // Gladiator 1
+                // B3: Complete Body 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 7) {
                 
-                // Core D 1
+                // B3: Ab Workout 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
             else if (selectedCell.tag == 8) {
                 
-                // Core D 1
+                // Rest 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
 
             else if (selectedCell.tag == 9) {
                 
-                // Core D 1
+                // B1: Chest+Tri 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (selectedCell.tag == 10) {
+                
+                // T1: Chest+Tri 1
                 ((DataNavController *)self.parentViewController).index = @1;
             }
         }

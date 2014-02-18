@@ -48,6 +48,98 @@
     return 5;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *selectedRoutine = ((DataNavController *)self.parentViewController).routine;
+    NSString *week = ((DataNavController *)self.parentViewController).week;
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSArray *workoutArray;
+    
+    workoutArray = @[@"B2: Chest",
+                     @"B1: Legs",
+                     @"B3: Cardio",
+                     @"B3: Complete Body",
+                     @"B3: Ab Workout",
+                     @"Rest",
+                     @"B2: Back",
+                     @"B2: Arms",
+                     @"B3: Ab Workout",
+                     @"B3: Cardio"];
+    
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    
+    // Normal routine
+    if ([selectedRoutine isEqualToString:@"Bulk"]) {
+        
+        // Week 11
+        if ([week isEqualToString:@"Week 11"]) {
+            
+            if (selectedCell.tag == 1) {
+                
+                // B2: Chest
+                ((DataNavController *)self.parentViewController).index = @8;
+            }
+            
+            else if (selectedCell.tag == 2) {
+                
+                // B1: Legs
+                ((DataNavController *)self.parentViewController).index = @5;
+            }
+            
+            else if (selectedCell.tag == 3) {
+                
+                // B3: Cardio
+                ((DataNavController *)self.parentViewController).index = @4;
+            }
+            
+            else if (selectedCell.tag == 4) {
+                
+                // B3: Complete Body
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (selectedCell.tag == 5) {
+                
+                // B3: Ab Workout
+                ((DataNavController *)self.parentViewController).index = @14;
+            }
+            
+            else if (selectedCell.tag == 6) {
+                
+                // Rest
+                ((DataNavController *)self.parentViewController).index = @12;
+            }
+            
+            else if (selectedCell.tag == 7) {
+                
+                // B2: Back
+                ((DataNavController *)self.parentViewController).index = @8;
+            }
+            
+            else if (selectedCell.tag == 8) {
+                
+                // B2: Arms
+                ((DataNavController *)self.parentViewController).index = @9;
+            }
+            
+            else if (selectedCell.tag == 9) {
+                
+                // B3: Ab Workout
+                ((DataNavController *)self.parentViewController).index = @15;
+            }
+            
+            else if (selectedCell.tag == 10) {
+                
+                // B3: Cardio
+                ((DataNavController *)self.parentViewController).index = @5;
+            }
+        }
+    }
+    
+    //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
+}
+
 /*
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

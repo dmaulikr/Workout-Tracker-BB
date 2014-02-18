@@ -68,6 +68,8 @@
     [self setUpVariables];
     [self setUpArrays];
     [self keyboardType];
+    
+    self.canDisplayBannerAds = YES;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -167,8 +169,10 @@
     [self.currentCell1Wt4 resignFirstResponder];
 }
 
-/*
+
 - (IBAction)submitEntry:(id)sender {
+ 
+ /*
     NSDate *todaysDate = [NSDate date];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -245,6 +249,20 @@
     self.currentNotes.text = @"";
     
     [self hideKeyboard:sender];
+  */
 }
- */
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        
+        return @"CURRENT";
+    }
+    
+    else {
+        
+        return @"PREVIOUS";
+    }
+}
+
 @end

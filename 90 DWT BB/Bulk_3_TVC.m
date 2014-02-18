@@ -47,6 +47,120 @@
     // Return the number of sections.
     return 7;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *selectedRoutine = ((DataNavController *)self.parentViewController).routine;
+    NSString *week = ((DataNavController *)self.parentViewController).week;
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSArray *workoutArray;
+    
+    workoutArray = @[@"B1: Shoulders",
+                     @"B3: Ab Workout",
+                     @"Rest",
+                     @"B1: Chest+Tri",
+                     @"T1: Chest+Tri",
+                     @"B1: Legs",
+                     @"B1: Back+Bi",
+                     @"T1: Back+Bi",
+                     @"B1: Shoulders",
+                     @"B3: Ab Workout",
+                     @"B3: Cardio",
+                     @"B3: Complete Body",
+                     @"B3: Ab Workout"];
+    
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    
+    // Normal routine
+    if ([selectedRoutine isEqualToString:@"Bulk"]) {
+        
+        // Week 3
+        if ([week isEqualToString:@"Week 3"]) {
+            
+            if (selectedCell.tag == 1) {
+                
+                // B1: Shoulders
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (selectedCell.tag == 2) {
+                
+                // B3: Ab Workout
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (selectedCell.tag == 3) {
+                
+                // Rest
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (selectedCell.tag == 4) {
+                
+                // B1: Chest+Tri
+                ((DataNavController *)self.parentViewController).index = @4;
+            }
+            
+            else if (selectedCell.tag == 5) {
+                
+                // T1: Chest+Tri
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (selectedCell.tag == 6) {
+                
+                // B1: Legs
+                ((DataNavController *)self.parentViewController).index = @4;
+            }
+            
+            else if (selectedCell.tag == 7) {
+                
+                // B1: Back+Bi
+                ((DataNavController *)self.parentViewController).index = @4;
+            }
+            
+            else if (selectedCell.tag == 8) {
+                
+                // T1: Back+Bi
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (selectedCell.tag == 9) {
+                
+                // B1: Shoulders
+                ((DataNavController *)self.parentViewController).index = @4;
+            }
+            
+            else if (selectedCell.tag == 10) {
+                
+                // B3: Ab Workout
+                ((DataNavController *)self.parentViewController).index = @4;
+            }
+            
+            else if (selectedCell.tag == 11) {
+                
+                // B3: Cardio
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (selectedCell.tag == 12) {
+                
+                // B3: Complete Body
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (selectedCell.tag == 13) {
+                
+                // B3: Ab Workout
+                ((DataNavController *)self.parentViewController).index = @5;
+            }
+        }
+    }
+    
+    //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
+}
+
 /*
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
