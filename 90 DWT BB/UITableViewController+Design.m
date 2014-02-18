@@ -27,8 +27,8 @@
         UITableViewCell *cell = tableCell[i];
         
         // Label backgrounds
-        UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
-        UIColor* detailTextColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+        //UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
+        //UIColor* detailTextColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
         cell.detailTextLabel.textColor = [UIColor orangeColor];
         
         // Label and Subtitle Font Size

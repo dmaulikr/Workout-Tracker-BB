@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		586FB27318B13917008F8F7A /* Exercise_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 586FB27218B13917008F8F7A /* Exercise_TVC.m */; };
 		587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB60189DD9B8006FA541 /* Foundation.framework */; };
 		587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB62189DD9B8006FA541 /* CoreGraphics.framework */; };
 		587CFB65189DD9B8006FA541 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB64189DD9B8006FA541 /* UIKit.framework */; };
@@ -98,6 +99,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		586FB27118B13917008F8F7A /* Exercise_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise_TVC.h; sourceTree = "<group>"; };
+		586FB27218B13917008F8F7A /* Exercise_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise_TVC.m; sourceTree = "<group>"; };
 		587CFB5D189DD9B8006FA541 /* 90 DWT BB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT BB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		587CFB60189DD9B8006FA541 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		587CFB62189DD9B8006FA541 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -268,6 +271,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		586FB27018B138D6008F8F7A /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				586FB27118B13917008F8F7A /* Exercise_TVC.h */,
+				586FB27218B13917008F8F7A /* Exercise_TVC.m */,
+			);
+			name = Exercise;
+			sourceTree = "<group>";
+		};
 		587CFB54189DD9B8006FA541 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +416,7 @@
 		58F21AB218A6DF2E00DE043E /* TVC's */ = {
 			isa = PBXGroup;
 			children = (
+				586FB27018B138D6008F8F7A /* Exercise */,
 				A56DA0D618AAC8E70012E943 /* Workout Lists */,
 				58F21AB318A6DF8E00DE043E /* MeasurementsTVC.h */,
 				58F21AB418A6DF8E00DE043E /* MeasurementsTVC.m */,
@@ -687,6 +700,7 @@
 				A5F1CD7618AD35CD000FD51E /* Tone_6_TVC.m in Sources */,
 				58F21ADB18A6E04F00DE043E /* PresentPhotosViewController.m in Sources */,
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
+				586FB27318B13917008F8F7A /* Exercise_TVC.m in Sources */,
 				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
 				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
 				A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */,

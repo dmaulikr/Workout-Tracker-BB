@@ -48,6 +48,171 @@
     return 4;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *selectedRoutine = ((DataNavController *)self.parentViewController).routine;
+    NSString *week = ((DataNavController *)self.parentViewController).week;
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSArray *workoutArray;
+    
+    workoutArray = @[@"B1: Chest+Tri",
+                     @"B1: Legs",
+                     @"B1: Back+Bi",
+                     @"B3: Cardio",
+                     @"B3: Ab Workout",
+                     @"B1: Shoulders",
+                     @"Rest",
+                     @"B1: Chest+Tri",
+                     @"T1: Chest+Tri"];
+   
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    
+    // Normal routine
+    if ([selectedRoutine isEqualToString:@"Tone"]) {
+        
+        // Week 1
+        if ([week isEqualToString:@"Week 1"]) {
+            
+            if (indexPath.row == 0) {
+                
+                // Complete Fitness 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+            
+            else if (indexPath.row == 1) {
+                
+                // Dexterity 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+            
+            else if (indexPath.row == 2) {
+                
+                // Yoga 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+            
+            else if (indexPath.row == 3) {
+                
+                // The Goal 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+            
+            else if (indexPath.row == 4) {
+                
+                // Cardio Resistance 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+            
+            else if (indexPath.row == 5) {
+                
+                // Gladiator 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+            
+            else if (indexPath.row == 6) {
+                
+                // Core D 1
+                ((DataNavController *)self.parentViewController).index = @1;
+            }
+        }
+        
+        // Week 2
+        else if ([week isEqualToString:@"Week 2"]) {
+            
+            if (indexPath.row == 0) {
+                
+                // Complete Fitness 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (indexPath.row == 1) {
+                
+                // Dexterity 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (indexPath.row == 2) {
+                
+                // Yoga 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (indexPath.row == 3) {
+                
+                // The Goal 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (indexPath.row == 4) {
+                
+                // Cardio Resistance 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (indexPath.row == 5) {
+                
+                // Gladiator 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (indexPath.row == 6) {
+                
+                // Core D 2
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+        }
+        
+        // Week 3
+        else if ([week isEqualToString:@"Week 3"]) {
+            
+            if (indexPath.row == 0) {
+                
+                // Complete Fitness 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (indexPath.row == 1) {
+                
+                // Dexterity 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (indexPath.row == 2) {
+                
+                // Yoga 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (indexPath.row == 3) {
+                
+                // The Goal 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (indexPath.row == 4) {
+                
+                // Cardio Resistance 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (indexPath.row == 5) {
+                
+                // Gladiator 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+            
+            else if (indexPath.row == 6) {
+                
+                // Core D 3
+                ((DataNavController *)self.parentViewController).index = @3;
+            }
+        }
+    }
+    
+    //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
+}
+
 /*
  - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
  {

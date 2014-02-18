@@ -25,6 +25,10 @@
     return self;
 }
 
+- (void)setUpArrays {
+    
+}
+
 -(void)setUpVariables {
     
     AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

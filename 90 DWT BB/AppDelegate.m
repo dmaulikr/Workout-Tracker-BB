@@ -53,7 +53,7 @@
      [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
      */
     
-    [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
+    [[UITabBar appearance] setTintColor: [UIColor orangeColor]];
     
     return YES;
 }
