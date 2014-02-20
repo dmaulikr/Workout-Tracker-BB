@@ -62,6 +62,10 @@
 		58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFE18A6E60400DE043E /* Social.framework */; };
 		58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0018A6E61400DE043E /* QuartzCore.framework */; };
 		58F21B0318A6E62600DE043E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0218A6E62600DE043E /* Security.framework */; };
+		A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */; };
+		A51B6EE718B5054400F34A11 /* UITableViewController+ShowDatabaseData.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE618B5054400F34A11 /* UITableViewController+ShowDatabaseData.m */; };
+		A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */; };
+		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
 		A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */; };
 		A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */; };
 		A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DF18AADAE00012E943 /* Bulk_3_TVC.m */; };
@@ -184,6 +188,14 @@
 		58F21AFE18A6E60400DE043E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		58F21B0018A6E61400DE043E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58F21B0218A6E62600DE043E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A51B6EE218B500A700F34A11 /* UITableViewController+Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Database.h"; sourceTree = "<group>"; };
+		A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Database.m"; sourceTree = "<group>"; };
+		A51B6EE518B5054400F34A11 /* UITableViewController+ShowDatabaseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+ShowDatabaseData.h"; sourceTree = "<group>"; };
+		A51B6EE618B5054400F34A11 /* UITableViewController+ShowDatabaseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+ShowDatabaseData.m"; sourceTree = "<group>"; };
+		A51B6EE818B55A4A00F34A11 /* ExerciseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCell.h; sourceTree = "<group>"; };
+		A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCell.m; sourceTree = "<group>"; };
+		A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_1_TVC.h; sourceTree = "<group>"; };
+		A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_1_TVC.m; sourceTree = "<group>"; };
 		A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_1_TVC.h; sourceTree = "<group>"; };
 		A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_1_TVC.m; sourceTree = "<group>"; };
 		A56DA0DB18AADA520012E943 /* Bulk_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_2_TVC.h; sourceTree = "<group>"; };
@@ -276,6 +288,8 @@
 			children = (
 				586FB27118B13917008F8F7A /* Exercise_TVC.h */,
 				586FB27218B13917008F8F7A /* Exercise_TVC.m */,
+				A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */,
+				A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";
@@ -379,6 +393,8 @@
 			children = (
 				58F21A9518A6DE5B00DE043E /* photoCollectionViewCell.h */,
 				58F21A9618A6DE5B00DE043E /* photoCollectionViewCell.m */,
+				A51B6EE818B55A4A00F34A11 /* ExerciseCell.h */,
+				A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -394,6 +410,10 @@
 				58F21A9E18A6DEC400DE043E /* UIViewController+CoreData.m */,
 				58F21A9F18A6DEC400DE043E /* UIViewController+Social.h */,
 				58F21AA018A6DEC400DE043E /* UIViewController+Social.m */,
+				A51B6EE218B500A700F34A11 /* UITableViewController+Database.h */,
+				A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */,
+				A51B6EE518B5054400F34A11 /* UITableViewController+ShowDatabaseData.h */,
+				A51B6EE618B5054400F34A11 /* UITableViewController+ShowDatabaseData.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -678,6 +698,7 @@
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
 				58F21AD418A6E02F00DE043E /* MeasurementsReportViewController.m in Sources */,
 				58F21AC418A6DF8E00DE043E /* WorkoutListRecoveryTVC.m in Sources */,
+				A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */,
 				A5F1CD7F18AD3B5F000FD51E /* Tone_9_TVC.m in Sources */,
 				58F21AAE18A6DF2200DE043E /* DataNavController.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
@@ -688,11 +709,13 @@
 				A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */,
 				A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */,
 				A5F1CD8518AD3B83000FD51E /* Tone_11_TVC.m in Sources */,
+				A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */,
 				58F21ABF18A6DF8E00DE043E /* MeasurementsTVC.m in Sources */,
 				A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */,
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
 				58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */,
+				A51B6EE718B5054400F34A11 /* UITableViewController+ShowDatabaseData.m in Sources */,
 				58F21AEC18A6E12900DE043E /* MainTBC.m in Sources */,
 				A5F1CD7918AD36EE000FD51E /* Tone_7_TVC.m in Sources */,
 				58F21AE218A6E08500DE043E /* NotesViewController.m in Sources */,
@@ -709,6 +732,7 @@
 				A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
 				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
+				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
 				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,

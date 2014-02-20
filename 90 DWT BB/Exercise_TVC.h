@@ -12,6 +12,9 @@
 #import "AppDelegate.h"
 #import "ResultsViewController.h"
 #import "MainTBC.h"
+#import "UITableViewController+Database.h"
+#import "UITableViewController+ShowDatabaseData.h"
+#import "ExerciseCell.h"
 
 @interface Exercise_TVC : UITableViewController
 
@@ -54,6 +57,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *previousCell1Wt4;
 
 //  Arrays
+@property (strong, nonatomic) NSArray *currentCellsArray;
+@property (strong, nonatomic) NSArray *previousCellsArray;
 @property (strong, nonatomic) NSArray *currentRepsLabelArray;
 @property (strong, nonatomic) NSArray *previousRepsLabelArray;
 @property (strong, nonatomic) NSArray *currentExerciseLabelArray;

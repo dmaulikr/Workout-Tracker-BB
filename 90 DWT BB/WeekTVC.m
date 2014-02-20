@@ -167,7 +167,7 @@
         }
     }
     
-    NSString *weekString = [NSString stringWithFormat:@"Week %d", weekNum];
+    NSString *weekString = [NSString stringWithFormat:@"Week %ld", (long)weekNum];
     
     cell.textLabel.text = weekString;
     
