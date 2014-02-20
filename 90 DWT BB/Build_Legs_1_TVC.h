@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExerciseCell.h"
 
 @interface Build_Legs_1_TVC : UITableViewController
 

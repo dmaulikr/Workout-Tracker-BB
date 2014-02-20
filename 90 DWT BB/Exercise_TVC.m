@@ -87,7 +87,7 @@
     [super viewDidLoad];
     
     [self setUpVariables];
-    [self setUpArrays];
+    //[self setUpArrays];
     [self keyboardType];
     
     self.canDisplayBannerAds = YES;

@@ -7,7 +7,7 @@
 //
 
 #import "Build_Legs_1_TVC.h"
-#import "ExerciseCell.h"
+
 
 @interface Build_Legs_1_TVC ()
 
@@ -39,14 +39,16 @@
 
 - (void)loadArrays {
     
-    self.Titles = @[@"Wide Squat"];
+    //self.Titles = @[@"Wide Squat"];
     
+    /*
     self.Reps = @[@"15",
                   @"12",
                   @"8",
                   @"8",
                   @"",
                   @""];
+     */
     
     //  Query the database for this info
     //self.Weight =
@@ -70,7 +72,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.Titles.count;
+    //return self.Titles.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,9 +81,10 @@
     static NSString *CellIdentifier = @"ExerciseCell";
     ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.exerciseLabel.text = self.Titles[indexPath.row];
+    //cell.exerciseLabel.text = self.Titles[indexPath.row];
+    //cell.exerciseLabel.text = @"Hello";
     
-    cell.repLabel1.text = @"20";
+    //cell.repLabel1.text = @"20";
     /*
     if ([self.Reps[0] isEqualToString:@""]) {
         cell.repLabel1.hidden = YES;

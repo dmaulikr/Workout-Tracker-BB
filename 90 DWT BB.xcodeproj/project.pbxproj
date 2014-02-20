@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583D564218B58F4100FB7056 /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D564118B58F4100FB7056 /* TestCell.m */; };
 		586FB27318B13917008F8F7A /* Exercise_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 586FB27218B13917008F8F7A /* Exercise_TVC.m */; };
 		587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB60189DD9B8006FA541 /* Foundation.framework */; };
 		587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB62189DD9B8006FA541 /* CoreGraphics.framework */; };
@@ -103,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		583D564018B58F4100FB7056 /* TestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCell.h; sourceTree = "<group>"; };
+		583D564118B58F4100FB7056 /* TestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCell.m; sourceTree = "<group>"; };
 		586FB27118B13917008F8F7A /* Exercise_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise_TVC.h; sourceTree = "<group>"; };
 		586FB27218B13917008F8F7A /* Exercise_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise_TVC.m; sourceTree = "<group>"; };
 		587CFB5D189DD9B8006FA541 /* 90 DWT BB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT BB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -395,6 +398,8 @@
 				58F21A9618A6DE5B00DE043E /* photoCollectionViewCell.m */,
 				A51B6EE818B55A4A00F34A11 /* ExerciseCell.h */,
 				A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */,
+				583D564018B58F4100FB7056 /* TestCell.h */,
+				583D564118B58F4100FB7056 /* TestCell.m */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -723,6 +728,7 @@
 				A5F1CD7618AD35CD000FD51E /* Tone_6_TVC.m in Sources */,
 				58F21ADB18A6E04F00DE043E /* PresentPhotosViewController.m in Sources */,
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
+				583D564218B58F4100FB7056 /* TestCell.m in Sources */,
 				586FB27318B13917008F8F7A /* Exercise_TVC.m in Sources */,
 				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
 				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
