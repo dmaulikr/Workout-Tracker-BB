@@ -15,4 +15,9 @@
 @property (strong, nonatomic) NSArray *Reps;
 @property (strong, nonatomic) NSArray *Weight;
 
+@property (strong, nonatomic) NSArray *CellRepsLabelArray;
+@property (strong, nonatomic) NSArray *CellWeightFieldArray;
+@property (strong, nonatomic) NSMutableArray *CellArray;
+
+- (IBAction)submitEntries:(id)sender;
 @end

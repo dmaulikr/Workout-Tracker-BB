@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "ExerciseCell.h"
 
 @interface UITableViewController (Database)
 
 
-//- (NSArray *)exerciseMatches:(NSString*)exerciseName :(NSInteger*)round;
-
+-(void)exerciseMatches:(ExerciseCell*)cell :(NSInteger*)section :(NSArray*)weightFieldArray;
+-(void)saveToDatabase:(NSArray*)cell :(NSArray*)repLabelArray :(NSArray*)weightFieldArray;
 @end

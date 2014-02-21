@@ -7,7 +7,7 @@
 //
 
 #import "Build_Legs_1_TVC.h"
-
+#import "UITableViewController+Database.h"
 
 @interface Build_Legs_1_TVC ()
 
@@ -39,16 +39,16 @@
 
 - (void)loadArrays {
     
-    //self.Titles = @[@"Wide Squat"];
+    self.Titles = @[@"Wide Squat"];
     
-    /*
     self.Reps = @[@"15",
                   @"12",
                   @"8",
                   @"8",
                   @"",
                   @""];
-     */
+    
+    self.CellArray = [[NSMutableArray alloc] init];
     
     //  Query the database for this info
     //self.Weight =
@@ -73,69 +73,53 @@
 {
     // Return the number of rows in the section.
     //return self.Titles.count;
-    return 1;
+    return self.Titles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ExerciseCell";
-    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    //cell.exerciseLabel.text = self.Titles[indexPath.row];
-    //cell.exerciseLabel.text = @"Hello";
-    
-    //cell.repLabel1.text = @"20";
-    /*
-    if ([self.Reps[0] isEqualToString:@""]) {
-        cell.repLabel1.hidden = YES;
-        cell.weightField1.hidden = YES;
-    }
-    else {
-        cell.repLabel1.text = self.Reps[0];
-    }
-    
-    if ([self.Reps[1] isEqualToString:@""]) {
-        cell.repLabel2.hidden = YES;
-        cell.weightField2.hidden = YES;
-    }
-    else {
-        cell.repLabel2.text = self.Reps[1];
-    }
-    
-    if ([self.Reps[2] isEqualToString:@""]) {
-        cell.repLabel3.hidden = YES;
-        cell.weightField3.hidden = YES;
-    }
-    else {
-        cell.repLabel3.text = self.Reps[2];
-    }
-    
-    if ([self.Reps[3] isEqualToString:@""]) {
-        cell.repLabel4.hidden = YES;
-        cell.weightField4.hidden = YES;
-    }
-    else {
-        cell.repLabel4.text = self.Reps[3];
-    }
-    
-    if ([self.Reps[4] isEqualToString:@""]) {
-        cell.repLabel5.hidden = YES;
-        cell.weightField5.hidden = YES;
-    }
-    else {
-        cell.repLabel5.text = self.Reps[4];
-    }
-    
-    if ([self.Reps[5] isEqualToString:@""]) {
-        cell.repLabel6.hidden = YES;
-        cell.weightField6.hidden = YES;
-    }
-    else {
-        cell.repLabel6.text = self.Reps[5];
-    }
-    */
+    ExerciseCell *cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
     
     // Configure the cell...
+    
+    cell.exerciseLabel.text = self.Titles[indexPath.row];
+    //[cell.exerciseLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    
+    self.CellRepsLabelArray = @[cell.repLabel1,
+                                cell.repLabel2,
+                                cell.repLabel3,
+                                cell.repLabel4,
+                                cell.repLabel5,
+                                cell.repLabel6];
+    
+    self.CellWeightFieldArray = @[cell.weightField1,
+                                  cell.weightField2,
+                                  cell.weightField3,
+                                  cell.weightField4,
+                                  cell.weightField5,
+                                  cell.weightField6];
+    
+    //  Configure Reps Label.
+    for (int i = 0; i < self.Reps.count; i++) {
+        UILabel *genericRepLabel = self.CellRepsLabelArray[i];
+        genericRepLabel.text = self.Reps[i];
+        
+        //  Hide the label and textfield if labe = "".
+        if ([genericRepLabel.text isEqualToString:@""]) {
+            
+            UITextField *genericWeightField = self.CellWeightFieldArray[i];
+            genericRepLabel.hidden = YES;
+            genericWeightField.hidden = YES;
+        }
+    }
+    
+    NSInteger section = [indexPath section];
+    [self exerciseMatches:cell :&section :self.CellWeightFieldArray];
+    
+    //  Only save cells in the current section so that you can access them later when you need to save to database.
+    if (section == 0) {
+        [self.CellArray addObject:cell];
+    }
     
     return cell;
 }
@@ -152,6 +136,8 @@
         return @"PREVIOUS";
     }
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -204,4 +190,7 @@
 
  */
 
+- (IBAction)submitEntries:(id)sender {
+    [self saveToDatabase:self.CellArray :self.CellRepsLabelArray :self.CellWeightFieldArray];
+}
 @end

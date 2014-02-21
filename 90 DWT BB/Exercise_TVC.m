@@ -58,22 +58,30 @@
     self.currentTextFieldArray = @[self.currentCell1Wt1,
                                    self.currentCell1Wt2,
                                    self.currentCell1Wt3,
-                                   self.currentCell1Wt4];
+                                   self.currentCell1Wt4,
+                                   self.currentCell1Wt5,
+                                   self.currentCell1Wt6];
     
     self.previousTextFieldArray = @[self.previousCell1Wt1,
                                     self.previousCell1Wt2,
                                     self.previousCell1Wt3,
-                                    self.previousCell1Wt4];
+                                    self.previousCell1Wt4,
+                                    self.previousCell1Wt5,
+                                    self.previousCell1Wt6];
     
     self.currentRepsLabelArray = @[self.currentRepsLabel1,
                                    self.currentRepsLabel2,
                                    self.currentRepsLabel3,
-                                   self.currentRepsLabel4];
+                                   self.currentRepsLabel4,
+                                   self.currentRepsLabel5,
+                                   self.currentRepsLabel6];
     
     self.previousRepsLabelArray = @[self.previousRepsLabel1,
                                     self.previousRepsLabel2,
                                     self.previousRepsLabel3,
-                                    self.previousRepsLabel4];
+                                    self.previousRepsLabel4,
+                                    self.previousRepsLabel5,
+                                    self.previousRepsLabel6];
     
     self.currentExerciseLabelArray = @[self.currentCellLabel1];
     self.previousExerciseLabelArray = @[self.previousCellLabel1];
@@ -110,12 +118,13 @@
 }
 
 #pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
     return 2;
 }
+ */
 
 -(void)queryDatabase {
     
@@ -147,22 +156,26 @@
 /*
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //static NSString *CellIdentifier = @"ExerciseCell";
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    //UITableViewCell *cell = self.currentCellsArray[indexPath.row];
+
+    UITableViewCell *cell = [super tableView:tableView
+                       cellForRowAtIndexPath:indexPath];
+    
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     return cell;
 }
- */
-
+*/
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
