@@ -29,6 +29,8 @@
     [super viewDidLoad];
     
     [self loadArrays];
+    
+    self.canDisplayBannerAds = YES;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -37,9 +39,17 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+/*
+- (void)viewWillAppear:(BOOL)animated
+{
+    //[self.tableView reloadData];
+}
+ */
+
 - (void)loadArrays {
     
-    self.Titles = @[@"Wide Squat"];
+    self.Titles = @[@"Wide Squat",
+                    @"Test"];
     
     self.Reps = @[@"15",
                   @"12",
@@ -49,10 +59,6 @@
                   @""];
     
     self.CellArray = [[NSMutableArray alloc] init];
-    
-    //  Query the database for this info
-    //self.Weight =
-                    
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,7 +78,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    //return self.Titles.count;
     return self.Titles.count;
 }
 
@@ -104,12 +109,30 @@
         UILabel *genericRepLabel = self.CellRepsLabelArray[i];
         genericRepLabel.text = self.Reps[i];
         
-        //  Hide the label and textfield if labe = "".
+        //  Hide the label and textfield if label = "".
         if ([genericRepLabel.text isEqualToString:@""]) {
             
             UITextField *genericWeightField = self.CellWeightFieldArray[i];
             genericRepLabel.hidden = YES;
             genericWeightField.hidden = YES;
+        }
+    }
+    
+    //  Configure TextField Keyboard
+    for (int i = 0; i < self.CellWeightFieldArray.count; i++) {
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        
+            // IPHONE - Set the keyboard type of the Weight text box to DECIMAL NUMBER PAD.
+            UITextField *textfield = self.CellWeightFieldArray[i];
+            textfield.keyboardType = UIKeyboardTypeDecimalPad;
+        }
+    
+        else {
+            
+            // IPAD - No decimal pad on ipad so set it to numbers and punctuation.
+            UITextField *textfield = self.CellWeightFieldArray[i];
+            textfield.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         }
     }
     

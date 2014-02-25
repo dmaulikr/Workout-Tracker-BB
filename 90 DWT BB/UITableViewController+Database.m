@@ -19,10 +19,6 @@
     
     // Get Data from the database.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
     
     for (int i = 0; i < weightFieldArray.count; i++) {
             
@@ -49,9 +45,12 @@
             tempWeightField = tempCell.weightField6;
         }
         
-        
         NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
         
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDesc];
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
                              ((DataNavController *)self.parentViewController).routine,
                              ((DataNavController *)self.parentViewController).workout,
@@ -80,19 +79,9 @@
                 }
                 
                 else {
-                    tempWeightField.text = @"";
+                    tempWeightField.text = @"0.0";
                 }
-                /*
-                self.currentReps.placeholder = @"0";
-                self.currentWeight.placeholder = @"0.0";
-                self.currentNotes.placeholder = @"Type any notes here";
-                */
-                /*
-                self.previousReps.text = @"";
-                self.previousWeight.text = @"";
-                self.previousNotes.text = @"";
-                */
-                }
+            }
 
                 // The workout has been done 1 time but the user came back to the 1st week workout screen to update or view.
                 // Only use the current 1st week workout data when the user comes back to this screen.
@@ -103,23 +92,13 @@
                 matches = objects[[objects count] -1];
                 
                 if (tempSection == 0) {
-                    tempWeightField.placeholder = @"";
+                    tempWeightField.placeholder = [matches valueForKey:@"weight"];
                 }
                 
                 else {
                     tempWeightField.text = [matches valueForKey:@"weight"];
                 }
-                /*
-                self.currentReps.placeholder = @"";
-                self.currentWeight.placeholder = @"";
-                self.currentNotes.placeholder = @"";
-
-                self.previousReps.text = [matches valueForKey:@"reps"];
-                self.previousWeight.text = [matches valueForKey:@"weight"];
-                self.previousNotes.text = [matches valueForKey:@"notes"];
-                */
             }
-         
         }
 
         // 2nd time exercise has been done and beyond.
@@ -129,69 +108,96 @@
             // User came back to look at his results so display this weeks results in the current results section.
             if ([objects count] == 1) {
                 matches = objects[[objects count] -1];
-
-                tempWeightField.placeholder = [matches valueForKey:@"weight"];
-                /*
-                self.currentReps.placeholder = [matches valueForKey:@"reps"];
-                self.currentWeight.placeholder = [matches valueForKey:@"weight"];
-                self.currentNotes.placeholder = [matches valueForKey:@"notes"];
-                //NSLog(@"Current Reps = %@", self.currentReps.placeholder);
-                //NSLog(@"Current Weight = %@", self.currentWeight.placeholder);
-                //NSLog(@"Current Notes = %@", self.currentNotes.placeholder);
-                */
+                
+                if (tempSection == 0) {
+                    
+                    tempWeightField.placeholder = [matches valueForKey:@"weight"];
+                }
+                
+                else {
+                    
+                    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+                    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+                    [request setEntity:entityDesc];
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                                         ((DataNavController *)self.parentViewController).routine,
+                                         ((DataNavController *)self.parentViewController).workout,
+                                         tempCell.exerciseLabel.text,
+                                         [round integerValue],
+                                         [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
+                    [request setPredicate:pred];
+                    NSManagedObject *matches = nil;
+                    NSError *error;
+                    NSArray *objects = [context executeFetchRequest:request error:&error];
+                    
+                    if ([objects count] == 1) {
+                        
+                        matches = objects[[objects count]-1];
+                        
+                        if (tempSection == 1) {
+                            
+                            tempWeightField.text = [matches valueForKey:@"weight"];
+                        }
+                    }
+                    
+                    //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
+                    else {
+                        
+                        if (tempSection == 1) {
+                            
+                            tempWeightField.text = @"0.0";
+                        }
+                    }
+                }
             }
 
                 // This workout with this index has NOT been done before.
                 // Set the current placeholders to defaults/nil.
             else {
-                tempWeightField.placeholder = @"0.0";
-                /*
-                self.currentReps.placeholder = @"0";
-                self.currentWeight.placeholder = @"0.0";
-                self.currentNotes.placeholder = @"Type any notes here";
-                */
-            }
-
-            // This is at least the 2nd time a particular workout has been started.
-            // Get the previous workout data and present it to the user in the previous section.
-
-            /*
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-            ((DataNavController *)self.parentViewController).routine,
-            ((DataNavController *)self.parentViewController).workout,
-            tempCell.exerciseLabel.text,
-            [round integerValue],
-            [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
-            [request setPredicate:pred];
-            NSManagedObject *matches = nil;
-            NSError *error;
-            NSArray *objects = [context executeFetchRequest:request error:&error];
-
-            if ([objects count] == 1) {
-                matches = objects[[objects count]-1];
                 
-                if (tempSection == 1) {
-                    tempWeightField.text = [matches valueForKey:@"weight"];
+                if (tempSection == 0) {
+                    
+                    tempWeightField.placeholder = @"0.0";
                 }
-
-                //self.previousReps.text = [matches valueForKey:@"reps"];
-                //tempWeightField.text = [matches valueForKey:@"weight"];
-                //self.previousNotes.text = [matches valueForKey:@"notes"];
-                //NSLog(@"Previous Reps = %@", self.previousReps.text);
-                //NSLog(@"Previous Weight = %@", self.previousWeight.text);
-                //NSLog(@"Previous Notes = %@", self.previousNotes.text);
-            }
-
-            else {
                 
-                if (tempSection != 0) {
-                    tempWeightField.text = @"";
+                else {
+                    
+                    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+                    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+                    [request setEntity:entityDesc];
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                                         ((DataNavController *)self.parentViewController).routine,
+                                         ((DataNavController *)self.parentViewController).workout,
+                                         tempCell.exerciseLabel.text,
+                                         [round integerValue],
+                                         [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
+                    [request setPredicate:pred];
+                    NSManagedObject *matches = nil;
+                    NSError *error;
+                    NSArray *objects = [context executeFetchRequest:request error:&error];
+                    
+                    if ([objects count] == 1) {
+                        
+                        matches = objects[[objects count]-1];
+                        
+                        if (tempSection == 1) {
+                            
+                            tempWeightField.text = [matches valueForKey:@"weight"];
+                        }
+                    }
+                    
+                    //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
+                    else {
+                        
+                        if (tempSection == 1) {
+                            
+                            tempWeightField.text = @"0.0";
+                        }
+                    }
                 }
-                //self.previousReps.text = @"";
-                //tempWeightField.text = @"";
-                //self.previousNotes.text = @"No record for the last workout";
             }
-             */
         }
     }
 }
@@ -254,19 +260,24 @@
             if ([objects count] == 0) {
                 //NSLog(@"submitEntry = No matches - create new record and save");
                 
-                NSManagedObject *newExercise;
-                newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
-                [newExercise setValue:tempRepLabel.text forKey:@"reps"];
-                [newExercise setValue:tempWeightField.text forKey:@"weight"];
-                //[newExercise setValue:self.currentNotes.text forKey:@"notes"];
-                [newExercise setValue:todaysDate forKey:@"date"];
-                [newExercise setValue:tempCell.exerciseLabel.text forKey:@"exercise"];
-                [newExercise setValue:round forKey:@"round"];
-                [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
-                [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
-                [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
-                [newExercise setValue:((DataNavController *)self.parentViewController).workout forKey:@"workout"];
-                [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
+                // Only update the fields that have been changed.
+                
+                if (tempWeightField.text.length != 0) {
+                
+                    NSManagedObject *newExercise;
+                    newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
+                    [newExercise setValue:tempRepLabel.text forKey:@"reps"];
+                    [newExercise setValue:tempWeightField.text forKey:@"weight"];
+                    //[newExercise setValue:self.currentNotes.text forKey:@"notes"];
+                    [newExercise setValue:todaysDate forKey:@"date"];
+                    [newExercise setValue:tempCell.exerciseLabel.text forKey:@"exercise"];
+                    [newExercise setValue:round forKey:@"round"];
+                    [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
+                    [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
+                    [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
+                    [newExercise setValue:((DataNavController *)self.parentViewController).workout forKey:@"workout"];
+                    [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
+                }
                 
             } else {
                 //NSLog(@"submitEntry = Match found - update existing record and save");
@@ -274,49 +285,19 @@
                 matches = objects[[objects count]-1];
                 
                 // Only update the fields that have been changed.
-                /*
-                if (self.currentReps.text.length != 0) {
-                    [matches setValue:self.currentReps.text forKey:@"reps"];
-                    
-                }
-                 */
                 
                 if (tempWeightField.text.length != 0) {
                     [matches setValue:tempWeightField.text forKey:@"weight"];
-                    
+                    [matches setValue:todaysDate forKey:@"date"];
                 }
-                
-                /*
-                if (self.currentNotes.text.length != 0) {
-                    [matches setValue:self.currentNotes.text forKey:@"notes"];
-                }
-                 */
-                [matches setValue:todaysDate forKey:@"date"];
-                
             }
             
-            [context save:&error];
-            
-            [request setPredicate:pred];
-            matches = nil;
-            objects = nil;
-            objects = [context executeFetchRequest:request error:&error];
-            
-            if ([objects count] == 1) {
-                matches = objects[[objects count]-1];
-                //self.currentReps.placeholder = [matches valueForKey:@"reps"];
-                tempWeightField.placeholder = [matches valueForKey:@"weight"];
-                //self.currentNotes.placeholder = [matches valueForKey:@"notes"];
+            // Save the object to persistent store
+            if (![context save:&error]) {
+                NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
             }
-            
-            //self.currentReps.text = @"";
-            tempWeightField.text = @"";
-            //self.currentNotes.text = @"";
-            
-            //[self hideKeyboard:sender];
             
             [tempWeightField resignFirstResponder];
-             
         }
     }
 }
