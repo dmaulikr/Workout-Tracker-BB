@@ -192,5 +192,6 @@
 
 - (IBAction)submitEntries:(id)sender {
     [self saveToDatabase:self.CellArray :self.CellRepsLabelArray :self.CellWeightFieldArray];
+    
 }
 @end
