@@ -86,29 +86,15 @@
 {
     ExerciseCell *cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
     
-    self.CellRepsLabelArray = @[cell.repLabel1,
-                                cell.repLabel2,
-                                cell.repLabel3,
-                                cell.repLabel4,
-                                cell.repLabel5,
-                                cell.repLabel6];
-    
-    self.CellWeightFieldArray = @[cell.weightField1,
-                                  cell.weightField2,
-                                  cell.weightField3,
-                                  cell.weightField4,
-                                  cell.weightField5,
-                                  cell.weightField6];
-    
     //  Configure the cell...
     [self configureExerciseCell:cell :indexPath :self.Reps :self.Titles ];
 
     //  Get data from the database
-    NSInteger section = [indexPath section];
-    [self exerciseMatches:cell :&section :self.CellWeightFieldArray];
+    //NSInteger section = [indexPath section];
+    [self exerciseMatches:cell :indexPath];
     
     //  Only save cells in the current section so that you can access them later when you need to save to database.
-    if (section == 0) {
+    if (indexPath.section == 0) {
         [self.CellArray addObject:cell];
     }
     
@@ -182,7 +168,7 @@
 - (IBAction)submitEntries:(id)sender {
     
     //  Save to the database
-    [self saveToDatabase:self.CellArray :self.CellRepsLabelArray :self.CellWeightFieldArray];
+    [self saveToDatabase:self.CellArray];
     
 }
 @end

@@ -11,41 +11,29 @@
 
 @implementation UITableViewController (Database)
 
-- (void)exerciseMatches:(ExerciseCell*)cell :(NSInteger*)section :(NSArray*)weightFieldArray {
+- (void)exerciseMatches:(ExerciseCell*)cell :(NSIndexPath*)indexPath {
     
     ExerciseCell *tempCell = cell;
-    int tempSection = *section;
+    int tempSection = indexPath.section;
     //NSLog(@"Section = %d", [section intValue]);
+    
+    NSArray *tempCellWeightFieldArray = @[tempCell.weightField1,
+                                          tempCell.weightField2,
+                                          tempCell.weightField3,
+                                          tempCell.weightField4,
+                                          tempCell.weightField5,
+                                          tempCell.weightField6];
     
     // Get Data from the database.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    for (int i = 0; i < weightFieldArray.count; i++) {
+    for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
             
-        UITextField *tempWeightField;
+        UITextField *tempWeightField = tempCellWeightFieldArray[i];
         //NSLog(@"Retreived WeightField %d = %@", i, tempWeightField.placeholder);
         NSNumber *round = [NSNumber numberWithInt:i + 1];
         
-        if (i == 0) {
-            tempWeightField = tempCell.weightField1;
-        }
-        else if (i == 1) {
-            tempWeightField = tempCell.weightField2;
-        }
-        else if (i == 2) {
-            tempWeightField = tempCell.weightField3;
-        }
-        else if (i == 3) {
-            tempWeightField = tempCell.weightField4;
-        }
-        else if (i == 4) {
-            tempWeightField = tempCell.weightField5;
-        }
-        else if (i == 5) {
-            tempWeightField = tempCell.weightField6;
-        }
-        
-        NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
+        //NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
         
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
         NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
@@ -202,7 +190,7 @@
     }
 }
 
--(void)saveToDatabase:(NSArray*)cell :(NSArray*)repLabelArray :(NSArray*)weightFieldArray {
+-(void)saveToDatabase:(NSArray*)cell {
     
     NSDate *todaysDate = [NSDate date];
     
@@ -216,31 +204,25 @@
         
         ExerciseCell *tempCell = cell[j];
         
-        for (int i = 0; i < weightFieldArray.count; i++) {
+        NSArray *tempCellRepsLabelArray = @[tempCell.repLabel1,
+                                            tempCell.repLabel2,
+                                            tempCell.repLabel3,
+                                            tempCell.repLabel4,
+                                            tempCell.repLabel5,
+                                            tempCell.repLabel6];
         
-            UILabel *tempRepLabel = repLabelArray[i];
-            UITextField *tempWeightField;
+        NSArray *tempCellWeightFieldArray = @[tempCell.weightField1,
+                                              tempCell.weightField2,
+                                              tempCell.weightField3,
+                                              tempCell.weightField4,
+                                              tempCell.weightField5,
+                                              tempCell.weightField6];
+        
+        for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
+        
+            UILabel *tempRepLabel = tempCellRepsLabelArray[i];
+            UITextField *tempWeightField = tempCellWeightFieldArray[i];
             NSNumber *round = [NSNumber numberWithInt:i + 1];
-            
-            if (i == 0) {
-                tempWeightField = tempCell.weightField1;
-            }
-            else if (i == 1) {
-                tempWeightField = tempCell.weightField2;
-            }
-            else if (i == 2) {
-                tempWeightField = tempCell.weightField3;
-            }
-            else if (i == 3) {
-                tempWeightField = tempCell.weightField4;
-            }
-            else if (i == 4) {
-                tempWeightField = tempCell.weightField5;
-            }
-            else if (i == 5) {
-                tempWeightField = tempCell.weightField6;
-            }
-            
             
             NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
             

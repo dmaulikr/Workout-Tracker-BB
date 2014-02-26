@@ -13,6 +13,6 @@
 @interface UITableViewController (Database)
 
 
--(void)exerciseMatches:(ExerciseCell*)cell :(NSInteger*)section :(NSArray*)weightFieldArray;
--(void)saveToDatabase:(NSArray*)cell :(NSArray*)repLabelArray :(NSArray*)weightFieldArray;
+-(void)exerciseMatches:(ExerciseCell*)cell :(NSIndexPath*)indexPath;
+-(void)saveToDatabase:(NSArray*)cell;
 @end
