@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExerciseCell.h"
 
 @interface UITableViewController (Design)
 
 - (void)configureTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon :(NSArray*)needCellColor;
+- (void)configureExerciseCell:(ExerciseCell*)cell :(NSIndexPath *)indexPath :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray;
 //- (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection;
 
 @end
