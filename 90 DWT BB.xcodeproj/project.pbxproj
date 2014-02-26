@@ -66,6 +66,9 @@
 		A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */; };
 		A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */; };
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
+		A52C74C518BE635D001BE6B3 /* Build_Legs_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C74C418BE635D001BE6B3 /* Build_Legs_2_TVC.m */; };
+		A52C74C818BE72C4001BE6B3 /* Build_Legs_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */; };
+		A52C74CB18BE72DC001BE6B3 /* Build_Legs_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */; };
 		A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */; };
 		A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */; };
 		A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DF18AADAE00012E943 /* Bulk_3_TVC.m */; };
@@ -198,6 +201,12 @@
 		A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCell.m; sourceTree = "<group>"; };
 		A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_1_TVC.h; sourceTree = "<group>"; };
 		A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_1_TVC.m; sourceTree = "<group>"; };
+		A52C74C318BE635D001BE6B3 /* Build_Legs_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_2_TVC.h; sourceTree = "<group>"; };
+		A52C74C418BE635D001BE6B3 /* Build_Legs_2_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_2_TVC.m; sourceTree = "<group>"; };
+		A52C74C618BE72C4001BE6B3 /* Build_Legs_3_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_3_TVC.h; sourceTree = "<group>"; };
+		A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_3_TVC.m; sourceTree = "<group>"; };
+		A52C74C918BE72DC001BE6B3 /* Build_Legs_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_4_TVC.h; sourceTree = "<group>"; };
+		A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_4_TVC.m; sourceTree = "<group>"; };
 		A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_1_TVC.h; sourceTree = "<group>"; };
 		A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_1_TVC.m; sourceTree = "<group>"; };
 		A56DA0DB18AADA520012E943 /* Bulk_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_2_TVC.h; sourceTree = "<group>"; };
@@ -296,6 +305,12 @@
 				586FB27218B13917008F8F7A /* Exercise_TVC.m */,
 				A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */,
 				A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */,
+				A52C74C318BE635D001BE6B3 /* Build_Legs_2_TVC.h */,
+				A52C74C418BE635D001BE6B3 /* Build_Legs_2_TVC.m */,
+				A52C74C618BE72C4001BE6B3 /* Build_Legs_3_TVC.h */,
+				A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */,
+				A52C74C918BE72DC001BE6B3 /* Build_Legs_4_TVC.h */,
+				A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";
@@ -710,6 +725,8 @@
 				A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */,
 				A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */,
 				58F21ACF18A6E00000DE043E /* WebsiteViewController.m in Sources */,
+				A52C74C818BE72C4001BE6B3 /* Build_Legs_3_TVC.m in Sources */,
+				A52C74C518BE635D001BE6B3 /* Build_Legs_2_TVC.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
 				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,
 				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
@@ -750,6 +767,7 @@
 				A5F1CD7018AD3572000FD51E /* Tone_4_TVC.m in Sources */,
 				A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */,
 				A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */,
+				A52C74CB18BE72DC001BE6B3 /* Build_Legs_4_TVC.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
 				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,

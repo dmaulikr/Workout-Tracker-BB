@@ -67,7 +67,7 @@
                      @"B3: Ab Workout",
                      @"B3: Cardio"];
     
-    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     
     // Normal routine
     if ([selectedRoutine isEqualToString:@"Bulk"]) {

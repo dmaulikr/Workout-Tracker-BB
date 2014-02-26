@@ -13,19 +13,23 @@
 
 - (void)exerciseMatches:(ExerciseCell*)cell :(NSIndexPath*)indexPath {
     
-    ExerciseCell *tempCell = cell;
     int tempSection = indexPath.section;
+    
     //NSLog(@"Section = %d", [section intValue]);
     
-    NSArray *tempCellWeightFieldArray = @[tempCell.weightField1,
-                                          tempCell.weightField2,
-                                          tempCell.weightField3,
-                                          tempCell.weightField4,
-                                          tempCell.weightField5,
-                                          tempCell.weightField6];
+    NSArray *tempCellWeightFieldArray = @[cell.weightField1,
+                                          cell.weightField2,
+                                          cell.weightField3,
+                                          cell.weightField4,
+                                          cell.weightField5,
+                                          cell.weightField6];
     
     // Get Data from the database.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
     
     for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
             
@@ -35,14 +39,10 @@
         
         //NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
         
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:entityDesc];
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
                              ((DataNavController *)self.parentViewController).routine,
                              ((DataNavController *)self.parentViewController).workout,
-                              tempCell.exerciseLabel.text,
+                              cell.exerciseLabel.text,
                              [round integerValue],
                              [((DataNavController *)self.parentViewController).index integerValue]];
         [request setPredicate:pred];
@@ -104,14 +104,10 @@
                 
                 else {
                     
-                    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-                    [request setEntity:entityDesc];
-                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
                                          ((DataNavController *)self.parentViewController).routine,
                                          ((DataNavController *)self.parentViewController).workout,
-                                         tempCell.exerciseLabel.text,
+                                         cell.exerciseLabel.text,
                                          [round integerValue],
                                          [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
                     [request setPredicate:pred];
@@ -151,14 +147,10 @@
                 
                 else {
                     
-                    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-                    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-                    [request setEntity:entityDesc];
-                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
                                          ((DataNavController *)self.parentViewController).routine,
                                          ((DataNavController *)self.parentViewController).workout,
-                                         tempCell.exerciseLabel.text,
+                                         cell.exerciseLabel.text,
                                          [round integerValue],
                                          [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
                     [request setPredicate:pred];
@@ -224,7 +216,7 @@
             UITextField *tempWeightField = tempCellWeightFieldArray[i];
             NSNumber *round = [NSNumber numberWithInt:i + 1];
             
-            NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
+            //NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
             
             //NSLog(@"Round = %@ Reps = %@ WeightField = %@", round, tempRepLabel.text, tempWeightField.text);
             

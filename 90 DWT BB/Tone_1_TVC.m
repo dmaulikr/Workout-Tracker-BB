@@ -66,7 +66,7 @@
                      @"B1: Chest+Tri",
                      @"T1: Chest+Tri"];
    
-    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     
     // Normal routine
     if ([selectedRoutine isEqualToString:@"Tone"]) {

@@ -69,7 +69,9 @@
                      @"B1: Chest+Tri",
                      @"T1: Chest+Tri"];
     
-    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
+    //NSLog(@"Tag = %ld", (long)selectedCell.tag);
+    //NSLog(@"Workout = %@", ((DataNavController *)self.parentViewController).workout);
     
     // Normal routine
     if ([selectedRoutine isEqualToString:@"Bulk"]) {

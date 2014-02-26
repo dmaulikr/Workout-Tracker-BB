@@ -50,36 +50,35 @@
 
 - (void)configureExerciseCell:(ExerciseCell*)cell :(NSIndexPath *)indexPath :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray {
     
-    ExerciseCell *tempCell = cell;
     int tempSection = indexPath.section;
     int tempRow = indexPath.row;
     
-    NSArray *tempCellRepsLabelArray = @[tempCell.repLabel1,
-                                        tempCell.repLabel2,
-                                        tempCell.repLabel3,
-                                        tempCell.repLabel4,
-                                        tempCell.repLabel5,
-                                        tempCell.repLabel6];
+    NSArray *tempCellRepsLabelArray = @[cell.repLabel1,
+                                        cell.repLabel2,
+                                        cell.repLabel3,
+                                        cell.repLabel4,
+                                        cell.repLabel5,
+                                        cell.repLabel6];
     
-    NSArray *tempCellWeightFieldArray = @[tempCell.weightField1,
-                                          tempCell.weightField2,
-                                          tempCell.weightField3,
-                                          tempCell.weightField4,
-                                          tempCell.weightField5,
-                                          tempCell.weightField6];
+    NSArray *tempCellWeightFieldArray = @[cell.weightField1,
+                                          cell.weightField2,
+                                          cell.weightField3,
+                                          cell.weightField4,
+                                          cell.weightField5,
+                                          cell.weightField6];
     
     // Configure the cell...
     
-    tempCell.exerciseLabel.text = exerciseNamesArray[tempRow];
+    cell.exerciseLabel.text = exerciseNamesArray[tempRow];
     
     if (tempSection == 0) {
         
-        tempCell.exerciseLabel.textColor = [UIColor orangeColor];
+        cell.exerciseLabel.textColor = [UIColor orangeColor];
     }
     
     else {
         
-        tempCell.exerciseLabel.textColor = [UIColor darkGrayColor];
+        cell.exerciseLabel.textColor = [UIColor darkGrayColor];
     }
     
     NSArray *tempRepNamesArray = repNamesArray[tempRow];
@@ -144,9 +143,7 @@
             tempTextField.backgroundColor = [UIColor groupTableViewBackgroundColor];
             tempTextField.userInteractionEnabled = NO;
         }
-        
     }
-
     
     //NSLog(@"Section = %d", [section intValue]);
 }

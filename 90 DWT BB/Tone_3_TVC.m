@@ -68,7 +68,7 @@
                      @"B1: Back+Bi",
                      @"T1: Back+Bi"];
     
-    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag];
+    ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     
     // Normal routine
     if ([selectedRoutine isEqualToString:@"Tone"]) {

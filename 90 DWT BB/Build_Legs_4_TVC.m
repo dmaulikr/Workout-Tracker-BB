@@ -1,21 +1,21 @@
 //
-//  Build_Legs_1_TVC.m
+//  Build_Legs_4_TVC.m
 //  90 DWT BB
 //
-//  Created by Grant, Jared on 2/19/14.
+//  Created by Grant, Jared on 2/26/14.
 //  Copyright (c) 2014 Jared Grant. All rights reserved.
 //
 
-#import "Build_Legs_1_TVC.h"
+#import "Build_Legs_4_TVC.h"
 #import "UITableViewController+Database.h"
 #import "UITableViewController+Design.h"
 #import "DataNavController.h"
 
-@interface Build_Legs_1_TVC ()
+@interface Build_Legs_4_TVC ()
 
 @end
 
-@implementation Build_Legs_1_TVC
+@implementation Build_Legs_4_TVC
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,25 +35,30 @@
     self.canDisplayBannerAds = YES;
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)loadArrays {
     
-    self.Titles = @[@"Wide Squat"];
+    self.Titles = @[@"S-L Calf Raise",
+                    @"S Calf Raise",
+                    @"Abs"];
     
-    NSArray * repNameArray1 = @[@"15",
-                                @"12",
-                                @"8",
-                                @"8",
+    NSArray * repNameArray1 = @[@"30",
+                                @"30",
+                                @"",
+                                @"",
                                 @"",
                                 @""];
-    self.Reps = @[repNameArray1];
+    
+    self.Reps = @[repNameArray1,
+                  repNameArray1,
+                  repNameArray1];
     
     self.CellArray = [[NSMutableArray alloc] init];
 }
@@ -84,7 +89,7 @@
     
     //  Configure the cell...
     [self configureExerciseCell:cell :indexPath :self.Reps :self.Titles ];
-
+    
     //  Get data from the database
     //NSInteger section = [indexPath section];
     [self exerciseMatches:cell :indexPath];
@@ -117,53 +122,53 @@
     
 }
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
+ #pragma mark - Navigation
+ 
+ // In a story board-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ 
  */
 @end
