@@ -14,8 +14,9 @@
 - (void)exerciseMatches:(ExerciseCell*)cell :(NSIndexPath*)indexPath {
     
     int tempSection = indexPath.section;
+    int tempRow = indexPath.row;
     
-    //NSLog(@"Section = %d", [section intValue]);
+    NSLog(@"Name = %@ Section = %d Row = %d", cell.exerciseLabel.text,tempSection, tempRow);
     
     NSArray *tempCellWeightFieldArray = @[cell.weightField1,
                                           cell.weightField2,
