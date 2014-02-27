@@ -69,7 +69,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -99,15 +99,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        
-        return @"CURRENT";
-    }
     
-    else {
-        
-        return @"PREVIOUS";
-    }
+    return @"SET 1 of 4";
 }
 
 - (IBAction)submitEntries:(id)sender {

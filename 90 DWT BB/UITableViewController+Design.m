@@ -67,6 +67,13 @@
                                           cell.weightField5,
                                           cell.weightField6];
     
+    NSArray *tempCellPreviousWFArray = @[cell.previousWF1,
+                                         cell.previousWF2,
+                                         cell.previousWF3,
+                                         cell.previousWF4,
+                                         cell.previousWF5,
+                                         cell.previousWF6];
+    
     // Configure the cell...
     
     cell.exerciseLabel.text = exerciseNamesArray[tempRow];
@@ -93,8 +100,10 @@
         if ([genericRepLabel.text isEqualToString:@""]) {
             
             UITextField *genericWeightField = tempCellWeightFieldArray[i];
+            UITextField *genericPreviousWF = tempCellPreviousWFArray[i];
             genericRepLabel.hidden = YES;
             genericWeightField.hidden = YES;
+            genericPreviousWF.hidden = YES;
         }
     }
     
@@ -124,25 +133,31 @@
     for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
         
         UITextField *tempTextField = tempCellWeightFieldArray[i];
+        UITextField *tempPreviousTF = tempCellPreviousWFArray[i];
+        UILabel *tempLabelField = tempCellRepsLabelArray[i];
         
+        //  Labels
+        tempLabelField.textColor = [UIColor darkGrayColor];
+        
+        //  Current textfields
         tempTextField.layer.borderWidth = 1.0f;
         tempTextField.layer.borderColor = [green CGColor];
         tempTextField.layer.cornerRadius = 5;
         tempTextField.clipsToBounds = YES;
+        tempTextField.backgroundColor = lightGreen;
+        tempTextField.clearsOnBeginEditing = YES;
+        tempTextField.textAlignment = NSTextAlignmentCenter;
+        tempTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
         
-        if (indexPath.section == 0) {
-            
-            //  Current section
-            tempTextField.backgroundColor = lightGreen;
-            tempTextField.clearsOnBeginEditing = YES;
-        }
-        
-        else {
-            
-            //  Previous section
-            tempTextField.backgroundColor = [UIColor groupTableViewBackgroundColor];
-            tempTextField.userInteractionEnabled = NO;
-        }
+        //  Previous textfields
+        tempPreviousTF.layer.borderWidth = 1.0f;
+        tempPreviousTF.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        tempPreviousTF.layer.cornerRadius = 5;
+        tempPreviousTF.clipsToBounds = YES;
+        tempPreviousTF.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        tempPreviousTF.userInteractionEnabled = NO;
+        tempPreviousTF.textAlignment = NSTextAlignmentCenter;
+        tempPreviousTF.textColor = [UIColor lightGrayColor];
     }
     
     //NSLog(@"Section = %d", [section intValue]);

@@ -25,4 +25,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *weightField4;
 @property (weak, nonatomic) IBOutlet UITextField *weightField5;
 @property (weak, nonatomic) IBOutlet UITextField *weightField6;
+
+@property (weak, nonatomic) IBOutlet UITextField *previousWF1;
+@property (weak, nonatomic) IBOutlet UITextField *previousWF2;
+@property (weak, nonatomic) IBOutlet UITextField *previousWF3;
+@property (weak, nonatomic) IBOutlet UITextField *previousWF4;
+@property (weak, nonatomic) IBOutlet UITextField *previousWF5;
+@property (weak, nonatomic) IBOutlet UITextField *previousWF6;
+
 @end
