@@ -67,6 +67,14 @@
 		A52C74C518BE635D001BE6B3 /* Build_Legs_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C74C418BE635D001BE6B3 /* Build_Legs_2_TVC.m */; };
 		A52C74C818BE72C4001BE6B3 /* Build_Legs_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */; };
 		A52C74CB18BE72DC001BE6B3 /* Build_Legs_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */; };
+		A552C4E218BFF90700798347 /* Build_Back+Bi_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */; };
+		A552C4E518BFF91B00798347 /* Build_Back+Bi_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4E418BFF91B00798347 /* Build_Back+Bi_2_TVC.m */; };
+		A552C4E818BFF92700798347 /* Build_Back+Bi_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4E718BFF92700798347 /* Build_Back+Bi_3_TVC.m */; };
+		A552C4EB18BFF93B00798347 /* Build_Back+Bi_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4EA18BFF93B00798347 /* Build_Back+Bi_4_TVC.m */; };
+		A552C4EE18BFF94700798347 /* Build_Back+Bi_5_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4ED18BFF94700798347 /* Build_Back+Bi_5_TVC.m */; };
+		A552C4F118BFF95200798347 /* Build_Back+Bi_6_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4F018BFF95200798347 /* Build_Back+Bi_6_TVC.m */; };
+		A552C4F418BFF95E00798347 /* Build_Back+Bi_7_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4F318BFF95E00798347 /* Build_Back+Bi_7_TVC.m */; };
+		A552C4F718BFF96F00798347 /* Build_Back+Bi_8_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4F618BFF96F00798347 /* Build_Back+Bi_8_TVC.m */; };
 		A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */; };
 		A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */; };
 		A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DF18AADAE00012E943 /* Bulk_3_TVC.m */; };
@@ -79,6 +87,12 @@
 		A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F418AADB830012E943 /* Bulk_10_TVC.m */; };
 		A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */; };
 		A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */; };
+		A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */; };
+		A58A9A5218BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A5118BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.m */; };
+		A58A9A5518BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A5418BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.m */; };
+		A58A9A5818BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A5718BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.m */; };
+		A58A9A5B18BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A5A18BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.m */; };
+		A58A9A5E18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A5D18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.m */; };
 		A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */; };
 		A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6618AD3523000FD51E /* Tone_2_TVC.m */; };
 		A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6918AD353A000FD51E /* Tone_3_TVC.m */; };
@@ -201,6 +215,22 @@
 		A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_3_TVC.m; sourceTree = "<group>"; };
 		A52C74C918BE72DC001BE6B3 /* Build_Legs_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_4_TVC.h; sourceTree = "<group>"; };
 		A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_4_TVC.m; sourceTree = "<group>"; };
+		A552C4E018BFF90700798347 /* Build_Back+Bi_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_1_TVC.h"; sourceTree = "<group>"; };
+		A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_1_TVC.m"; sourceTree = "<group>"; };
+		A552C4E318BFF91B00798347 /* Build_Back+Bi_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_2_TVC.h"; sourceTree = "<group>"; };
+		A552C4E418BFF91B00798347 /* Build_Back+Bi_2_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_2_TVC.m"; sourceTree = "<group>"; };
+		A552C4E618BFF92700798347 /* Build_Back+Bi_3_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_3_TVC.h"; sourceTree = "<group>"; };
+		A552C4E718BFF92700798347 /* Build_Back+Bi_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_3_TVC.m"; sourceTree = "<group>"; };
+		A552C4E918BFF93B00798347 /* Build_Back+Bi_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_4_TVC.h"; sourceTree = "<group>"; };
+		A552C4EA18BFF93B00798347 /* Build_Back+Bi_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_4_TVC.m"; sourceTree = "<group>"; };
+		A552C4EC18BFF94700798347 /* Build_Back+Bi_5_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_5_TVC.h"; sourceTree = "<group>"; };
+		A552C4ED18BFF94700798347 /* Build_Back+Bi_5_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_5_TVC.m"; sourceTree = "<group>"; };
+		A552C4EF18BFF95200798347 /* Build_Back+Bi_6_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_6_TVC.h"; sourceTree = "<group>"; };
+		A552C4F018BFF95200798347 /* Build_Back+Bi_6_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_6_TVC.m"; sourceTree = "<group>"; };
+		A552C4F218BFF95E00798347 /* Build_Back+Bi_7_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_7_TVC.h"; sourceTree = "<group>"; };
+		A552C4F318BFF95E00798347 /* Build_Back+Bi_7_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_7_TVC.m"; sourceTree = "<group>"; };
+		A552C4F518BFF96F00798347 /* Build_Back+Bi_8_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_8_TVC.h"; sourceTree = "<group>"; };
+		A552C4F618BFF96F00798347 /* Build_Back+Bi_8_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_8_TVC.m"; sourceTree = "<group>"; };
 		A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_1_TVC.h; sourceTree = "<group>"; };
 		A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_1_TVC.m; sourceTree = "<group>"; };
 		A56DA0DB18AADA520012E943 /* Bulk_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_2_TVC.h; sourceTree = "<group>"; };
@@ -225,6 +255,18 @@
 		A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_11_TVC.m; sourceTree = "<group>"; };
 		A56DA0F918AADBB00012E943 /* Bulk_12_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_12_TVC.h; sourceTree = "<group>"; };
 		A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_12_TVC.m; sourceTree = "<group>"; };
+		A58A9A4D18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_1_TVC.h"; sourceTree = "<group>"; };
+		A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_1_TVC.m"; sourceTree = "<group>"; };
+		A58A9A5018BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_2_TVC.h"; sourceTree = "<group>"; };
+		A58A9A5118BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_2_TVC.m"; sourceTree = "<group>"; };
+		A58A9A5318BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_3_TVC.h"; sourceTree = "<group>"; };
+		A58A9A5418BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_3_TVC.m"; sourceTree = "<group>"; };
+		A58A9A5618BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_4_TVC.h"; sourceTree = "<group>"; };
+		A58A9A5718BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_4_TVC.m"; sourceTree = "<group>"; };
+		A58A9A5918BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_5_TVC.h"; sourceTree = "<group>"; };
+		A58A9A5A18BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_5_TVC.m"; sourceTree = "<group>"; };
+		A58A9A5C18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_6_TVC.h"; sourceTree = "<group>"; };
+		A58A9A5D18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_6_TVC.m"; sourceTree = "<group>"; };
 		A5F1CD6218AD3505000FD51E /* Tone_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_1_TVC.h; sourceTree = "<group>"; };
 		A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_1_TVC.m; sourceTree = "<group>"; };
 		A5F1CD6518AD3523000FD51E /* Tone_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_2_TVC.h; sourceTree = "<group>"; };
@@ -295,14 +337,9 @@
 		586FB27018B138D6008F8F7A /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
-				A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */,
-				A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */,
-				A52C74C318BE635D001BE6B3 /* Build_Legs_2_TVC.h */,
-				A52C74C418BE635D001BE6B3 /* Build_Legs_2_TVC.m */,
-				A52C74C618BE72C4001BE6B3 /* Build_Legs_3_TVC.h */,
-				A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */,
-				A52C74C918BE72DC001BE6B3 /* Build_Legs_4_TVC.h */,
-				A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */,
+				A552C4DC18BFF70500798347 /* Build */,
+				A552C4DD18BFF71D00798347 /* Bulk */,
+				A552C4DE18BFF72400798347 /* Animal */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";
@@ -523,6 +560,53 @@
 			name = "Summary's";
 			sourceTree = "<group>";
 		};
+		A552C4DC18BFF70500798347 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				A58A9A4C18BFEC2700DB3D6D /* Build_Chest+Tri */,
+				A58A9A4B18BFEBFE00DB3D6D /* Build_Legs */,
+				A552C4DF18BFF77D00798347 /* Build_Back+Bi */,
+			);
+			name = Build;
+			sourceTree = "<group>";
+		};
+		A552C4DD18BFF71D00798347 /* Bulk */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Bulk;
+			sourceTree = "<group>";
+		};
+		A552C4DE18BFF72400798347 /* Animal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Animal;
+			sourceTree = "<group>";
+		};
+		A552C4DF18BFF77D00798347 /* Build_Back+Bi */ = {
+			isa = PBXGroup;
+			children = (
+				A552C4E018BFF90700798347 /* Build_Back+Bi_1_TVC.h */,
+				A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */,
+				A552C4E318BFF91B00798347 /* Build_Back+Bi_2_TVC.h */,
+				A552C4E418BFF91B00798347 /* Build_Back+Bi_2_TVC.m */,
+				A552C4E618BFF92700798347 /* Build_Back+Bi_3_TVC.h */,
+				A552C4E718BFF92700798347 /* Build_Back+Bi_3_TVC.m */,
+				A552C4E918BFF93B00798347 /* Build_Back+Bi_4_TVC.h */,
+				A552C4EA18BFF93B00798347 /* Build_Back+Bi_4_TVC.m */,
+				A552C4EC18BFF94700798347 /* Build_Back+Bi_5_TVC.h */,
+				A552C4ED18BFF94700798347 /* Build_Back+Bi_5_TVC.m */,
+				A552C4EF18BFF95200798347 /* Build_Back+Bi_6_TVC.h */,
+				A552C4F018BFF95200798347 /* Build_Back+Bi_6_TVC.m */,
+				A552C4F218BFF95E00798347 /* Build_Back+Bi_7_TVC.h */,
+				A552C4F318BFF95E00798347 /* Build_Back+Bi_7_TVC.m */,
+				A552C4F518BFF96F00798347 /* Build_Back+Bi_8_TVC.h */,
+				A552C4F618BFF96F00798347 /* Build_Back+Bi_8_TVC.m */,
+			);
+			name = "Build_Back+Bi";
+			sourceTree = "<group>";
+		};
 		A56DA0D618AAC8E70012E943 /* Workout Lists */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +645,40 @@
 				A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */,
 			);
 			name = Bulk;
+			sourceTree = "<group>";
+		};
+		A58A9A4B18BFEBFE00DB3D6D /* Build_Legs */ = {
+			isa = PBXGroup;
+			children = (
+				A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */,
+				A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */,
+				A52C74C318BE635D001BE6B3 /* Build_Legs_2_TVC.h */,
+				A52C74C418BE635D001BE6B3 /* Build_Legs_2_TVC.m */,
+				A52C74C618BE72C4001BE6B3 /* Build_Legs_3_TVC.h */,
+				A52C74C718BE72C4001BE6B3 /* Build_Legs_3_TVC.m */,
+				A52C74C918BE72DC001BE6B3 /* Build_Legs_4_TVC.h */,
+				A52C74CA18BE72DC001BE6B3 /* Build_Legs_4_TVC.m */,
+			);
+			name = Build_Legs;
+			sourceTree = "<group>";
+		};
+		A58A9A4C18BFEC2700DB3D6D /* Build_Chest+Tri */ = {
+			isa = PBXGroup;
+			children = (
+				A58A9A4D18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.h */,
+				A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */,
+				A58A9A5018BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.h */,
+				A58A9A5118BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.m */,
+				A58A9A5318BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.h */,
+				A58A9A5418BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.m */,
+				A58A9A5618BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.h */,
+				A58A9A5718BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.m */,
+				A58A9A5918BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.h */,
+				A58A9A5A18BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.m */,
+				A58A9A5C18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.h */,
+				A58A9A5D18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.m */,
+			);
+			name = "Build_Chest+Tri";
 			sourceTree = "<group>";
 		};
 		A5F1CD6118AD34D5000FD51E /* Tone */ = {
@@ -706,21 +824,27 @@
 				58F21AA118A6DEC400DE043E /* UIImage+Resizing.m in Sources */,
 				58F21ACE18A6E00000DE043E /* EmailViewController.m in Sources */,
 				58F21AC118A6DF8E00DE043E /* SettingsTVC.m in Sources */,
+				A552C4F718BFF96F00798347 /* Build_Back+Bi_8_TVC.m in Sources */,
+				A58A9A5818BFECB200DB3D6D /* Build_Chest+Tri_4_TVC.m in Sources */,
 				58F21AC318A6DF8E00DE043E /* WeekTVC.m in Sources */,
+				A552C4EE18BFF94700798347 /* Build_Back+Bi_5_TVC.m in Sources */,
 				A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */,
 				587CFB73189DD9B8006FA541 /* AppDelegate.m in Sources */,
 				58F21AE718A6E0EA00DE043E /* ExerciseViewController.m in Sources */,
 				58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */,
 				58F21AB118A6DF2200DE043E /* SettingsNavController.m in Sources */,
 				A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */,
+				A58A9A5218BFEC9A00DB3D6D /* Build_Chest+Tri_2_TVC.m in Sources */,
 				A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */,
 				58F21ACF18A6E00000DE043E /* WebsiteViewController.m in Sources */,
 				A52C74C818BE72C4001BE6B3 /* Build_Legs_3_TVC.m in Sources */,
+				A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */,
 				A52C74C518BE635D001BE6B3 /* Build_Legs_2_TVC.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
 				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,
 				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
+				A552C4E818BFF92700798347 /* Build_Back+Bi_3_TVC.m in Sources */,
 				58F21AD418A6E02F00DE043E /* MeasurementsReportViewController.m in Sources */,
 				58F21AC418A6DF8E00DE043E /* WorkoutListRecoveryTVC.m in Sources */,
 				A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */,
@@ -730,8 +854,10 @@
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
 				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
 				58F21AD518A6E02F00DE043E /* MeasurementsViewController.m in Sources */,
+				A58A9A5E18BFECD200DB3D6D /* Build_Chest+Tri_6_TVC.m in Sources */,
 				A56DA0E618AADB190012E943 /* Bulk_5_TVC.m in Sources */,
 				A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */,
+				A552C4E218BFF90700798347 /* Build_Back+Bi_1_TVC.m in Sources */,
 				A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */,
 				A5F1CD8518AD3B83000FD51E /* Tone_11_TVC.m in Sources */,
 				A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */,
@@ -740,6 +866,7 @@
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
 				A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
+				A552C4E518BFF91B00798347 /* Build_Back+Bi_2_TVC.m in Sources */,
 				58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */,
 				58F21AEC18A6E12900DE043E /* MainTBC.m in Sources */,
 				A5F1CD7918AD36EE000FD51E /* Tone_7_TVC.m in Sources */,
@@ -747,21 +874,26 @@
 				58F21AB018A6DF2200DE043E /* PhotoNavController.m in Sources */,
 				A5F1CD7618AD35CD000FD51E /* Tone_6_TVC.m in Sources */,
 				58F21ADB18A6E04F00DE043E /* PresentPhotosViewController.m in Sources */,
+				A552C4F118BFF95200798347 /* Build_Back+Bi_6_TVC.m in Sources */,
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
+				A58A9A5518BFECA500DB3D6D /* Build_Chest+Tri_3_TVC.m in Sources */,
 				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
 				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
 				A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */,
 				58F21AE418A6E08500DE043E /* Workout_AbRipper_ResultsViewController.m in Sources */,
 				A5F1CD7018AD3572000FD51E /* Tone_4_TVC.m in Sources */,
 				A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */,
+				A58A9A5B18BFECC300DB3D6D /* Build_Chest+Tri_5_TVC.m in Sources */,
 				A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */,
 				A52C74CB18BE72DC001BE6B3 /* Build_Legs_4_TVC.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
 				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
+				A552C4EB18BFF93B00798347 /* Build_Back+Bi_4_TVC.m in Sources */,
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
 				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,
+				A552C4F418BFF95E00798347 /* Build_Back+Bi_7_TVC.m in Sources */,
 				A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

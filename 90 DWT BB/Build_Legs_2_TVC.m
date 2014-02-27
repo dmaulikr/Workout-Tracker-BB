@@ -72,7 +72,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -93,7 +93,7 @@
     [self exerciseMatches:cell :indexPath];
     
     //  Only save cells in the current section so that you can access them later when you need to save to database.
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
         [self.CellArray addObject:cell];
     }
     
@@ -102,22 +102,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        
-        return @"CURRENT";
-    }
     
-    else {
-        
-        return @"PREVIOUS";
-    }
+    return @"SET 2 of 4";
 }
 
 - (IBAction)submitEntries:(id)sender {
     
     //  Save to the database
     [self saveToDatabase:self.CellArray];
-    
 }
 /*
  // Override to support conditional editing of the table view.

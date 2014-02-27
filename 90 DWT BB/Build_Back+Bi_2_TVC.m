@@ -1,21 +1,21 @@
 //
-//  Build_Legs_3_TVC.m
+//  Build_Back+Bi_2_TVC.m
 //  90 DWT BB
 //
-//  Created by Grant, Jared on 2/26/14.
+//  Created by Grant, Jared on 2/27/14.
 //  Copyright (c) 2014 Jared Grant. All rights reserved.
 //
 
-#import "Build_Legs_3_TVC.h"
+#import "Build_Back+Bi_2_TVC.h"
 #import "UITableViewController+Database.h"
 #import "UITableViewController+Design.h"
 #import "DataNavController.h"
 
-@interface Build_Legs_3_TVC ()
+@interface Build_Back_Bi_2_TVC ()
 
 @end
 
-@implementation Build_Legs_3_TVC
+@implementation Build_Back_Bi_2_TVC
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,20 +45,24 @@
 
 - (void)loadArrays {
     
-    self.Titles = @[@"P Squat",
-                    @"B Squat",
-                    @"S-L Deadlift"];
+    self.Titles = @[@"Dumbbell Pull-Over",
+                    @"Pull-Up"];
     
     NSArray * repNameArray1 = @[@"15",
                                 @"12",
                                 @"8",
-                                @"",
+                                @"8",
                                 @"",
                                 @""];
     
+    NSArray * repNameArray2 = @[@"10",
+                                @"10",
+                                @"10",
+                                @"",
+                                @"",
+                                @""];
     self.Reps = @[repNameArray1,
-                  repNameArray1,
-                  repNameArray1];
+                  repNameArray2];
     
     self.CellArray = [[NSMutableArray alloc] init];
 }
@@ -105,13 +109,14 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    return @"SET 3 of 4";
+    return @"SET 2 of 8";
 }
 
 - (IBAction)submitEntries:(id)sender {
     
     //  Save to the database
     [self saveToDatabase:self.CellArray];
+    
 }
 /*
  // Override to support conditional editing of the table view.

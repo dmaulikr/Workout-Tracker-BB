@@ -90,7 +90,7 @@
     [self exerciseMatches:cell :indexPath];
     
     //  Only save cells in the current section so that you can access them later when you need to save to database.
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
         [self.CellArray addObject:cell];
     }
     
