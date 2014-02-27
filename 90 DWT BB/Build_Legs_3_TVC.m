@@ -85,7 +85,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ExerciseCell *cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    ExerciseCell *cell;
+    
+    if (indexPath.section == 0) {
+        
+        cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"CurrentExerciseCell"];
+    }
+    
+    else {
+        
+        cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"PreviousExerciseCell"];
+    }
+    
     
     //  Configure the cell...
     [self configureExerciseCell:cell :indexPath :self.Reps :self.Titles ];
@@ -95,7 +106,7 @@
     [self exerciseMatches:cell :indexPath];
     
     //  Only save cells in the current section so that you can access them later when you need to save to database.
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
         [self.CellArray addObject:cell];
     }
     
