@@ -22,6 +22,11 @@
 		587CFB82189DD9B8006FA541 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB66189DD9B8006FA541 /* CoreData.framework */; };
 		587CFB8A189DD9B8006FA541 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 587CFB88189DD9B8006FA541 /* InfoPlist.strings */; };
 		587CFB8C189DD9B8006FA541 /* _0_DWT_BBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 587CFB8B189DD9B8006FA541 /* _0_DWT_BBTests.m */; };
+		588ABCDB18C018A400DEBCFC /* Build_Shoulders_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 588ABCDA18C018A400DEBCFC /* Build_Shoulders_1_TVC.m */; };
+		588ABCDE18C018CB00DEBCFC /* Build_Shoulders_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 588ABCDD18C018CB00DEBCFC /* Build_Shoulders_2_TVC.m */; };
+		588ABCE118C018DD00DEBCFC /* Build_Shoulders_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 588ABCE018C018DD00DEBCFC /* Build_Shoulders_3_TVC.m */; };
+		588ABCE418C018EE00DEBCFC /* Build_Shoulders_4_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 588ABCE318C018EE00DEBCFC /* Build_Shoulders_4_TVC.m */; };
+		588ABCE718C0190000DEBCFC /* Build_Shoulders_5_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 588ABCE618C0190000DEBCFC /* Build_Shoulders_5_TVC.m */; };
 		58F21A9118A6D81200DE043E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */; };
 		58F21A9318A6D84A00DE043E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F21A9218A6D84A00DE043E /* Main_iPad.storyboard */; };
 		58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21A9618A6DE5B00DE043E /* photoCollectionViewCell.m */; };
@@ -138,6 +143,16 @@
 		587CFB87189DD9B8006FA541 /* 90 DWT BBTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "90 DWT BBTests-Info.plist"; sourceTree = "<group>"; };
 		587CFB89189DD9B8006FA541 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		587CFB8B189DD9B8006FA541 /* _0_DWT_BBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _0_DWT_BBTests.m; sourceTree = "<group>"; };
+		588ABCD918C018A400DEBCFC /* Build_Shoulders_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Shoulders_1_TVC.h; sourceTree = "<group>"; };
+		588ABCDA18C018A400DEBCFC /* Build_Shoulders_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Shoulders_1_TVC.m; sourceTree = "<group>"; };
+		588ABCDC18C018CB00DEBCFC /* Build_Shoulders_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Shoulders_2_TVC.h; sourceTree = "<group>"; };
+		588ABCDD18C018CB00DEBCFC /* Build_Shoulders_2_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Shoulders_2_TVC.m; sourceTree = "<group>"; };
+		588ABCDF18C018DD00DEBCFC /* Build_Shoulders_3_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Shoulders_3_TVC.h; sourceTree = "<group>"; };
+		588ABCE018C018DD00DEBCFC /* Build_Shoulders_3_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Shoulders_3_TVC.m; sourceTree = "<group>"; };
+		588ABCE218C018EE00DEBCFC /* Build_Shoulders_4_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Shoulders_4_TVC.h; sourceTree = "<group>"; };
+		588ABCE318C018EE00DEBCFC /* Build_Shoulders_4_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Shoulders_4_TVC.m; sourceTree = "<group>"; };
+		588ABCE518C0190000DEBCFC /* Build_Shoulders_5_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Shoulders_5_TVC.h; sourceTree = "<group>"; };
+		588ABCE618C0190000DEBCFC /* Build_Shoulders_5_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Shoulders_5_TVC.m; sourceTree = "<group>"; };
 		58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		58F21A9218A6D84A00DE043E /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		58F21A9518A6DE5B00DE043E /* photoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -439,6 +454,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		588ABCD818C017E000DEBCFC /* Build_Shoulders */ = {
+			isa = PBXGroup;
+			children = (
+				588ABCD918C018A400DEBCFC /* Build_Shoulders_1_TVC.h */,
+				588ABCDA18C018A400DEBCFC /* Build_Shoulders_1_TVC.m */,
+				588ABCDC18C018CB00DEBCFC /* Build_Shoulders_2_TVC.h */,
+				588ABCDD18C018CB00DEBCFC /* Build_Shoulders_2_TVC.m */,
+				588ABCDF18C018DD00DEBCFC /* Build_Shoulders_3_TVC.h */,
+				588ABCE018C018DD00DEBCFC /* Build_Shoulders_3_TVC.m */,
+				588ABCE218C018EE00DEBCFC /* Build_Shoulders_4_TVC.h */,
+				588ABCE318C018EE00DEBCFC /* Build_Shoulders_4_TVC.m */,
+				588ABCE518C0190000DEBCFC /* Build_Shoulders_5_TVC.h */,
+				588ABCE618C0190000DEBCFC /* Build_Shoulders_5_TVC.m */,
+			);
+			name = Build_Shoulders;
+			sourceTree = "<group>";
+		};
 		58F21A9418A6DDF600DE043E /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +598,7 @@
 				A58A9A4C18BFEC2700DB3D6D /* Build_Chest+Tri */,
 				A58A9A4B18BFEBFE00DB3D6D /* Build_Legs */,
 				A552C4DF18BFF77D00798347 /* Build_Back+Bi */,
+				588ABCD818C017E000DEBCFC /* Build_Shoulders */,
 			);
 			name = Build;
 			sourceTree = "<group>";
@@ -830,6 +863,7 @@
 				A552C4EE18BFF94700798347 /* Build_Back+Bi_5_TVC.m in Sources */,
 				A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */,
 				587CFB73189DD9B8006FA541 /* AppDelegate.m in Sources */,
+				588ABCE718C0190000DEBCFC /* Build_Shoulders_5_TVC.m in Sources */,
 				58F21AE718A6E0EA00DE043E /* ExerciseViewController.m in Sources */,
 				58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */,
 				58F21AB118A6DF2200DE043E /* SettingsNavController.m in Sources */,
@@ -841,6 +875,7 @@
 				A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */,
 				A52C74C518BE635D001BE6B3 /* Build_Legs_2_TVC.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
+				588ABCE418C018EE00DEBCFC /* Build_Shoulders_4_TVC.m in Sources */,
 				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,
 				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
@@ -850,6 +885,7 @@
 				A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */,
 				A5F1CD7F18AD3B5F000FD51E /* Tone_9_TVC.m in Sources */,
 				58F21AAE18A6DF2200DE043E /* DataNavController.m in Sources */,
+				588ABCDB18C018A400DEBCFC /* Build_Shoulders_1_TVC.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
 				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
@@ -865,6 +901,7 @@
 				A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */,
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
 				A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */,
+				588ABCE118C018DD00DEBCFC /* Build_Shoulders_3_TVC.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
 				A552C4E518BFF91B00798347 /* Build_Back+Bi_2_TVC.m in Sources */,
 				58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */,
@@ -888,6 +925,7 @@
 				A52C74CB18BE72DC001BE6B3 /* Build_Legs_4_TVC.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
 				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
+				588ABCDE18C018CB00DEBCFC /* Build_Shoulders_2_TVC.m in Sources */,
 				A552C4EB18BFF93B00798347 /* Build_Back+Bi_4_TVC.m in Sources */,
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
