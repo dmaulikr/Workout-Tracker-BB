@@ -45,15 +45,74 @@
 
 - (void)loadArrays {
     
-    self.Titles = @[@"Dumbbell Chest Press"];
+    NSArray *Titles1 = @[@"Dumbbell Chest Press"];
     
-    NSArray * repNameArray1 = @[@"15",
-                                @"12",
-                                @"8",
-                                @"8",
-                                @"",
-                                @""];
-    self.Reps = @[repNameArray1];
+    NSArray *Titles2 = @[@"Incline Dumbbell Fly",
+                         @"Incline Dumbbell Press"];
+    
+    NSArray *Titles3 = @[@"Close Grip Dumbbell Press",
+                         @"Partial Dumbbell Fly",
+                         @"Decline Push-Up"];
+    
+    NSArray *Titles4 = @[@"Laying Tricep Extension"];
+    
+    NSArray *Titles5 = @[@"Single Arm Tricep Kickback",
+                         @"Diamond Push-Up"];
+    
+    NSArray *Titles6 = @[@"Dips",
+                         @"Abs"];
+    
+    NSArray *repNameArray1 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"8",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray2 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray3 = @[@"60",
+                               @"",
+                               @"",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repArraySection1 = @[repNameArray1];
+    
+    NSArray *repArraySection2 = @[repNameArray2,
+                                  repNameArray1];
+    
+    NSArray *repArraySection3 = @[repNameArray2,
+                                  repNameArray2,
+                                  repNameArray2];
+    
+    NSArray *repArraySection4 = @[repNameArray1];
+    
+    NSArray *repArraySection5 = @[repNameArray1,
+                                  repNameArray2];
+    
+    NSArray *repArraySection6 = @[repNameArray3,
+                                  repNameArray3];
+    
+    self.Titles = @[Titles1,
+                    Titles2,
+                    Titles3,
+                    Titles4,
+                    Titles5,
+                    Titles6];
+    
+    self.Reps = @[repArraySection1,
+                  repArraySection2,
+                  repArraySection3,
+                  repArraySection4,
+                  repArraySection5,
+                  repArraySection6];
     
     self.CellArray = [[NSMutableArray alloc] init];
 }
@@ -69,30 +128,41 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return self.Titles.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.Titles.count;
+    
+    NSArray *tempSectionTitleArray = self.Titles[section];
+    
+    return tempSectionTitleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ExerciseCell *cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    ExerciseCell *cell;
+    
+    NSString *cellIdentifier = @"ExerciseCell";
+    cellIdentifier = [cellIdentifier stringByAppendingFormat:@"%d", indexPath.section + 1];
+    cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //  Configure the cell...
-    [self configureExerciseCell:cell :indexPath :self.Reps :self.Titles ];
+    [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
     
     //  Get data from the database
     //NSInteger section = [indexPath section];
     [self exerciseMatches:cell :indexPath];
     
+    /*
     //  Only save cells in the current section so that you can access them later when you need to save to database.
     if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
         [self.CellArray addObject:cell];
     }
+    */
+
+    [self.CellArray addObject:cell];
     
     return cell;
 }
@@ -100,7 +170,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    return @"SET 1 of 6";
+    NSString *headerTitle = @"";
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %d", section + 1, self.Titles.count];
+    
+    return headerTitle;
 }
 
 - (IBAction)submitEntries:(id)sender {

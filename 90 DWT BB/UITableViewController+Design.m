@@ -77,16 +77,7 @@
     // Configure the cell...
     
     cell.exerciseLabel.text = exerciseNamesArray[tempRow];
-    
-    if (tempSection == 0) {
-        
-        cell.exerciseLabel.textColor = [UIColor orangeColor];
-    }
-    
-    else {
-        
-        cell.exerciseLabel.textColor = [UIColor darkGrayColor];
-    }
+    cell.exerciseLabel.textColor = [UIColor orangeColor];
     
     NSArray *tempRepNamesArray = repNamesArray[tempRow];
     
@@ -128,7 +119,7 @@
     }
     
     UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
-    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:.15f];
+    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:.75f];
     
     for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
         
@@ -140,8 +131,9 @@
         tempLabelField.textColor = [UIColor darkGrayColor];
         
         //  Current textfields
+        tempTextField.textColor = [UIColor whiteColor];
         tempTextField.layer.borderWidth = 1.0f;
-        tempTextField.layer.borderColor = [green CGColor];
+        tempTextField.layer.borderColor = [lightGreen CGColor];
         tempTextField.layer.cornerRadius = 5;
         tempTextField.clipsToBounds = YES;
         tempTextField.backgroundColor = lightGreen;
@@ -151,7 +143,7 @@
         
         //  Previous textfields
         tempPreviousTF.layer.borderWidth = 1.0f;
-        tempPreviousTF.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        tempPreviousTF.layer.borderColor = [lightGreen CGColor];
         tempPreviousTF.layer.cornerRadius = 5;
         tempPreviousTF.clipsToBounds = YES;
         tempPreviousTF.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -161,6 +153,15 @@
     }
     
     //NSLog(@"Section = %d", [section intValue]);
+    
+    /*
+    if (tempSection == 1 || tempSection == 3 || tempSection == 5 || tempSection == 7) {
+        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }
+    else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+   */
 }
 
 /*

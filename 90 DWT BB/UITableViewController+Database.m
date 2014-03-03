@@ -72,7 +72,7 @@
             if ([objects count] == 0) {
                 //NSLog(@"viewDidLoad = No matches - Exercise has not been done before - set previous textfields to nil");
                 
-                tempWeightField.placeholder = @"0.0";
+                tempWeightField.text = @"0.0";
                 tempPreviousWF.text = @"0.0";
             }
 
@@ -84,7 +84,7 @@
 
                 matches = objects[[objects count] -1];
                 
-                tempWeightField.placeholder = [matches valueForKey:@"weight"];
+                tempWeightField.text = [matches valueForKey:@"weight"];
                 tempPreviousWF.text = [matches valueForKey:@"weight"];
             }
         }
@@ -97,7 +97,7 @@
             if ([objects count] == 1) {
                 matches = objects[[objects count] -1];
                 
-                tempWeightField.placeholder = [matches valueForKey:@"weight"];
+                tempWeightField.text = [matches valueForKey:@"weight"];
                 
                 pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
                         ((DataNavController *)self.parentViewController).routine,
@@ -128,7 +128,7 @@
                 // Set the current placeholders to defaults/nil.
             else {
                 
-                tempWeightField.placeholder = @"0.0";
+                tempWeightField.text = @"0.0";
                 
                 pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
                         ((DataNavController *)self.parentViewController).routine,

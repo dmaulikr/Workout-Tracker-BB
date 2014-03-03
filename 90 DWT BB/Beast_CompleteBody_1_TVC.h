@@ -1,8 +1,8 @@
 //
-//  Build_Back+Bi_8_TVC.h
+//  Beast_CompleteBody_1_TVC.h
 //  90 DWT BB
 //
-//  Created by Grant, Jared on 2/27/14.
+//  Created by Jared Grant on 2/28/14.
 //  Copyright (c) 2014 Jared Grant. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <iAd/iAd.h>
 #import "ExerciseCell.h"
 
-@interface Build_Back_Bi_8_TVC : UITableViewController
+@interface Beast_CompleteBody_1_TVC : UITableViewController
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;

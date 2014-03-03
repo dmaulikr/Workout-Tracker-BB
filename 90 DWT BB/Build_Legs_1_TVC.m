@@ -45,15 +45,62 @@
 
 - (void)loadArrays {
     
-    self.Titles = @[@"Wide Squat"];
+    NSArray *Titles1 = @[@"Wide Squat"];
     
-    NSArray * repNameArray1 = @[@"15",
-                                @"12",
-                                @"8",
-                                @"8",
-                                @"",
-                                @""];
-    self.Reps = @[repNameArray1];
+    NSArray *Titles2 = @[@"Alt Lunge",
+                         @"S-U to Reverse Lunge"];
+    
+    NSArray *Titles3 = @[@"P Squat",
+                         @"B Squat",
+                         @"S-L Deadlift"];
+    
+    NSArray *Titles4 = @[@"S-L Calf Raise",
+                         @"S Calf Raise",
+                         @"Abs"];
+    
+    NSArray *repNameArray1 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"8",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray2 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray3 = @[@"30",
+                               @"30",
+                               @"",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repArraySection1 = @[repNameArray1];
+    
+    NSArray *repArraySection2 = @[repNameArray2,
+                                  repNameArray2];
+    
+    NSArray *repArraySection3 = @[repNameArray2,
+                                  repNameArray2,
+                                  repNameArray2];
+    
+    NSArray *repArraySection4 = @[repNameArray3,
+                                  repNameArray3,
+                                  repNameArray3];
+    
+    self.Titles = @[Titles1,
+                    Titles2,
+                    Titles3,
+                    Titles4];
+    
+    self.Reps = @[repArraySection1,
+                  repArraySection2,
+                  repArraySection3,
+                  repArraySection4];
     
     self.CellArray = [[NSMutableArray alloc] init];
 }
@@ -69,30 +116,41 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return self.Titles.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.Titles.count;
+    
+    NSArray *tempSectionTitleArray = self.Titles[section];
+    
+    return tempSectionTitleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ExerciseCell *cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    ExerciseCell *cell;
+    
+    NSString *cellIdentifier = @"ExerciseCell";
+    cellIdentifier = [cellIdentifier stringByAppendingFormat:@"%d", indexPath.section + 1];
+    cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //  Configure the cell...
-    [self configureExerciseCell:cell :indexPath :self.Reps :self.Titles ];
-
+    [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
+    
     //  Get data from the database
     //NSInteger section = [indexPath section];
     [self exerciseMatches:cell :indexPath];
     
-    //  Only save cells in the current section so that you can access them later when you need to save to database.
-    if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
-        [self.CellArray addObject:cell];
-    }
+    /*
+     //  Only save cells in the current section so that you can access them later when you need to save to database.
+     if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
+     [self.CellArray addObject:cell];
+     }
+     */
+    
+    [self.CellArray addObject:cell];
     
     return cell;
 }
@@ -100,7 +158,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    return @"SET 1 of 4";
+    NSString *headerTitle = @"";
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %d", section + 1, self.Titles.count];
+    
+    return headerTitle;
 }
 
 - (IBAction)submitEntries:(id)sender {
@@ -110,53 +171,53 @@
     
 }
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
+ #pragma mark - Navigation
+ 
+ // In a story board-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ 
  */
 @end

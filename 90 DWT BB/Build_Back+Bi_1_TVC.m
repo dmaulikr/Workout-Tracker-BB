@@ -45,15 +45,96 @@
 
 - (void)loadArrays {
     
-    self.Titles = @[@"Dumbbell Deadlift"];
+    NSArray *Titles1 = @[@"Dumbbell Deadlift"];
     
-    NSArray * repNameArray1 = @[@"15",
-                                @"12",
-                                @"8",
-                                @"8",
-                                @"",
-                                @""];
-    self.Reps = @[repNameArray1];
+    NSArray *Titles2 = @[@"Dumbbell Pull-Over",
+                         @"Pull-Up"];
+    
+    NSArray *Titles3 = @[@"Curl Bar Row",
+                         @"One-Arm Dumbbell Row",
+                         @"Reverse Fly"];
+    
+    NSArray *Titles4 = @[@"Close-Grip Chin-Up"];
+    
+    NSArray *Titles5 = @[@"Seated Bicep Curl"];
+    
+    NSArray *Titles6 = @[@"Hammer Curl"];
+    
+    NSArray *Titles7 = @[@"Curl Bar Bicep Curl"];
+    
+    NSArray *Titles8 = @[@"Superman to Airplane"];
+    
+    NSArray *repNameArray1 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"8",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray2 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray3 = @[@"10",
+                               @"10",
+                               @"10",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray4 = @[@"30",
+                               @"30",
+                               @"8",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repNameArray5 = @[@"30",
+                               @"30",
+                               @"",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repArraySection1 = @[repNameArray1];
+    
+    NSArray *repArraySection2 = @[repNameArray1,
+                                  repNameArray3];
+    
+    NSArray *repArraySection3 = @[repNameArray2,
+                                  repNameArray2,
+                                  repNameArray2];
+    
+    NSArray *repArraySection4 = @[repNameArray4];
+    
+    NSArray *repArraySection5 = @[repNameArray1];
+    
+    NSArray *repArraySection6 = @[repNameArray2];
+    
+    NSArray *repArraySection7 = @[repNameArray1];
+    
+    NSArray *repArraySection8 = @[repNameArray5];
+    
+    self.Titles = @[Titles1,
+                    Titles2,
+                    Titles3,
+                    Titles4,
+                    Titles5,
+                    Titles6,
+                    Titles7,
+                    Titles8];
+    
+    self.Reps = @[repArraySection1,
+                  repArraySection2,
+                  repArraySection3,
+                  repArraySection4,
+                  repArraySection5,
+                  repArraySection6,
+                  repArraySection7,
+                  repArraySection8];
     
     self.CellArray = [[NSMutableArray alloc] init];
 }
@@ -69,30 +150,41 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return self.Titles.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.Titles.count;
+    
+    NSArray *tempSectionTitleArray = self.Titles[section];
+    
+    return tempSectionTitleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ExerciseCell *cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    ExerciseCell *cell;
+    
+    NSString *cellIdentifier = @"ExerciseCell";
+    cellIdentifier = [cellIdentifier stringByAppendingFormat:@"%d", indexPath.section + 1];
+    cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //  Configure the cell...
-    [self configureExerciseCell:cell :indexPath :self.Reps :self.Titles ];
+    [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
     
     //  Get data from the database
     //NSInteger section = [indexPath section];
     [self exerciseMatches:cell :indexPath];
     
-    //  Only save cells in the current section so that you can access them later when you need to save to database.
-    if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
-        [self.CellArray addObject:cell];
-    }
+    /*
+     //  Only save cells in the current section so that you can access them later when you need to save to database.
+     if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
+     [self.CellArray addObject:cell];
+     }
+     */
+    
+    [self.CellArray addObject:cell];
     
     return cell;
 }
@@ -100,7 +192,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    return @"SET 1 of 8";
+    NSString *headerTitle = @"";
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %d", section + 1, self.Titles.count];
+    
+    return headerTitle;
 }
 
 - (IBAction)submitEntries:(id)sender {
