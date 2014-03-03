@@ -82,6 +82,11 @@
 		A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */; };
 		A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */; };
 		A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */; };
+		A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */; };
+		A5BF8BF918C4F3E80077D6DF /* Bulk_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BF818C4F3E80077D6DF /* Bulk_Legs_1_TVC.m */; };
+		A5BF8BFC18C4F3F90077D6DF /* Bulk_Back_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFB18C4F3F90077D6DF /* Bulk_Back_1_TVC.m */; };
+		A5BF8BFF18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFE18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m */; };
+		A5BF8C0218C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */; };
 		A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */; };
 		A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6618AD3523000FD51E /* Tone_2_TVC.m */; };
 		A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD6918AD353A000FD51E /* Tone_3_TVC.m */; };
@@ -234,6 +239,16 @@
 		A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_12_TVC.m; sourceTree = "<group>"; };
 		A58A9A4D18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_1_TVC.h"; sourceTree = "<group>"; };
 		A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_1_TVC.m"; sourceTree = "<group>"; };
+		A5BF8BF418C4F3D20077D6DF /* Bulk_Chest_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Chest_1_TVC.h; sourceTree = "<group>"; };
+		A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Chest_1_TVC.m; sourceTree = "<group>"; };
+		A5BF8BF718C4F3E80077D6DF /* Bulk_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Legs_1_TVC.h; sourceTree = "<group>"; };
+		A5BF8BF818C4F3E80077D6DF /* Bulk_Legs_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Legs_1_TVC.m; sourceTree = "<group>"; };
+		A5BF8BFA18C4F3F90077D6DF /* Bulk_Back_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Back_1_TVC.h; sourceTree = "<group>"; };
+		A5BF8BFB18C4F3F90077D6DF /* Bulk_Back_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Back_1_TVC.m; sourceTree = "<group>"; };
+		A5BF8BFD18C4F40D0077D6DF /* Bulk_Arms_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Arms_1_TVC.h; sourceTree = "<group>"; };
+		A5BF8BFE18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Arms_1_TVC.m; sourceTree = "<group>"; };
+		A5BF8C0018C4F4250077D6DF /* Bulk_Shoulders_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Shoulders_1_TVC.h; sourceTree = "<group>"; };
+		A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Shoulders_1_TVC.m; sourceTree = "<group>"; };
 		A5F1CD6218AD3505000FD51E /* Tone_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_1_TVC.h; sourceTree = "<group>"; };
 		A5F1CD6318AD3505000FD51E /* Tone_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tone_1_TVC.m; sourceTree = "<group>"; };
 		A5F1CD6518AD3523000FD51E /* Tone_2_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tone_2_TVC.h; sourceTree = "<group>"; };
@@ -578,6 +593,11 @@
 		A552C4DD18BFF71D00798347 /* Bulk */ = {
 			isa = PBXGroup;
 			children = (
+				A5BF8BEF18C4E2FD0077D6DF /* Bulk_Chest */,
+				A5BF8BF018C4E33A0077D6DF /* Bulk_Legs */,
+				A5BF8BF118C4E34E0077D6DF /* Bulk_Back */,
+				A5BF8BF218C4E3590077D6DF /* Bulk_Arms */,
+				A5BF8BF318C4E3660077D6DF /* Bulk_Shoulders */,
 			);
 			name = Bulk;
 			sourceTree = "<group>";
@@ -656,6 +676,51 @@
 				A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */,
 			);
 			name = "Build_Chest+Tri";
+			sourceTree = "<group>";
+		};
+		A5BF8BEF18C4E2FD0077D6DF /* Bulk_Chest */ = {
+			isa = PBXGroup;
+			children = (
+				A5BF8BF418C4F3D20077D6DF /* Bulk_Chest_1_TVC.h */,
+				A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */,
+			);
+			name = Bulk_Chest;
+			sourceTree = "<group>";
+		};
+		A5BF8BF018C4E33A0077D6DF /* Bulk_Legs */ = {
+			isa = PBXGroup;
+			children = (
+				A5BF8BF718C4F3E80077D6DF /* Bulk_Legs_1_TVC.h */,
+				A5BF8BF818C4F3E80077D6DF /* Bulk_Legs_1_TVC.m */,
+			);
+			name = Bulk_Legs;
+			sourceTree = "<group>";
+		};
+		A5BF8BF118C4E34E0077D6DF /* Bulk_Back */ = {
+			isa = PBXGroup;
+			children = (
+				A5BF8BFA18C4F3F90077D6DF /* Bulk_Back_1_TVC.h */,
+				A5BF8BFB18C4F3F90077D6DF /* Bulk_Back_1_TVC.m */,
+			);
+			name = Bulk_Back;
+			sourceTree = "<group>";
+		};
+		A5BF8BF218C4E3590077D6DF /* Bulk_Arms */ = {
+			isa = PBXGroup;
+			children = (
+				A5BF8BFD18C4F40D0077D6DF /* Bulk_Arms_1_TVC.h */,
+				A5BF8BFE18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m */,
+			);
+			name = Bulk_Arms;
+			sourceTree = "<group>";
+		};
+		A5BF8BF318C4E3660077D6DF /* Bulk_Shoulders */ = {
+			isa = PBXGroup;
+			children = (
+				A5BF8C0018C4F4250077D6DF /* Bulk_Shoulders_1_TVC.h */,
+				A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */,
+			);
+			name = Bulk_Shoulders;
 			sourceTree = "<group>";
 		};
 		A5F1CD6118AD34D5000FD51E /* Tone */ = {
@@ -817,17 +882,20 @@
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
 				58F21AD418A6E02F00DE043E /* MeasurementsReportViewController.m in Sources */,
 				58F21AC418A6DF8E00DE043E /* WorkoutListRecoveryTVC.m in Sources */,
+				A5BF8C0218C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m in Sources */,
 				A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */,
 				A5F1CD7F18AD3B5F000FD51E /* Tone_9_TVC.m in Sources */,
 				58F21AAE18A6DF2200DE043E /* DataNavController.m in Sources */,
 				588ABCDB18C018A400DEBCFC /* Build_Shoulders_1_TVC.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
+				A5BF8BF918C4F3E80077D6DF /* Bulk_Legs_1_TVC.m in Sources */,
 				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
 				58F21AD518A6E02F00DE043E /* MeasurementsViewController.m in Sources */,
 				A56DA0E618AADB190012E943 /* Bulk_5_TVC.m in Sources */,
 				A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */,
 				A552C4E218BFF90700798347 /* Build_Back+Bi_1_TVC.m in Sources */,
+				A5BF8BFF18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m in Sources */,
 				A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */,
 				A5F1CD8518AD3B83000FD51E /* Tone_11_TVC.m in Sources */,
 				A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */,
@@ -838,6 +906,7 @@
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
 				58F21AED18A6E12900DE043E /* ScrollViewContainer.m in Sources */,
 				58F21AEC18A6E12900DE043E /* MainTBC.m in Sources */,
+				A5BF8BFC18C4F3F90077D6DF /* Bulk_Back_1_TVC.m in Sources */,
 				58DA7A6518C2901600ECF966 /* Tempo_Back+Bi_1_TVC.m in Sources */,
 				A5F1CD7918AD36EE000FD51E /* Tone_7_TVC.m in Sources */,
 				58F21AE218A6E08500DE043E /* NotesViewController.m in Sources */,
@@ -858,6 +927,7 @@
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
 				58DA7A4A18C16FF300ECF966 /* Beast_CompleteBody_1_TVC.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
+				A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
 				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,
 				A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */,
