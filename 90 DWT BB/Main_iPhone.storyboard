@@ -2795,6 +2795,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="Wk3-sT-LBI"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="7" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EfT-Hy-Kme">
                                         <rect key="frame" x="0.0" y="359" width="320" height="44"/>
@@ -3036,6 +3039,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="Md6-DQ-Ayl"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="6" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="c0p-YW-wfH">
                                         <rect key="frame" x="0.0" y="315" width="320" height="44"/>
@@ -3277,6 +3283,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="XAc-dc-BQb"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="5" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nHI-BZ-gYq">
                                         <rect key="frame" x="0.0" y="271" width="320" height="44"/>
@@ -3514,6 +3523,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="tyW-Ee-2YB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="4" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="o55-ak-qQW">
                                         <rect key="frame" x="0.0" y="207" width="320" height="44"/>
@@ -3761,6 +3773,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="Rh0-zX-7n4"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="2" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="PyZ-Ze-JBC">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
@@ -3948,6 +3963,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="UQo-hI-3Ab"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -4189,6 +4207,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="Dfs-1n-nnC"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="8" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7qu-DV-Hzy">
                                         <rect key="frame" x="0.0" y="403" width="320" height="44"/>
@@ -5358,6 +5379,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L9B-SY-J3B" kind="push" id="KRT-y5-4MD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -25015,19 +25039,20 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XGI-CB-F4Z"/>
-        <segue reference="kYV-Au-USp"/>
-        <segue reference="5CG-1F-xCb"/>
-        <segue reference="dao-xc-RQ3"/>
-        <segue reference="Llg-VJ-pk2"/>
         <segue reference="kFE-zB-ubi"/>
         <segue reference="F1w-20-BaN"/>
-        <segue reference="JBz-Bo-YkN"/>
-        <segue reference="0CQ-rO-mIK"/>
+        <segue reference="jtx-EA-xtB"/>
+        <segue reference="R0R-IL-qX0"/>
         <segue reference="efe-XQ-dlM"/>
-        <segue reference="a5d-3j-TBD"/>
+        <segue reference="M9P-jX-Acy"/>
+        <segue reference="CL7-O4-4iB"/>
+        <segue reference="dhx-aB-H8E"/>
+        <segue reference="KRT-y5-4MD"/>
+        <segue reference="9tt-OV-cWx"/>
+        <segue reference="zfO-xS-taK"/>
+        <segue reference="jB0-Ea-pgb"/>
+        <segue reference="gAK-t0-RnU"/>
         <segue reference="rs9-sJ-ZB9"/>
         <segue reference="VlN-ab-4aX"/>
-        <segue reference="gAK-t0-RnU"/>
     </inferredMetricsTieBreakers>
 </document>

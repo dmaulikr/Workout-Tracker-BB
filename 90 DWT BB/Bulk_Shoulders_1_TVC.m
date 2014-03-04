@@ -45,22 +45,18 @@
 
 - (void)loadArrays {
     
-    NSArray *Titles1 = @[@"Dumbbell Chest Press"];
+    NSArray *Titles1 = @[@"Dumbbell Lateral Raise",
+                         @"Dumbbell Arnold Press"];
     
-    NSArray *Titles2 = @[@"Incline Dumbbell Fly",
-                         @"Incline Dumbbell Press"];
+    NSArray *Titles2 = @[@"Curl Bar Upright Row"];
     
-    NSArray *Titles3 = @[@"Close Grip Dumbbell Press",
-                         @"Partial Dumbbell Fly",
-                         @"Decline Push-Up"];
+    NSArray *Titles3 = @[@"One Arm Dumbbell Front Raise",
+                         @"Two Arm Front Raise Rotate"];
     
-    NSArray *Titles4 = @[@"Laying Tricep Extension"];
+    NSArray *Titles4 = @[@"Reverse Fly"];
     
-    NSArray *Titles5 = @[@"Single Arm Tricep Kickback",
-                         @"Diamond Push-Up"];
-    
-    NSArray *Titles6 = @[@"Dips",
-                         @"Abs"];
+    NSArray *Titles5 = @[@"Plank Opposite Arm Leg Raise",
+                         @"Plank Crunch"];
     
     NSArray *repNameArray1 = @[@"15",
                                @"12",
@@ -76,43 +72,58 @@
                                @"",
                                @""];
     
-    NSArray *repNameArray3 = @[@"60",
-                               @"",
+    NSArray *repNameArray3 = @[@"10",
+                               @"10",
                                @"",
                                @"",
                                @"",
                                @""];
     
-    NSArray *repArraySection1 = @[repNameArray1];
+    NSArray *repNameArray4 = @[@"30",
+                               @"30",
+                               @"",
+                               @"",
+                               @"",
+                               @""];
     
-    NSArray *repArraySection2 = @[repNameArray2,
+    NSArray *repNameArray5 = @[@"15",
+                               @"12",
+                               @"8",
+                               @"8",
+                               @"12",
+                               @"15"];
+    
+    NSArray *repNameArray6 = @[@"10",
+                               @"10",
+                               @"10",
+                               @"",
+                               @"",
+                               @""];
+    
+    NSArray *repArraySection1 = @[repNameArray2,
                                   repNameArray1];
     
+    NSArray *repArraySection2 = @[repNameArray5];
+    
     NSArray *repArraySection3 = @[repNameArray2,
-                                  repNameArray2,
-                                  repNameArray2];
+                                  repNameArray6];
     
-    NSArray *repArraySection4 = @[repNameArray1];
+    NSArray *repArraySection4 = @[repNameArray5];
     
-    NSArray *repArraySection5 = @[repNameArray1,
-                                  repNameArray2];
-    
-    NSArray *repArraySection6 = @[repNameArray3,
-                                  repNameArray3];
+    NSArray *repArraySection5 = @[repNameArray3,
+                                  repNameArray4];
     
     self.Titles = @[Titles1,
                     Titles2,
                     Titles3,
                     Titles4,
-                    Titles5,
-                    Titles6];
+                    Titles5];
     
     self.Reps = @[repArraySection1,
                   repArraySection2,
                   repArraySection3,
                   repArraySection4,
-                  repArraySection5,
-                  repArraySection6];
+                  repArraySection5];
     
     self.CellArray = [[NSMutableArray alloc] init];
 }
