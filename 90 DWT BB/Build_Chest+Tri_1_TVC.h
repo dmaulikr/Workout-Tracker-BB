@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 #import "ExerciseCell.h"
+#import "UIViewController+Social.h"
+#import "UITableViewController+Email.h"
 
-@interface Build_Chest_Tri_1_TVC : UITableViewController
+@interface Build_Chest_Tri_1_TVC : UITableViewController <UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;

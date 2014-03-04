@@ -181,7 +181,34 @@
     //  Save to the database
     [self saveToDatabase:self.CellArray];
     
+    [self shareActionSheet];
+    
 }
+
+- (void)shareActionSheet {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    
+    [action showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        
+        //  Get the csvstring and then send the email
+        [self sendEmail:[self stringForEmail:self.CellArray]];
+    }
+    
+    if (buttonIndex == 1) {
+        [self facebook];
+    }
+    
+    if (buttonIndex == 2) {
+        [self twitter];
+    }
+}
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

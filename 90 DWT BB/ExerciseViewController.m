@@ -252,7 +252,7 @@
 /*
 - (void)createSliderButton {
     
-    if ([[DWT3IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT3.slidergraph"]) {
+    if ([[DWT3IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.slidergraph"]) {
         
         //NSLog(@"Allow Slider");
         self.sliderButton.enabled = YES;

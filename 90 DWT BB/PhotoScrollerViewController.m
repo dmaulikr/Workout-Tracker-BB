@@ -115,7 +115,7 @@
                 
                 // Prepare string for the Subject of the email
                 NSString *subjectTitle = @"";
-                subjectTitle = [subjectTitle stringByAppendingFormat:@"90 DWT 3 %@ Photos", monthArray[i]];
+                subjectTitle = [subjectTitle stringByAppendingFormat:@"90 DWT BB %@ Photos", monthArray[i]];
                 
                 [mailComposer setSubject:subjectTitle];
                 //NSLog(@"%@", subjectTitle);

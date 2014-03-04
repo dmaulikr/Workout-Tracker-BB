@@ -68,6 +68,7 @@
 		A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */; };
 		A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */; };
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
+		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A552C4E218BFF90700798347 /* Build_Back+Bi_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */; };
 		A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */; };
 		A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */; };
@@ -211,6 +212,8 @@
 		A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCell.m; sourceTree = "<group>"; };
 		A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_1_TVC.h; sourceTree = "<group>"; };
 		A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_1_TVC.m; sourceTree = "<group>"; };
+		A544F9E918C67B79000B2A8C /* UITableViewController+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Email.h"; sourceTree = "<group>"; };
+		A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Email.m"; sourceTree = "<group>"; };
 		A552C4E018BFF90700798347 /* Build_Back+Bi_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_1_TVC.h"; sourceTree = "<group>"; };
 		A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_1_TVC.m"; sourceTree = "<group>"; };
 		A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_1_TVC.h; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 				58F21AA018A6DEC400DE043E /* UIViewController+Social.m */,
 				A51B6EE218B500A700F34A11 /* UITableViewController+Database.h */,
 				A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */,
+				A544F9E918C67B79000B2A8C /* UITableViewController+Email.h */,
+				A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -916,6 +921,7 @@
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
 				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
 				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
+				A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */,
 				A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */,
 				58F21AE418A6E08500DE043E /* Workout_AbRipper_ResultsViewController.m in Sources */,
 				A5F1CD7018AD3572000FD51E /* Tone_4_TVC.m in Sources */,
