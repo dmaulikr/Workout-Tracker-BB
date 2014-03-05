@@ -182,12 +182,11 @@
     [self saveToDatabase:self.CellArray];
     
     [self shareActionSheet];
-    
 }
 
 - (void)shareActionSheet {
     
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Data saved successfully.  Share your progress!" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email .csv File", @"Facebook", @"Twitter", nil];
     
     [action showFromTabBar:self.tabBarController.tabBar];
 }
@@ -197,7 +196,7 @@
     if (buttonIndex == 0) {
         
         //  Get the csvstring and then send the email
-        [self sendEmail:[self stringForEmail:self.CellArray]];
+        [self sendEmail:[self stringForEmail:[self findTotalRows] ] ];
     }
     
     if (buttonIndex == 1) {
@@ -207,6 +206,17 @@
     if (buttonIndex == 2) {
         [self twitter];
     }
+}
+
+-(int)findTotalRows {
+    
+    NSUInteger allRows = 0;
+    for(NSInteger i = 0; i < [self.tableView numberOfSections]; i++)
+    {
+        allRows += [self.tableView numberOfRowsInSection:i];
+    }
+    
+    return allRows;
 }
 
 /*

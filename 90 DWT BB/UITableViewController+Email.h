@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "DataNavController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface UITableViewController (Email)
+@interface UITableViewController (Email) <MFMailComposeViewControllerDelegate>
 
-- (NSString*)stringForEmail:(NSArray*)cell;
+- (NSString*)stringForEmail:(int)totalRows;
 - (void)sendEmail:(NSString*)csvString;
 @end
