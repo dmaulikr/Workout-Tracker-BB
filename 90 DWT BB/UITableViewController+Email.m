@@ -10,7 +10,7 @@
 
 @implementation UITableViewController (Email)
 
-- (NSString*)stringForEmail:(int)totalRows {
+- (NSString*)stringForEmail:(NSArray*)allTitleArray :(NSArray*)allRepArray :(int)numOfRows {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -27,10 +27,43 @@
     NSArray *objects = [context executeFetchRequest:request error:&error];
     NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
     
-    for (int c = 0; c < totalRows; c++) {
-        int test = c+1;
+    if ([objects count] != 0)
+    {
+        
+        //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
+        [writeString appendString:[NSString stringWithFormat:@"Routine,Month,Week,Workout,Date\n"]];
+        
+        for (int i = 0; i < 1; i++)
+        {
+            matches = objects[i];
+            NSString *routine =     [matches valueForKey:@"routine"];
+            NSString *month =       [matches valueForKey:@"month"];
+            NSString *week  =       [matches valueForKey:@"week"];
+            NSString *workout =     [matches valueForKey:@"workout"];
+            NSString *date =        [matches valueForKey:@"date"];
+            
+            [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@\n\n",
+                                       routine, month, week, workout, date]];
+        }
     }
+
     
+    
+    
+    /*
+    for (int j = 0; j < allTitleArray.count; j++) {
+        
+        NSArray *tempTitleArray1 = allTitleArray[j];
+        NSArray *tempRepArray1 = allRepArray[j];
+        
+        for (int k = 0; tempTitleArray1.count; k++) {
+            
+            //  Add the title to the string
+            [writeString appendString:[NSString stringWithFormat:@"Routine,Month,Week,Workout,Round,Exercise,Reps,Weight,Notes,Date\n"]];
+        }
+    }
+     */
+     
     /*
     if ([objects count] != 0)
     {

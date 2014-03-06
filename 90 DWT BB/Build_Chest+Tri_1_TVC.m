@@ -196,7 +196,7 @@
     if (buttonIndex == 0) {
         
         //  Get the csvstring and then send the email
-        [self sendEmail:[self stringForEmail:[self findTotalRows] ] ];
+        [self sendEmail:[self stringForEmail:self.Titles :self.Reps :[self findTotalRows] ] ];
     }
     
     if (buttonIndex == 1) {
