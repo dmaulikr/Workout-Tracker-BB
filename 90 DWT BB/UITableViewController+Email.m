@@ -27,6 +27,7 @@
     NSArray *objects = [context executeFetchRequest:request error:&error];
     NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
     
+    // Create the Header info
     if ([objects count] != 0)
     {
         
@@ -40,29 +41,43 @@
             NSString *month =       [matches valueForKey:@"month"];
             NSString *week  =       [matches valueForKey:@"week"];
             NSString *workout =     [matches valueForKey:@"workout"];
-            NSString *date =        [matches valueForKey:@"date"];
+            NSDate  *date =        [matches valueForKey:@"date"];
+            
+            NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle];
             
             [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@\n\n",
-                                       routine, month, week, workout, date]];
+                                       routine, month, week, workout, dateString]];
         }
     }
-
     
-    
-    
-    /*
-    for (int j = 0; j < allTitleArray.count; j++) {
+    //  Add the workout name, reps and weight
+    for (int i = 0; i < allTitleArray.count; i++) {
         
-        NSArray *tempTitleArray1 = allTitleArray[j];
-        NSArray *tempRepArray1 = allRepArray[j];
+        NSArray *tempTitleArray1 = allTitleArray[i];
+        NSArray *tempRepArray1 = allRepArray[i];
         
-        for (int k = 0; tempTitleArray1.count; k++) {
+        for (int j = 0; j < tempTitleArray1.count; j++) {
             
             //  Add the title to the string
-            [writeString appendString:[NSString stringWithFormat:@"Routine,Month,Week,Workout,Round,Exercise,Reps,Weight,Notes,Date\n"]];
+            [writeString appendString:[NSString stringWithFormat:@"%@\n", tempTitleArray1[j]]];
+            
+            NSArray *tempRepArray2 = tempRepArray1[j];
+            
+            for (int k = 0; k < tempRepArray2.count; k++) {
+                
+                if (k == tempRepArray2.count - 1) {
+                    
+                    //
+                }
+                
+                [writeString appendString:[NSString stringWithFormat:@"%@", tempRepArray2[k]]];
+            }
+            
+            [writeString appendString:[NSString stringWithFormat:@"\n"]];
         }
     }
-     */
+    
+    NSLog(@"%@", writeString);
      
     /*
     if ([objects count] != 0)
