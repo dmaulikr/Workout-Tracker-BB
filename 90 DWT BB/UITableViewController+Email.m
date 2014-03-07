@@ -65,15 +65,26 @@
             
             for (int k = 0; k < tempRepArray2.count; k++) {
                 
-                if (k == tempRepArray2.count - 1) {
+                //  Add the rep line
+                if (k != tempRepArray2.count - 1) {
+                    
+                    //  Add  the data to the string with a "," after it
+                    [writeString appendString:[NSString stringWithFormat:@"%@,", tempRepArray2[k]]];
+                }
+                
+                else {
+                    
+                    //  Last entry for the line so "," is not needed
+                    //  Add a line break to the end of the line
+                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepArray2[k]]];
+                }
+                
+                //  Add the weight line from the database
+                for (int w = 0; w < tempRepArray2.count; w++) {
                     
                     //
                 }
-                
-                [writeString appendString:[NSString stringWithFormat:@"%@", tempRepArray2[k]]];
             }
-            
-            [writeString appendString:[NSString stringWithFormat:@"\n"]];
         }
     }
     
