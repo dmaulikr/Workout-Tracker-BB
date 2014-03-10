@@ -45,24 +45,30 @@
             
             NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
             
-            [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@\n\n",
+            [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@\n",
                                        routine, month, week, workout, dateString]];
         }
     }
     
+    NSArray *tempTitleArray1;
+    NSArray *tempRepArray1;
+    NSArray *tempRepArray2;
+    int exerciseRounds;
+    NSString *weightData;
+    
     //  Add the workout name, reps and weight
     for (int i = 0; i < allTitleArray.count; i++) {
         
-        NSArray *tempTitleArray1 = allTitleArray[i];
-        NSArray *tempRepArray1 = allRepArray[i];
+        tempTitleArray1 = allTitleArray[i];
+        tempRepArray1 = allRepArray[i];
         
         for (int j = 0; j < tempTitleArray1.count; j++) {
             
             //  Add the title to the string
             [writeString appendString:[NSString stringWithFormat:@"%@\n", tempTitleArray1[j]]];
             
-            NSArray *tempRepArray2 = tempRepArray1[j];
-            int exerciseRounds = 0;
+            tempRepArray2 = tempRepArray1[j];
+            exerciseRounds = 0;
             
             // Find the number of reps that are not empty strings eg. @""
             for (int r = 0; r < tempRepArray2.count; r++) {
@@ -108,7 +114,7 @@
                     
                     matches = objects[[objects count]-1];
                     
-                    NSString *weightData = [matches valueForKey:@"weight"];
+                    weightData = [matches valueForKey:@"weight"];
                     //tempPreviousWF.text = [matches valueForKey:@"weight"];
                     
                     if (w != exerciseRounds - 1) {
@@ -123,8 +129,6 @@
                         //  Add a line break to the end of the line
                         [writeString appendString:[NSString stringWithFormat:@"%@\n", weightData]];
                     }
-
-                    
                 }
                 
                 //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
@@ -142,66 +146,12 @@
                         //  Add a line break to the end of the line
                         [writeString appendString:[NSString stringWithFormat:@"0.0\n" ]];
                     }
-
                 }
-
             }
         }
     }
     
-    NSLog(@"%@", writeString);
-     
-    /*
-    if ([objects count] != 0)
-    {
-        [writeString appendString:[NSString stringWithFormat:@"Routine,Month,Week,Workout,Round,Exercise,Reps,Weight,Notes,Date\n"]];
-        for (int a = 0; a < [self.exerciseNames count]; a++)
-        {
-            BOOL matchFound = false;
-            NSString *arrayExerciseNameRound = self.exerciseNames[a];
-            
-            // Remove the (Round #) at the end of the exercise name.
-            NSString *exerciseNameClean = [arrayExerciseNameRound substringToIndex:[arrayExerciseNameRound length] - 8];
-            
-            for (int i = 0; i < [objects count]; i++)
-            {
-                matches = objects[i];
-                NSString *routine =     [matches valueForKey:@"routine"];
-                NSString *month =       [matches valueForKey:@"month"];
-                NSString *week  =       [matches valueForKey:@"week"];
-                NSString *workout =     [matches valueForKey:@"workout"];
-                NSString *round =       [matches valueForKey:@"round"];
-                NSString *exercise =    [matches valueForKey:@"exercise"];
-                NSString *reps =        [matches valueForKey:@"reps"];
-                NSString *weight =      [matches valueForKey:@"weight"];
-                NSString *notes =       [matches valueForKey:@"notes"];
-                NSString *date =        [matches valueForKey:@"date"];
-                
-                NSString *combinedExerciseNameRound = [exercise stringByAppendingString:@" "];
-                combinedExerciseNameRound = [combinedExerciseNameRound stringByAppendingString:round];
-                
-                if ([arrayExerciseNameRound isEqualToString:combinedExerciseNameRound])
-                {
-                    [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
-                                               routine, month, week, workout, round, exercise, reps, weight, notes, date]];
-                    matchFound = true;
-                }
-            }
-            
-            if (!matchFound)
-            {
-                [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,,%@,,,,\n",
-                                           ((DataNavController *)self.parentViewController).routine,
-                                           ((DataNavController *)self.parentViewController).month,
-                                           ((DataNavController *)self.parentViewController).week,
-                                           ((DataNavController *)self.parentViewController).workout,
-                                           exerciseNameClean]];
-            }
-        }
-    }
-     */
-
-    
+    //  Return the string
     return writeString;
 }
 

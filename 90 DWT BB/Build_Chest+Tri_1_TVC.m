@@ -114,7 +114,20 @@
                   repArraySection5,
                   repArraySection6];
     
-    self.CellArray = [[NSMutableArray alloc] init];
+    self.CellArray = @[self.cell_1,
+                       self.cell_2,
+                       self.cell_3,
+                       self.cell_4,
+                       self.cell_5,
+                       self.cell_6,
+                       self.cell_7,
+                       self.cell_8,
+                       self.cell_9,
+                       self.cell_10,
+                       self.cell_11];
+    
+    //  Configure the cell...
+    [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,13 +153,26 @@
     return tempSectionTitleArray.count;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ExerciseCell *cell;
     
     NSString *cellIdentifier = @"ExerciseCell";
-    cellIdentifier = [cellIdentifier stringByAppendingFormat:@"%d", indexPath.section + 1];
+    //cellIdentifier = [cellIdentifier stringByAppendingFormat:@"%d", indexPath.section + 1];
+    //cellIdentifier = [cellIdentifier stringByAppendingFormat:@"%d", [self findCurrentRow:indexPath]];
+    
+   cellIdentifier = [NSString stringWithFormat:@"%@_%d_%d", cellIdentifier, indexPath.section, indexPath.row];
+    NSLog(@"%@", cellIdentifier);
+    
     cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    cell.weightField1.delegate = self;
+    cell.weightField2.delegate = self;
+    cell.weightField3.delegate = self;
+    cell.weightField4.delegate = self;
+    cell.weightField5.delegate = self;
+    cell.weightField6.delegate = self;
     
     //  Configure the cell...
     [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
@@ -155,17 +181,18 @@
     //NSInteger section = [indexPath section];
     [self exerciseMatches:cell :indexPath];
     
-    /*
+    
     //  Only save cells in the current section so that you can access them later when you need to save to database.
     if (indexPath.section == 0 && self.CellArray.count < self.Titles.count) {
         [self.CellArray addObject:cell];
     }
-    */
+ 
 
     [self.CellArray addObject:cell];
     
     return cell;
 }
+*/
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -208,7 +235,7 @@
     }
 }
 
--(int)findTotalRows {
+- (int)findTotalRows {
     
     NSUInteger allRows = 0;
     for(NSInteger i = 0; i < [self.tableView numberOfSections]; i++)
@@ -219,6 +246,31 @@
     return allRows;
 }
 
+- (int)findCurrentRow:(NSIndexPath*)indexpath {
+    
+    NSUInteger currentRow = 0;
+    for(NSInteger i = 0; i < indexpath.section + 1; i++)
+    {
+        
+        currentRow += [self.tableView numberOfRowsInSection:i];
+    }
+    
+    currentRow = currentRow - [self.tableView numberOfRowsInSection:indexpath.section];
+    
+    currentRow = currentRow + indexpath.row + 1;
+    
+    return currentRow;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    //
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //
+}
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

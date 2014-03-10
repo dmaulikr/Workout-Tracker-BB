@@ -86,6 +86,9 @@
                 
                 tempWeightField.text = [matches valueForKey:@"weight"];
                 tempPreviousWF.text = [matches valueForKey:@"weight"];
+                
+                //NSLog(@"PreviousTF = %@", tempWeightField.text);
+                //NSLog(@"CurrentTF  = %@", tempPreviousWF.text);
             }
         }
 

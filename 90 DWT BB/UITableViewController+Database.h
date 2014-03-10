@@ -15,4 +15,5 @@
 
 -(void)exerciseMatches:(ExerciseCell*)cell :(NSIndexPath*)indexPath;
 -(void)saveToDatabase:(NSArray*)cell;
+//-(void)saveTextFieldToDatabase:(NSArray)
 @end

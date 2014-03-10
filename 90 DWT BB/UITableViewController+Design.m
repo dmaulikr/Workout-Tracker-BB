@@ -48,7 +48,7 @@
     }
 }
 
-- (void)configureExerciseCell:(ExerciseCell*)cell :(NSIndexPath *)indexPath :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray {
+- (void)configureExerciseCell:(NSArray*)tableCell :(NSIndexPath *)indexPath :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray {
     
     int tempSection = indexPath.section;
     int tempRow = indexPath.row;
@@ -73,6 +73,8 @@
                                          cell.previousWF4,
                                          cell.previousWF5,
                                          cell.previousWF6];
+    
+    
     
     // Configure the cell...
     
