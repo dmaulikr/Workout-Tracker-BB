@@ -137,11 +137,11 @@
     cell = (ExerciseCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //  Configure the cell...
-    [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
+    //[self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
     
     //  Get data from the database
     //NSInteger section = [indexPath section];
-    [self exerciseMatches:cell :indexPath];
+    //[self exerciseMatches:cell :indexPath];
     
     /*
      //  Only save cells in the current section so that you can access them later when you need to save to database.

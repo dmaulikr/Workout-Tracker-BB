@@ -48,100 +48,70 @@
     }
 }
 
-- (void)configureExerciseCell:(NSArray*)tableCell :(NSIndexPath *)indexPath :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray {
+- (void)configureExerciseCell:(NSArray*)tableCell :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)exerciseLabelsArray :(NSArray*)repsLabelArray {
     
-    int tempSection = indexPath.section;
-    int tempRow = indexPath.row;
+    UILabel *tempExerciseLabel;
+    UILabel *tempRepLabel;
+    UITextField *tempPreviousTF;
+    UITextField *tempCurrentTF;
     
-    NSArray *tempCellRepsLabelArray = @[cell.repLabel1,
-                                        cell.repLabel2,
-                                        cell.repLabel3,
-                                        cell.repLabel4,
-                                        cell.repLabel5,
-                                        cell.repLabel6];
+    //UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
+    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:.75f];
     
-    NSArray *tempCellWeightFieldArray = @[cell.weightField1,
-                                          cell.weightField2,
-                                          cell.weightField3,
-                                          cell.weightField4,
-                                          cell.weightField5,
-                                          cell.weightField6];
-    
-    NSArray *tempCellPreviousWFArray = @[cell.previousWF1,
-                                         cell.previousWF2,
-                                         cell.previousWF3,
-                                         cell.previousWF4,
-                                         cell.previousWF5,
-                                         cell.previousWF6];
-    
-    
-    
-    // Configure the cell...
-    
-    cell.exerciseLabel.text = exerciseNamesArray[tempRow];
-    cell.exerciseLabel.textColor = [UIColor orangeColor];
-    
-    NSArray *tempRepNamesArray = repNamesArray[tempRow];
-    
-    //  Configure Reps Label.
-    for (int i = 0; i < tempRepNamesArray.count; i++) {
+    //  Configure the Exercise Label
+    for (int i = 0; i < tableCell.count; i++) {
         
-        UILabel *genericRepLabel = tempCellRepsLabelArray[i];
-        genericRepLabel.text = tempRepNamesArray[i];
-        
-        //  Hide the label and textfield if label = "".
-        if ([genericRepLabel.text isEqualToString:@""]) {
-            
-            UITextField *genericWeightField = tempCellWeightFieldArray[i];
-            UITextField *genericPreviousWF = tempCellPreviousWFArray[i];
-            genericRepLabel.hidden = YES;
-            genericWeightField.hidden = YES;
-            genericPreviousWF.hidden = YES;
-        }
+        tempExerciseLabel = exerciseLabelsArray[i];
+        tempExerciseLabel.text = exerciseNamesArray[i];
+        tempExerciseLabel.textColor = [UIColor orangeColor];
     }
     
-    //  Configure TextField Keyboard
-    for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
+    for (int i = 0; i < repsLabelArray.count; i++) {
         
+        tempRepLabel = repsLabelArray[i];
+        tempPreviousTF = previousTFArray[i];
+        tempCurrentTF = currentTFArray[i];
+        
+        tempRepLabel.text = repNamesArray[i];
+        
+        //  Hide the reps label, current textfield, and previous textfield if the reps label is an empty string
+        if ([tempRepLabel.text isEqualToString:@""]) {
+            
+            tempRepLabel.hidden = YES;
+            tempPreviousTF.hidden = YES;
+            tempCurrentTF.hidden = YES;
+        }
+        
+        //  Configure TextField Keyboard
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             
             // IPHONE - Set the keyboard type of the Weight text box to DECIMAL NUMBER PAD.
-            UITextField *textfield = tempCellWeightFieldArray[i];
-            textfield.keyboardType = UIKeyboardTypeDecimalPad;
-            textfield.keyboardAppearance = UIKeyboardAppearanceDark;
+            tempCurrentTF = currentTFArray[i];
+            tempCurrentTF.keyboardType = UIKeyboardTypeDecimalPad;
+            tempCurrentTF.keyboardAppearance = UIKeyboardAppearanceDark;
         }
         
         else {
             
             // IPAD - No decimal pad on ipad so set it to numbers and punctuation.
-            UITextField *textfield = tempCellWeightFieldArray[i];
-            textfield.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-            textfield.keyboardAppearance = UIKeyboardAppearanceDark;
+            tempCurrentTF = currentTFArray[i];
+            tempCurrentTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            tempCurrentTF.keyboardAppearance = UIKeyboardAppearanceDark;
         }
-    }
-    
-    UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
-    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:.75f];
-    
-    for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
-        
-        UITextField *tempTextField = tempCellWeightFieldArray[i];
-        UITextField *tempPreviousTF = tempCellPreviousWFArray[i];
-        UILabel *tempLabelField = tempCellRepsLabelArray[i];
         
         //  Labels
-        tempLabelField.textColor = [UIColor darkGrayColor];
+        tempRepLabel.textColor = [UIColor darkGrayColor];
         
         //  Current textfields
-        tempTextField.textColor = [UIColor whiteColor];
-        tempTextField.layer.borderWidth = 1.0f;
-        tempTextField.layer.borderColor = [lightGreen CGColor];
-        tempTextField.layer.cornerRadius = 5;
-        tempTextField.clipsToBounds = YES;
-        tempTextField.backgroundColor = lightGreen;
-        tempTextField.clearsOnBeginEditing = YES;
-        tempTextField.textAlignment = NSTextAlignmentCenter;
-        tempTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+        tempCurrentTF.textColor = [UIColor whiteColor];
+        tempCurrentTF.layer.borderWidth = 1.0f;
+        tempCurrentTF.layer.borderColor = [lightGreen CGColor];
+        tempCurrentTF.layer.cornerRadius = 5;
+        tempCurrentTF.clipsToBounds = YES;
+        tempCurrentTF.backgroundColor = lightGreen;
+        tempCurrentTF.clearsOnBeginEditing = YES;
+        tempCurrentTF.textAlignment = NSTextAlignmentCenter;
+        tempCurrentTF.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
         
         //  Previous textfields
         tempPreviousTF.layer.borderWidth = 1.0f;
@@ -155,15 +125,6 @@
     }
     
     //NSLog(@"Section = %d", [section intValue]);
-    
-    /*
-    if (tempSection == 1 || tempSection == 3 || tempSection == 5 || tempSection == 7) {
-        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    }
-    else {
-        cell.backgroundColor = [UIColor whiteColor];
-    }
-   */
 }
 
 /*

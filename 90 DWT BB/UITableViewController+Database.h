@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "ExerciseCell.h"
 
 @interface UITableViewController (Database)
 
-
--(void)exerciseMatches:(ExerciseCell*)cell :(NSIndexPath*)indexPath;
+-(void)exerciseMatches:(NSArray*)exerciseTitlesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray;
 -(void)saveToDatabase:(NSArray*)cell;
 //-(void)saveTextFieldToDatabase:(NSArray)
 @end

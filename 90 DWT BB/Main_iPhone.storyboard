@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="m1d-83-7H0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="m1d-83-7H0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--WeekTVC - Routine-->
@@ -12864,6 +12864,17 @@
                         <outlet property="currentWeight_7" destination="tDo-CD-ffA" id="Uhr-fD-pXk"/>
                         <outlet property="currentWeight_8" destination="KI9-u9-UER" id="Yv3-50-l1d"/>
                         <outlet property="currentWeight_9" destination="z8A-aT-jfC" id="AX0-PF-SMX"/>
+                        <outlet property="exerciseLabel_1" destination="hTX-CA-UlS" id="EBY-Sp-aKe"/>
+                        <outlet property="exerciseLabel_10" destination="Q5r-QJ-xhg" id="ekC-TH-i5Y"/>
+                        <outlet property="exerciseLabel_11" destination="Qlm-Sd-if7" id="2n5-7h-N7E"/>
+                        <outlet property="exerciseLabel_2" destination="GiL-Gf-VeX" id="0Ot-tg-laR"/>
+                        <outlet property="exerciseLabel_3" destination="Apf-xp-kEj" id="mWr-aK-ZFF"/>
+                        <outlet property="exerciseLabel_4" destination="9Cf-gd-XoJ" id="xM0-hf-eu1"/>
+                        <outlet property="exerciseLabel_5" destination="Alc-Er-YiJ" id="chH-YC-6i9"/>
+                        <outlet property="exerciseLabel_6" destination="lFm-qm-8XN" id="C0U-A1-GQI"/>
+                        <outlet property="exerciseLabel_7" destination="pHm-yb-CeH" id="ad5-Ae-FIw"/>
+                        <outlet property="exerciseLabel_8" destination="w7z-tr-pOX" id="vWk-Nj-G1b"/>
+                        <outlet property="exerciseLabel_9" destination="3rO-b3-Yne" id="2Ou-4w-qFV"/>
                         <outlet property="previousWeight_1" destination="2pe-14-XV5" id="ysC-s6-khM"/>
                         <outlet property="previousWeight_10" destination="XSE-5k-dqH" id="HWK-u9-28k"/>
                         <outlet property="previousWeight_11" destination="Tkm-79-ezG" id="g99-WQ-PkD"/>

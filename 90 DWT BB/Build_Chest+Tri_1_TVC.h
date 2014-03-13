@@ -16,8 +16,11 @@
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;
-
+@property (strong, nonatomic) NSArray *currentTextFieldArray;
+@property (strong, nonatomic) NSArray *previousTextFieldArray;
 @property (strong, nonatomic) NSArray *CellArray;
+@property (strong, nonatomic) NSArray *exerciseLabelArray;
+@property (strong, nonatomic) NSArray *repLabelArray;
 
 
 //  CELLS
@@ -32,6 +35,20 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_9;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_10;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_11;
+
+
+//  Exercise Name Labels
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_1;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_2;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_3;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_4;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_5;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_6;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_7;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_8;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_9;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_10;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_11;
 
 
 //  PREVIOUS WEIGHT FIELDS
@@ -269,6 +286,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rep_64;
 @property (weak, nonatomic) IBOutlet UILabel *rep_65;
 @property (weak, nonatomic) IBOutlet UILabel *rep_66;
+
 
 - (IBAction)submitEntries:(id)sender;
 @end

@@ -12,7 +12,7 @@
 @interface UITableViewController (Design)
 
 - (void)configureTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon :(NSArray*)needCellColor;
-- (void)configureExerciseCell:(NSArray*)tableCell :(NSIndexPath *)indexPath :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray;
+- (void)configureExerciseCell:(NSArray*)tableCell :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)exerciseLabelsArray :(NSArray*)repsLabelArray;
 //- (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection;
 
 @end

@@ -36,6 +36,13 @@
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
     
+    //  Configure the cell...
+    [self currentTextFieldDelegate];
+    [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray];
+    
+    //  Get data from the database
+    [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -45,74 +52,94 @@
 
 - (void)loadArrays {
     
-    NSArray *Titles1 = @[@"Dumbbell Chest Press"];
+    self.Titles = @[@"Dumbbell Chest Press",
+                    @"Incline Dumbbell Fly",
+                    @"Incline Dumbbell Press",
+                    @"Close Grip Dumbbell Press",
+                    @"Partial Dumbbell Fly",
+                    @"Decline Push-Up",
+                    @"Laying Tricep Extension",
+                    @"Single Arm Tricep Kickback",
+                    @"Diamond Push-Up",
+                    @"Dips",
+                    @"Abs"];
     
-    NSArray *Titles2 = @[@"Incline Dumbbell Fly",
-                         @"Incline Dumbbell Press"];
-    
-    NSArray *Titles3 = @[@"Close Grip Dumbbell Press",
-                         @"Partial Dumbbell Fly",
-                         @"Decline Push-Up"];
-    
-    NSArray *Titles4 = @[@"Laying Tricep Extension"];
-    
-    NSArray *Titles5 = @[@"Single Arm Tricep Kickback",
-                         @"Diamond Push-Up"];
-    
-    NSArray *Titles6 = @[@"Dips",
-                         @"Abs"];
-    
-    NSArray *repNameArray1 = @[@"15",
-                               @"12",
-                               @"8",
-                               @"8",
-                               @"",
-                               @""];
-    
-    NSArray *repNameArray2 = @[@"15",
-                               @"12",
-                               @"8",
-                               @"",
-                               @"",
-                               @""];
-    
-    NSArray *repNameArray3 = @[@"60",
-                               @"",
-                               @"",
-                               @"",
-                               @"",
-                               @""];
-    
-    NSArray *repArraySection1 = @[repNameArray1];
-    
-    NSArray *repArraySection2 = @[repNameArray2,
-                                  repNameArray1];
-    
-    NSArray *repArraySection3 = @[repNameArray2,
-                                  repNameArray2,
-                                  repNameArray2];
-    
-    NSArray *repArraySection4 = @[repNameArray1];
-    
-    NSArray *repArraySection5 = @[repNameArray1,
-                                  repNameArray2];
-    
-    NSArray *repArraySection6 = @[repNameArray3,
-                                  repNameArray3];
-    
-    self.Titles = @[Titles1,
-                    Titles2,
-                    Titles3,
-                    Titles4,
-                    Titles5,
-                    Titles6];
-    
-    self.Reps = @[repArraySection1,
-                  repArraySection2,
-                  repArraySection3,
-                  repArraySection4,
-                  repArraySection5,
-                  repArraySection6];
+    self.Reps = @[@"15",
+                  @"12",
+                  @"8",
+                  @"8",
+                  @"",
+                  @"",
+                  //  Cell 2
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"",
+                  @"",
+                  @"",
+                  //  Cell 3
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"8",
+                  @"",
+                  @"",
+                  //  Cell 4
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"",
+                  @"",
+                  @"",
+                  //  Cell 5
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"",
+                  @"",
+                  @"",
+                  //  Cell 6
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"",
+                  @"",
+                  @"",
+                  //  Cell 7
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"8",
+                  @"",
+                  @"",
+                  //  Cell 8
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"8",
+                  @"",
+                  @"",
+                  //  Cell 9
+                  @"15",
+                  @"12",
+                  @"8",
+                  @"",
+                  @"",
+                  @"",
+                  //  Cell 10
+                  @"60",
+                  @"",
+                  @"",
+                  @"",
+                  @"",
+                  @"",
+                  //  Cell 11
+                  @"60",
+                  @"",
+                  @"",
+                  @"",
+                  @"",
+                  @""];
     
     self.CellArray = @[self.cell_1,
                        self.cell_2,
@@ -126,8 +153,218 @@
                        self.cell_10,
                        self.cell_11];
     
-    //  Configure the cell...
-    [self configureExerciseCell:cell :indexPath :self.Reps[indexPath.section] :self.Titles[indexPath.section]];
+    self.exerciseLabelArray = @[self.exerciseLabel_1,
+                                self.exerciseLabel_2,
+                                self.exerciseLabel_3,
+                                self.exerciseLabel_4,
+                                self.exerciseLabel_5,
+                                self.exerciseLabel_6,
+                                self.exerciseLabel_7,
+                                self.exerciseLabel_8,
+                                self.exerciseLabel_9,
+                                self.exerciseLabel_10,
+                                self.exerciseLabel_11];
+    
+    self.repLabelArray = @[self.rep_1,
+                           self.rep_2,
+                           self.rep_3,
+                           self.rep_4,
+                           self.rep_5,
+                           self.rep_6,
+                           self.rep_7,
+                           self.rep_8,
+                           self.rep_9,
+                           self.rep_10,
+                           self.rep_11,
+                           self.rep_12,
+                           self.rep_13,
+                           self.rep_14,
+                           self.rep_15,
+                           self.rep_16,
+                           self.rep_17,
+                           self.rep_18,
+                           self.rep_19,
+                           self.rep_20,
+                           self.rep_21,
+                           self.rep_22,
+                           self.rep_23,
+                           self.rep_24,
+                           self.rep_25,
+                           self.rep_26,
+                           self.rep_27,
+                           self.rep_28,
+                           self.rep_29,
+                           self.rep_30,
+                           self.rep_31,
+                           self.rep_32,
+                           self.rep_33,
+                           self.rep_34,
+                           self.rep_35,
+                           self.rep_36,
+                           self.rep_37,
+                           self.rep_38,
+                           self.rep_39,
+                           self.rep_40,
+                           self.rep_41,
+                           self.rep_42,
+                           self.rep_43,
+                           self.rep_44,
+                           self.rep_45,
+                           self.rep_46,
+                           self.rep_47,
+                           self.rep_48,
+                           self.rep_49,
+                           self.rep_50,
+                           self.rep_51,
+                           self.rep_52,
+                           self.rep_53,
+                           self.rep_54,
+                           self.rep_55,
+                           self.rep_56,
+                           self.rep_57,
+                           self.rep_58,
+                           self.rep_59,
+                           self.rep_60,
+                           self.rep_61,
+                           self.rep_62,
+                           self.rep_63,
+                           self.rep_64,
+                           self.rep_65,
+                           self.rep_66,];
+    
+    self.currentTextFieldArray = @[self.currentWeight_1,
+                                   self.currentWeight_2,
+                                   self.currentWeight_3,
+                                   self.currentWeight_4,
+                                   self.currentWeight_5,
+                                   self.currentWeight_6,
+                                   self.currentWeight_7,
+                                   self.currentWeight_8,
+                                   self.currentWeight_9,
+                                   self.currentWeight_10,
+                                   self.currentWeight_11,
+                                   self.currentWeight_12,
+                                   self.currentWeight_13,
+                                   self.currentWeight_14,
+                                   self.currentWeight_15,
+                                   self.currentWeight_16,
+                                   self.currentWeight_17,
+                                   self.currentWeight_18,
+                                   self.currentWeight_19,
+                                   self.currentWeight_20,
+                                   self.currentWeight_21,
+                                   self.currentWeight_22,
+                                   self.currentWeight_23,
+                                   self.currentWeight_24,
+                                   self.currentWeight_25,
+                                   self.currentWeight_26,
+                                   self.currentWeight_27,
+                                   self.currentWeight_28,
+                                   self.currentWeight_29,
+                                   self.currentWeight_30,
+                                   self.currentWeight_31,
+                                   self.currentWeight_32,
+                                   self.currentWeight_33,
+                                   self.currentWeight_34,
+                                   self.currentWeight_35,
+                                   self.currentWeight_36,
+                                   self.currentWeight_37,
+                                   self.currentWeight_38,
+                                   self.currentWeight_39,
+                                   self.currentWeight_40,
+                                   self.currentWeight_41,
+                                   self.currentWeight_42,
+                                   self.currentWeight_43,
+                                   self.currentWeight_44,
+                                   self.currentWeight_45,
+                                   self.currentWeight_46,
+                                   self.currentWeight_47,
+                                   self.currentWeight_48,
+                                   self.currentWeight_49,
+                                   self.currentWeight_50,
+                                   self.currentWeight_51,
+                                   self.currentWeight_52,
+                                   self.currentWeight_53,
+                                   self.currentWeight_54,
+                                   self.currentWeight_55,
+                                   self.currentWeight_56,
+                                   self.currentWeight_57,
+                                   self.currentWeight_58,
+                                   self.currentWeight_59,
+                                   self.currentWeight_60,
+                                   self.currentWeight_61,
+                                   self.currentWeight_62,
+                                   self.currentWeight_63,
+                                   self.currentWeight_64,
+                                   self.currentWeight_65,
+                                   self.currentWeight_66];
+    
+    self.previousTextFieldArray = @[self.previousWeight_1,
+                                    self.previousWeight_2,
+                                    self.previousWeight_3,
+                                    self.previousWeight_4,
+                                    self.previousWeight_5,
+                                    self.previousWeight_6,
+                                    self.previousWeight_7,
+                                    self.previousWeight_8,
+                                    self.previousWeight_9,
+                                    self.previousWeight_10,
+                                    self.previousWeight_11,
+                                    self.previousWeight_12,
+                                    self.previousWeight_13,
+                                    self.previousWeight_14,
+                                    self.previousWeight_15,
+                                    self.previousWeight_16,
+                                    self.previousWeight_17,
+                                    self.previousWeight_18,
+                                    self.previousWeight_19,
+                                    self.previousWeight_20,
+                                    self.previousWeight_21,
+                                    self.previousWeight_22,
+                                    self.previousWeight_23,
+                                    self.previousWeight_24,
+                                    self.previousWeight_25,
+                                    self.previousWeight_26,
+                                    self.previousWeight_27,
+                                    self.previousWeight_28,
+                                    self.previousWeight_29,
+                                    self.previousWeight_30,
+                                    self.previousWeight_31,
+                                    self.previousWeight_32,
+                                    self.previousWeight_33,
+                                    self.previousWeight_34,
+                                    self.previousWeight_35,
+                                    self.previousWeight_36,
+                                    self.previousWeight_37,
+                                    self.previousWeight_38,
+                                    self.previousWeight_39,
+                                    self.previousWeight_40,
+                                    self.previousWeight_41,
+                                    self.previousWeight_42,
+                                    self.previousWeight_43,
+                                    self.previousWeight_44,
+                                    self.previousWeight_45,
+                                    self.previousWeight_46,
+                                    self.previousWeight_47,
+                                    self.previousWeight_48,
+                                    self.previousWeight_49,
+                                    self.previousWeight_50,
+                                    self.previousWeight_51,
+                                    self.previousWeight_52,
+                                    self.previousWeight_53,
+                                    self.previousWeight_54,
+                                    self.previousWeight_55,
+                                    self.previousWeight_56,
+                                    self.previousWeight_57,
+                                    self.previousWeight_58,
+                                    self.previousWeight_59,
+                                    self.previousWeight_60,
+                                    self.previousWeight_61,
+                                    self.previousWeight_62,
+                                    self.previousWeight_63,
+                                    self.previousWeight_64,
+                                    self.previousWeight_65,
+                                    self.previousWeight_66];
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,9 +378,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return self.Titles.count;
+    return 6;
 }
 
+/*
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
@@ -152,6 +390,7 @@
     
     return tempSectionTitleArray.count;
 }
+ */
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -198,7 +437,7 @@
 {
     
     NSString *headerTitle = @"";
-    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %d", section + 1, self.Titles.count];
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %d", section + 1, self.tableView.numberOfSections];
     
     return headerTitle;
 }
@@ -235,6 +474,7 @@
     }
 }
 
+
 - (int)findTotalRows {
     
     NSUInteger allRows = 0;
@@ -262,6 +502,7 @@
     return currentRow;
 }
 
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     //
@@ -271,6 +512,17 @@
     
     //
 }
+
+- (void)currentTextFieldDelegate {
+    
+    UITextField *tempCurrentTF;
+    for (int i = 0; i < self.currentTextFieldArray.count; i++) {
+        
+        tempCurrentTF = self.currentTextFieldArray[i];
+        tempCurrentTF.delegate = self;
+    }
+}
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
