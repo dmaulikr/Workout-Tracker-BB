@@ -12,6 +12,6 @@
 @interface UITableViewController (Database)
 
 -(void)exerciseMatches:(NSArray*)exerciseTitlesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray;
--(void)saveToDatabase:(NSArray*)cell;
+-(void)saveToDatabase:(NSArray*)exerciseNameArray :(NSArray*)repLabelArray :(NSArray*)currentTFArray;
 //-(void)saveTextFieldToDatabase:(NSArray)
 @end

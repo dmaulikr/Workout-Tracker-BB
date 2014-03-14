@@ -13,6 +13,6 @@
 
 @interface UITableViewController (Email) <MFMailComposeViewControllerDelegate>
 
-- (NSString*)stringForEmail:(NSArray*)allTitleArray :(NSArray*)allRepArray :(int)numOfRows;
+- (NSString*)stringForEmail:(NSArray*)allTitleArray;
 - (void)sendEmail:(NSString*)csvString;
 @end

@@ -150,8 +150,8 @@
     }
 }
 
--(void)saveToDatabase:(NSArray*)cell {
-    /*
+-(void)saveToDatabase:(NSArray*)exerciseNameArray :(NSArray*)repLabelArray :(NSArray*)currentTFArray {
+    
     NSDate *todaysDate = [NSDate date];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -159,61 +159,53 @@
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
+    NSPredicate *pred;
+    NSManagedObject *matches;
+    NSManagedObject *newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
+    NSError *error;
+    NSArray *objects;
     
-    for (int j = 0; j < cell.count; j++) {
+    NSString *tempExerciseName;
+    NSString *tempRepName;
+    UITextField *tempCurrentTF;
+    int textFieldCount = 0;
+    NSNumber *roundConverted;
+    
+    int workoutIndex = [((DataNavController *)self.parentViewController).index integerValue];
+    
+    for (int i = 0; i < exerciseNameArray.count; i++) {
         
-        ExerciseCell *tempCell = cell[j];
+        tempExerciseName = exerciseNameArray[i];
         
-        NSArray *tempCellRepsLabelArray = @[tempCell.repLabel1,
-                                            tempCell.repLabel2,
-                                            tempCell.repLabel3,
-                                            tempCell.repLabel4,
-                                            tempCell.repLabel5,
-                                            tempCell.repLabel6];
-        
-        NSArray *tempCellWeightFieldArray = @[tempCell.weightField1,
-                                              tempCell.weightField2,
-                                              tempCell.weightField3,
-                                              tempCell.weightField4,
-                                              tempCell.weightField5,
-                                              tempCell.weightField6];
-        
-        for (int i = 0; i < tempCellWeightFieldArray.count; i++) {
-        
-            UILabel *tempRepLabel = tempCellRepsLabelArray[i];
-            UITextField *tempWeightField = tempCellWeightFieldArray[i];
-            NSNumber *round = [NSNumber numberWithInt:i + 1];
+        for (int round = 0; round < 6; round++) {
             
-            //NSLog(@"WT Field %d = %@", i + 1, tempWeightField.text);
+            tempRepName = repLabelArray[textFieldCount];
+            tempCurrentTF = currentTFArray[textFieldCount];
+            roundConverted = [NSNumber numberWithInt:round];
             
-            //NSLog(@"Round = %@ Reps = %@ WeightField = %@", round, tempRepLabel.text, tempWeightField.text);
-            
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                             ((DataNavController *)self.parentViewController).routine,
-                             ((DataNavController *)self.parentViewController).workout,
-                             tempCell.exerciseLabel.text,
-                             [round integerValue],
-                             [((DataNavController *)self.parentViewController).index integerValue]];
+            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                    ((DataNavController *)self.parentViewController).routine,
+                    ((DataNavController *)self.parentViewController).workout,
+                    tempExerciseName,
+                    roundConverted,
+                    workoutIndex];
             [request setPredicate:pred];
-            NSManagedObject *matches = nil;
-            NSError *error;
-            NSArray *objects = [context executeFetchRequest:request error:&error];
-        
+            matches = nil;
+            objects = [context executeFetchRequest:request error:&error];
+            
             if ([objects count] == 0) {
                 //NSLog(@"submitEntry = No matches - create new record and save");
                 
                 // Only update the fields that have been changed.
                 
-                if (tempWeightField.text.length != 0) {
-                
-                    NSManagedObject *newExercise;
-                    newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
-                    [newExercise setValue:tempRepLabel.text forKey:@"reps"];
-                    [newExercise setValue:tempWeightField.text forKey:@"weight"];
+                if (tempCurrentTF.text.length != 0) {
+                    
+                    [newExercise setValue:tempRepName forKey:@"reps"];
+                    [newExercise setValue:tempCurrentTF.text forKey:@"weight"];
                     //[newExercise setValue:self.currentNotes.text forKey:@"notes"];
                     [newExercise setValue:todaysDate forKey:@"date"];
-                    [newExercise setValue:tempCell.exerciseLabel.text forKey:@"exercise"];
-                    [newExercise setValue:round forKey:@"round"];
+                    [newExercise setValue:tempExerciseName forKey:@"exercise"];
+                    [newExercise setValue:roundConverted forKey:@"round"];
                     [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
                     [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
                     [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
@@ -221,15 +213,17 @@
                     [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
                 }
                 
-            } else {
+            }
+            
+            else {
                 //NSLog(@"submitEntry = Match found - update existing record and save");
                 
-                matches = objects[[objects count]-1];
+                matches = objects[[objects count] - 1];
                 
                 // Only update the fields that have been changed.
                 
-                if (tempWeightField.text.length != 0) {
-                    [matches setValue:tempWeightField.text forKey:@"weight"];
+                if (tempCurrentTF.text.length != 0) {
+                    [matches setValue:tempCurrentTF.text forKey:@"weight"];
                     [matches setValue:todaysDate forKey:@"date"];
                 }
             }
@@ -237,13 +231,13 @@
             // Save the object to persistent store
             if (![context save:&error]) {
                 NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-            }
             
-            [tempWeightField resignFirstResponder];
+            // End of the round "if statement"
+            textFieldCount++;
+            
+            [tempCurrentTF resignFirstResponder];
+            }
         }
     }
-     */
 }
- 
-
 @end

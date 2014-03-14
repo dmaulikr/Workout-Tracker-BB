@@ -180,7 +180,7 @@
 - (IBAction)submitEntries:(id)sender {
     
     //  Save to the database
-    [self saveToDatabase:self.CellArray];
+    //[self saveToDatabase:self.CellArray];
     
 }
 /*

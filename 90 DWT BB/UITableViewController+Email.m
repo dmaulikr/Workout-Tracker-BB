@@ -10,7 +10,7 @@
 
 @implementation UITableViewController (Email)
 
-- (NSString*)stringForEmail:(NSArray*)allTitleArray :(NSArray*)allRepArray :(int)numOfRows {
+- (NSString*)stringForEmail:(NSArray*)allTitleArray {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -50,102 +50,111 @@
         }
     }
     
-    NSArray *tempTitleArray1;
-    NSArray *tempRepArray1;
-    NSArray *tempRepArray2;
-    int exerciseRounds;
-    NSString *weightData;
+    NSString *tempExerciseName;
+    NSString *tempWeightData;
+    NSString *tempRepData;
     
     //  Add the workout name, reps and weight
     for (int i = 0; i < allTitleArray.count; i++) {
         
-        tempTitleArray1 = allTitleArray[i];
-        tempRepArray1 = allRepArray[i];
+        tempExerciseName = allTitleArray[i];
         
-        for (int j = 0; j < tempTitleArray1.count; j++) {
+        //  Add the title to the string
+        [writeString appendString:[NSString stringWithFormat:@"%@\n", tempExerciseName]];
+        
+        //  Add the reps to the string
+        for (int round = 0; round < 6; round++) {
             
-            //  Add the title to the string
-            [writeString appendString:[NSString stringWithFormat:@"%@\n", tempTitleArray1[j]]];
+            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                    ((DataNavController *)self.parentViewController).routine,
+                    ((DataNavController *)self.parentViewController).workout,
+                    tempExerciseName,
+                    round,
+                    [((DataNavController *)self.parentViewController).index integerValue]];
             
-            tempRepArray2 = tempRepArray1[j];
-            exerciseRounds = 0;
+            [request setPredicate:pred];
+            matches = nil;
+            objects = [context executeFetchRequest:request error:&error];
             
-            // Find the number of reps that are not empty strings eg. @""
-            for (int r = 0; r < tempRepArray2.count; r++) {
+            if ([objects count] == 1) {
                 
-                if (![tempRepArray2[r] isEqualToString:@""]) {
-                    
-                    exerciseRounds++;
-                }
+                //  Match found
+                matches = objects[[objects count] - 1];
+                
+                tempRepData = [matches valueForKey:@"reps"];
             }
             
-            //  Add the rep line
-            for (int k = 0; k < exerciseRounds; k++) {
+            else {
                 
-                if (k != exerciseRounds - 1) {
+                //  No match found
+                
+            }
+
+            if (![tempRepData isEqualToString:@""]) {
+                
+                if (round != 5) {
                     
                     //  Add  the data to the string with a "," after it
-                    [writeString appendString:[NSString stringWithFormat:@"%@,", tempRepArray2[k]]];
+                    [writeString appendString:[NSString stringWithFormat:@"%@,", tempRepData]];
                 }
                 
                 else {
                     
                     //  Last entry for the line so "," is not needed
                     //  Add a line break to the end of the line
-                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepArray2[k]]];
+                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepData]];
+                }
+            }
+        }
+        
+            
+        //  Add the weight line from the database
+        for (int round = 0; round < 6; round++) {
+                
+            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
+                    ((DataNavController *)self.parentViewController).routine,
+                    ((DataNavController *)self.parentViewController).workout,
+                    tempExerciseName,
+                    round,
+                    [((DataNavController *)self.parentViewController).index integerValue]];
+            [request setPredicate:pred];
+            matches = nil;
+            objects = [context executeFetchRequest:request error:&error];
+            
+            if ([objects count] == 1) {
+                
+                matches = objects[[objects count]-1];
+                
+                tempWeightData = [matches valueForKey:@"weight"];
+                
+                if (round != 5) {
+                    
+                    //  Add  the data to the string with a "," after it
+                    [writeString appendString:[NSString stringWithFormat:@"%@,", tempWeightData]];
+                }
+                
+                else {
+                    
+                    //  Last entry for the line so "," is not needed
+                    //  Add a line break to the end of the line
+                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempWeightData]];
                 }
             }
             
-            //  Add the weight line from the database
-            for (int w = 0; w < exerciseRounds; w++) {
+            //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
+            else {
                 
-                pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                        ((DataNavController *)self.parentViewController).routine,
-                        ((DataNavController *)self.parentViewController).workout,
-                        tempTitleArray1[j],
-                        w + 1,
-                        [((DataNavController *)self.parentViewController).index integerValue]];
-                [request setPredicate:pred];
-                matches = nil;
-                //NSError *error;
-                objects = [context executeFetchRequest:request error:&error];
-                
-                if ([objects count] == 1) {
+                if (round != 5) {
                     
-                    matches = objects[[objects count]-1];
-                    
-                    weightData = [matches valueForKey:@"weight"];
-                    //tempPreviousWF.text = [matches valueForKey:@"weight"];
-                    
-                    if (w != exerciseRounds - 1) {
-                        
-                        //  Add  the data to the string with a "," after it
-                        [writeString appendString:[NSString stringWithFormat:@"%@,", weightData]];
-                    }
-                    
-                    else {
-                        
-                        //  Last entry for the line so "," is not needed
-                        //  Add a line break to the end of the line
-                        [writeString appendString:[NSString stringWithFormat:@"%@\n", weightData]];
-                    }
+                    //  Add  0.0 with a "," after it
+                    [writeString appendString:[NSString stringWithFormat:@"0.0,"]];
                 }
                 
-                //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
                 else {
                     
-                    if (w != exerciseRounds - 1) {
-                        
-                        //  Add  0.0 with a "," after it
-                        [writeString appendString:[NSString stringWithFormat:@"0.0,"]];
-                    }
-                    
-                    else {
-                        
-                        //  Last entry for the line so "," is not needed
-                        //  Add a line break to the end of the line
-                        [writeString appendString:[NSString stringWithFormat:@"0.0\n" ]];
-                    }
+                    //  Last entry for the line so "," is not needed
+                    //  Add a line break to the end of the line
+                    [writeString appendString:[NSString stringWithFormat:@"0.0\n" ]];
                 }
             }
         }

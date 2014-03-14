@@ -445,7 +445,7 @@
 - (IBAction)submitEntries:(id)sender {
     
     //  Save to the database
-    [self saveToDatabase:self.CellArray];
+    [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
     
     [self shareActionSheet];
 }
@@ -462,7 +462,7 @@
     if (buttonIndex == 0) {
         
         //  Get the csvstring and then send the email
-        [self sendEmail:[self stringForEmail:self.Titles :self.Reps :[self findTotalRows] ] ];
+        [self sendEmail:[self stringForEmail:self.Titles] ];
     }
     
     if (buttonIndex == 1) {
@@ -502,8 +502,21 @@
     return currentRow;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    //  Save to the database
+    [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
+}
+
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    //
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //
 }
