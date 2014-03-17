@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Workout" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Workout" representedClassName="Workout" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="exercise" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exerciseCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -17,6 +17,6 @@
         <attribute name="workout" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Workout" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Workout" positionX="0" positionY="0" width="128" height="255"/>
     </elements>
 </model>

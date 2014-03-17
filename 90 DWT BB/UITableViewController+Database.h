@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Workout.h"
 
 @interface UITableViewController (Database)
 

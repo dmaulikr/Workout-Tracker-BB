@@ -37,7 +37,7 @@
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
     
     //  Configure the cell...
-    [self currentTextFieldDelegate];
+    //[self currentTextFieldDelegate];
     [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray];
     
     //  Get data from the database

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		582330E518D3E5B7007FB187 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 582330E418D3E5B7007FB187 /* Workout.m */; };
 		587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB60189DD9B8006FA541 /* Foundation.framework */; };
 		587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB62189DD9B8006FA541 /* CoreGraphics.framework */; };
 		587CFB65189DD9B8006FA541 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB64189DD9B8006FA541 /* UIKit.framework */; };
@@ -115,6 +116,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		582330E318D3E5B7007FB187 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		582330E418D3E5B7007FB187 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		587CFB5D189DD9B8006FA541 /* 90 DWT BB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT BB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		587CFB60189DD9B8006FA541 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		587CFB62189DD9B8006FA541 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -389,6 +392,8 @@
 				587CFB72189DD9B8006FA541 /* AppDelegate.m */,
 				587CFB77189DD9B8006FA541 /* Images.xcassets */,
 				587CFB74189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld */,
+				582330E318D3E5B7007FB187 /* Workout.h */,
+				582330E418D3E5B7007FB187 /* Workout.m */,
 				587CFB69189DD9B8006FA541 /* Supporting Files */,
 				58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */,
 				58F21A9218A6D84A00DE043E /* Main_iPad.storyboard */,
@@ -880,6 +885,7 @@
 				A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */,
 				A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */,
 				58F21ACF18A6E00000DE043E /* WebsiteViewController.m in Sources */,
+				582330E518D3E5B7007FB187 /* Workout.m in Sources */,
 				A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
 				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,

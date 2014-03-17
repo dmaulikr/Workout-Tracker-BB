@@ -17,18 +17,24 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
-    NSManagedObject *matches;
     NSError *error;
-    NSArray *objects;
+    NSArray *fetchedOjectsArray;
+    Workout *matches;
     
     NSString *tempExerciseName;
     UITextField *tempPreviousTF;
     UITextField *tempCurrentTF;
     int textFieldCount = 0;
-    int workoutIndex = [((DataNavController *)self.parentViewController).index integerValue];
+    NSNumber *roundConverted;
+    
+    NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
+    NSString *routine = ((DataNavController *)self.parentViewController).routine;
+    NSString *month = ((DataNavController *)self.parentViewController).month;
+    NSString *week = ((DataNavController *)self.parentViewController).week;
+    NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
     for (int i = 0; i < exerciseTitlesArray.count; i++) {
         
@@ -38,25 +44,26 @@
             
             tempPreviousTF = previousTFArray[textFieldCount];
             tempCurrentTF = currentTFArray[textFieldCount];
+            roundConverted = [NSNumber numberWithInt:round];
         
-            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                    ((DataNavController *)self.parentViewController).routine,
-                    ((DataNavController *)self.parentViewController).workout,
+            pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %a) AND (index == %a)",
+                    routine,
+                    workout,
                     tempExerciseName,
-                    round,
+                    roundConverted,
                     workoutIndex];
             
-            [request setPredicate:pred];
+            [fetchRequest setPredicate:pred];
             matches = nil;
-            objects = [context executeFetchRequest:request error:&error];
+            fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
             
             // 1st time exercise is done only.
-            if (workoutIndex == 1) {
+            if ([((DataNavController *)self.parentViewController).index integerValue] == 1) {
                 // The workout has not been done before.
                 // Do NOT get previous workout data.
                 // Set the current placeholders to defaults/nil.
                 
-                if ([objects count] == 0) {
+                if ([fetchedOjectsArray count] == 0) {
                     //NSLog(@"viewDidLoad = No matches - Exercise has not been done before - set previous textfields to nil");
                     
                     tempCurrentTF.text = @"0.0";
@@ -69,9 +76,10 @@
                 else {
                     //NSLog(@"viewDidLoad = Match found - set previous textfields to stored values for this weeks workout");
                     
-                    matches = objects[[objects count] -1];
+                    matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
                     
                     tempCurrentTF.text = [matches valueForKey:@"weight"];
+                    tempCurrentTF.text =
                     tempPreviousTF.text = [matches valueForKey:@"weight"];
                     
                     //NSLog(@"PreviousTF = %@", tempWeightField.text);
@@ -84,8 +92,8 @@
                 
                 // This workout with this index has been done before.
                 // User came back to look at his results so display this weeks results in the current results section.
-                if ([objects count] == 1) {
-                    matches = objects[[objects count] -1];
+                if ([fetchedOjectsArray count] == 1) {
+                    matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
                     
                     tempCurrentTF.text = [matches valueForKey:@"weight"];
                     
@@ -95,13 +103,13 @@
                             tempExerciseName,
                             round,
                             [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
-                    [request setPredicate:pred];
+                    [fetchRequest setPredicate:pred];
                     matches = nil;
-                    objects = [context executeFetchRequest:request error:&error];
+                    fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
                     
-                    if ([objects count] == 1) {
+                    if ([fetchedOjectsArray count] == 1) {
                         
-                        matches = objects[[objects count]-1];
+                        matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
                         
                         tempPreviousTF.text = [matches valueForKey:@"weight"];
                     }
@@ -124,14 +132,14 @@
                             ((DataNavController *)self.parentViewController).workout,
                             tempExerciseName,
                             round,
-                            workoutIndex];  // Previous workout index.
-                    [request setPredicate:pred];
+                            [((DataNavController *)self.parentViewController).index integerValue]];  // Previous workout index.
+                    [fetchRequest setPredicate:pred];
                     matches = nil;
-                    objects = [context executeFetchRequest:request error:&error];
+                    fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
                     
-                    if ([objects count] == 1) {
+                    if ([fetchedOjectsArray count] == 1) {
                         
-                        matches = objects[[objects count]-1];
+                        matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
                         
                         tempPreviousTF.text = [matches valueForKey:@"weight"];
                     }
@@ -157,13 +165,13 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
-    NSManagedObject *matches;
-    NSManagedObject *newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
+    Workout *matches;
+    
     NSError *error;
-    NSArray *objects;
+    NSArray *fetchedOjectsArray;
     
     NSString *tempExerciseName;
     NSString *tempRepName;
@@ -171,7 +179,11 @@
     int textFieldCount = 0;
     NSNumber *roundConverted;
     
-    int workoutIndex = [((DataNavController *)self.parentViewController).index integerValue];
+    NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
+    NSString *routine = ((DataNavController *)self.parentViewController).routine;
+    NSString *month = ((DataNavController *)self.parentViewController).month;
+    NSString *week = ((DataNavController *)self.parentViewController).week;
+    NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
     for (int i = 0; i < exerciseNameArray.count; i++) {
         
@@ -183,23 +195,39 @@
             tempCurrentTF = currentTFArray[textFieldCount];
             roundConverted = [NSNumber numberWithInt:round];
             
-            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                    ((DataNavController *)self.parentViewController).routine,
-                    ((DataNavController *)self.parentViewController).workout,
+            pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %@) AND (index == %@)",
+                    routine,
+                    workout,
                     tempExerciseName,
                     roundConverted,
                     workoutIndex];
-            [request setPredicate:pred];
+            [fetchRequest setPredicate:pred];
             matches = nil;
-            objects = [context executeFetchRequest:request error:&error];
+            fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
             
-            if ([objects count] == 0) {
+            if ([fetchedOjectsArray count] == 0) {
                 //NSLog(@"submitEntry = No matches - create new record and save");
                 
                 // Only update the fields that have been changed.
                 
                 if (tempCurrentTF.text.length != 0) {
                     
+                    Workout *insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
+                    
+                    insertWorkoutInfo.reps = tempRepName;
+                    insertWorkoutInfo.weight = tempCurrentTF.text;
+                    //insertWorkoutInfo.notes = currentNotes.text;
+                    insertWorkoutInfo.date = todaysDate;
+                    insertWorkoutInfo.exercise = tempExerciseName;
+                    insertWorkoutInfo.round = roundConverted;
+                    insertWorkoutInfo.routine = routine;
+                    insertWorkoutInfo.month = month;
+                    insertWorkoutInfo.week = week;
+                    insertWorkoutInfo.workout = workout;
+                    insertWorkoutInfo.index = workoutIndex;
+                    
+                    /*
+                     NSManagedObject *newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
                     [newExercise setValue:tempRepName forKey:@"reps"];
                     [newExercise setValue:tempCurrentTF.text forKey:@"weight"];
                     //[newExercise setValue:self.currentNotes.text forKey:@"notes"];
@@ -211,6 +239,7 @@
                     [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
                     [newExercise setValue:((DataNavController *)self.parentViewController).workout forKey:@"workout"];
                     [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
+                     */
                 }
                 
             }
@@ -218,25 +247,36 @@
             else {
                 //NSLog(@"submitEntry = Match found - update existing record and save");
                 
-                matches = objects[[objects count] - 1];
+                //matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                matches = [fetchedOjectsArray objectAtIndex:0];
                 
-                // Only update the fields that have been changed.
-                
+                // Make sure the text field is not empty
                 if (tempCurrentTF.text.length != 0) {
+                    
+                    if (![matches.weight isEqualToString: tempCurrentTF.text]) {
+                        
+                        // Only update the fields that have been changed
+                        matches.weight = tempCurrentTF.text;
+                        matches.date = todaysDate;
+                    }
+                
+                    /*
                     [matches setValue:tempCurrentTF.text forKey:@"weight"];
                     [matches setValue:todaysDate forKey:@"date"];
+                    */
                 }
             }
             
             // Save the object to persistent store
             if (![context save:&error]) {
+                
                 NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+            }
             
             // End of the round "if statement"
             textFieldCount++;
             
             [tempCurrentTF resignFirstResponder];
-            }
         }
     }
 }

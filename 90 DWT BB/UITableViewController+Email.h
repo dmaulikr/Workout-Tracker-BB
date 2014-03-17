@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "DataNavController.h"
 #import <MessageUI/MessageUI.h>
+#import "Workout.h"
 
 @interface UITableViewController (Email) <MFMailComposeViewControllerDelegate>
 
