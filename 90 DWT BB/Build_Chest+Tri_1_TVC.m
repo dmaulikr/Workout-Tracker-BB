@@ -37,7 +37,6 @@
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
     
     //  Configure the cell...
-    //[self currentTextFieldDelegate];
     [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray];
     
     //  Get data from the database
@@ -230,7 +229,7 @@
                            self.rep_63,
                            self.rep_64,
                            self.rep_65,
-                           self.rep_66,];
+                           self.rep_66];
     
     self.currentTextFieldArray = @[self.currentWeight_1,
                                    self.currentWeight_2,
@@ -474,66 +473,12 @@
     }
 }
 
-
-- (int)findTotalRows {
-    
-    NSUInteger allRows = 0;
-    for(NSInteger i = 0; i < [self.tableView numberOfSections]; i++)
-    {
-        allRows += [self.tableView numberOfRowsInSection:i];
-    }
-    
-    return allRows;
-}
-
-- (int)findCurrentRow:(NSIndexPath*)indexpath {
-    
-    NSUInteger currentRow = 0;
-    for(NSInteger i = 0; i < indexpath.section + 1; i++)
-    {
-        
-        currentRow += [self.tableView numberOfRowsInSection:i];
-    }
-    
-    currentRow = currentRow - [self.tableView numberOfRowsInSection:indexpath.section];
-    
-    currentRow = currentRow + indexpath.row + 1;
-    
-    return currentRow;
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
     
     //  Save to the database
     [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
-}
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    
-    //
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //
-}
-
-- (void)currentTextFieldDelegate {
-    
-    UITextField *tempCurrentTF;
-    for (int i = 0; i < self.currentTextFieldArray.count; i++) {
-        
-        tempCurrentTF = self.currentTextFieldArray[i];
-        tempCurrentTF.delegate = self;
-    }
 }
 
 /*

@@ -15,20 +15,27 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (index = %d)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
                          [((DataNavController *)self.parentViewController).index integerValue]];
-    [request setPredicate:pred];
-    NSManagedObject *matches = nil;
+    [fetchRequest setPredicate:pred];
+    Workout *matches = nil;
     NSError *error;
-    NSArray *objects = [context executeFetchRequest:request error:&error];
+    NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
     NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
     
+    NSString *routine;
+    NSString *month;
+    NSString *week;
+    NSString *workout;
+    NSDate  *date;
+    NSString *dateString;
+    
     // Create the Header info
-    if ([objects count] != 0)
+    if ([fetchedOjectsArray count] != 0)
     {
         
         //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
@@ -36,14 +43,21 @@
         
         for (int i = 0; i < 1; i++)
         {
-            matches = objects[i];
-            NSString *routine =     [matches valueForKey:@"routine"];
-            NSString *month =       [matches valueForKey:@"month"];
-            NSString *week  =       [matches valueForKey:@"week"];
-            NSString *workout =     [matches valueForKey:@"workout"];
-            NSDate  *date =        [matches valueForKey:@"date"];
+            matches = fetchedOjectsArray[i];
             
-            NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+            routine = matches.routine;
+            month = matches.month;
+            week = matches.week;
+            workout = matches.workout;
+            date = matches.date;
+            /*
+            routine =     [matches valueForKey:@"routine"];
+            month =       [matches valueForKey:@"month"];
+            week  =       [matches valueForKey:@"week"];
+            workout =     [matches valueForKey:@"workout"];
+            date =        [matches valueForKey:@"date"];
+            */
+            dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
             
             [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@\n",
                                        routine, month, week, workout, dateString]];
@@ -53,6 +67,9 @@
     NSString *tempExerciseName;
     NSString *tempWeightData;
     NSString *tempRepData;
+    NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
+    NSNumber *roundConverted;
+    int validRepFields;
     
     //  Add the workout name, reps and weight
     for (int i = 0; i < allTitleArray.count; i++) {
@@ -61,27 +78,32 @@
         
         //  Add the title to the string
         [writeString appendString:[NSString stringWithFormat:@"%@\n", tempExerciseName]];
+        validRepFields = 0;
         
         //  Add the reps to the string
         for (int round = 0; round < 6; round++) {
             
-            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                    ((DataNavController *)self.parentViewController).routine,
-                    ((DataNavController *)self.parentViewController).workout,
+            roundConverted = [NSNumber numberWithInt:round];
+            
+            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                    routine,
+                    workout,
                     tempExerciseName,
-                    round,
-                    [((DataNavController *)self.parentViewController).index integerValue]];
+                    roundConverted,
+                    workoutIndex];
             
-            [request setPredicate:pred];
+            [fetchRequest setPredicate:pred];
             matches = nil;
-            objects = [context executeFetchRequest:request error:&error];
+            fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
             
-            if ([objects count] == 1) {
+            if ([fetchedOjectsArray count] == 1) {
                 
                 //  Match found
-                matches = objects[[objects count] - 1];
+                matches = [fetchedOjectsArray objectAtIndex:0];
+                //matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
                 
-                tempRepData = [matches valueForKey:@"reps"];
+                tempRepData = matches.reps;
+                //tempRepData = [matches valueForKey:@"reps"];
             }
             
             else {
@@ -104,30 +126,44 @@
                     //  Add a line break to the end of the line
                     [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepData]];
                 }
+                
+                validRepFields++;
+            }
+            
+            else {
+                
+                if (round == 5) {
+                    
+                    [writeString appendString:[NSString stringWithFormat:@"\n"]];
+                }
             }
         }
         
             
         //  Add the weight line from the database
-        for (int round = 0; round < 6; round++) {
-                
-            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                    ((DataNavController *)self.parentViewController).routine,
-                    ((DataNavController *)self.parentViewController).workout,
-                    tempExerciseName,
-                    round,
-                    [((DataNavController *)self.parentViewController).index integerValue]];
-            [request setPredicate:pred];
-            matches = nil;
-            objects = [context executeFetchRequest:request error:&error];
+        for (int round = 0; round < validRepFields; round++) {
             
-            if ([objects count] == 1) {
+            roundConverted = [NSNumber numberWithInt:round];
+            
+            pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                    routine,
+                    workout,
+                    tempExerciseName,
+                    roundConverted,
+                    workoutIndex];
+            [fetchRequest setPredicate:pred];
+            matches = nil;
+            fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+            
+            if ([fetchedOjectsArray count] == 1) {
                 
-                matches = objects[[objects count]-1];
+                matches = [fetchedOjectsArray objectAtIndex:0];
+                //matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
                 
-                tempWeightData = [matches valueForKey:@"weight"];
+                tempWeightData = matches.weight;
+                //tempWeightData = [matches valueForKey:@"weight"];
                 
-                if (round != 5) {
+                if (round != validRepFields -1) {
                     
                     //  Add  the data to the string with a "," after it
                     [writeString appendString:[NSString stringWithFormat:@"%@,", tempWeightData]];
@@ -138,23 +174,6 @@
                     //  Last entry for the line so "," is not needed
                     //  Add a line break to the end of the line
                     [writeString appendString:[NSString stringWithFormat:@"%@\n", tempWeightData]];
-                }
-            }
-            
-            //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
-            else {
-                
-                if (round != 5) {
-                    
-                    //  Add  0.0 with a "," after it
-                    [writeString appendString:[NSString stringWithFormat:@"0.0,"]];
-                }
-                
-                else {
-                    
-                    //  Last entry for the line so "," is not needed
-                    //  Add a line break to the end of the line
-                    [writeString appendString:[NSString stringWithFormat:@"0.0\n" ]];
                 }
             }
         }

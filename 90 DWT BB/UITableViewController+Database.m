@@ -31,9 +31,8 @@
     NSNumber *roundConverted;
     
     NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
+    NSNumber *previousWorkoutIndex = @([workoutIndex integerValue] - 1);
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
-    NSString *month = ((DataNavController *)self.parentViewController).month;
-    NSString *week = ((DataNavController *)self.parentViewController).week;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
     for (int i = 0; i < exerciseTitlesArray.count; i++) {
@@ -46,7 +45,7 @@
             tempCurrentTF = currentTFArray[textFieldCount];
             roundConverted = [NSNumber numberWithInt:round];
         
-            pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %a) AND (index == %a)",
+            pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %@) AND (index == %@)",
                     routine,
                     workout,
                     tempExerciseName,
@@ -58,7 +57,7 @@
             fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
             
             // 1st time exercise is done only.
-            if ([((DataNavController *)self.parentViewController).index integerValue] == 1) {
+            if ([workoutIndex integerValue] == 1) {
                 // The workout has not been done before.
                 // Do NOT get previous workout data.
                 // Set the current placeholders to defaults/nil.
@@ -76,11 +75,14 @@
                 else {
                     //NSLog(@"viewDidLoad = Match found - set previous textfields to stored values for this weeks workout");
                     
-                    matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
+                    //matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
+                    matches = [fetchedOjectsArray objectAtIndex:0];
                     
-                    tempCurrentTF.text = [matches valueForKey:@"weight"];
-                    tempCurrentTF.text =
-                    tempPreviousTF.text = [matches valueForKey:@"weight"];
+                    tempCurrentTF.text = matches.weight;
+                    tempPreviousTF.text = matches.weight;
+                    
+                    //tempCurrentTF.text = [matches valueForKey:@"weight"];
+                    //tempPreviousTF.text = [matches valueForKey:@"weight"];
                     
                     //NSLog(@"PreviousTF = %@", tempWeightField.text);
                     //NSLog(@"CurrentTF  = %@", tempPreviousWF.text);
@@ -93,25 +95,30 @@
                 // This workout with this index has been done before.
                 // User came back to look at his results so display this weeks results in the current results section.
                 if ([fetchedOjectsArray count] == 1) {
-                    matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
                     
-                    tempCurrentTF.text = [matches valueForKey:@"weight"];
+                    //matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
+                    matches = [fetchedOjectsArray objectAtIndex:0];
                     
-                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                            ((DataNavController *)self.parentViewController).routine,
-                            ((DataNavController *)self.parentViewController).workout,
+                    tempCurrentTF.text = matches.weight;
+                    //tempCurrentTF.text = [matches valueForKey:@"weight"];
+                    
+                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                            routine,
+                            workout,
                             tempExerciseName,
-                            round,
-                            [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
+                            roundConverted,
+                            previousWorkoutIndex];  // Previous workout index.
                     [fetchRequest setPredicate:pred];
                     matches = nil;
                     fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
                     
                     if ([fetchedOjectsArray count] == 1) {
                         
-                        matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
+                        //matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
+                        matches = [fetchedOjectsArray objectAtIndex:0];
                         
-                        tempPreviousTF.text = [matches valueForKey:@"weight"];
+                        tempPreviousTF.text = matches.weight;
+                        //tempPreviousTF.text = [matches valueForKey:@"weight"];
                     }
                     
                     //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
@@ -127,21 +134,23 @@
                     
                     tempCurrentTF.text = @"0.0";
                     
-                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %d) AND (index = %d)",
-                            ((DataNavController *)self.parentViewController).routine,
-                            ((DataNavController *)self.parentViewController).workout,
+                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                            routine,
+                            workout,
                             tempExerciseName,
-                            round,
-                            [((DataNavController *)self.parentViewController).index integerValue]];  // Previous workout index.
+                            roundConverted,
+                            previousWorkoutIndex];  // Previous workout index.
                     [fetchRequest setPredicate:pred];
                     matches = nil;
                     fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
                     
                     if ([fetchedOjectsArray count] == 1) {
                         
-                        matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
+                        //matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
+                        matches = [fetchedOjectsArray objectAtIndex:0];
                         
-                        tempPreviousTF.text = [matches valueForKey:@"weight"];
+                        tempPreviousTF.text = matches.weight;
+                        //tempPreviousTF.text = [matches valueForKey:@"weight"];
                     }
                     
                     //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
@@ -169,6 +178,7 @@
     [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
     Workout *matches;
+    Workout *insertWorkoutInfo;
     
     NSError *error;
     NSArray *fetchedOjectsArray;
@@ -212,7 +222,7 @@
                 
                 if (tempCurrentTF.text.length != 0) {
                     
-                    Workout *insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
+                    insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
                     
                     insertWorkoutInfo.reps = tempRepName;
                     insertWorkoutInfo.weight = tempCurrentTF.text;
