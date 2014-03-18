@@ -50,7 +50,7 @@
 }
 
 - (void)loadArrays {
-    
+    /*
     NSArray *Titles1 = @[@"Incline Dumbbell Fly",
                          @"Incline Dumbbell Press 1"];
     
@@ -105,47 +105,43 @@
                                @"",
                                @"",
                                @""];
-    
-    
-    self.Titles = @[@"Dumbbell Chest Press",
-                    @"Incline Dumbbell Fly",
-                    @"Incline Dumbbell Press",
-                    @"Close Grip Dumbbell Press",
-                    @"Partial Dumbbell Fly",
+    */
+    self.Titles = @[@"Incline Dumbbell Fly",
+                    @"Incline Dumbbell Press 1",
+                    @"Rotating Dumbbell Chest Press",
+                    @"Incline Dumbbell Press 2",
+                    @"Center Dumbbell Chest Press Fly",
                     @"Decline Push-Up",
-                    @"Laying Tricep Extension",
-                    @"Single Arm Tricep Kickback",
-                    @"Diamond Push-Up",
-                    @"Dips",
-                    @"Abs"];
+                    @"Superman Airplane",
+                    @"Russian Twist"];
     
     self.Reps = @[@"15",
                   @"12",
                   @"8",
-                  @"8",
+                  @"",
                   @"",
                   @"",
                   //  Cell 2
                   @"15",
                   @"12",
                   @"8",
-                  @"",
+                  @"8",
                   @"",
                   @"",
                   //  Cell 3
-                  @"15",
-                  @"12",
-                  @"8",
-                  @"8",
-                  @"",
+                  @"5",
+                  @"5",
+                  @"5",
+                  @"5",
+                  @"5",
                   @"",
                   //  Cell 4
                   @"15",
                   @"12",
                   @"8",
-                  @"",
-                  @"",
-                  @"",
+                  @"8",
+                  @"12",
+                  @"15",
                   //  Cell 5
                   @"15",
                   @"12",
@@ -161,17 +157,17 @@
                   @"",
                   @"",
                   //  Cell 7
-                  @"15",
-                  @"12",
-                  @"8",
-                  @"8",
+                  @"10",
+                  @"",
+                  @"",
+                  @"",
                   @"",
                   @"",
                   //  Cell 8
-                  @"15",
-                  @"12",
-                  @"8",
-                  @"8",
+                  @"",
+                  @"30",
+                  @"",
+                  @"",
                   @"",
                   @""];
     
@@ -411,7 +407,7 @@
 {
     
     NSString *headerTitle = @"";
-    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %d", section + 1, self.tableView.numberOfSections];
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %ld of %ld", section + 1, (long)self.tableView.numberOfSections];
     
     return headerTitle;
 }

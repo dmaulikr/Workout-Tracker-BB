@@ -31,9 +31,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_6;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_7;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_8;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cell_9;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cell_10;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cell_11;
 
 
 //  Exercise Name Labels
@@ -45,9 +42,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_6;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_7;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_8;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_9;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_10;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseLabel_11;
 
 
 //  PREVIOUS WEIGHT FIELDS
@@ -107,27 +101,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *previousWeight_47;
 @property (weak, nonatomic) IBOutlet UITextField *previousWeight_48;
 
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_49;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_50;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_51;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_52;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_53;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_54;
-
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_55;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_56;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_57;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_58;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_59;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_60;
-
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_61;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_62;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_63;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_64;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_65;
-@property (weak, nonatomic) IBOutlet UITextField *previousWeight_66;
-
 
 //  CURRENT WEIGHT FIELDS
 @property (weak, nonatomic) IBOutlet UITextField *currentWeight_1;
@@ -186,27 +159,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *currentWeight_47;
 @property (weak, nonatomic) IBOutlet UITextField *currentWeight_48;
 
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_49;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_50;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_51;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_52;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_53;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_54;
-
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_55;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_56;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_57;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_58;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_59;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_60;
-
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_61;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_62;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_63;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_64;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_65;
-@property (weak, nonatomic) IBOutlet UITextField *currentWeight_66;
-
 
 // REP LABELS
 @property (weak, nonatomic) IBOutlet UILabel *rep_1;
@@ -264,27 +216,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *rep_46;
 @property (weak, nonatomic) IBOutlet UILabel *rep_47;
 @property (weak, nonatomic) IBOutlet UILabel *rep_48;
-
-@property (weak, nonatomic) IBOutlet UILabel *rep_49;
-@property (weak, nonatomic) IBOutlet UILabel *rep_50;
-@property (weak, nonatomic) IBOutlet UILabel *rep_51;
-@property (weak, nonatomic) IBOutlet UILabel *rep_52;
-@property (weak, nonatomic) IBOutlet UILabel *rep_53;
-@property (weak, nonatomic) IBOutlet UILabel *rep_54;
-
-@property (weak, nonatomic) IBOutlet UILabel *rep_55;
-@property (weak, nonatomic) IBOutlet UILabel *rep_56;
-@property (weak, nonatomic) IBOutlet UILabel *rep_57;
-@property (weak, nonatomic) IBOutlet UILabel *rep_58;
-@property (weak, nonatomic) IBOutlet UILabel *rep_59;
-@property (weak, nonatomic) IBOutlet UILabel *rep_60;
-
-@property (weak, nonatomic) IBOutlet UILabel *rep_61;
-@property (weak, nonatomic) IBOutlet UILabel *rep_62;
-@property (weak, nonatomic) IBOutlet UILabel *rep_63;
-@property (weak, nonatomic) IBOutlet UILabel *rep_64;
-@property (weak, nonatomic) IBOutlet UILabel *rep_65;
-@property (weak, nonatomic) IBOutlet UILabel *rep_66;
 
 
 - (IBAction)submitEntries:(id)sender;

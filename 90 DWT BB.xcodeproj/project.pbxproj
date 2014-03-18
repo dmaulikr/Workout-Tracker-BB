@@ -615,8 +615,7 @@
 		A552C4DE18BFF72400798347 /* Beast */ = {
 			isa = PBXGroup;
 			children = (
-				58DA7A4818C16FF300ECF966 /* Beast_CompleteBody_1_TVC.h */,
-				58DA7A4918C16FF300ECF966 /* Beast_CompleteBody_1_TVC.m */,
+				A57D9B8418D891F10074FD4A /* Beast_CompleteBody */,
 			);
 			name = Beast;
 			sourceTree = "<group>";
@@ -668,6 +667,15 @@
 				A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */,
 			);
 			name = Bulk;
+			sourceTree = "<group>";
+		};
+		A57D9B8418D891F10074FD4A /* Beast_CompleteBody */ = {
+			isa = PBXGroup;
+			children = (
+				58DA7A4818C16FF300ECF966 /* Beast_CompleteBody_1_TVC.h */,
+				58DA7A4918C16FF300ECF966 /* Beast_CompleteBody_1_TVC.m */,
+			);
+			name = Beast_CompleteBody;
 			sourceTree = "<group>";
 		};
 		A58A9A4B18BFEBFE00DB3D6D /* Build_Legs */ = {
