@@ -120,11 +120,11 @@
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
-    int workoutIndex = [((DataNavController *)self.parentViewController).index integerValue];
+    NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
     //NSLog(@"Workout = %@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
     
     // 1st time exercise is done only.
-    if (workoutIndex == 1) {
+    if ([workoutIndex integerValue] == 1) {
         // The workout has not been done before.
         // Do NOT get previous workout data.
         // Set the current placeholders to defaults/nil.

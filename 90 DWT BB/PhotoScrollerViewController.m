@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *selectedPhotoTitle;
 
 @property CGRect selectedImageRect;
-@property int selectedPhotoIndex;
+@property NSInteger selectedPhotoIndex;
 
 @end
 

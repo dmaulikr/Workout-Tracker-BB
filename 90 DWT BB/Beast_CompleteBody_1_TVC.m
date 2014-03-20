@@ -418,7 +418,7 @@
                                    self.currentWeight_78,
                                    self.currentWeight_79,
                                    self.currentWeight_80,
-                                   self.currentWeight_80,
+                                   self.currentWeight_81,
                                    self.currentWeight_82,
                                    self.currentWeight_83,
                                    self.currentWeight_84,
