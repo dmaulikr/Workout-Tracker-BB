@@ -34,20 +34,20 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (index = %@)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
                          self.navigationItem.title,
-                         self.round.text,
-                         [((DataNavController *)self.parentViewController).index integerValue]];
-    [request setPredicate:pred];
-    NSManagedObject *matches = nil;
+                         ((DataNavController *)self.parentViewController).index];
+    [fetchRequest setPredicate:pred];
+    Workout *matches = nil;
     NSError *error;
-    NSArray *objects = [context executeFetchRequest:request error:&error];
+    NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
     
     NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
+    NSNumber *previousWorkoutIndex = @([workoutIndex integerValue] - 1);
     //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
     
     // 1st time exercise is done only.
@@ -55,7 +55,7 @@
         // The workout has not been done before.
         // Do NOT get previous workout data.
         
-        if ([objects count] == 0) {
+        if ([fetchedOjectsArray count] == 0) {
             //NSLog(@"viewDidLoad = No matches - Exercise has not been done before - set previous textfields to nil");
             
             self.currentNotes.text = @"Type any notes here";
@@ -68,10 +68,10 @@
         else {
             //NSLog(@"viewDidLoad = Match found - set previous textfields to stored values for this weeks workout");
             
-            matches = objects[[objects count] -1];
+            matches = [fetchedOjectsArray objectAtIndex:0];
             
             self.currentNotes.text = @"";
-            self.previousNotes.text = [matches valueForKey:@"notes"];
+            self.previousNotes.text = matches.notes;
         }
         
     }
@@ -81,10 +81,11 @@
         // This workout with this index has been done before.
         // User came back to look at his results so display this weeks results in the current results section.
         
-        if ([objects count] == 1) {
-            matches = objects[[objects count] -1];
+        if ([fetchedOjectsArray count] == 1) {
             
-            self.currentNotes.text = [matches valueForKey:@"notes"];
+            matches = [fetchedOjectsArray objectAtIndex:0];
+            
+            self.currentNotes.text = matches.notes;
         }
         
         // This workout with this index has NOT been done befoe.
@@ -96,20 +97,20 @@
         // This is at least the 2nd time a particular workout has been started.
         // Get the previous workout data and present it to the user in the previous section.
         
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
-                             ((DataNavController *)self.parentViewController).workout,
-                             self.navigationItem.title,
-                             self.round.text,
-                             [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
-        [request setPredicate:pred];
-        NSManagedObject *matches = nil;
-        NSError *error;
-        NSArray *objects = [context executeFetchRequest:request error:&error];
+        pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (index = %@)",
+                                                ((DataNavController *)self.parentViewController).routine,
+                                                ((DataNavController *)self.parentViewController).workout,
+                                                self.navigationItem.title,
+                                                previousWorkoutIndex];  // Previous workout index.
+        [fetchRequest setPredicate:pred];
+        matches = nil;
+        fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
         
-        if ([objects count] == 1) {
-            matches = objects[[objects count]-1];
+        if ([fetchedOjectsArray count] == 1) {
             
-            self.previousNotes.text = [matches valueForKey:@"notes"];
+            matches = [fetchedOjectsArray objectAtIndex:0];
+            
+            self.previousNotes.text = matches.notes;
         }
         
         else {
@@ -141,7 +142,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     
+    //  Save to the database
+    [self submitEntry:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -156,59 +160,51 @@
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (index = %@)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
                          self.navigationItem.title,
-                         self.round.text,
-                         [((DataNavController *)self.parentViewController).index integerValue]];
-    [request setPredicate:pred];
-    NSManagedObject *matches = nil;
+                         ((DataNavController *)self.parentViewController).index];
+    [fetchRequest setPredicate:pred];
+    Workout *matches = nil;
     NSError *error;
-    NSArray *objects = [context executeFetchRequest:request error:&error];
+    NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
     
-    if ([objects count] == 0) {
+    if ([fetchedOjectsArray count] == 0) {
         //NSLog(@"submitEntry = No matches - create new record and save");
         
-        NSManagedObject *newExercise;
+        Workout *newExercise;
         newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
-        [newExercise setValue:self.currentNotes.text forKey:@"notes"];
-        [newExercise setValue:todaysDate forKey:@"date"];
-        [newExercise setValue:self.navigationItem.title forKey:@"exercise"];
-        [newExercise setValue:self.round.text forKey:@"round"];
-        [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
-        [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
-        [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
-        [newExercise setValue:((DataNavController *)self.parentViewController).workout forKey:@"workout"];
-        [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
+        
+        newExercise.notes = self.currentNotes.text;
+        newExercise.date =  todaysDate;
+        newExercise.exercise = self.navigationItem.title;
+        newExercise.routine = ((DataNavController *)self.parentViewController).routine;
+        newExercise.month = ((DataNavController *)self.parentViewController).month;
+        newExercise.week = ((DataNavController *)self.parentViewController).week;
+        newExercise.workout = ((DataNavController *)self.parentViewController).workout;
+        newExercise.index = ((DataNavController *)self.parentViewController).index;
         
     } else {
         //NSLog(@"submitEntry = Match found - update existing record and save");
         
-        matches = objects[[objects count]-1];
+        matches = [fetchedOjectsArray objectAtIndex:0];
         
         // Only update the fields that have been changed.
         if (self.currentNotes.text.length != 0) {
-            [matches setValue:self.currentNotes.text forKey:@"notes"];
+            
+            matches.notes = self.currentNotes.text;
+            //[matches setValue:self.currentNotes.text forKey:@"notes"];
         }
-        [matches setValue:todaysDate forKey:@"date"];
+        
+        matches.date = todaysDate;
+        //[matches setValue:todaysDate forKey:@"date"];
         
     }
     
     [context save:&error];
-    
-    [request setPredicate:pred];
-    matches = nil;
-    objects = nil;
-    objects = [context executeFetchRequest:request error:&error];
-    
-    if ([objects count] == 1) {
-        matches = objects[[objects count]-1];
-        
-        self.currentNotes.text = [matches valueForKey:@"notes"];
-    }
     
     self.currentNotes.textColor = [UIColor grayColor];
     
@@ -220,6 +216,9 @@
 }
 
 - (IBAction)shareActionSheet:(UIBarButtonItem *)sender {
+    
+    // Save to Database
+    [self submitEntry:self];
     
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
     
@@ -247,10 +246,10 @@
     UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
     UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
     UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
-    UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
     
     // Apply Text Colors
-    self.currentNotesLabel.textColor = blueColor;
+    self.currentNotesLabel.textColor = [UIColor orangeColor];
     
     self.previousNotesLabel.textColor = darkGrey;
     
@@ -277,12 +276,12 @@
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (index = %d)",
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (index = %@)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
-                         [((DataNavController *)self.parentViewController).index integerValue]];
+                         ((DataNavController *)self.parentViewController).index];
     [request setPredicate:pred];
-    NSManagedObject *matches = nil;
+    Workout *matches = nil;
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
@@ -295,15 +294,18 @@
         
         for (int i = 0; i < [objects count]; i++) {
             matches = objects[i];
-            NSString *routine =     [matches valueForKey:@"routine"];
-            NSString *month =       [matches valueForKey:@"month"];
-            NSString *week  =       [matches valueForKey:@"week"];
-            NSString *workout =     [matches valueForKey:@"workout"];
-            NSString *notes =       [matches valueForKey:@"notes"];
-            NSString *date =        [matches valueForKey:@"date"];
+            
+            NSString *routine = matches.routine;
+            NSString *month = matches.month;
+            NSString *week  = matches.week;
+            NSString *workout = matches.workout;
+            NSString *notes = matches.notes;
+            NSDate *date = matches.date;
+            
+            NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
             
             [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@\n",
-                                       routine, month, week, workout, notes, date]];
+                                       routine, month, week, workout, notes, dateString]];
         }
     }
     

@@ -13,8 +13,9 @@
 #import "AppDelegate.h"
 #import "Workout_AbRipper_ResultsViewController.h"
 #import "UIViewController+Social.h"
+#import "Workout.h"
 
-@interface NotesViewController : UIViewController <ADBannerViewDelegate, MFMailComposeViewControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
+@interface NotesViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *currentNotes;
 @property (weak, nonatomic) IBOutlet UILabel *round;
