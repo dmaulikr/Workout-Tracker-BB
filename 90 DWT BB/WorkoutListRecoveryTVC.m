@@ -43,14 +43,8 @@
                                 @YES,
                                 @YES];
     
-    NSArray *cellColor = @[@NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO];
-    [self configureTableView:tableCell :accessoryIcon: cellColor];
+    
+    [self configureAccessoryIcon:tableCell :accessoryIcon];
     
     // Label Text
     self.cell5.textLabel.text = ((DataNavController *)self.parentViewController).lightCell5;

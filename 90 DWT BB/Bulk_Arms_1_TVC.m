@@ -366,7 +366,7 @@
 {
     
     NSString *headerTitle = @"";
-    headerTitle = [headerTitle stringByAppendingFormat:@"Set %ld of %ld", section + 1, (long)self.tableView.numberOfSections];
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %ld", section + 1, (long)self.tableView.numberOfSections];
     
     return headerTitle;
 }

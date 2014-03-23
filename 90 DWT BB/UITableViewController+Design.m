@@ -10,9 +10,9 @@
 
 @implementation UITableViewController (Design)
 
-- (void)configureTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon :(NSArray*)needCellColor {
+- (void)configureAccessoryIcon:(NSArray*)tableViewCellArray :(NSArray*)needsAccessoryIcon{
     
-    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    //UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
     //UIColor *midGrey = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
     //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
     
@@ -21,30 +21,50 @@
     
     // Accessory view icon
     UIImage* accessory = [UIImage imageNamed:@"nav_r_arrow_grey"];
+    UITableViewCell *cell;
+    UIImageView* accessoryView;
     
-    for (int i = 0; i < tableCell.count; i++) {
+    for (int i = 0; i < tableViewCellArray.count; i++) {
         
-        UITableViewCell *cell = tableCell[i];
+        cell = tableViewCellArray[i];
         
         // Label backgrounds
         //UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
         //UIColor* detailTextColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
-        cell.detailTextLabel.textColor = [UIColor orangeColor];
+        //cell.detailTextLabel.textColor = [UIColor orangeColor];
         
         // Label and Subtitle Font Size
-        cell.textLabel.font = [UIFont systemFontOfSize:18];
+        //cell.textLabel.font = [UIFont systemFontOfSize:18];
         //cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         
         // Accessory view icon
-        if ([needAccessoryIcon[i] boolValue]) {
-            UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessory];
+        if ([needsAccessoryIcon[i] boolValue]) {
+            accessoryView = [[UIImageView alloc] initWithImage:accessory];
             cell.accessoryView = accessoryView;
         }
         
+        /*
         // Cell background color
         if ([needCellColor[i] boolValue]) {
             cell.backgroundColor = lightGrey;
         }
+         */
+    }
+}
+
+- (void)configureCellBox:(NSArray*)cellBoxArray {
+    
+    UITextField *tempTextBox;
+    
+    for (int i = 0; i < cellBoxArray.count; i++) {
+        
+        tempTextBox = cellBoxArray[i];
+        
+        tempTextBox.layer.borderWidth = 1.0f;
+        //tempTextBox.layer.borderColor = [lightGreen CGColor];
+        tempTextBox.layer.cornerRadius = 15.0f;
+        tempTextBox.clipsToBounds = YES;
+        
     }
 }
 

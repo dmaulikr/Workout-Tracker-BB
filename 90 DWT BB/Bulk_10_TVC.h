@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataNavController.h"
+#import "UITableViewController+Design.h"
 
 @interface Bulk_10_TVC : UITableViewController
 
@@ -48,4 +49,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *cell2Detail;
 @property (weak, nonatomic) IBOutlet UILabel *cell4Detail;
 @property (weak, nonatomic) IBOutlet UILabel *cell5Detail;
+
+@property (strong, nonatomic) NSArray *cellBoxArray;
+@property (strong, nonatomic) NSArray *tableCellArray;
+@property (strong, nonatomic) NSArray *accessoryIconArray;
+
 @end

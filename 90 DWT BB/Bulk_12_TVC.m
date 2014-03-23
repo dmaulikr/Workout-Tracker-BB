@@ -26,12 +26,60 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self LoadArray];
+    
+    [self configureCellBox:self.cellBoxArray];
+    
+    [self configureAccessoryIcon:self.tableCellArray :self.accessoryIconArray];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)LoadArray {
+    
+    self.cellBoxArray = @[self.cell1Box,
+                          self.cell2Box,
+                          self.cell3Box,
+                          self.cell4Box,
+                          self.cell5Box,
+                          self.cell6Box,
+                          self.cell7Box,
+                          self.cell8Box,
+                          self.cell9Box,
+                          self.cell10Box,
+                          self.cell11Box,
+                          self.cell12Box];
+    
+    self.tableCellArray = @[self.cell1,
+                            self.cell2,
+                            self.cell3,
+                            self.cell4,
+                            self.cell5,
+                            self.cell6,
+                            self.cell7,
+                            self.cell8,
+                            self.cell9,
+                            self.cell10,
+                            self.cell11,
+                            self.cell12];
+    
+    self.accessoryIconArray = @[@YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES,
+                                @YES];
 }
 
 - (void)didReceiveMemoryWarning

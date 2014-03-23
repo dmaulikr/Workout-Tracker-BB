@@ -39,12 +39,7 @@
                                 @YES,
                                 @YES];
     
-    NSArray *cellColor = @[@NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO];
-    [self configureTableView:tableCell :accessoryIcon: cellColor];
+    [self configureAccessoryIcon:tableCell :accessoryIcon];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

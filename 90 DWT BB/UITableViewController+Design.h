@@ -11,7 +11,8 @@
 
 @interface UITableViewController (Design)
 
-- (void)configureTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon :(NSArray*)needCellColor;
+- (void)configureAccessoryIcon:(NSArray*)tableViewCellArray :(NSArray*)needsAccessoryIcon;
+- (void)configureCellBox:(NSArray*)cellBoxArray;
 - (void)configureExerciseCell:(NSArray*)tableCell :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)exerciseLabelsArray :(NSArray*)repsLabelArray;
 //- (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection;
 

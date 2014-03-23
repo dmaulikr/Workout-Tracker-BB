@@ -45,17 +45,8 @@
                                 @YES,
                                 @YES,
                                 @YES];
-    
-    NSArray *cellColor = @[@NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO,
-                           @NO];
 
-    [self configureTableView:tableCell :accessoryIcon: cellColor];
+    [self configureAccessoryIcon:tableCell :accessoryIcon];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

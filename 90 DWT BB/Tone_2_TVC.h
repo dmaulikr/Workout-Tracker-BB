@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataNavController.h"
+#import "UITableViewController+Design.h"
 
 @interface Tone_2_TVC : UITableViewController
 
@@ -48,5 +49,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *cell3Detail;
 @property (weak, nonatomic) IBOutlet UILabel *cell8Detail;
 @property (weak, nonatomic) IBOutlet UILabel *cell9Detail;
+
+@property (strong, nonatomic) NSArray *cellBoxArray;
+@property (strong, nonatomic) NSArray *tableCellArray;
+@property (strong, nonatomic) NSArray *accessoryIconArray;
 
 @end
