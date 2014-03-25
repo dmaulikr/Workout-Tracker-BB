@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5809254C18E131C000787516 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5809254B18E131C000787516 /* Main_iPad.storyboard */; };
 		582330E518D3E5B7007FB187 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 582330E418D3E5B7007FB187 /* Workout.m */; };
 		587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB60189DD9B8006FA541 /* Foundation.framework */; };
 		587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB62189DD9B8006FA541 /* CoreGraphics.framework */; };
@@ -28,7 +29,6 @@
 		58DA7A5918C28FBF00ECF966 /* Tempo_Chest+Tri_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DA7A5818C28FBF00ECF966 /* Tempo_Chest+Tri_1_TVC.m */; };
 		58DA7A6518C2901600ECF966 /* Tempo_Back+Bi_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DA7A6418C2901600ECF966 /* Tempo_Back+Bi_1_TVC.m */; };
 		58F21A9118A6D81200DE043E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */; };
-		58F21A9318A6D84A00DE043E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F21A9218A6D84A00DE043E /* Main_iPad.storyboard */; };
 		58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21A9618A6DE5B00DE043E /* photoCollectionViewCell.m */; };
 		58F21AA118A6DEC400DE043E /* UIImage+Resizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21A9A18A6DEC400DE043E /* UIImage+Resizing.m */; };
 		58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F21A9C18A6DEC400DE043E /* UITableViewController+Design.m */; };
@@ -116,6 +116,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5809254B18E131C000787516 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		582330E318D3E5B7007FB187 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		582330E418D3E5B7007FB187 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		587CFB5D189DD9B8006FA541 /* 90 DWT BB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT BB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +146,6 @@
 		58DA7A6318C2901600ECF966 /* Tempo_Back+Bi_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tempo_Back+Bi_1_TVC.h"; sourceTree = "<group>"; };
 		58DA7A6418C2901600ECF966 /* Tempo_Back+Bi_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tempo_Back+Bi_1_TVC.m"; sourceTree = "<group>"; };
 		58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
-		58F21A9218A6D84A00DE043E /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		58F21A9518A6DE5B00DE043E /* photoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoCollectionViewCell.h; sourceTree = "<group>"; };
 		58F21A9618A6DE5B00DE043E /* photoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoCollectionViewCell.m; sourceTree = "<group>"; };
 		58F21A9918A6DEC400DE043E /* UIImage+Resizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resizing.h"; sourceTree = "<group>"; };
@@ -396,7 +396,7 @@
 				582330E418D3E5B7007FB187 /* Workout.m */,
 				587CFB69189DD9B8006FA541 /* Supporting Files */,
 				58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */,
-				58F21A9218A6D84A00DE043E /* Main_iPad.storyboard */,
+				5809254B18E131C000787516 /* Main_iPad.storyboard */,
 			);
 			path = "90 DWT BB";
 			sourceTree = "<group>";
@@ -859,7 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				587CFB6D189DD9B8006FA541 /* InfoPlist.strings in Resources */,
-				58F21A9318A6D84A00DE043E /* Main_iPad.storyboard in Resources */,
+				5809254C18E131C000787516 /* Main_iPad.storyboard in Resources */,
 				587CFB78189DD9B8006FA541 /* Images.xcassets in Resources */,
 				58F21A9118A6D81200DE043E /* Main_iPhone.storyboard in Resources */,
 			);
