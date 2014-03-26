@@ -247,6 +247,7 @@
     UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
     UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
     //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    UIColor *lightGreyBlueColor = [UIColor colorWithRed:219/255.0f green:224/255.0f blue:234/255.0f alpha:1.0f];
     
     // Apply Text Colors
     self.currentNotesLabel.textColor = [UIColor orangeColor];
@@ -257,11 +258,22 @@
     
     // Apply Background Colors
     self.currentNotes.backgroundColor = [UIColor whiteColor];
-    self.previousNotes.backgroundColor = [UIColor whiteColor];
+    self.previousNotes.backgroundColor = lightGreyBlueColor;
     
     self.view.backgroundColor = lightGrey;
     self.toolbar.backgroundColor = midGrey;
     
+    // Apply Border to TextViews
+    self.currentNotes.layer.borderWidth = 0.5f;
+    self.currentNotes.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.currentNotes.layer.cornerRadius = 5;
+    self.currentNotes.clipsToBounds = YES;
+    
+    self.previousNotes.layer.borderWidth = 0.5f;
+    self.previousNotes.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.previousNotes.layer.cornerRadius = 5;
+    self.previousNotes.clipsToBounds = YES;
+     
     // Apply Keyboard Color
     self.currentNotes.keyboardAppearance = UIKeyboardAppearanceDark;
     

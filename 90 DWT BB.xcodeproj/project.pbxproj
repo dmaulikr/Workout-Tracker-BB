@@ -84,6 +84,8 @@
 		A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */; };
 		A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */; };
 		A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */; };
+		A5AEB08318E36E1800D91855 /* iPad_LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB08218E36E1800D91855 /* iPad_LaunchImage.storyboard */; };
+		A5AEB08518E3763F00D91855 /* iPhone_LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB08418E3763F00D91855 /* iPhone_LaunchImage.storyboard */; };
 		A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */; };
 		A5BF8BF918C4F3E80077D6DF /* Bulk_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BF818C4F3E80077D6DF /* Bulk_Legs_1_TVC.m */; };
 		A5BF8BFC18C4F3F90077D6DF /* Bulk_Back_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFB18C4F3F90077D6DF /* Bulk_Back_1_TVC.m */; };
@@ -245,6 +247,8 @@
 		A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_12_TVC.m; sourceTree = "<group>"; };
 		A58A9A4D18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Chest+Tri_1_TVC.h"; sourceTree = "<group>"; };
 		A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Chest+Tri_1_TVC.m"; sourceTree = "<group>"; };
+		A5AEB08218E36E1800D91855 /* iPad_LaunchImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_LaunchImage.storyboard; sourceTree = "<group>"; };
+		A5AEB08418E3763F00D91855 /* iPhone_LaunchImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_LaunchImage.storyboard; sourceTree = "<group>"; };
 		A5BF8BF418C4F3D20077D6DF /* Bulk_Chest_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Chest_1_TVC.h; sourceTree = "<group>"; };
 		A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Chest_1_TVC.m; sourceTree = "<group>"; };
 		A5BF8BF718C4F3E80077D6DF /* Bulk_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Legs_1_TVC.h; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 				587CFB69189DD9B8006FA541 /* Supporting Files */,
 				58F21A9018A6D81200DE043E /* Main_iPhone.storyboard */,
 				5809254B18E131C000787516 /* Main_iPad.storyboard */,
+				A5AEB08218E36E1800D91855 /* iPad_LaunchImage.storyboard */,
+				A5AEB08418E3763F00D91855 /* iPhone_LaunchImage.storyboard */,
 			);
 			path = "90 DWT BB";
 			sourceTree = "<group>";
@@ -860,7 +866,9 @@
 			files = (
 				587CFB6D189DD9B8006FA541 /* InfoPlist.strings in Resources */,
 				5809254C18E131C000787516 /* Main_iPad.storyboard in Resources */,
+				A5AEB08518E3763F00D91855 /* iPhone_LaunchImage.storyboard in Resources */,
 				587CFB78189DD9B8006FA541 /* Images.xcassets in Resources */,
+				A5AEB08318E36E1800D91855 /* iPad_LaunchImage.storyboard in Resources */,
 				58F21A9118A6D81200DE043E /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
