@@ -405,9 +405,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
+    NSNumber *headerSection = [NSNumber numberWithInteger:section +1];
+    NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections];
     NSString *headerTitle = @"";
-    headerTitle = [headerTitle stringByAppendingFormat:@"Set %d of %ld", section + 1, (long)self.tableView.numberOfSections];
+    headerTitle = [headerTitle stringByAppendingFormat:@"Set %@ of %@", headerSection, numberOfSections];
     
     return headerTitle;
 }
