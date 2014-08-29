@@ -113,55 +113,55 @@
         // Week 1
         if ([week isEqualToString:@"Week 1"]) {
             
-            if (indexPath.row == 0) {
+            if (selectedCell.tag == 1) {
                 
                 // B1: Chest+Tri
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 1) {
+            else if (selectedCell.tag == 2) {
                 
                 // B1: Legs
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 2) {
+            else if (selectedCell.tag == 3) {
                 
                 // B1: Back+Bi
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 3) {
+            else if (selectedCell.tag == 4) {
                 
                 // B3: Cardio
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 4) {
+            else if (selectedCell.tag == 5) {
                 
                 // B3: Ab Workout
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 5) {
+            else if (selectedCell.tag == 6) {
                 
                 // B1: Shoulders
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 6) {
+            else if (selectedCell.tag == 7) {
                 
                 // Rest
                 ((DataNavController *)self.parentViewController).index = @1;
             }
             
-            else if (indexPath.row == 7) {
+            else if (selectedCell.tag == 8) {
                 
                 // B1: Chest+Tri
                 ((DataNavController *)self.parentViewController).index = @2;
             }
             
-            else if (indexPath.row == 8) {
+            else if (selectedCell.tag == 9) {
                 
                 // T1: Chest+Tri
                 ((DataNavController *)self.parentViewController).index = @1;

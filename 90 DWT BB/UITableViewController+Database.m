@@ -37,7 +37,7 @@
     
     for (int i = 0; i < exerciseTitlesArray.count; i++) {
         
-        tempExerciseName = exerciseTitlesArray[i];
+         tempExerciseName = exerciseTitlesArray[i];
         
         for (int round = 0; round < 6; round++) {
             
