@@ -32,6 +32,8 @@
     
     [self loadArrays];
     
+    [self addAccessoryToolBar];
+    
     self.canDisplayBannerAds = YES;
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
@@ -366,6 +368,52 @@
                                     self.previousWeight_66];
 }
 
+- (void)addAccessoryToolBar
+{
+    // Create the toolbar to go above the keyboard.
+    UIToolbar *accessoryToolBar = [[UIToolbar alloc] init];
+    accessoryToolBar.barTintColor = [UIColor darkGrayColor];
+    
+    // Create buttons for the toolbar.
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNumberPad)];
+    
+    UIBarButtonItem *flexableSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *save = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveWithNumberPad)];
+    
+    // Add buttons to the toolbar.
+    accessoryToolBar.items = [NSArray arrayWithObjects:cancel, flexableSpace, save, nil];
+    
+    [accessoryToolBar sizeToFit];
+    
+    //  Change color of the toolbar and buttons.
+    accessoryToolBar.barTintColor = [UIColor darkGrayColor];
+    cancel.tintColor = [UIColor whiteColor];
+    save.tintColor = [UIColor whiteColor];
+    
+    // Set the toolbar to show for all the textfields.
+    for (int i = 0; i < self.currentTextFieldArray.count; i++) {
+        
+        UITextField *tempTextField = self.currentTextFieldArray[i];
+        tempTextField.inputAccessoryView = accessoryToolBar;
+    }
+}
+
+- (void)cancelNumberPad {
+    
+    //  Dismiss the keyboard.
+    [self.view endEditing:YES];
+}
+
+
+- (void)saveWithNumberPad {
+    
+    // Dismiss the keyboard.
+    [self.view endEditing:YES];
+
+    [self saveData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -445,8 +493,7 @@
 
 - (IBAction)submitEntries:(id)sender {
     
-    //  Save to the database
-    [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
+    [self saveData];
     
     [self shareActionSheet];
 }
@@ -478,6 +525,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
+    
+    [self saveData];
+}
+
+- (void)saveData {
     
     //  Save to the database
     [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
