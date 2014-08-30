@@ -32,6 +32,8 @@
     
     [self loadArrays];
     
+    [self addAccessoryToolBar];
+    
     self.canDisplayBannerAds = YES;
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
@@ -50,62 +52,7 @@
 }
 
 - (void)loadArrays {
-    /*
-    NSArray *Titles1 = @[@"Incline Dumbbell Fly",
-                         @"Incline Dumbbell Press 1"];
     
-    NSArray *Titles2 = @[@"Rotating Dumbbell Chest Press"];
-    
-    NSArray *Titles3 = @[@"Incline Dumbbell Press 2"];
-    
-    NSArray *Titles4 = @[@"Center Dumbbell Chest Press Fly"];
-    
-    NSArray *Titles5 = @[@"Decline Push-Up",
-                         @"Superman Airplane",
-                         @"Russian Twist"];
-    
-    NSArray *repNameArray1 = @[@"15",
-                               @"12",
-                               @"8",
-                               @"8",
-                               @"",
-                               @""];
-    
-    NSArray *repNameArray2 = @[@"5",
-                               @"5",
-                               @"5",
-                               @"5",
-                               @"5",
-                               @""];
-    
-    NSArray *repNameArray3 = @[@"15",
-                               @"12",
-                               @"8",
-                               @"8",
-                               @"12",
-                               @"15"];
-    
-    NSArray *repNameArray4 = @[@"15",
-                               @"12",
-                               @"8",
-                               @"",
-                               @"",
-                               @""];
-    
-    NSArray *repNameArray5 = @[@"10",
-                               @"",
-                               @"",
-                               @"",
-                               @"",
-                               @""];
-    
-    NSArray *repNameArray6 = @[@"",
-                               @"30",
-                               @"",
-                               @"",
-                               @"",
-                               @""];
-    */
     self.Titles = @[@"Incline Dumbbell Fly",
                     @"Incline Dumbbell Press 1",
                     @"Rotating Dumbbell Chest Press",
@@ -337,6 +284,52 @@
                                     self.previousWeight_48];
 }
 
+- (void)addAccessoryToolBar
+{
+    // Create the toolbar to go above the keyboard.
+    UIToolbar *accessoryToolBar = [[UIToolbar alloc] init];
+    accessoryToolBar.barTintColor = [UIColor darkGrayColor];
+    
+    // Create buttons for the toolbar.
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNumberPad)];
+    
+    UIBarButtonItem *flexableSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *save = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveWithNumberPad)];
+    
+    // Add buttons to the toolbar.
+    accessoryToolBar.items = [NSArray arrayWithObjects:cancel, flexableSpace, save, nil];
+    
+    [accessoryToolBar sizeToFit];
+    
+    //  Change color of the toolbar and buttons.
+    accessoryToolBar.barTintColor = [UIColor darkGrayColor];
+    cancel.tintColor = [UIColor whiteColor];
+    save.tintColor = [UIColor whiteColor];
+    
+    // Set the toolbar to show for all the textfields.
+    for (int i = 0; i < self.currentTextFieldArray.count; i++) {
+        
+        UITextField *tempTextField = self.currentTextFieldArray[i];
+        tempTextField.inputAccessoryView = accessoryToolBar;
+    }
+}
+
+- (void)cancelNumberPad {
+    
+    //  Dismiss the keyboard.
+    [self.view endEditing:YES];
+}
+
+
+- (void)saveWithNumberPad {
+    
+    // Dismiss the keyboard.
+    [self.view endEditing:YES];
+    
+    [self saveData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -417,7 +410,7 @@
 - (IBAction)submitEntries:(id)sender {
     
     //  Save to the database
-    [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
+    [self saveData];
     
     [self shareActionSheet];
 }
@@ -449,6 +442,12 @@
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
+    
+    //  Save to the database
+    [self saveData];
+}
+
+- (void)saveData {
     
     //  Save to the database
     [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
