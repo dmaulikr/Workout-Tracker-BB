@@ -328,10 +328,10 @@
 		582EFBFA19C7AF4800721B8F /* In-App Purchases */ = {
 			isa = PBXGroup;
 			children = (
-				582EFBFB19C7B00100721B8F /* IAPHelper.h */,
 				582EFBFC19C7B00100721B8F /* IAPHelper.m */,
+				582EFBFB19C7B00100721B8F /* IAPHelper.h */,
 			);
-			name = "In-App Purchases";
+			path = "In-App Purchases";
 			sourceTree = "<group>";
 		};
 		586FB27018B138D6008F8F7A /* Exercise */ = {
