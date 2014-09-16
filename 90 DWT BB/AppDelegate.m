@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "90DWTBBIAPHelper.h"
 
 @implementation AppDelegate
 
@@ -19,8 +20,8 @@
     // Override point for customization after application launch.
     
     // For In App Purchases - check to see if any transactions were purchased but not completed due to network loss or somethign similar.
-    //[DWT3IAPHelper sharedInstance];
-    
+    [_0DWTBBIAPHelper sharedInstance];
+        
     //  Configure for iOS 7
     
     // style the navigation bar

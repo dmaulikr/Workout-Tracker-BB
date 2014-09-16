@@ -18,4 +18,6 @@
 @property (nonatomic, assign) BOOL availableForPurchase;
 @property (nonatomic, strong) NSString * productIdentifier;
 @property (nonatomic, strong) SKProduct * skProduct;
+@property (nonatomic, assign) BOOL purchaseInProgress;
+
 @end

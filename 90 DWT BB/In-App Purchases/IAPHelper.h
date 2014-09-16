@@ -7,15 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 
-typedef void (^RequestProductsCompletionHandler)
-(BOOL success, NSArray * products);
+UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
+
+typedef void (^RequestProductsCompletionHandler) (BOOL success, NSArray * products);
 
 @interface IAPHelper : NSObject
 
-@property (nonatomic, strong) NSMutableDictionary * products;
+//@property (nonatomic, strong) NSMutableDictionary * products;
 
-- (id)initWithProducts:(NSMutableDictionary *)products;
+- (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
+- (void)buyProduct:(SKProduct *)product;
+- (BOOL)productPurchased:(NSString *)productIdentifier;
+- (void)restoreCompletedTransactions;
 
 @end

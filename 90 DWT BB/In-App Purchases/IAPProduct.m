@@ -11,6 +11,7 @@
 @implementation IAPProduct
 
 - (id)initWithProductIdentifier:(NSString *)productIdentifier {
+    
     if ((self = [super init])) {
         self.availableForPurchase = NO;
         self.productIdentifier = productIdentifier;
@@ -20,7 +21,11 @@
 }
 
 - (BOOL)allowedToPurchase {
+    
     if (!self.availableForPurchase) return NO;
+    if (self.purchaseInProgress) return NO;
+    
     return YES;
 }
+             
 @end

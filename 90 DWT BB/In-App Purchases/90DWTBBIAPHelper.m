@@ -7,7 +7,6 @@
 //
 
 #import "90DWTBBIAPHelper.h"
-#import "IAPProduct.h"
 
 @implementation _0DWTBBIAPHelper
 
@@ -15,21 +14,13 @@
     
     static dispatch_once_t once;
     static _0DWTBBIAPHelper * sharedInstance;
+    
     dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
+        NSSet * productIdentifiers = [NSSet setWithObjects: @"com.grantsoftware.90DWTBB.workouteditor", nil];
+        sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
+    
     return sharedInstance;
-}
-
-- (id)init {
-    
-    IAPProduct * workoutEditor = [[IAPProduct alloc] initWithProductIdentifier:@"com.grantsoftware.90DWTBB.workouteditor"];
-    
-    NSMutableDictionary * products = [ @{workoutEditor.productIdentifier: workoutEditor} mutableCopy];
-    
-    if ((self = [super initWithProducts:products])) {
-    }
-    return self;
 }
 
 @end
