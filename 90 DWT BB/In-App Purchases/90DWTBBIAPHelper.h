@@ -11,6 +11,5 @@
 @interface _0DWTBBIAPHelper : IAPHelper
 
 + (_0DWTBBIAPHelper *)sharedInstance;
-- (void)requestProducts;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "90DWTBBIAPHelper.h"
+#import "IAPProduct.h"
 
 @implementation _0DWTBBIAPHelper
 
@@ -20,10 +21,15 @@
     return sharedInstance;
 }
 
-- (void)requestProducts {
+- (id)init {
     
-    NSSet * productIdentifiers = [NSSet setWithObjects:@"com.grantsoftware.90DWTBB.workouteditor", nil];
+    IAPProduct * workoutEditor = [[IAPProduct alloc] initWithProductIdentifier:@"com.grantsoftware.90DWTBB.workouteditor"];
     
-    return [super requestProductsWithProductIdentifiers:productIdentifiers];
+    NSMutableDictionary * products = [ @{workoutEditor.productIdentifier: workoutEditor} mutableCopy];
+    
+    if ((self = [super initWithProducts:products])) {
+    }
+    return self;
 }
+
 @end

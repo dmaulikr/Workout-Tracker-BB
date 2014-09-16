@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^RequestProductsCompletionHandler)
+(BOOL success, NSArray * products);
+
 @interface IAPHelper : NSObject
-- (void)requestProductsWithProductIdentifiers:(NSSet *)productIdentifiers;
+
+@property (nonatomic, strong) NSMutableDictionary * products;
+
+- (id)initWithProducts:(NSMutableDictionary *)products;
+- (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
+
 @end

@@ -88,6 +88,7 @@
 		A5A3A6AF19C88104006090D9 /* 90DWTBBIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6AE19C88104006090D9 /* 90DWTBBIAPHelper.m */; };
 		A5A3A6B219C88581006090D9 /* StoreListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6B119C88581006090D9 /* StoreListTVC.m */; };
 		A5A3A6B919C8885C006090D9 /* StoreListTVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6B819C8885C006090D9 /* StoreListTVCCell.m */; };
+		A5A3A6BC19C8A4B7006090D9 /* IAPProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6BB19C8A4B7006090D9 /* IAPProduct.m */; };
 		A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */; };
 		A5BF8BF918C4F3E80077D6DF /* Bulk_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BF818C4F3E80077D6DF /* Bulk_Legs_1_TVC.m */; };
 		A5BF8BFC18C4F3F90077D6DF /* Bulk_Back_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFB18C4F3F90077D6DF /* Bulk_Back_1_TVC.m */; };
@@ -257,6 +258,8 @@
 		A5A3A6B119C88581006090D9 /* StoreListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListTVC.m; sourceTree = "<group>"; };
 		A5A3A6B719C8885C006090D9 /* StoreListTVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListTVCCell.h; sourceTree = "<group>"; };
 		A5A3A6B819C8885C006090D9 /* StoreListTVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListTVCCell.m; sourceTree = "<group>"; };
+		A5A3A6BA19C8A4B7006090D9 /* IAPProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPProduct.h; sourceTree = "<group>"; };
+		A5A3A6BB19C8A4B7006090D9 /* IAPProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPProduct.m; sourceTree = "<group>"; };
 		A5BF8BF418C4F3D20077D6DF /* Bulk_Chest_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Chest_1_TVC.h; sourceTree = "<group>"; };
 		A5BF8BF518C4F3D20077D6DF /* Bulk_Chest_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Chest_1_TVC.m; sourceTree = "<group>"; };
 		A5BF8BF718C4F3E80077D6DF /* Bulk_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Legs_1_TVC.h; sourceTree = "<group>"; };
@@ -338,10 +341,12 @@
 			isa = PBXGroup;
 			children = (
 				A5A3A6B319C88668006090D9 /* Cells */,
-				582EFBFC19C7B00100721B8F /* IAPHelper.m */,
 				582EFBFB19C7B00100721B8F /* IAPHelper.h */,
+				582EFBFC19C7B00100721B8F /* IAPHelper.m */,
 				A5A3A6AD19C88104006090D9 /* 90DWTBBIAPHelper.h */,
 				A5A3A6AE19C88104006090D9 /* 90DWTBBIAPHelper.m */,
+				A5A3A6BA19C8A4B7006090D9 /* IAPProduct.h */,
+				A5A3A6BB19C8A4B7006090D9 /* IAPProduct.m */,
 			);
 			path = "In-App Purchases";
 			sourceTree = "<group>";
@@ -954,6 +959,7 @@
 				588ABCDB18C018A400DEBCFC /* Build_Shoulders_1_TVC.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
+				A5A3A6BC19C8A4B7006090D9 /* IAPProduct.m in Sources */,
 				A5BF8BF918C4F3E80077D6DF /* Bulk_Legs_1_TVC.m in Sources */,
 				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
 				58F21AD518A6E02F00DE043E /* MeasurementsViewController.m in Sources */,

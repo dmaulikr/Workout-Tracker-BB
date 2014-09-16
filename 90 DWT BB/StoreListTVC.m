@@ -9,12 +9,18 @@
 #import "StoreListTVC.h"
 #import "StoreListTVCCell.h"
 #import "90DWTBBIAPHelper.h"
+#import "IAPProduct.h"
+@import StoreKit;
 
 @interface StoreListTVC ()
 
 @end
 
-@implementation StoreListTVC
+@implementation StoreListTVC {
+    
+    NSArray * _products;
+    NSNumberFormatter * _priceFormatter;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,13 +35,41 @@
 {
     [super viewDidLoad];
     
-    [[_0DWTBBIAPHelper sharedInstance] requestProducts];
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    
+    self.title = @"Store";
+    
+    _priceFormatter = [[NSNumberFormatter alloc] init];
+    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(reload) forControlEvents:UIControlEventValueChanged];
+    [self reload];
+    [self.refreshControl beginRefreshing];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)reload {
+    
+    _products = nil;
+    [self.tableView reloadData];
+    [[_0DWTBBIAPHelper sharedInstance]
+     
+     requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+         
+         if (success) {
+             _products = products;
+             [self.tableView reloadData];
+         }
+         
+         [self.refreshControl endRefreshing];
+     }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,13 +89,23 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return _products.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     StoreListTVCCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    IAPProduct *product = _products[indexPath.row];
+    cell.titleLabel.text = product.skProduct.localizedTitle;
+    cell.descriptionLabel.text = product.skProduct.localizedDescription;
+    [_priceFormatter setLocale:product.skProduct.priceLocale];
+    cell.priceLabel.text = [_priceFormatter stringFromNumber:product.skProduct.price];
+    
+    cell.priceLabel.textColor = [UIColor colorWithRed:48/255.0f green:137/255.0f blue:210/255.0f alpha:1];
+    
+    return cell;
     
     /*
     SKProduct * product = (SKProduct *) _products[indexPath.row];
