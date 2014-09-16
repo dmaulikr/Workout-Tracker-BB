@@ -1,0 +1,29 @@
+//
+//  90DWTBBIAPHelper.m
+//  90 DWT BB
+//
+//  Created by Grant, Jared on 9/16/14.
+//  Copyright (c) 2014 Jared Grant. All rights reserved.
+//
+
+#import "90DWTBBIAPHelper.h"
+
+@implementation _0DWTBBIAPHelper
+
++ (_0DWTBBIAPHelper *)sharedInstance {
+    
+    static dispatch_once_t once;
+    static _0DWTBBIAPHelper * sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (void)requestProducts {
+    
+    NSSet * productIdentifiers = [NSSet setWithObjects:@"com.grantsoftware.90DWTBB.workouteditor", nil];
+    
+    return [super requestProductsWithProductIdentifiers:productIdentifiers];
+}
+@end

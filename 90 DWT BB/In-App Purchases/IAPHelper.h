@@ -9,6 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface IAPHelper : NSObject
-- (void)requestProductsWithProductIdentifiers:
-(NSSet *)productIdentifiers;
+- (void)requestProductsWithProductIdentifiers:(NSSet *)productIdentifiers;
 @end
