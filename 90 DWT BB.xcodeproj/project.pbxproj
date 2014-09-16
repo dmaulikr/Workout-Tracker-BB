@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5809254C18E131C000787516 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5809254B18E131C000787516 /* Main_iPad.storyboard */; };
 		582330E518D3E5B7007FB187 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 582330E418D3E5B7007FB187 /* Workout.m */; };
+		582EFBF919C7AB1A00721B8F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582EFBF819C7AB1A00721B8F /* StoreKit.framework */; };
+		582EFBFD19C7B00100721B8F /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 582EFBFC19C7B00100721B8F /* IAPHelper.m */; };
 		587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB60189DD9B8006FA541 /* Foundation.framework */; };
 		587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB62189DD9B8006FA541 /* CoreGraphics.framework */; };
 		587CFB65189DD9B8006FA541 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587CFB64189DD9B8006FA541 /* UIKit.framework */; };
@@ -118,6 +120,9 @@
 		5809254B18E131C000787516 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		582330E318D3E5B7007FB187 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		582330E418D3E5B7007FB187 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		582EFBF819C7AB1A00721B8F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		582EFBFB19C7B00100721B8F /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		582EFBFC19C7B00100721B8F /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		587CFB5D189DD9B8006FA541 /* 90 DWT BB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT BB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		587CFB60189DD9B8006FA541 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		587CFB62189DD9B8006FA541 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -300,6 +305,7 @@
 				58F21AEF18A6E58400DE043E /* MediaPlayer.framework in Frameworks */,
 				587CFB63189DD9B8006FA541 /* CoreGraphics.framework in Frameworks */,
 				587CFB67189DD9B8006FA541 /* CoreData.framework in Frameworks */,
+				582EFBF919C7AB1A00721B8F /* StoreKit.framework in Frameworks */,
 				587CFB65189DD9B8006FA541 /* UIKit.framework in Frameworks */,
 				587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */,
 			);
@@ -319,6 +325,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		582EFBFA19C7AF4800721B8F /* In-App Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				582EFBFB19C7B00100721B8F /* IAPHelper.h */,
+				582EFBFC19C7B00100721B8F /* IAPHelper.m */,
+			);
+			name = "In-App Purchases";
+			sourceTree = "<group>";
+		};
 		586FB27018B138D6008F8F7A /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +367,7 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				582EFBF819C7AB1A00721B8F /* StoreKit.framework */,
 				58F21B0218A6E62600DE043E /* Security.framework */,
 				58F21B0018A6E61400DE043E /* QuartzCore.framework */,
 				58F21AFE18A6E60400DE043E /* Social.framework */,
@@ -374,6 +390,7 @@
 		587CFB68189DD9B8006FA541 /* 90 DWT BB */ = {
 			isa = PBXGroup;
 			children = (
+				582EFBFA19C7AF4800721B8F /* In-App Purchases */,
 				A5F3478B18B6753A009BBA33 /* Collection Views */,
 				58F21AE818A6E12900DE043E /* MainTBC.h */,
 				58F21AE918A6E12900DE043E /* MainTBC.m */,
@@ -830,7 +847,7 @@
 						DevelopmentTeam = 5SHF8ESE26;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -900,6 +917,7 @@
 				582330E518D3E5B7007FB187 /* Workout.m in Sources */,
 				A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
+				582EFBFD19C7B00100721B8F /* IAPHelper.m in Sources */,
 				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,
 				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
