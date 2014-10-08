@@ -56,6 +56,8 @@
     
     [[UITabBar appearance] setTintColor: [UIColor orangeColor]];
     
+    [UIViewController prepareInterstitialAds];
+    
     return YES;
 }
 

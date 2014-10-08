@@ -242,4 +242,11 @@
     
     [self performSegueWithIdentifier:workoutSegueName sender:self];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Show the Interstitial Ad
+    UIViewController *c = segue.destinationViewController;
+    
+    c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+}
 @end
