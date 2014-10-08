@@ -16,7 +16,7 @@
     static _0DWTBBIAPHelper * sharedInstance;
     
     dispatch_once(&once, ^{
-        NSSet * productIdentifiers = [NSSet setWithObjects: @"com.grantsoftware.90DWTBB.workouteditor", nil];
+        NSSet * productIdentifiers = [NSSet setWithObjects: @"com.grantsoftware.90DWTBB.removeads", nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
     

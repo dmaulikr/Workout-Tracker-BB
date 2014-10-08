@@ -10,6 +10,7 @@
 #import "UITableViewController+Database.h"
 #import "UITableViewController+Design.h"
 #import "DataNavController.h"
+#import "90DWTBBIAPHelper.h"
 
 @interface Beast_CompleteBody_1_TVC ()
 
@@ -34,7 +35,17 @@
     
     [self addAccessoryToolBar];
     
-    self.canDisplayBannerAds = YES;
+    // Show or Hide Ads
+    if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
     

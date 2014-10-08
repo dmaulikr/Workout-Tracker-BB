@@ -7,6 +7,7 @@
 //
 
 #import "WeekTVC.h"
+#import "90DWTBBIAPHelper.h"
 
 @interface WeekTVC ()
 
@@ -244,9 +245,17 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Show the Interstitial Ad
-    UIViewController *c = segue.destinationViewController;
     
-    c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+    if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        
+    } else {
+        
+        // Show the Interstitial Ad
+        UIViewController *c = segue.destinationViewController;
+        
+        c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+    }
 }
 @end
