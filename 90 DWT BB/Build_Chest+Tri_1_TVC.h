@@ -210,6 +210,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *currentWeight_65;
 @property (weak, nonatomic) IBOutlet UITextField *currentWeight_66;
 
+
 // REP LABELS
 @property (weak, nonatomic) IBOutlet UILabel *rep_1;
 @property (weak, nonatomic) IBOutlet UILabel *rep_2;
@@ -288,6 +289,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rep_65;
 @property (weak, nonatomic) IBOutlet UILabel *rep_66;
 
+
 // PREVIOUS NOTES
 @property (weak, nonatomic) IBOutlet UITextField *previousNotes_1;
 @property (weak, nonatomic) IBOutlet UITextField *previousNotes_2;
@@ -301,6 +303,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *previousNotes_10;
 @property (weak, nonatomic) IBOutlet UITextField *previousNotes_11;
 
+
 // CURRENT NOTES
 @property (weak, nonatomic) IBOutlet UITextField *currentNotes_1;
 @property (weak, nonatomic) IBOutlet UITextField *currentNotes_2;
@@ -313,6 +316,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *currentNotes_9;
 @property (weak, nonatomic) IBOutlet UITextField *currentNotes_10;
 @property (weak, nonatomic) IBOutlet UITextField *currentNotes_11;
+
 
 // GRAPH BUTTON
 @property (weak, nonatomic) IBOutlet UIButton *graphButton_1;
