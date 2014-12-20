@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSArray *exerciseLabelArray;
 @property (strong, nonatomic) NSArray *repLabelArray;
 
+@property (strong, nonatomic) NSArray *currentNotesArray;
+@property (strong, nonatomic) NSArray *previousNotesArray;
+@property (strong, nonatomic) NSArray *graphButtonArray;
 
 //  CELLS
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_1;
@@ -263,6 +266,44 @@
 @property (weak, nonatomic) IBOutlet UILabel *rep_59;
 @property (weak, nonatomic) IBOutlet UILabel *rep_60;
 
+
+// PREVIOUS NOTES
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_1;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_2;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_3;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_4;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_5;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_6;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_7;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_8;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_9;
+@property (weak, nonatomic) IBOutlet UITextField *previousNotes_10;
+
+
+// CURRENT NOTES
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_1;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_2;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_3;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_4;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_5;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_6;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_7;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_8;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_9;
+@property (weak, nonatomic) IBOutlet UITextField *currentNotes_10;
+
+
+// GRAPH BUTTON
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_1;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_2;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_3;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_4;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_5;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_6;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_7;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_8;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_9;
+@property (weak, nonatomic) IBOutlet UIButton *graphButton_10;
 
 - (IBAction)submitEntries:(id)sender;
 @end
