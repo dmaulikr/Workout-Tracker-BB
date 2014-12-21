@@ -58,5 +58,7 @@
 @property (strong, nonatomic) NSArray *cellBoxArray;
 @property (strong, nonatomic) NSArray *tableCellArray;
 @property (strong, nonatomic) NSArray *accessoryIconArray;
+@property (strong, nonatomic) NSArray *tableLabelArray;
+@property (strong, nonatomic) NSArray *tableDetailArray;
 
 @end

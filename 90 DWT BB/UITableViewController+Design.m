@@ -34,8 +34,11 @@
         //cell.detailTextLabel.textColor = [UIColor orangeColor];
         
         // Label and Subtitle Font Size
-        //cell.textLabel.font = [UIFont systemFontOfSize:18];
-        //cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        [cell.textLabel setFont:labelFont];
+        
+        UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        [cell.detailTextLabel setFont:detailFont];
         
         // Accessory view icon
         if ([needsAccessoryIcon[i] boolValue]) {
@@ -65,6 +68,32 @@
         tempTextBox.layer.cornerRadius = 15.0f;
         tempTextBox.clipsToBounds = YES;
         
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        [tempTextBox setFont:font];
+        
+    }
+}
+
+- (void)configureWorkoutLabels:(NSArray*)tableViewLabelArray :(NSArray*)tableViewDetailArray {
+    
+    UILabel *tempLabel;
+    UILabel *tempDetail;
+    
+    UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    
+    // Label
+    for (int i = 0; i < tableViewLabelArray.count; i++) {
+        
+        tempLabel = tableViewLabelArray[i];
+        [tempLabel setFont:labelFont];
+    }
+    
+    // Detail
+    for (int i = 0; i < tableViewDetailArray.count; i++) {
+        
+        tempDetail = tableViewDetailArray[i];
+        [tempDetail setFont:detailFont];
     }
 }
 
@@ -88,6 +117,8 @@
         tempExerciseLabel = exerciseLabelsArray[i];
         tempExerciseLabel.text = exerciseNamesArray[i];
         tempExerciseLabel.textColor = [UIColor orangeColor];
+        UIFont *exerciseLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        [tempExerciseLabel setFont:exerciseLabelFont];
         
         // Graph Button
         tempGraphButton = graphBtnArray[i];
@@ -98,6 +129,12 @@
         tempPreviousNotes.backgroundColor = [UIColor groupTableViewBackgroundColor];
         tempPreviousNotes.userInteractionEnabled = NO;
         tempPreviousNotes.textColor = [UIColor lightGrayColor];
+        UIFont *previousNotesFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+        [tempPreviousNotes setFont:previousNotesFont];
+        
+        tempPreviousNotes.layer.borderWidth = 1.0f;
+        tempPreviousNotes.layer.borderColor = [lightGreen CGColor];
+        tempPreviousNotes.layer.cornerRadius = 5;
         
         // Current Notes
         tempCurrentNotes = curNotesArray[i];
@@ -105,6 +142,12 @@
         tempCurrentNotes.backgroundColor = lightGreen;
         tempCurrentNotes.clearButtonMode = UITextFieldViewModeWhileEditing;
         tempCurrentNotes.keyboardAppearance = UIKeyboardAppearanceDark;
+        UIFont *currentNotesFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+        [tempCurrentNotes setFont:currentNotesFont];
+        
+        tempCurrentNotes.layer.borderWidth = 1.0f;
+        tempCurrentNotes.layer.borderColor = [lightGreen CGColor];
+        tempCurrentNotes.layer.cornerRadius = 5;
         
         tempCurrentNotes.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"New Notes" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ];
     }
@@ -144,6 +187,8 @@
         
         //  Labels
         tempRepLabel.textColor = [UIColor darkGrayColor];
+        UIFont *repLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+        [tempRepLabel setFont:repLabelFont];
         
         //  Current textfields
         tempCurrentTF.textColor = [UIColor whiteColor];

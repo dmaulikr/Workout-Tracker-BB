@@ -53,7 +53,7 @@
     [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray :self.previousNotesArray :self.currentNotesArray :self.graphButtonArray];
     
     //  Get data from the database
-    [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray];
+    [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.previousNotesArray :self.currentNotesArray];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -581,7 +581,7 @@
 - (void)saveData {
     
     //  Save to the database
-    [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray];
+    [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray :self.currentNotesArray];
 }
 
 /*

@@ -32,6 +32,8 @@
     [self configureCellBox:self.cellBoxArray];
     
     [self configureAccessoryIcon:self.tableCellArray :self.accessoryIconArray];
+    
+    [self configureWorkoutLabels:self.tableLabelArray :self.tableDetailArray];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -67,6 +69,26 @@
                             self.cell10,
                             self.cell11,
                             self.cell12];
+    
+    self.tableLabelArray = @[self.cell1Label,
+                             self.cell2Label,
+                             self.cell3Label,
+                             self.cell4Label,
+                             self.cell5Label,
+                             self.cell6Label,
+                             self.cell7Label,
+                             self.cell8Label,
+                             self.cell9Label,
+                             self.cell10Label,
+                             self.cell11Label,
+                             self.cell12Label];
+    
+    self.tableDetailArray = @[self.cell1Detail,
+                              self.cell2Detail,
+                              self.cell4Detail,
+                              self.cell5Detail,
+                              self.cell10Detail,
+                              self.cell11Detail];
     
     self.accessoryIconArray = @[@YES,
                                 @YES,

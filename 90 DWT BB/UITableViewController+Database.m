@@ -11,7 +11,7 @@
 
 @implementation UITableViewController (Database)
 
--(void)exerciseMatches:(NSArray*)exerciseTitlesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray {
+-(void)exerciseMatches:(NSArray*)exerciseTitlesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)prevNotesArray :(NSArray*)curNotesArray{
     
     // Get Data from the database.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -27,6 +27,8 @@
     NSString *tempExerciseName;
     UITextField *tempPreviousTF;
     UITextField *tempCurrentTF;
+    UITextField *tempPreviousNotes;
+    UITextField *tempCurrentNotes;
     int textFieldCount = 0;
     NSNumber *roundConverted;
     
@@ -37,8 +39,11 @@
     
     for (int i = 0; i < exerciseTitlesArray.count; i++) {
         
-         tempExerciseName = exerciseTitlesArray[i];
+        tempExerciseName = exerciseTitlesArray[i];
+        tempPreviousNotes = prevNotesArray[i];
+        tempCurrentNotes = curNotesArray[i];
         
+        // Get data for previousTF and currentTF and Previous Notes and Current Notes.
         for (int round = 0; round < 6; round++) {
             
             tempPreviousTF = previousTFArray[textFieldCount];
@@ -75,17 +80,13 @@
                 else {
                     //NSLog(@"viewDidLoad = Match found - set previous textfields to stored values for this weeks workout");
                     
-                    //matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
                     matches = [fetchedOjectsArray objectAtIndex:0];
                     
                     tempCurrentTF.text = matches.weight;
                     tempPreviousTF.text = matches.weight;
                     
-                    //tempCurrentTF.text = [matches valueForKey:@"weight"];
-                    //tempPreviousTF.text = [matches valueForKey:@"weight"];
-                    
-                    //NSLog(@"PreviousTF = %@", tempWeightField.text);
-                    //NSLog(@"CurrentTF  = %@", tempPreviousWF.text);
+                    tempCurrentNotes.text = matches.notes;
+                    tempPreviousNotes.text = matches.notes;
                 }
             }
             
@@ -96,11 +97,10 @@
                 // User came back to look at his results so display this weeks results in the current results section.
                 if ([fetchedOjectsArray count] == 1) {
                     
-                    //matches = fetchedOjectsArray[[fetchedOjectsArray count] -1];
                     matches = [fetchedOjectsArray objectAtIndex:0];
                     
                     tempCurrentTF.text = matches.weight;
-                    //tempCurrentTF.text = [matches valueForKey:@"weight"];
+                    tempCurrentNotes.text = matches.notes;
                     
                     pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
                             routine,
@@ -114,11 +114,10 @@
                     
                     if ([fetchedOjectsArray count] == 1) {
                         
-                        //matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
                         matches = [fetchedOjectsArray objectAtIndex:0];
                         
                         tempPreviousTF.text = matches.weight;
-                        //tempPreviousTF.text = [matches valueForKey:@"weight"];
+                        tempPreviousNotes.text = matches.notes;
                     }
                     
                     //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
@@ -146,11 +145,10 @@
                     
                     if ([fetchedOjectsArray count] == 1) {
                         
-                        //matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
                         matches = [fetchedOjectsArray objectAtIndex:0];
                         
                         tempPreviousTF.text = matches.weight;
-                        //tempPreviousTF.text = [matches valueForKey:@"weight"];
+                        tempPreviousNotes.text = matches.notes;
                     }
                     
                     //  The user did not do the last workout so there are no records to display in the previous secition.  Set it to 0.0.
@@ -167,7 +165,7 @@
     }
 }
 
--(void)saveToDatabase:(NSArray*)exerciseNameArray :(NSArray*)repLabelArray :(NSArray*)currentTFArray {
+-(void)saveToDatabase:(NSArray*)exerciseNameArray :(NSArray*)repLabelArray :(NSArray*)currentTFArray :(NSArray*)curNotesArray {
     
     NSDate *todaysDate = [NSDate date];
     
@@ -186,6 +184,7 @@
     NSString *tempExerciseName;
     NSString *tempRepName;
     UITextField *tempCurrentTF;
+    UITextField *tempCurrentNotes;
     int textFieldCount = 0;
     NSNumber *roundConverted;
     
@@ -198,7 +197,9 @@
     for (int i = 0; i < exerciseNameArray.count; i++) {
         
         tempExerciseName = exerciseNameArray[i];
+        tempCurrentNotes = curNotesArray[i];
         
+        // Save the Current Weight text field and Current Notes text field
         for (int round = 0; round < 6; round++) {
             
             tempRepName = repLabelArray[textFieldCount];
@@ -226,7 +227,7 @@
                     
                     insertWorkoutInfo.reps = tempRepName;
                     insertWorkoutInfo.weight = tempCurrentTF.text;
-                    //insertWorkoutInfo.notes = currentNotes.text;
+                    insertWorkoutInfo.notes = tempCurrentNotes.text;
                     insertWorkoutInfo.date = todaysDate;
                     insertWorkoutInfo.exercise = tempExerciseName;
                     insertWorkoutInfo.round = roundConverted;
@@ -235,23 +236,7 @@
                     insertWorkoutInfo.week = week;
                     insertWorkoutInfo.workout = workout;
                     insertWorkoutInfo.index = workoutIndex;
-                    
-                    /*
-                     NSManagedObject *newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
-                    [newExercise setValue:tempRepName forKey:@"reps"];
-                    [newExercise setValue:tempCurrentTF.text forKey:@"weight"];
-                    //[newExercise setValue:self.currentNotes.text forKey:@"notes"];
-                    [newExercise setValue:todaysDate forKey:@"date"];
-                    [newExercise setValue:tempExerciseName forKey:@"exercise"];
-                    [newExercise setValue:roundConverted forKey:@"round"];
-                    [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
-                    [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
-                    [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
-                    [newExercise setValue:((DataNavController *)self.parentViewController).workout forKey:@"workout"];
-                    [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
-                     */
                 }
-                
             }
             
             else {
@@ -269,11 +254,17 @@
                         matches.weight = tempCurrentTF.text;
                         matches.date = todaysDate;
                     }
+                }
                 
-                    /*
-                    [matches setValue:tempCurrentTF.text forKey:@"weight"];
-                    [matches setValue:todaysDate forKey:@"date"];
-                    */
+                // Make sure the text field is not empty
+                if (tempCurrentNotes.text.length != 0) {
+                    
+                    if (![matches.notes isEqualToString: tempCurrentNotes.text]) {
+                        
+                        // Only update the fields that have been changed
+                        matches.notes = tempCurrentNotes.text;
+                        matches.date = todaysDate;
+                    }
                 }
             }
             
@@ -287,6 +278,7 @@
             textFieldCount++;
             
             [tempCurrentTF resignFirstResponder];
+            [tempCurrentNotes resignFirstResponder];
         }
     }
 }
