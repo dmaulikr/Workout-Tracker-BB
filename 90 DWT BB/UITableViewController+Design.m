@@ -68,9 +68,12 @@
     }
 }
 
-- (void)configureExerciseCell:(NSArray*)tableCell :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)exerciseLabelsArray :(NSArray*)repsLabelArray {
+- (void)configureExerciseCell:(NSArray*)tableCell :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)exerciseLabelsArray :(NSArray*)repsLabelArray :(NSArray*)prevNotesArray :(NSArray*)curNotesArray : (NSArray*)graphBtnArray {
     
     UILabel *tempExerciseLabel;
+    UIButton *tempGraphButton;
+    UITextField *tempPreviousNotes;
+    UITextField *tempCurrentNotes;
     UILabel *tempRepLabel;
     UITextField *tempPreviousTF;
     UITextField *tempCurrentTF;
@@ -78,12 +81,32 @@
     //UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
     UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:.75f];
     
-    //  Configure the Exercise Label
+    //  Configure the Exercise Label, Graph Button, Previous Notes, and Current Notes
     for (int i = 0; i < tableCell.count; i++) {
         
+        // Exercise Label
         tempExerciseLabel = exerciseLabelsArray[i];
         tempExerciseLabel.text = exerciseNamesArray[i];
         tempExerciseLabel.textColor = [UIColor orangeColor];
+        
+        // Graph Button
+        tempGraphButton = graphBtnArray[i];
+        tempGraphButton.hidden = YES;
+        
+        // Previous Notes
+        tempPreviousNotes = prevNotesArray[i];
+        tempPreviousNotes.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        tempPreviousNotes.userInteractionEnabled = NO;
+        tempPreviousNotes.textColor = [UIColor lightGrayColor];
+        
+        // Current Notes
+        tempCurrentNotes = curNotesArray[i];
+        tempCurrentNotes.textColor = [UIColor whiteColor];
+        tempCurrentNotes.backgroundColor = lightGreen;
+        tempCurrentNotes.clearButtonMode = UITextFieldViewModeWhileEditing;
+        tempCurrentNotes.keyboardAppearance = UIKeyboardAppearanceDark;
+        
+        tempCurrentNotes.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"New Notes" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ];
     }
     
     for (int i = 0; i < repsLabelArray.count; i++) {

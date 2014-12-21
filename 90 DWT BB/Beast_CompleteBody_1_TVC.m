@@ -50,7 +50,7 @@
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
     
     //  Configure the cell...
-    [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray];
+    [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray :self.previousNotesArray :self.currentNotesArray :self.graphButtonArray];
     
     //  Get data from the database
     [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray];
@@ -517,6 +517,57 @@
                                     self.previousWeight_94,
                                     self.previousWeight_95,
                                     self.previousWeight_96];
+    
+    self.currentNotesArray = @[self.currentNotes_1,
+                               self.currentNotes_2,
+                               self.currentNotes_3,
+                               self.currentNotes_4,
+                               self.currentNotes_5,
+                               self.currentNotes_6,
+                               self.currentNotes_7,
+                               self.currentNotes_8,
+                               self.currentNotes_9,
+                               self.currentNotes_10,
+                               self.currentNotes_11,
+                               self.currentNotes_12,
+                               self.currentNotes_13,
+                               self.currentNotes_14,
+                               self.currentNotes_15,
+                               self.currentNotes_16];
+    
+    self.previousNotesArray = @[self.previousNotes_1,
+                                self.previousNotes_2,
+                                self.previousNotes_3,
+                                self.previousNotes_4,
+                                self.previousNotes_5,
+                                self.previousNotes_6,
+                                self.previousNotes_7,
+                                self.previousNotes_8,
+                                self.previousNotes_9,
+                                self.previousNotes_10,
+                                self.previousNotes_11,
+                                self.previousNotes_12,
+                                self.previousNotes_13,
+                                self.previousNotes_14,
+                                self.previousNotes_15,
+                                self.previousNotes_16];
+    
+    self.graphButtonArray = @[self.graphButton_1,
+                              self.graphButton_2,
+                              self.graphButton_3,
+                              self.graphButton_4,
+                              self.graphButton_5,
+                              self.graphButton_6,
+                              self.graphButton_7,
+                              self.graphButton_8,
+                              self.graphButton_9,
+                              self.graphButton_10,
+                              self.graphButton_11,
+                              self.graphButton_12,
+                              self.graphButton_13,
+                              self.graphButton_14,
+                              self.graphButton_15,
+                              self.graphButton_16];
 }
 
 - (void)addAccessoryToolBar
