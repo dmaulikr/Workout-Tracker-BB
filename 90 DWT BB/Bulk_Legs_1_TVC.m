@@ -457,7 +457,7 @@
     
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Data saved successfully.  Share your progress!" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email .csv File", @"Facebook", @"Twitter", nil];
     
-    [action showFromTabBar:self.tabBarController.tabBar];
+    [action showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

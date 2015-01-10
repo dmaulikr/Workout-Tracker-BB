@@ -277,7 +277,8 @@
     
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
     
-    [action showFromTabBar:self.tabBarController.tabBar];
+    [action showFromBarButtonItem:sender animated:YES];
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
