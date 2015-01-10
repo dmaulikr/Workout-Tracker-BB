@@ -315,10 +315,21 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [photoAction showFromRect:self.selectedImageRect inView:self.view animated:YES];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath  {
+    
+    // Size cell for iPhone
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        
+        return CGSizeMake(152.f, 204.f);
+    }
+    
+    // Size cell for iPad
+    else {
+        
+        return CGSizeMake(304.f, 408.f);
+    }
 }
+
 
 - (void)cameraOrPhotoLibrary {
     UIImagePickerController *imagePicker;
@@ -328,7 +339,28 @@ didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.whereToGetPhoto isEqualToString:@"Camera"]) {
         
         // Use Camera
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            // Camera is available.  Use Camera
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        
+        else {
+            
+            // No camera detected.  Use Photo Library
+            UIAlertView *alert;
+            
+            alert = [[UIAlertView alloc] initWithTitle:@"Camera Not Found"
+                                               message:@"No camera was detected.  Using photo library instead."
+                                              delegate:self
+                                     cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil, nil];
+            
+            [alert show];
+            
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        
     } else {
         
         // Use Photo Library
@@ -340,10 +372,6 @@ didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // If your device is iPad then show the imagePicker in a popover.
     // If not iPad then show the imagePicker modally.
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && ![self.whereToGetPhoto isEqualToString:@""]) {
-    /*
-    if (([deviceModel isEqualToString:@"iPad"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
-        || ([deviceModel isEqualToString:@"iPad Simulator"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
-        */
         
         self.myPopoverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
         self.myPopoverController.delegate = self;
