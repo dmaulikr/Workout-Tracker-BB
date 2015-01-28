@@ -112,7 +112,6 @@
 		A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA601A68558E002E6513 /* CoreText.framework */; };
 		A5FFDA631A6855B8002E6513 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA621A6855B8002E6513 /* libc++.dylib */; };
 		A5FFDA6A1A697BBC002E6513 /* ExerciseChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */; };
-		A5FFDA6D1A698981002E6513 /* ExerciseGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA6C1A698981002E6513 /* ExerciseGridViewController.m */; };
 		A5FFDA701A69AAE1002E6513 /* ShinobiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -221,6 +220,7 @@
 		58F21AFE18A6E60400DE043E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		58F21B0018A6E61400DE043E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58F21B0218A6E62600DE043E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58F8698F1A78850F00BC33B0 /* ShinobiGrids.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiGrids.framework; path = Library/Frameworks/ShinobiGrids.framework; sourceTree = DEVELOPER_DIR; };
 		A51B6EE218B500A700F34A11 /* UITableViewController+Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Database.h"; sourceTree = "<group>"; };
 		A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Database.m"; sourceTree = "<group>"; };
 		A51B6EE818B55A4A00F34A11 /* ExerciseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCell.h; sourceTree = "<group>"; };
@@ -309,8 +309,6 @@
 		A5FFDA621A6855B8002E6513 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		A5FFDA681A697BBC002E6513 /* ExerciseChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseChartViewController.h; path = ShinobiControls/ExerciseChartViewController.h; sourceTree = "<group>"; };
 		A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseChartViewController.m; path = ShinobiControls/ExerciseChartViewController.m; sourceTree = "<group>"; };
-		A5FFDA6B1A698981002E6513 /* ExerciseGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseGridViewController.h; path = ShinobiControls/ExerciseGridViewController.h; sourceTree = "<group>"; };
-		A5FFDA6C1A698981002E6513 /* ExerciseGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseGridViewController.m; path = ShinobiControls/ExerciseGridViewController.m; sourceTree = "<group>"; };
 		A5FFDA6E1A69AAE1002E6513 /* ShinobiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShinobiViewController.h; path = ShinobiControls/ShinobiViewController.h; sourceTree = "<group>"; };
 		A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShinobiViewController.m; path = ShinobiControls/ShinobiViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -403,6 +401,7 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58F8698F1A78850F00BC33B0 /* ShinobiGrids.framework */,
 				A5FFDA621A6855B8002E6513 /* libc++.dylib */,
 				A5FFDA601A68558E002E6513 /* CoreText.framework */,
 				A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */,
@@ -852,8 +851,6 @@
 			children = (
 				A5FFDA681A697BBC002E6513 /* ExerciseChartViewController.h */,
 				A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */,
-				A5FFDA6B1A698981002E6513 /* ExerciseGridViewController.h */,
-				A5FFDA6C1A698981002E6513 /* ExerciseGridViewController.m */,
 				A5FFDA6E1A69AAE1002E6513 /* ShinobiViewController.h */,
 				A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */,
 			);
@@ -1037,7 +1034,6 @@
 				58DA7A5918C28FBF00ECF966 /* Tempo_Chest+Tri_1_TVC.m in Sources */,
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
 				58DA7A4A18C16FF300ECF966 /* Beast_CompleteBody_1_TVC.m in Sources */,
-				A5FFDA6D1A698981002E6513 /* ExerciseGridViewController.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
 				A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,

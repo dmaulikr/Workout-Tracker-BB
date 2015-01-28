@@ -9,7 +9,7 @@
 #import "ExerciseChartViewController.h"
 #import <ShinobiCharts/ShinobiCharts.h>
 
-@interface ExerciseChartViewController () <SChartDatasource, SChartDelegate>
+@interface ExerciseChartViewController () <SChartDatasource>
 
 @end
 
@@ -22,7 +22,6 @@
     [super viewWillAppear:YES];
     
     self.counter = 0;
-    //chart.redrawChart;
 }
 
 - (void)viewDidLoad {
@@ -48,16 +47,7 @@
     xAxis.rangePaddingLow = @(0.05);
     xAxis.rangePaddingHigh = @(0.3);
     chart.xAxis = xAxis;
-    
-    /*
-    SChartNumberAxis *xAxis = [[SChartNumberAxis alloc] init];
-    xAxis.title = @"Reps";
-    xAxis.rangePaddingLow = @(0.05);
-    xAxis.rangePaddingHigh = @(0.3);
-    chart.xAxis = xAxis;
-    //chart.xAxis.axisPositionValue = [NSNumber numberWithDouble:20.0];
-    */
-    
+
     SChartNumberAxis *yAxis = [[SChartNumberAxis alloc] init];
     yAxis.title = @"Weight";
     yAxis.rangePaddingLow = @(1.0);
@@ -68,7 +58,6 @@
     [self.view addSubview:chart];
     
     chart.datasource = self;
-    chart.delegate = self;
     
     // Show legend only on iPad
     //chart.legend.hidden = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
@@ -107,8 +96,12 @@
     //lineSeries.style.showFill = YES;
     
     lineSeries.style.pointStyle.showPoints = YES;
+    NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
     
-    lineSeries.title = [NSString stringWithFormat:@"Try %ld", index + 1];
+    self.matches = [self.objects objectAtIndex:index * 6];
+    lineSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, self.matches.notes];
+    
+    //lineSeries.style.dataPointLabelStyle.showLabels = YES;
     
     return lineSeries;
 }
@@ -150,42 +143,15 @@
     }
     
     tempReps = tempString2;
-    
-    //double xValue = [self.matches.reps doubleValue];
-    
     double yValue = [self.matches.weight doubleValue];
     
-    //dataPoint.xValue = [NSNumber numberWithDouble:dataIndex];
     dataPoint.xValue = tempReps;
-    //dataPoint.xValue = [NSNumber numberWithDouble:xValue];
     dataPoint.yValue = [NSNumber numberWithDouble:yValue];
     
     return dataPoint;
 }
 
-/*
--(void)sChart:(ShinobiChart *)chart alterTickMark:(SChartTickMark *)tickMark beforeAddingToAxis:(SChartAxis *)axis {
-    
-    if (chart.yAxis == axis) {
-        return;
-    }
-    
-    if (self.counter < self.appDelegate.graphDataPoints.count) {
-        
- 
-        NSString *tempStr = self.appDelegate.graphDataPoints[self.counter];
-        tickMark.tickLabel.text = tempStr;
-        self.counter++;
- 
-        
-        //Resize, but maintain centering
-        //CGPoint center = tickMark.tickLabel.center;
-        [tickMark.tickLabel sizeToFit];
-        //tickMark.tickLabel.center = center;
-    }
-    
-}
-*/
+#pragma mark - Utility Methods
 
 -(NSInteger)GetNumberOfMatchesInCoreData {
     

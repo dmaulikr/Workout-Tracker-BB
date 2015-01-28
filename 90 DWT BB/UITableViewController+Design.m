@@ -79,6 +79,8 @@
     UILabel *tempLabel;
     UILabel *tempDetail;
     
+    UIColor *orange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
+    
     UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
     UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     
@@ -94,6 +96,7 @@
         
         tempDetail = tableViewDetailArray[i];
         [tempDetail setFont:detailFont];
+        tempDetail.textColor = orange;
     }
 }
 
