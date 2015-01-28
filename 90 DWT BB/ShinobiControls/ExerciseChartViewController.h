@@ -20,5 +20,4 @@
 @property (strong, nonatomic) Workout *matches;
 @property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSArray *objects;
-@property int counter;
 @end

@@ -21,20 +21,18 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    self.counter = 0;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.counter = 0;
     
     self.view.backgroundColor = [UIColor whiteColor];
     //CGFloat margin = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ? 10.0 : 50.0;
     chart = [[ShinobiChart alloc] initWithFrame:CGRectInset(self.view.bounds, 0, 0)];
     
-    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    chart.title = mainAppDelegate.graphTitle;
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    chart.title = self.appDelegate.graphTitle;
     chart.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
     chart.titleCentresOn = SChartTitleCentresOnChart;
     
@@ -43,13 +41,15 @@
     // Add a pair of axes
     
     SChartCategoryAxis *xAxis = [[SChartCategoryAxis alloc] init];
-    xAxis.title = @"Reps";
+    xAxis.title = [self findXAxisTitle];
+    //xAxis.title = @"Reps";
     xAxis.rangePaddingLow = @(0.05);
     xAxis.rangePaddingHigh = @(0.3);
     chart.xAxis = xAxis;
 
     SChartNumberAxis *yAxis = [[SChartNumberAxis alloc] init];
-    yAxis.title = @"Weight";
+    //yAxis.title = @"Weight";
+    yAxis.title = [self findYAxisTitle];
     yAxis.rangePaddingLow = @(1.0);
     yAxis.rangePaddingHigh = @(1.0);
     chart.yAxis = yAxis;
@@ -183,6 +183,62 @@
         tempString = [tempString stringByAppendingString:spacesString];
     }
     return tempString;
+}
+
+-(NSString*)findXAxisTitle {
+    
+    NSArray *xAxisSecArray = @[@"B1: Chest+Tri - Dips",
+                               @"B1: Chest+Tri - Abs",
+                               @"B1: Back+Bi - Close-Grip Chin-Up",
+                               @"B1: Back+Bi - Superman to Airplane",
+                               @"B1: Legs - S-L Calf Raise",
+                               @"B1: Legs - S Calf Raise",
+                               @"B1: Legs - Abs",
+                               @"B2: Chest - Russian Twist",
+                               @"B2: Back - Plank Row Arm Balance",
+                               @"B2: Legs - Abs",
+                               @"B2: Shoulders - Plank Crunch",
+                               @"T: Chest+Tri - Mountain Climber"];
+    
+    NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
+    
+    for (int i = 0; i <xAxisSecArray.count; i++) {
+        
+        if ([tempString isEqualToString:xAxisSecArray[i]]) {
+            
+            return @"Sec";
+        }
+    }
+    
+    return @"Reps";
+}
+
+-(NSString*)findYAxisTitle {
+    
+    NSArray *yAxisRepsArray = @[@"B1: Chest+Tri - Dips",
+                                @"B1: Chest+Tri - Abs",
+                                @"B1: Back+Bi - Close-Grip Chin-Up",
+                                @"B1: Back+Bi - Superman to Airplane",
+                                @"B1: Legs - S-L Calf Raise",
+                                @"B1: Legs - S Calf Raise",
+                                @"B1: Legs - Abs",
+                                @"B2: Chest - Russian Twist",
+                                @"B2: Back - Plank Row Arm Balance",
+                                @"B2: Legs - Abs",
+                                @"B2: Shoulders - Plank Crunch",
+                                @"T: Chest+Tri - Mountain Climber"];
+    
+    NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
+    
+    for (int i = 0; i < yAxisRepsArray.count; i++) {
+        
+        if ([tempString isEqualToString:yAxisRepsArray[i]]) {
+            
+            return @"Reps";
+        }
+    }
+    
+    return @"Weight";
 }
 
 /*
