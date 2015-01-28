@@ -10,8 +10,9 @@
 #import <iAd/iAd.h>
 #import "UIViewController+Social.h"
 #import "UITableViewController+Email.h"
+#import "AppDelegate.h"
 
-@interface Bulk_Chest_1_TVC : UITableViewController <UIActionSheetDelegate>
+@interface Bulk_Chest_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;
@@ -254,4 +255,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *graphButton_8;
 
 - (IBAction)submitEntries:(id)sender;
+- (IBAction)showGraph:(UIButton *)sender;
 @end

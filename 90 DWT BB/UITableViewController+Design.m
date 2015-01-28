@@ -109,6 +109,7 @@
     
     //UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
     UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:.75f];
+    UIColor *orange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
     
     //  Configure the Exercise Label, Graph Button, Previous Notes, and Current Notes
     for (int i = 0; i < tableCell.count; i++) {
@@ -116,13 +117,22 @@
         // Exercise Label
         tempExerciseLabel = exerciseLabelsArray[i];
         tempExerciseLabel.text = exerciseNamesArray[i];
-        tempExerciseLabel.textColor = [UIColor orangeColor];
+        tempExerciseLabel.textColor = orange;
         UIFont *exerciseLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         [tempExerciseLabel setFont:exerciseLabelFont];
         
         // Graph Button
         tempGraphButton = graphBtnArray[i];
-        tempGraphButton.hidden = YES;
+        UIFont *graphButtonFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        tempGraphButton.titleLabel.font = graphButtonFont;
+        //[tempGraphButton.titleLabel sizeToFit];
+        tempGraphButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        
+        tempGraphButton.layer.borderWidth = 1.0f;
+        tempGraphButton.layer.borderColor = [orange CGColor];
+        tempGraphButton.layer.cornerRadius = 5;
+        tempGraphButton.clipsToBounds = YES;
+        //tempGraphButton.hidden = YES;
         
         // Previous Notes
         tempPreviousNotes = prevNotesArray[i];

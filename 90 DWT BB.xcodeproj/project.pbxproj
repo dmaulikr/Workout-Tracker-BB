@@ -107,6 +107,13 @@
 		A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD8718AD3B96000FD51E /* Tone_12_TVC.m */; };
 		A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F3478D18B67569009BBA33 /* Test_CVC.m */; };
 		A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F3479018B67622009BBA33 /* TestCVCCell.m */; };
+		A5FFDA5D1A6832F8002E6513 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */; };
+		A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */; };
+		A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA601A68558E002E6513 /* CoreText.framework */; };
+		A5FFDA631A6855B8002E6513 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA621A6855B8002E6513 /* libc++.dylib */; };
+		A5FFDA6A1A697BBC002E6513 /* ExerciseChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */; };
+		A5FFDA6D1A698981002E6513 /* ExerciseGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA6C1A698981002E6513 /* ExerciseGridViewController.m */; };
+		A5FFDA701A69AAE1002E6513 /* ShinobiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +303,16 @@
 		A5F3478D18B67569009BBA33 /* Test_CVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_CVC.m; sourceTree = "<group>"; };
 		A5F3478F18B67622009BBA33 /* TestCVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCVCCell.h; sourceTree = "<group>"; };
 		A5F3479018B67622009BBA33 /* TestCVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCVCCell.m; sourceTree = "<group>"; };
+		A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
+		A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A5FFDA601A68558E002E6513 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A5FFDA621A6855B8002E6513 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A5FFDA681A697BBC002E6513 /* ExerciseChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseChartViewController.h; path = ShinobiControls/ExerciseChartViewController.h; sourceTree = "<group>"; };
+		A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseChartViewController.m; path = ShinobiControls/ExerciseChartViewController.m; sourceTree = "<group>"; };
+		A5FFDA6B1A698981002E6513 /* ExerciseGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseGridViewController.h; path = ShinobiControls/ExerciseGridViewController.h; sourceTree = "<group>"; };
+		A5FFDA6C1A698981002E6513 /* ExerciseGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseGridViewController.m; path = ShinobiControls/ExerciseGridViewController.m; sourceTree = "<group>"; };
+		A5FFDA6E1A69AAE1002E6513 /* ShinobiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShinobiViewController.h; path = ShinobiControls/ShinobiViewController.h; sourceTree = "<group>"; };
+		A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShinobiViewController.m; path = ShinobiControls/ShinobiViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +320,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FFDA631A6855B8002E6513 /* libc++.dylib in Frameworks */,
+				A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */,
+				A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */,
+				A5FFDA5D1A6832F8002E6513 /* ShinobiCharts.framework in Frameworks */,
 				58F21B0318A6E62600DE043E /* Security.framework in Frameworks */,
 				58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */,
 				58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */,
@@ -382,6 +403,10 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5FFDA621A6855B8002E6513 /* libc++.dylib */,
+				A5FFDA601A68558E002E6513 /* CoreText.framework */,
+				A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */,
+				A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */,
 				582EFBF819C7AB1A00721B8F /* StoreKit.framework */,
 				58F21B0218A6E62600DE043E /* Security.framework */,
 				58F21B0018A6E61400DE043E /* QuartzCore.framework */,
@@ -405,6 +430,7 @@
 		587CFB68189DD9B8006FA541 /* 90 DWT BB */ = {
 			isa = PBXGroup;
 			children = (
+				A5FFDA641A6978D4002E6513 /* ShinobiControls */,
 				582EFBFA19C7AF4800721B8F /* In-App Purchases */,
 				A5F3478B18B6753A009BBA33 /* Collection Views */,
 				58F21AE818A6E12900DE043E /* MainTBC.h */,
@@ -821,6 +847,19 @@
 			name = "Collection Views";
 			sourceTree = "<group>";
 		};
+		A5FFDA641A6978D4002E6513 /* ShinobiControls */ = {
+			isa = PBXGroup;
+			children = (
+				A5FFDA681A697BBC002E6513 /* ExerciseChartViewController.h */,
+				A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */,
+				A5FFDA6B1A698981002E6513 /* ExerciseGridViewController.h */,
+				A5FFDA6C1A698981002E6513 /* ExerciseGridViewController.m */,
+				A5FFDA6E1A69AAE1002E6513 /* ShinobiViewController.h */,
+				A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */,
+			);
+			name = ShinobiControls;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -993,9 +1032,12 @@
 				A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */,
 				58F21AE318A6E08500DE043E /* ResultsViewController.m in Sources */,
 				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
+				A5FFDA701A69AAE1002E6513 /* ShinobiViewController.m in Sources */,
+				A5FFDA6A1A697BBC002E6513 /* ExerciseChartViewController.m in Sources */,
 				58DA7A5918C28FBF00ECF966 /* Tempo_Chest+Tri_1_TVC.m in Sources */,
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
 				58DA7A4A18C16FF300ECF966 /* Beast_CompleteBody_1_TVC.m in Sources */,
+				A5FFDA6D1A698981002E6513 /* ExerciseGridViewController.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
 				A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
@@ -1121,6 +1163,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT BB/90 DWT BB-Info.plist";
@@ -1137,6 +1183,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT BB/90 DWT BB-Info.plist";
