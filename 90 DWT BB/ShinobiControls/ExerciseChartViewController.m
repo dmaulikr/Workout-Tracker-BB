@@ -18,11 +18,6 @@
     ShinobiChart *chart;
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -98,6 +93,7 @@
     lineSeries.style.pointStyle.showPoints = YES;
     NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
     
+    self.matches = nil;
     self.matches = [self.objects objectAtIndex:index * 6];
     lineSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, self.matches.notes];
     
@@ -116,10 +112,13 @@
     
     SChartDataPoint *dataPoint = [[SChartDataPoint alloc] init];
     
+    self.matches = nil;
+    
     self.matches = [self.objects objectAtIndex:dataIndex + (seriesIndex * 6)];
     
     
-    NSString *tempReps = [NSString stringWithFormat:@"%ld", (long)[self.matches.reps integerValue]];
+    //NSString *tempReps = [NSString stringWithFormat:@"%ld", (long)[self.matches.reps integerValue]];
+    NSString *tempReps = self.appDelegate.graphDataPoints[dataIndex];
     NSString *tempString1 = @"";
     NSString *tempString2 = @"";
     
@@ -156,8 +155,6 @@
 -(NSInteger)GetNumberOfMatchesInCoreData {
     
     // Get Data from the database.
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     self.context = [self.appDelegate managedObjectContext];
     self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
     self.request = [[NSFetchRequest alloc] init];
@@ -198,7 +195,7 @@
                                @"B2: Back - Plank Row Arm Balance",
                                @"B2: Legs - Abs",
                                @"B2: Shoulders - Plank Crunch",
-                               @"T: Chest+Tri - Mountain Climber"];
+                               @"T1: Back+Bi - Mountain Climber"];
     
     NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
     
@@ -222,11 +219,12 @@
                                 @"B1: Legs - S-L Calf Raise",
                                 @"B1: Legs - S Calf Raise",
                                 @"B1: Legs - Abs",
+                                @"B2: Chest - Superman Airplane",
                                 @"B2: Chest - Russian Twist",
                                 @"B2: Back - Plank Row Arm Balance",
                                 @"B2: Legs - Abs",
                                 @"B2: Shoulders - Plank Crunch",
-                                @"T: Chest+Tri - Mountain Climber"];
+                                @"T1: Back+Bi - Mountain Climber"];
     
     NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
     
