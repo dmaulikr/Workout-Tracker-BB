@@ -485,6 +485,62 @@
     [self shareActionSheet];
 }
 
+- (IBAction)showGraph:(UIButton *)sender {
+    
+    int minRange;
+    int maxRange;
+    NSMutableArray *tempArray;
+    tempArray = [[NSMutableArray alloc] init];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    for (int i = 0; i < self.graphButtonArray.count; i++) {
+        
+        if (self.graphButtonArray[i] == sender) {
+            
+            // Get name of exercise for this cell
+            UILabel *tempLabel = self.exerciseLabelArray[i];
+            //NSLog(@"Button = graphButton_%d", i + 1);
+            
+            mainAppDelegate.graphTitle = tempLabel.text;
+            mainAppDelegate.graphRoutine = ((DataNavController *)self.parentViewController).routine;
+            mainAppDelegate.graphWorkout = ((DataNavController *)self.parentViewController).workout;
+            //NSLog(@"GraphTitle = %@", mainAppDelegate.graphTitle);
+            //NSLog(@"GraphRoutine = %@", mainAppDelegate.graphRoutine);
+            //NSLog(@"GraphWorkout = %@", mainAppDelegate.graphWorkout)
+            
+            // Get the beginning and end range for the reps labels in the cell
+            minRange = i * 6;
+            maxRange = (i * 6) + 6;
+        }
+    }
+    
+    // Get the number of reps labels in the cell that aren't ""
+    for (int j = minRange; j < maxRange; j++) {
+        
+        if (![self.Reps[j] isEqualToString:@""]) {
+            
+            NSString *tempString = self.Reps[j];
+            [tempArray addObject:tempString];
+        }
+    }
+    
+    mainAppDelegate.graphDataPoints = tempArray;
+    
+    
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (sysVer >= 8.0) {
+        
+        // iOS 8 or greater show popover of chart/grid
+        [self performSegueWithIdentifier:@"showPopover" sender:sender];
+        
+    } else {
+        
+        // iOS 7 and below push the graph/grid
+        [self performSegueWithIdentifier:@"showPush" sender:sender];
+    }
+}
+
 - (void)shareActionSheet {
     
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Data saved successfully.  Share your progress!" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email .csv File", @"Facebook", @"Twitter", nil];
@@ -521,6 +577,32 @@
     
     //  Save to the database
     [self saveToDatabase:self.Titles :self.Reps :self.currentTextFieldArray :self.currentNotesArray];
+}
+
+#pragma mark - Popover methods
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (sysVer >= 8.0) {
+        
+        // iOS 8 or greater show popover of chart/grid
+        
+        UINavigationController *destNav = segue.destinationViewController;
+        
+        // This is the important part
+        UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
+        popPC.delegate = self;
+        popPC.sourceView = sender;
+        //popPC.sourceRect = sender.bounds;
+        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    }
+}
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    
+    return UIModalPresentationNone;
 }
 
 /*
