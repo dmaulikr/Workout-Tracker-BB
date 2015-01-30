@@ -126,7 +126,8 @@
     
     self.matches = nil;
     
-    [self matchAtIndex:dataIndex];
+    NSInteger searchIndex = dataIndex + (seriesIndex * 6);
+    [self matchAtIndex:searchIndex];
     self.matches = [self.objects objectAtIndex:0];
     
     NSString *tempReps = self.appDelegate.graphDataPoints[dataIndex];
@@ -186,16 +187,19 @@
     
     NSNumber *roundConverted = [NSNumber numberWithInteger:round];
     
+    NSNumber *workoutIndex = self.appDelegate.index;
+    
     // Get Data from the database.
     self.context = [self.appDelegate managedObjectContext];
     self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
     self.request = [[NSFetchRequest alloc] init];
     [self.request setEntity:self.entityDesc];
-    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round == %@)",
+    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round == %@) AND (index == %@)",
                  self.appDelegate.graphRoutine,
                  self.appDelegate.graphWorkout,
                  self.appDelegate.graphTitle,
-                 roundConverted];
+                 roundConverted,
+                 workoutIndex];
     [self.request setPredicate:self.pred];
     
     NSError *error;

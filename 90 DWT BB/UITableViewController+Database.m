@@ -37,6 +37,8 @@
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
+    appDelegate.index = workoutIndex;
+    
     for (int i = 0; i < exerciseTitlesArray.count; i++) {
         
         tempExerciseName = exerciseTitlesArray[i];
