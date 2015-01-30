@@ -7,6 +7,8 @@
 //
 
 #import "Tone_11_TVC.h"
+#import "90DWTBBIAPHelper.h"
+#import <iAd/iAd.h>
 
 @interface Tone_11_TVC ()
 
@@ -34,6 +36,18 @@
     [self configureAccessoryIcon:self.tableCellArray :self.accessoryIconArray];
     
     [self configureWorkoutLabels:self.tableLabelArray :self.tableDetailArray];
+
+    // Show or Hide Ads
+    if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -27,26 +27,31 @@
     chart = [[ShinobiChart alloc] initWithFrame:CGRectInset(self.view.bounds, 0, 0)];
     
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    chart.title = self.appDelegate.graphTitle;
-    chart.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
-    chart.titleCentresOn = SChartTitleCentresOnChart;
+    
+    // Only show the graph title for iOS 8 and above.  iOS 7 get the title in the navigation bar.
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (sysVer >= 8.0) {
+        
+        chart.title = self.appDelegate.graphTitle;
+        chart.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
+        chart.titleCentresOn = SChartTitleCentresOnChart;
+    }
     
     chart.autoresizingMask = ~UIViewAutoresizingNone;
 
     // Add a pair of axes
-    
     SChartCategoryAxis *xAxis = [[SChartCategoryAxis alloc] init];
     xAxis.title = [self findXAxisTitle];
-    //xAxis.title = @"Reps";
-    xAxis.rangePaddingLow = @(0.05);
-    xAxis.rangePaddingHigh = @(0.3);
+    xAxis.style.titleStyle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    //xAxis.rangePaddingLow = @(0.05);
+    //xAxis.rangePaddingHigh = @(0.3);
     chart.xAxis = xAxis;
 
     SChartNumberAxis *yAxis = [[SChartNumberAxis alloc] init];
-    //yAxis.title = @"Weight";
     yAxis.title = [self findYAxisTitle];
-    yAxis.rangePaddingLow = @(1.0);
-    yAxis.rangePaddingHigh = @(1.0);
+    yAxis.style.titleStyle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    //yAxis.rangePaddingLow = @(1.0);
+    //yAxis.rangePaddingHigh = @(1.0);
     chart.yAxis = yAxis;
     
     // Add the chart to the view controller
@@ -57,6 +62,7 @@
     // Show legend only on iPad
     //chart.legend.hidden = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
     chart.legend.hidden = NO;
+    chart.legend.style.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     chart.legend.placement = SChartLegendPlacementOutsidePlotArea;
     chart.legend.position = SChartLegendPositionBottomMiddle;
     
@@ -96,22 +102,80 @@
 }
 
 -(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
+    /*
+    NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
     
-    SChartLineSeries *lineSeries = [[SChartLineSeries alloc] init];
+    NSArray *columnSeriesWorkouts = @[@"B1: Chest+Tri - Dips",
+                                      @"B1: Chest+Tri - Abs",
+                                      @"B1: Back+Bi - Close-Grip Chin-Up",
+                                      @"B2: Chest - Incline Dumbbell Press 2"];
+    int numMatches = 0;
+    for (int i = 0; i < columnSeriesWorkouts.count; i++) {
+        
+        if ([tempString isEqualToString:columnSeriesWorkouts[i]]) {
+            
+            numMatches++;
+        }
+    }
+    
+    if (numMatches == 1) {
+        
+        // Match - ColumnSeries
+        SChartColumnSeries *columnSeries = [[SChartColumnSeries alloc] init];
+        
+        // Enable area fill
+        //columnSeries.style.areaColorGradient = [UIColor clearColor];
+        
+        NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
+        
+        self.matches = nil;
+        self.matches = [self.objects objectAtIndex:index * 6];
+        NSString *tempNote = self.matches.notes;
+        
+        columnSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, tempNote];
+        
+        return columnSeries;
+    }
+    else {
+        
+        // No Match - LineSeries
+        SChartLineSeries *lineSeries = [[SChartLineSeries alloc] init];
+        
+        // Enable area fill
+        //lineSeries.style.showFill = YES;
+        //lineSeries.style.fillWithGradient = YES;
+        //lineSeries.style.areaColorLowGradient = [UIColor clearColor];
+        
+        lineSeries.style.lineWidth = @(2.0);
+        lineSeries.style.pointStyle.showPoints = YES;
+        NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
+        
+        self.matches = nil;
+        self.matches = [self.objects objectAtIndex:index * 6];
+        NSString *tempNote = self.matches.notes;
+        
+        lineSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, tempNote];
+        
+        //series.style.dataPointLabelStyle.showLabels = YES;
+        
+        return lineSeries;
+    }
+     */
+    
+    // ColumnSeries
+    SChartColumnSeries *columnSeries = [[SChartColumnSeries alloc] init];
     
     // Enable area fill
-    //lineSeries.style.showFill = YES;
+    //columnSeries.style.areaColorGradient = [UIColor clearColor];
     
-    lineSeries.style.pointStyle.showPoints = YES;
     NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
     
     self.matches = nil;
     self.matches = [self.objects objectAtIndex:index * 6];
-    lineSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, self.matches.notes];
+    NSString *tempNote = self.matches.notes;
     
-    //lineSeries.style.dataPointLabelStyle.showLabels = YES;
-    
-    return lineSeries;
+    columnSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, tempNote];
+    return columnSeries;
 }
 
 -(NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex {
@@ -126,8 +190,7 @@
     
     self.matches = nil;
     
-    NSInteger searchIndex = dataIndex + (seriesIndex * 6);
-    [self matchAtIndex:searchIndex];
+    [self matchAtIndex:dataIndex :seriesIndex];
     self.matches = [self.objects objectAtIndex:0];
     
     NSString *tempReps = self.appDelegate.graphDataPoints[dataIndex];
@@ -148,6 +211,7 @@
                 tempString2 = [self createXAxisString:tempReps :[NSNumber numberWithInt:duplicate - 1]];
                 
             }else {
+                
                 tempString2 = tempString1;
             }
         }
@@ -183,11 +247,11 @@
     return self.objects.count / 6;
 }
 
--(void)matchAtIndex :(NSInteger)round {
+-(void)matchAtIndex :(NSInteger)round :(NSUInteger)workoutIndex{
     
     NSNumber *roundConverted = [NSNumber numberWithInteger:round];
     
-    NSNumber *workoutIndex = self.appDelegate.index;
+    NSNumber *tempWorkoutIndex = [NSNumber numberWithInteger:workoutIndex + 1];
     
     // Get Data from the database.
     self.context = [self.appDelegate managedObjectContext];
@@ -199,7 +263,7 @@
                  self.appDelegate.graphWorkout,
                  self.appDelegate.graphTitle,
                  roundConverted,
-                 workoutIndex];
+                 tempWorkoutIndex];
     [self.request setPredicate:self.pred];
     
     NSError *error;

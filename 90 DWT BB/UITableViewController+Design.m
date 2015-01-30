@@ -139,7 +139,7 @@
         
         // Uncomment Only For Testing the Graph Button
         //tempGraphButton.hidden = YES;
-        
+        /*
         // Show or Hide Graph Button
         if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.graphview"]) {
             
@@ -151,6 +151,7 @@
             // Hide the Graph Button
             tempGraphButton.hidden = YES;
         }
+         */
 
         
         // Previous Notes

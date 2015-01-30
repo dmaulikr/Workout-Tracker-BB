@@ -647,13 +647,13 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    UINavigationController *destNav = segue.destinationViewController;
+    
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
     
     if (sysVer >= 8.0) {
         
         // iOS 8 or greater show popover of chart/grid
-        
-        UINavigationController *destNav = segue.destinationViewController;
         
         // This is the important part
         UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
@@ -661,6 +661,13 @@
         popPC.sourceView = sender;
         //popPC.sourceRect = sender.bounds;
         popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    }
+    
+    else {
+        
+        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        destNav.title = mainAppDelegate.graphTitle;
     }
 }
 
