@@ -703,6 +703,8 @@
 
 - (IBAction)showGraph:(UIButton *)sender {
     
+    [self saveData];
+
     int minRange;
     int maxRange;
     NSMutableArray *tempArray;

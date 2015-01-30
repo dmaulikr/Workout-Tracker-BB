@@ -80,7 +80,19 @@
 
 -(NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart {
     
-    return [self GetNumberOfMatchesInCoreData];
+    NSInteger tempMatches = [self GetNumberOfMatchesInCoreData];
+    
+    if (tempMatches == 0) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Graph Data Error"
+                                                        message:@"All Rep/Weight fields for this exercise must have a number in order to display the graph data."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    return tempMatches;
 }
 
 -(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
@@ -114,10 +126,9 @@
     
     self.matches = nil;
     
-    self.matches = [self.objects objectAtIndex:dataIndex + (seriesIndex * 6)];
+    [self matchAtIndex:dataIndex];
+    self.matches = [self.objects objectAtIndex:0];
     
-    
-    //NSString *tempReps = [NSString stringWithFormat:@"%ld", (long)[self.matches.reps integerValue]];
     NSString *tempReps = self.appDelegate.graphDataPoints[dataIndex];
     NSString *tempString1 = @"";
     NSString *tempString2 = @"";
@@ -169,6 +180,26 @@
     self.objects = [self.context executeFetchRequest:self.request error:&error];
     
     return self.objects.count / 6;
+}
+
+-(void)matchAtIndex :(NSInteger)round {
+    
+    NSNumber *roundConverted = [NSNumber numberWithInteger:round];
+    
+    // Get Data from the database.
+    self.context = [self.appDelegate managedObjectContext];
+    self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
+    self.request = [[NSFetchRequest alloc] init];
+    [self.request setEntity:self.entityDesc];
+    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round == %@)",
+                 self.appDelegate.graphRoutine,
+                 self.appDelegate.graphWorkout,
+                 self.appDelegate.graphTitle,
+                 roundConverted];
+    [self.request setPredicate:self.pred];
+    
+    NSError *error;
+    self.objects = [self.context executeFetchRequest:self.request error:&error];
 }
 
 -(NSString*)createXAxisString :(NSString*) initialString :(NSNumber*) spacesToAdd {
