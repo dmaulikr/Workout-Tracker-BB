@@ -253,6 +253,13 @@
     
     NSNumber *tempWorkoutIndex = [NSNumber numberWithInteger:workoutIndex + 1];
     
+    // @"B2: Chest - Russian Twist" is the only one that starts out in the second index of an array.
+    NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
+    if ([tempString isEqualToString:@"B2: Chest - Russian Twist"]) {
+        
+        roundConverted = [NSNumber numberWithInteger:round + 1];
+    }
+    
     // Get Data from the database.
     self.context = [self.appDelegate managedObjectContext];
     self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
