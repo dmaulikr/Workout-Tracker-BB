@@ -27,6 +27,7 @@
     chart = [[ShinobiChart alloc] initWithFrame:CGRectInset(self.view.bounds, 0, 0)];
     
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //NSLog(@"Clicked Workout Index = %@", self.appDelegate.index);
     
     // Only show the graph title for iOS 8 and above.  iOS 7 get the title in the navigation bar.
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
@@ -86,9 +87,10 @@
 
 -(NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart {
     
-    NSInteger tempMatches = [self GetNumberOfMatchesInCoreData];
+    NSInteger highestIndexFound = [self GetHighestDatabaseIndex];
     
-    if (tempMatches == 0) {
+    /*
+    if (highestIndexFound == 0) {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Graph Data Error"
                                                         message:@"All Rep/Weight fields for this exercise must have a number in order to display the graph data."
@@ -98,7 +100,10 @@
         
         [alert show];
     }
-    return tempMatches;
+     */
+    
+    
+    return highestIndexFound;
 }
 
 -(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
@@ -171,10 +176,19 @@
     NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
     
     self.matches = nil;
-    self.matches = [self.objects objectAtIndex:index * 6];
-    NSString *tempNote = self.matches.notes;
     
-    columnSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, tempNote];
+    if ([self ColumnSeriesMatchAtIndex:index]) {
+        
+        self.matches = [self.objects objectAtIndex:0];
+        NSString *tempNote = self.matches.notes;
+        
+        columnSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, tempNote];
+    }
+    else {
+        
+        columnSeries.title = [NSString stringWithFormat:@"Try %@ -  ", tryNumber];
+    }
+
     return columnSeries;
 }
 
@@ -191,7 +205,6 @@
     self.matches = nil;
     
     [self matchAtIndex:dataIndex :seriesIndex];
-    self.matches = [self.objects objectAtIndex:0];
     
     NSString *tempReps = self.appDelegate.graphDataPoints[dataIndex];
     NSString *tempString1 = @"";
@@ -218,17 +231,27 @@
     }
     
     tempReps = tempString2;
-    double yValue = [self.matches.weight doubleValue];
-    
     dataPoint.xValue = tempReps;
-    dataPoint.yValue = [NSNumber numberWithDouble:yValue];
     
+    if (self.objects.count == 0) {
+        
+        // No Matches
+        dataPoint.yValue = [NSNumber numberWithDouble:0.0];
+    }
+    else {
+        
+        // Found a match
+        self.matches = [self.objects objectAtIndex:0];
+        double yValue = [self.matches.weight doubleValue];
+        dataPoint.yValue = [NSNumber numberWithDouble:yValue];
+    }
+
     return dataPoint;
 }
 
 #pragma mark - Utility Methods
 
--(NSInteger)GetNumberOfMatchesInCoreData {
+-(NSInteger)GetHighestDatabaseIndex {
     
     // Get Data from the database.
     self.context = [self.appDelegate managedObjectContext];
@@ -244,7 +267,53 @@
     NSError *error;
     self.objects = [self.context executeFetchRequest:self.request error:&error];
     
-    return self.objects.count / 6;
+    NSNumber *highestDatabaseIndex = 0;
+    
+    for (int i = 0; i < self.objects.count / 6; i++) {
+        
+        self.matches = nil;
+        self.matches = [self.objects objectAtIndex:i * 6];
+        NSNumber *objectIndex = self.matches.index;
+        //NSLog(@"objectIndex = %@", objectIndex);
+        
+        if ([objectIndex integerValue] > [highestDatabaseIndex integerValue]) {
+            highestDatabaseIndex = objectIndex;
+        }
+    }
+    
+    //NSLog(@"Highest Database Index = %@", highestDatabaseIndex);
+    
+    return [highestDatabaseIndex integerValue];
+}
+
+-(BOOL)ColumnSeriesMatchAtIndex :(NSUInteger)workoutIndex {
+    
+    NSNumber *tempWorkoutIndex = [NSNumber numberWithInteger:workoutIndex + 1];
+    
+    // Get Data from the database.
+    self.context = [self.appDelegate managedObjectContext];
+    self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
+    self.request = [[NSFetchRequest alloc] init];
+    [self.request setEntity:self.entityDesc];
+    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (index == %@)",
+                 self.appDelegate.graphRoutine,
+                 self.appDelegate.graphWorkout,
+                 self.appDelegate.graphTitle,
+                 tempWorkoutIndex];
+    [self.request setPredicate:self.pred];
+    
+    NSError *error;
+    self.objects = [self.context executeFetchRequest:self.request error:&error];
+    
+    if (self.objects.count == 0) {
+        
+        return FALSE;
+    }
+    
+    else {
+        
+        return TRUE;
+    }
 }
 
 -(void)matchAtIndex :(NSInteger)round :(NSUInteger)workoutIndex{
