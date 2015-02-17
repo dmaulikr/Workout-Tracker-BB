@@ -97,6 +97,7 @@
     // View Photos
     PhotoNavController *photoNC = [[PhotoNavController alloc] init];
     NSMutableArray *monthPhotoAngle = [[NSMutableArray alloc] init];
+    NSMutableArray *foundMonthPhotoAngle = [[NSMutableArray alloc] init];
     NSArray *tempMonthPhotoAngle = [[NSArray alloc] init];
     
     // ALL
@@ -150,12 +151,13 @@
             if ([[NSFileManager defaultManager] fileExistsAtPath:[photoNC fileLocation:tempMonthPhotoAngle[i] ]]) {
                 
                 [monthPhotoAngle addObject:[photoNC loadImage:tempMonthPhotoAngle[i] ]];
+                [foundMonthPhotoAngle addObject:tempMonthPhotoAngle[i] ];
             }
         }
     
         // Convert the mutable array to a normal unmutable array.
         ppvc.arrayOfImages = [monthPhotoAngle copy];
-        ppvc.arrayOfImageTitles = tempMonthPhotoAngle;
+        ppvc.arrayOfImageTitles = foundMonthPhotoAngle;
     }
 }
 @end
