@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ruler.png"
+      "filename" : "ruler_selected.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ruler@2x.png"
+      "filename" : "ruler_selected@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "ruler@3x.png"
+      "filename" : "ruler_selected@3x.png"
     }
   ],
   "info" : {

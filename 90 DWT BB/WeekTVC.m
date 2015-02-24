@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
+    
     [self findDefaultWorkout];
     
     // Show or Hide Ads

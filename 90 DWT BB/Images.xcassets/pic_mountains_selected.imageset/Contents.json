@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "pic_mountains.png"
+      "filename" : "pic_mountains_selected.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "pic_mountains@2x.png"
+      "filename" : "pic_mountains_selected@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "pic_mountains@3x.png"
+      "filename" : "pic_mountains_selected@3x.png"
     }
   ],
   "info" : {
