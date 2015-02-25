@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "next.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "nav_r_arrow_grey@2x.png"
+      "filename" : "44px-Stroke_02.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "64px-Stroke_02.png"
     }
   ],
   "info" : {
