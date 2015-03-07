@@ -285,13 +285,43 @@
 - (void)configureDateCell:(UITableViewCell *)dateCell :(UIButton *)deleteButton :(UIButton *)todayButton :(UIButton *)previousButton :(UILabel *)dateLabel {
     
     UIColor *orange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
-    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
+    UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
+    UIColor *red = [UIColor colorWithRed:255/255.0f green:0/255.0f blue:0/255.0f alpha:1.0f];
+    
+    UIColor *lightOrange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:0.75f];
+    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:0.75f];
+    UIColor *lightRed = [UIColor colorWithRed:255/255.0f green:0/255.0f blue:0/255.0f alpha:0.75f];
+    
+    BOOL tempWorkoutCompleted = [self workoutCompleted];
+    
+    if (tempWorkoutCompleted == YES) {
+        
+        //  Workout Completed
+        
+        // Cell
+        dateCell.backgroundColor = [UIColor darkGrayColor];
+        
+        // Label
+        dateLabel.text = [NSString stringWithFormat:@"Workout Completed: %@", [self getWorkoutCompletedDate]];
+        dateLabel.textColor = [UIColor whiteColor];
+    }
+    else {
+        
+        // Workout Not Completed
+        
+        // Cell
+        dateCell.backgroundColor = [UIColor whiteColor];
+        
+        // Label
+        dateLabel.text = @"Workout Completed: __/__/__";
+        dateLabel.textColor = [UIColor blackColor];
+    }
     
     // Delete Button
     deleteButton.tintColor = [UIColor whiteColor];
-    deleteButton.backgroundColor = [UIColor redColor];
+    deleteButton.backgroundColor = lightRed;
     deleteButton.layer.borderWidth = 1.0f;
-    deleteButton.layer.borderColor = [[UIColor redColor] CGColor];
+    deleteButton.layer.borderColor = [red CGColor];
     deleteButton.layer.cornerRadius = 5;
     deleteButton.clipsToBounds = YES;
     
@@ -299,13 +329,13 @@
     todayButton.tintColor = [UIColor whiteColor];
     todayButton.backgroundColor = lightGreen;
     todayButton.layer.borderWidth = 1.0f;
-    todayButton.layer.borderColor = [lightGreen CGColor];
+    todayButton.layer.borderColor = [green CGColor];
     todayButton.layer.cornerRadius = 5;
     todayButton.clipsToBounds = YES;
     
     // Previous Button
     previousButton.tintColor = [UIColor whiteColor];
-    previousButton.backgroundColor = orange;
+    previousButton.backgroundColor = lightOrange;
     previousButton.layer.borderWidth = 1.0f;
     previousButton.layer.borderColor = [orange CGColor];
     previousButton.layer.cornerRadius = 5;

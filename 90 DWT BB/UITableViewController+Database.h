@@ -16,5 +16,7 @@
 -(void)saveToDatabase:(NSArray*)exerciseNameArray :(NSArray*)repLabelArray :(NSArray*)currentTFArray :(NSArray*)curNotesArray;
 -(void)saveWorkoutComplete:(NSDate*)useDate;
 -(void)deleteDate;
+-(BOOL)workoutCompleted;
+-(NSString*)getWorkoutCompletedDate;
 //-(void)saveTextFieldToDatabase:(NSArray)
 @end

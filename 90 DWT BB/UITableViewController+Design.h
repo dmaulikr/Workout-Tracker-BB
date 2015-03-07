@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ExerciseCell.h"
+#import "UITableViewController+Database.h"
 
 @interface UITableViewController (Design)
 

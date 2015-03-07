@@ -780,77 +780,25 @@
 
 - (IBAction)workoutCompletedToday:(UIButton *)sender {
     
-    //[self.workoutCompleteButton setTitle:@"Workout Completed!" forState:UIControlStateNormal];
-    
     [self saveData];
-    /*
-    // iOS 8 Action Sheet
     
-    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"Data saved successfully.  Choose the date to use."
-                                                                    message:@"TEST"
-                                                             preferredStyle:UIAlertControllerStyleActionSheet];
+    [self saveWorkoutComplete:[NSDate date]];
     
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
-                                                     style:UIAlertActionStyleCancel
-                                                   handler:^(UIAlertAction *action) {
-                                                       
-                                                       NSLog(@"Cancel action");
-                                                   }];
-    
-    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete"
-                                                     style:UIAlertActionStyleDestructive
-                                                   handler:^(UIAlertAction *action) {
-                                                       
-                                                       NSLog(@"Delete action");
-                                                   }];
-    
-    UIAlertAction *todayDate = [UIAlertAction actionWithTitle:@"Today's Date"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *action) {
-                                                       
-                                                       NSLog(@"Today's Date action");
-                                                   }];
-    
-    UIAlertAction *previousDate = [UIAlertAction actionWithTitle:@"Previous Date"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *action) {
-                                                       
-                                                       NSLog(@"Previous Date action");
-                                                   }];
-    
-    [action addAction:cancel];
-    [action addAction:delete];
-    [action addAction:todayDate];
-    [action addAction:previousDate];
-    
-    [self presentViewController:action animated:YES completion:nil];
-    
-    UIPopoverPresentationController *popover = action.popoverPresentationController;
-    if (popover)
-    {
-        popover.sourceView = sender;
-        popover.sourceRect = sender.bounds;
-        popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    }
-    */
-    
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose the date to use."
-                                                        delegate:self
-                                               cancelButtonTitle:@"Cancel"
-                                          destructiveButtonTitle:@"Delete Date"
-                                               otherButtonTitles:@"Today's Date", @"Previous Date", nil];
-
-    [action showFromRect:[(UIButton *)sender frame] inView:sender.superview animated:YES];
-    
-    self.actionSheetType = @"WorkoutCompleted";
-    
-    //[self saveWorkoutComplete];
+    [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
 }
 
 - (IBAction)workoutCompletedPrevious:(UIButton *)sender {
+    
+    
 }
 
 - (IBAction)workoutCompletedDelete:(UIButton *)sender {
+    
+    [self saveData];
+    
+    [self deleteDate];
+    
+    [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
 }
 
 @end
