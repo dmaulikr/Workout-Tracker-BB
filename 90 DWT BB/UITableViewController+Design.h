@@ -17,4 +17,5 @@
 - (void)configureExerciseCell:(NSArray*)tableCell :(NSArray*)repNamesArray :(NSArray*)exerciseNamesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)exerciseLabelsArray :(NSArray*)repsLabelArray :(NSArray*)prevNotesArray :(NSArray*)curNotesArray : (NSArray*)graphBtnArray;
 //- (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection;
 - (void)configureStoreTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon :(NSArray*)needCellColor;
+- (void)configureDateCell:(UITableViewCell*)dateCell :(UIButton*)deleteButton :(UIButton*)todayButton :(UIButton*)previousButton :(UILabel*)dateLabel;
 @end

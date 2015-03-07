@@ -282,6 +282,36 @@
     }
 }
 
+- (void)configureDateCell:(UITableViewCell *)dateCell :(UIButton *)deleteButton :(UIButton *)todayButton :(UIButton *)previousButton :(UILabel *)dateLabel {
+    
+    UIColor *orange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
+    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
+    
+    // Delete Button
+    deleteButton.tintColor = [UIColor whiteColor];
+    deleteButton.backgroundColor = [UIColor redColor];
+    deleteButton.layer.borderWidth = 1.0f;
+    deleteButton.layer.borderColor = [[UIColor redColor] CGColor];
+    deleteButton.layer.cornerRadius = 5;
+    deleteButton.clipsToBounds = YES;
+    
+    // Today Button
+    todayButton.tintColor = [UIColor whiteColor];
+    todayButton.backgroundColor = lightGreen;
+    todayButton.layer.borderWidth = 1.0f;
+    todayButton.layer.borderColor = [lightGreen CGColor];
+    todayButton.layer.cornerRadius = 5;
+    todayButton.clipsToBounds = YES;
+    
+    // Previous Button
+    previousButton.tintColor = [UIColor whiteColor];
+    previousButton.backgroundColor = orange;
+    previousButton.layer.borderWidth = 1.0f;
+    previousButton.layer.borderColor = [orange CGColor];
+    previousButton.layer.cornerRadius = 5;
+    previousButton.clipsToBounds = YES;
+}
+
 /*
 - (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection {
     

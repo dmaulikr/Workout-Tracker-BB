@@ -33,6 +33,8 @@
     
     [self loadArrays];
     
+    [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
+    
     [self addAccessoryToolBar];
     
     // Show or Hide Ads
@@ -472,7 +474,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 6;
+    return 6 + 1;
 }
 
 /*
@@ -530,12 +532,19 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    NSNumber *headerSection = [NSNumber numberWithInteger:section +1];
-    NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections];
-    NSString *headerTitle = @"";
-    headerTitle = [headerTitle stringByAppendingFormat:@"Set %@ of %@", headerSection, numberOfSections];
+    if (section == [self numberOfSectionsInTableView:self.tableView] - 1) {
+        
+        return @"Finished";
+    }
+    else {
     
-    return headerTitle;
+        NSNumber *headerSection = [NSNumber numberWithInteger:section +1];
+        NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections];
+        NSString *headerTitle = @"";
+        headerTitle = [headerTitle stringByAppendingFormat:@"Set %@ of %@", headerSection, numberOfSections];
+        
+        return headerTitle;
+    }
 }
 
 - (IBAction)submitEntries:(id)sender {
@@ -603,27 +612,72 @@
     }
 }
 
+
 - (void)shareActionSheet {
     
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Data saved successfully.  Share your progress!" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email .csv File", @"Facebook", @"Twitter", nil];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Data saved successfully.  Share your progress!"
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:nil
+                                               otherButtonTitles:@"Email .csv File", @"Facebook", @"Twitter", nil];
     
     [action showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    
+    self.actionSheetType = @"Share";
 }
-
+/*
+- (void)workoutCompleteActionSheet:(UIButton *)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose the date to use."
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:@"Delete Date"
+                                               otherButtonTitles:@"Today's Date", @"Previous Date", nil];
+    
+    [action showFromRect:[(UIButton *)sender frame] inView:sender.superview animated:YES];
+    
+    self.actionSheetType = @"WorkoutCompleted";
+}
+*/
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if (buttonIndex == 0) {
+    if ([self.actionSheetType isEqualToString:@"Share"]) {
         
-        //  Get the csvstring and then send the email
-        [self sendEmail:[self stringForEmail:self.Titles] ];
+        if (buttonIndex == 0) {
+        
+            //  Get the csvstring and then send the email
+            [self sendEmail:[self stringForEmail:self.Titles] ];
+        }
+        
+        if (buttonIndex == 1) {
+            
+            [self facebook];
+        }
+        
+        if (buttonIndex == 2) {
+            
+            [self twitter];
+        }
     }
     
-    if (buttonIndex == 1) {
-        [self facebook];
-    }
-    
-    if (buttonIndex == 2) {
-        [self twitter];
+    if ([self.actionSheetType isEqualToString:@"WorkoutCompleted"]) {
+        
+        if (buttonIndex == 0) {
+            
+            [self deleteDate];
+            NSLog(@"Delete Date Used");
+        }
+        
+        if (buttonIndex == 1) {
+            
+            [self saveWorkoutComplete:[NSDate date]];
+            NSLog(@"Today's Date Used");
+        }
+        
+        if (buttonIndex == 2) {
+            
+            NSLog(@"Previous Date Used");
+        }
     }
 }
 
@@ -723,4 +777,80 @@
  }
  
  */
+
+- (IBAction)workoutCompletedToday:(UIButton *)sender {
+    
+    //[self.workoutCompleteButton setTitle:@"Workout Completed!" forState:UIControlStateNormal];
+    
+    [self saveData];
+    /*
+    // iOS 8 Action Sheet
+    
+    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"Data saved successfully.  Choose the date to use."
+                                                                    message:@"TEST"
+                                                             preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction *action) {
+                                                       
+                                                       NSLog(@"Cancel action");
+                                                   }];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete"
+                                                     style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction *action) {
+                                                       
+                                                       NSLog(@"Delete action");
+                                                   }];
+    
+    UIAlertAction *todayDate = [UIAlertAction actionWithTitle:@"Today's Date"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *action) {
+                                                       
+                                                       NSLog(@"Today's Date action");
+                                                   }];
+    
+    UIAlertAction *previousDate = [UIAlertAction actionWithTitle:@"Previous Date"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *action) {
+                                                       
+                                                       NSLog(@"Previous Date action");
+                                                   }];
+    
+    [action addAction:cancel];
+    [action addAction:delete];
+    [action addAction:todayDate];
+    [action addAction:previousDate];
+    
+    [self presentViewController:action animated:YES completion:nil];
+    
+    UIPopoverPresentationController *popover = action.popoverPresentationController;
+    if (popover)
+    {
+        popover.sourceView = sender;
+        popover.sourceRect = sender.bounds;
+        popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    }
+    */
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose the date to use."
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:@"Delete Date"
+                                               otherButtonTitles:@"Today's Date", @"Previous Date", nil];
+
+    [action showFromRect:[(UIButton *)sender frame] inView:sender.superview animated:YES];
+    
+    self.actionSheetType = @"WorkoutCompleted";
+    
+    //[self saveWorkoutComplete];
+}
+
+- (IBAction)workoutCompletedPrevious:(UIButton *)sender {
+}
+
+- (IBAction)workoutCompletedDelete:(UIButton *)sender {
+}
+
 @end

@@ -14,5 +14,7 @@
 
 -(void)exerciseMatches:(NSArray*)exerciseTitlesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)prevNotesArray :(NSArray*)curNotesArray;
 -(void)saveToDatabase:(NSArray*)exerciseNameArray :(NSArray*)repLabelArray :(NSArray*)currentTFArray :(NSArray*)curNotesArray;
+-(void)saveWorkoutComplete:(NSDate*)useDate;
+-(void)deleteDate;
 //-(void)saveTextFieldToDatabase:(NSArray)
 @end
