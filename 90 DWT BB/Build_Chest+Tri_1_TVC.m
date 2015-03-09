@@ -716,9 +716,17 @@
     
     else {
         
-        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        if ([[segue identifier] isEqualToString:@"showPush"]) {
+            
+            AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            destNav.title = mainAppDelegate.graphTitle;
+        }
         
-        destNav.title = mainAppDelegate.graphTitle;
+        if ([[segue identifier] isEqualToString:@"ModalDatePicker"]) {
+            
+            // Put code here.
+        }
     }
 }
 
@@ -789,7 +797,18 @@
 
 - (IBAction)workoutCompletedPrevious:(UIButton *)sender {
     
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
     
+    if (sysVer >= 8.0) {
+        
+        // iOS 8 or greater show popover of chart/grid
+        [self performSegueWithIdentifier:@"PopoverDatePicker" sender:sender];
+        
+    } else {
+        
+        // iOS 7 and below push the graph/grid
+        [self performSegueWithIdentifier:@"ModalDatePicker" sender:sender];
+    }
 }
 
 - (IBAction)workoutCompletedDelete:(UIButton *)sender {
