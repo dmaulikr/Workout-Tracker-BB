@@ -11,6 +11,7 @@
 #import "UITableViewController+Design.h"
 #import "DataNavController.h"
 #import "90DWTBBIAPHelper.h"
+#import "DatePickerViewController.h"
 
 @interface Build_Chest_Tri_1_TVC ()
 
@@ -32,6 +33,8 @@
     [super viewDidLoad];
     
     [self loadArrays];
+    
+    [self saveDataNavControllerToAppDelegate];
     
     [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
     
@@ -62,6 +65,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void) viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:YES];
+    
+    [self updateWorkoutCompleteCell];
 }
 
 - (void)loadArrays {
@@ -708,6 +722,7 @@
         
         // This is the important part
         UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
+        popPC = destNav.popoverPresentationController;
         popPC.delegate = self;
         popPC.sourceView = sender;
         //popPC.sourceRect = sender.bounds;
@@ -723,11 +738,27 @@
             destNav.title = mainAppDelegate.graphTitle;
         }
         
-        if ([[segue identifier] isEqualToString:@"ModalDatePicker"]) {
+        if ([[segue identifier] isEqualToString:@"iOS7_ModalDatePicker"]) {
             
             // Put code here.
         }
+        
+        if ([[segue identifier] isEqualToString:@"iOS7_PopoverDatePicker"]) {
+            
+            // Put code here.
+            ((UIStoryboardPopoverSegue *)segue).popoverController.delegate = self ;
+        }
     }
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    
+    [self updateWorkoutCompleteCell];
+}
+
+-(void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    
+    [self updateWorkoutCompleteCell];
 }
 
 -(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
@@ -792,22 +823,34 @@
     
     [self saveWorkoutComplete:[NSDate date]];
     
-    [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
+    [self updateWorkoutCompleteCell];
 }
 
 - (IBAction)workoutCompletedPrevious:(UIButton *)sender {
+    
+    [self saveData];
+    
     
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
     
     if (sysVer >= 8.0) {
         
         // iOS 8 or greater show popover of chart/grid
-        [self performSegueWithIdentifier:@"PopoverDatePicker" sender:sender];
+        [self performSegueWithIdentifier:@"iOS8_PopoverDatePicker" sender:sender];
         
     } else {
         
-        // iOS 7 and below push the graph/grid
-        [self performSegueWithIdentifier:@"ModalDatePicker" sender:sender];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            //  iOS 7 iPad and below show datepicker in popover
+            [self performSegueWithIdentifier:@"iOS7_PopoverDatePicker" sender:sender];
+        }
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            // iOS 7 iPhone and below modally show the datepicker
+            [self performSegueWithIdentifier:@"iOS7_ModalDatePicker" sender:sender];
+        }
     }
 }
 
@@ -816,6 +859,11 @@
     [self saveData];
     
     [self deleteDate];
+    
+    [self updateWorkoutCompleteCell];
+}
+
+- (void)updateWorkoutCompleteCell {
     
     [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
 }

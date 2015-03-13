@@ -477,4 +477,14 @@
     
     return getDate;
 }
+
+-(void)saveDataNavControllerToAppDelegate {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    appDelegate.index = ((DataNavController *)self.parentViewController).index;
+    appDelegate.routine = ((DataNavController *)self.parentViewController).routine;
+    appDelegate.workout = ((DataNavController *)self.parentViewController).workout;
+}
+
 @end

@@ -34,4 +34,52 @@
     
     return objects;
 }
+
+-(void)saveWorkoutComplete:(NSDate*)useDate {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    NSPredicate *pred;
+    Workout *matches;
+    
+    NSError *error;
+    NSArray *fetchedOjectsArray;
+    
+    NSNumber *workoutIndex = appDelegate.index;
+    NSString *routine = appDelegate.routine;
+    NSString *workout = appDelegate.workout;
+    
+    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+            routine,
+            workout,
+            workoutIndex];
+    [fetchRequest setPredicate:pred];
+    matches = nil;
+    fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if ([fetchedOjectsArray count] == 0) {
+        //NSLog(@"submitEntry = No matches - create new record and save");
+        
+    }
+    
+    else {
+        //NSLog(@"submitEntry = Match found - update existing record and save");
+        
+        //matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+        // Mark the workout completed to the last object in the workout database which isn't used by anything else.
+        matches = [fetchedOjectsArray objectAtIndex:[fetchedOjectsArray count] - 1];
+        
+        matches.exerciseCompleted = [NSNumber numberWithBool:YES];
+        matches.date = useDate;
+    }
+    
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+}
 @end

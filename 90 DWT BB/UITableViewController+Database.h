@@ -18,5 +18,6 @@
 -(void)deleteDate;
 -(BOOL)workoutCompleted;
 -(NSString*)getWorkoutCompletedDate;
+-(void)saveDataNavControllerToAppDelegate;
 //-(void)saveTextFieldToDatabase:(NSArray)
 @end

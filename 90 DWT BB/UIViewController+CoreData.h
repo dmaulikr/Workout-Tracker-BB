@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Workout.h"
 
 @interface UIViewController (CoreData)
 
 - (NSArray *)databaseMatches;
-
+-(void)saveWorkoutComplete:(NSDate*)useDate;
 @end

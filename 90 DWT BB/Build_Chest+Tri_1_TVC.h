@@ -12,7 +12,7 @@
 #import "UITableViewController+Email.h"
 #import "AppDelegate.h"
 
-@interface Build_Chest_Tri_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate>
+@interface Build_Chest_Tri_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;

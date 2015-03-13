@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+CoreData.h"
 
 @interface DatePickerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+@property (strong, nonatomic) NSDate *chosenDate;
+
+
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)saveButtonPressed:(id)sender;
 @end

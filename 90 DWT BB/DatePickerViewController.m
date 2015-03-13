@@ -19,6 +19,24 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:YES];
+    
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if ((sysVer >= 8.0) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {
+        
+        // Grab the selected date on the date picker.
+        // Datepicker was presented in a popover.
+        // Save data when user touches outside the popover.
+        NSDate *chosen = [self.datePicker date];
+        //NSLog(@"Modal Date = %@", chosen);
+
+        [self saveWorkoutComplete:chosen];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -34,4 +52,24 @@
 }
 */
 
+-(void)hideIOS8PopOver {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    
+    [self hideIOS8PopOver];
+}
+
+- (IBAction)saveButtonPressed:(id)sender {
+    
+    // Grab the selected date on the date picker
+    NSDate *chosen = [self.datePicker date];
+    //NSLog(@"Modal Date = %@", chosen);
+    
+    [self saveWorkoutComplete:chosen];
+    
+    [self hideIOS8PopOver];
+}
 @end
