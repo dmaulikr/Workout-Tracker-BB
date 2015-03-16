@@ -12,7 +12,7 @@
 #import "UITableViewController+Email.h"
 #import "AppDelegate.h"
 
-@interface Beast_CompleteBody_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate>
+@interface Beast_CompleteBody_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;
@@ -25,6 +25,12 @@
 @property (strong, nonatomic) NSArray *currentNotesArray;
 @property (strong, nonatomic) NSArray *previousNotesArray;
 @property (strong, nonatomic) NSArray *graphButtonArray;
+
+@property (strong, nonatomic) NSString *actionSheetType;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deleteDateButton;
+@property (weak, nonatomic) IBOutlet UIButton *todayDateButton;
+@property (weak, nonatomic) IBOutlet UIButton *previousDateButton;
 
 //  CELLS
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_1;
@@ -43,6 +49,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_14;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_15;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell_16;
+@property (weak, nonatomic) IBOutlet UITableViewCell *dateCell;
 
 
 //  Exercise Name Labels
@@ -464,4 +471,8 @@
 
 - (IBAction)submitEntries:(id)sender;
 - (IBAction)showGraph:(UIButton *)sender;
+- (IBAction)workoutCompletedDelete:(UIButton *)sender;
+- (IBAction)workoutCompletedToday:(UIButton *)sender;
+- (IBAction)workoutCompletedPrevious:(UIButton *)sender;
+
 @end

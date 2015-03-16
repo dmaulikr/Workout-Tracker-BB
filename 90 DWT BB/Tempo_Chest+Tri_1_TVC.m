@@ -11,6 +11,7 @@
 #import "UITableViewController+Design.h"
 #import "DataNavController.h"
 #import "90DWTBBIAPHelper.h"
+#import "DatePickerViewController.h"
 
 @interface Tempo_Chest_Tri_1_TVC ()
 
@@ -32,6 +33,10 @@
     [super viewDidLoad];
     
     [self loadArrays];
+    
+    [self saveDataNavControllerToAppDelegate];
+    
+    [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
     
     [self addAccessoryToolBar];
     
@@ -60,6 +65,18 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:YES];
+    
+    [self updateWorkoutCompleteCell];
 }
 
 - (void)loadArrays {
@@ -472,7 +489,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 5;
+    return 5 + 1;
 }
 
 /*
@@ -530,12 +547,19 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    NSNumber *headerSection = [NSNumber numberWithInteger:section +1];
-    NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections];
-    NSString *headerTitle = @"";
-    headerTitle = [headerTitle stringByAppendingFormat:@"Set %@ of %@", headerSection, numberOfSections];
-    
-    return headerTitle;
+    if (section == [self numberOfSectionsInTableView:self.tableView] - 1) {
+        
+        return @"Finished";
+    }
+    else {
+        
+        NSNumber *headerSection = [NSNumber numberWithInteger:section +1];
+        NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections];
+        NSString *headerTitle = @"";
+        headerTitle = [headerTitle stringByAppendingFormat:@"Set %@ of %@", headerSection, numberOfSections];
+        
+        return headerTitle;
+    }
 }
 
 - (IBAction)submitEntries:(id)sender {
@@ -609,22 +633,29 @@
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Data saved successfully.  Share your progress!" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email .csv File", @"Facebook", @"Twitter", nil];
     
     [action showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    
+    self.actionSheetType = @"Share";
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if (buttonIndex == 0) {
+    if ([self.actionSheetType isEqualToString:@"Share"]) {
         
-        //  Get the csvstring and then send the email
-        [self sendEmail:[self stringForEmail:self.Titles] ];
-    }
-    
-    if (buttonIndex == 1) {
-        [self facebook];
-    }
-    
-    if (buttonIndex == 2) {
-        [self twitter];
+        if (buttonIndex == 0) {
+            
+            //  Get the csvstring and then send the email
+            [self sendEmail:[self stringForEmail:self.Titles] ];
+        }
+        
+        if (buttonIndex == 1) {
+            
+            [self facebook];
+        }
+        
+        if (buttonIndex == 2) {
+            
+            [self twitter];
+        }
     }
 }
 
@@ -664,10 +695,34 @@
     
     else {
         
-        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        if ([[segue identifier] isEqualToString:@"showPush"]) {
+            
+            AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            destNav.title = mainAppDelegate.graphTitle;
+        }
         
-        destNav.title = mainAppDelegate.graphTitle;
+        if ([[segue identifier] isEqualToString:@"iOS7_ModalDatePicker"]) {
+            
+            // Put code here.
+        }
+        
+        if ([[segue identifier] isEqualToString:@"iOS7_PopoverDatePicker"]) {
+            
+            // Put code here.
+            ((UIStoryboardPopoverSegue *)segue).popoverController.delegate = self ;
+        }
     }
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    
+    [self updateWorkoutCompleteCell];
+}
+
+-(void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    
+    [self updateWorkoutCompleteCell];
 }
 
 -(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
@@ -725,4 +780,56 @@
  }
  
  */
+
+- (IBAction)workoutCompletedToday:(UIButton *)sender {
+    
+    [self saveData];
+    
+    [self saveWorkoutComplete:[NSDate date]];
+    
+    [self updateWorkoutCompleteCell];
+}
+
+- (IBAction)workoutCompletedPrevious:(UIButton *)sender {
+    
+    [self saveData];
+    
+    
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (sysVer >= 8.0) {
+        
+        // iOS 8 or greater show popover of chart/grid
+        [self performSegueWithIdentifier:@"iOS8_PopoverDatePicker" sender:sender];
+        
+    } else {
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            //  iOS 7 iPad and below show datepicker in popover
+            [self performSegueWithIdentifier:@"iOS7_PopoverDatePicker" sender:sender];
+        }
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            // iOS 7 iPhone and below modally show the datepicker
+            [self performSegueWithIdentifier:@"iOS7_ModalDatePicker" sender:sender];
+        }
+    }
+}
+
+- (IBAction)workoutCompletedDelete:(UIButton *)sender {
+    
+    [self saveData];
+    
+    [self deleteDate];
+    
+    [self updateWorkoutCompleteCell];
+}
+
+- (void)updateWorkoutCompleteCell {
+    
+    [self configureDateCell:self.dateCell :self.deleteDateButton :self.todayDateButton :self.previousDateButton :self.dateLabel];
+}
+
 @end

@@ -10,6 +10,8 @@
 #import "DataNavController.h"
 #import "WorkoutListRecoveryTVC.h"
 #import "UITableViewController+Design.h"
+#import "UITableViewController+Database.h"
+#import "AppDelegate.h"
 #import <iAd/iAd.h>
 
 @interface WeekTVC : UITableViewController

@@ -66,6 +66,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 -(void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:YES];
@@ -639,20 +640,7 @@
     
     self.actionSheetType = @"Share";
 }
-/*
-- (void)workoutCompleteActionSheet:(UIButton *)sender {
-    
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose the date to use."
-                                                        delegate:self
-                                               cancelButtonTitle:@"Cancel"
-                                          destructiveButtonTitle:@"Delete Date"
-                                               otherButtonTitles:@"Today's Date", @"Previous Date", nil];
-    
-    [action showFromRect:[(UIButton *)sender frame] inView:sender.superview animated:YES];
-    
-    self.actionSheetType = @"WorkoutCompleted";
-}
-*/
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if ([self.actionSheetType isEqualToString:@"Share"]) {
@@ -671,26 +659,6 @@
         if (buttonIndex == 2) {
             
             [self twitter];
-        }
-    }
-    
-    if ([self.actionSheetType isEqualToString:@"WorkoutCompleted"]) {
-        
-        if (buttonIndex == 0) {
-            
-            [self deleteDate];
-            NSLog(@"Delete Date Used");
-        }
-        
-        if (buttonIndex == 1) {
-            
-            [self saveWorkoutComplete:[NSDate date]];
-            NSLog(@"Today's Date Used");
-        }
-        
-        if (buttonIndex == 2) {
-            
-            NSLog(@"Previous Date Used");
         }
     }
 }
@@ -722,7 +690,6 @@
         
         // This is the important part
         UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
-        popPC = destNav.popoverPresentationController;
         popPC.delegate = self;
         popPC.sourceView = sender;
         //popPC.sourceRect = sender.bounds;

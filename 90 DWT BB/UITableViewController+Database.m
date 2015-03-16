@@ -430,6 +430,50 @@
     return tempWorkoutCompleted;
 }
 
+-(BOOL)workoutCompletedWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    NSPredicate *pred;
+    Workout *matches;
+    //Workout *insertWorkoutInfo;
+    
+    NSError *error;
+    NSArray *fetchedOjectsArray;
+    
+    //NSNumber *workoutIndex = ((DataNavController *)self.parentViewController).index;
+    //NSString *routine = ((DataNavController *)self.parentViewController).routine;
+    //NSString *workout = ((DataNavController *)self.parentViewController).workout;
+    
+    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+            routine,
+            workout,
+            workoutIndex];
+    [fetchRequest setPredicate:pred];
+    matches = nil;
+    fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+    
+    BOOL tempWorkoutCompleted = false;
+    
+    if ([fetchedOjectsArray count] == 0) {
+        //NSLog(@"submitEntry = No matches - create new record and save");
+        
+    }
+    
+    else {
+        //NSLog(@"submitEntry = Match found - update existing record and save");
+        // Mark the workout completed to the last object in the workout database which isn't used by anything else.
+        matches = [fetchedOjectsArray objectAtIndex:[fetchedOjectsArray count] - 1];
+        
+        tempWorkoutCompleted = [matches.exerciseCompleted boolValue];
+    }
+    
+    return tempWorkoutCompleted;
+}
+
 -(NSString*)getWorkoutCompletedDate {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

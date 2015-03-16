@@ -89,6 +89,13 @@
      */
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+    
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     
     [self findDefaultWorkout];
@@ -187,9 +194,19 @@
     cell.textLabel.text = weekString;
     
     // Accessory view icon
-    UIImage* accessory = [UIImage imageNamed:@"nav_r_arrow_grey"];
-    UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessory];
-    cell.accessoryView = accessoryView;
+    
+    if ([self weekCompleted:weekNum]) {
+        
+        // Week completed so put a checkmark as the accessoryview icon
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        
+        // Week was NOT completed so put the arrow as the accessory view icon
+        UIImage* accessory = [UIImage imageNamed:@"nav_r_arrow_grey"];
+        UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessory];
+        cell.accessoryView = accessoryView;
+    }
     
     return cell;
 }
@@ -271,5 +288,47 @@
         
         c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     }
+}
+
+- (BOOL)weekCompleted:(NSInteger)week {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSArray *tempWorkoutNameArray;
+    NSArray *tempWorkoutIndexArray;
+    NSMutableArray *resultsArray;
+    resultsArray = [[NSMutableArray alloc] init];
+    
+    if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+        
+        // Get Build Workout Arrays
+        tempWorkoutNameArray = appDelegate.build_WorkoutNameArray[week - 1];
+        tempWorkoutIndexArray = appDelegate.build_WorkoutIndexArray[week - 1];
+        
+        
+    } else {
+    
+        // Get Tone Workout Arrays
+        tempWorkoutNameArray = appDelegate.tone_WorkoutNameArray[week - 1];
+        tempWorkoutIndexArray = appDelegate.tone_WorkoutIndexArray[week - 1];
+    }
+    
+    for (int i = 0; i < tempWorkoutIndexArray.count; i++) {
+        
+        if ([self workoutCompletedWithArguments:tempWorkoutIndexArray[i] :((DataNavController *)self.parentViewController).routine :tempWorkoutNameArray[i] ]) {
+            
+            // Workout Completed
+            [resultsArray insertObject:@"YES" atIndex:i];
+            
+        } else {
+            
+            // Workout NOT Completed
+            [resultsArray insertObject:@"NO" atIndex:i];
+        }
+    }
+    
+    // Complete when the week ones are finished
+    
+    
+    return NO;
 }
 @end

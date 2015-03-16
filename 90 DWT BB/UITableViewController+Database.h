@@ -17,6 +17,7 @@
 -(void)saveWorkoutComplete:(NSDate*)useDate;
 -(void)deleteDate;
 -(BOOL)workoutCompleted;
+-(BOOL)workoutCompletedWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout;
 -(NSString*)getWorkoutCompletedDate;
 -(void)saveDataNavControllerToAppDelegate;
 //-(void)saveTextFieldToDatabase:(NSArray)
