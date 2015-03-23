@@ -14,4 +14,8 @@
 
 - (NSArray *)databaseMatches;
 -(void)saveWorkoutComplete:(NSDate*)useDate;
+-(void)deleteDate;
+-(void)saveDataNavControllerToAppDelegate;
+-(BOOL)workoutCompleted;
+-(NSString*)getWorkoutCompletedDate;
 @end

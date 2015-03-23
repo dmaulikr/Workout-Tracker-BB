@@ -14,8 +14,9 @@
 #import "Workout_AbRipper_ResultsViewController.h"
 #import "UIViewController+Social.h"
 #import "Workout.h"
+#import "UIViewController+CoreData.h"
 
-@interface NotesViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
+@interface NotesViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *currentNotes;
 @property (weak, nonatomic) IBOutlet UILabel *round;
@@ -24,10 +25,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentNotesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *previousNotesLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *shareActionButton;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@property (weak, nonatomic) IBOutlet UIView *datePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deleteDateButton;
+@property (weak, nonatomic) IBOutlet UIButton *todayDateButton;
+@property (weak, nonatomic) IBOutlet UIButton *previousDateButton;
 
 - (IBAction)submitEntry:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
 - (IBAction)shareActionSheet:(UIBarButtonItem *)sender;
+- (IBAction)workoutCompletedDelete:(UIButton *)sender;
+- (IBAction)workoutCompletedToday:(UIButton *)sender;
+- (IBAction)workoutCompletedPrevious:(UIButton *)sender;
 
 @end

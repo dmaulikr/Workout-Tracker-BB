@@ -42,7 +42,7 @@
                                @YES,
                                @NO];
     
-    [self configureAccessoryIcon:tableCell :accessoryIcon];
+    [self configureAccessoryIconNonWorkoutList:tableCell :accessoryIcon];
 
     // Get path to documents directory
     NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];

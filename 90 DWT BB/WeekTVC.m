@@ -93,7 +93,7 @@
     
     [super viewWillAppear:YES];
     
-    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -195,10 +195,12 @@
     
     // Accessory view icon
     
-    if ([self weekCompleted:weekNum]) {
+    if  ([self weekCompleted:weekNum]) {
         
         // Week completed so put a checkmark as the accessoryview icon
+        cell.accessoryView = nil;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
     }
     else {
         
@@ -304,7 +306,6 @@
         tempWorkoutNameArray = appDelegate.build_WorkoutNameArray[week - 1];
         tempWorkoutIndexArray = appDelegate.build_WorkoutIndexArray[week - 1];
         
-        
     } else {
     
         // Get Tone Workout Arrays
@@ -326,9 +327,822 @@
         }
     }
     
+    int workoutsCompleted = 0;
+    BOOL completed = NO;
+    
     // Complete when the week ones are finished
+    if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+        
+        // Bulk
+        if (week == 1) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 4 || i == 5) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 8 || i == 9) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                    
+                } else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 6 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 2) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            NSString *group3 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 1 || i == 2) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 6 || i == 7) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 9 || i == 10) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group3 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 5 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"] && [group3 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 3) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            NSString *group3 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 3 || i == 4) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 6 || i == 7) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 10 || i == 11) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group3 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 7 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"] && [group3 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 4) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 5) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 6) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 7) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 9) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 8) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 9) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 10) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 0 || i == 1) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 3 || i == 4) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                    
+                } else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 6 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 11) {
+            
+            NSString *group1 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 2 || i == 3) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 8 && [group1 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 12) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            NSString *group3 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 0 || i == 1) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 6 || i == 7) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 9 || i == 10) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group3 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 6 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"] && [group3 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+    } else {
+        
+        // Tone
+        if (week == 1) {
+            
+            NSString *group1 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 7 || i == 8) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 7 && [group1 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 2) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 1 || i == 2) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 7 || i == 8) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                    
+                } else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 6 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 3) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            NSString *group3 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 0 || i == 1) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 6 || i == 7) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 9 || i == 10) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group3 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 5 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"] && [group3 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 4) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 5) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 6) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 7) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 8) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 9) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            NSString *group3 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 0 || i == 1) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 3 || i == 4) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 9 || i == 10) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group3 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 6 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"] && [group3 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 10) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 11) {
+            
+            NSString *group1 = @"NO";
+            NSString *group2 = @"NO";
+            NSString *group3 = @"NO";
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                if (i == 0 || i == 1) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group1 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 3 || i == 4) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group2 = @"YES";
+                    }
+                }
+                
+                // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                else if (i == 9 || i == 10) {
+                    
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        group3 = @"YES";
+                    }
+                }
+                
+                else {
+                    
+                    // User needs to do all these workouts
+                    if ([resultsArray[i] isEqualToString:@"YES"]) {
+                        
+                        workoutsCompleted++;
+                    }
+                }
+            }
+            
+            if (workoutsCompleted == 6 && [group1 isEqualToString:@"YES"] && [group2 isEqualToString:@"YES"] && [group3 isEqualToString:@"YES"]) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+        
+        if (week == 12) {
+            
+            for (int i = 0; i < resultsArray.count; i++) {
+                
+                // User needs to do all these workouts
+                if ([resultsArray[i] isEqualToString:@"YES"]) {
+                    
+                    workoutsCompleted++;
+                }
+            }
+            
+            if (workoutsCompleted == 8) {
+                
+                completed = YES;
+                
+            } else {
+                
+                completed = NO;
+            }
+        }
+    }
     
-    
-    return NO;
+    return completed;
 }
 @end

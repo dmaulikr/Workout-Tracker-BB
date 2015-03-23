@@ -11,28 +11,16 @@
 
 @implementation UITableViewController (Design)
 
-- (void)configureAccessoryIcon:(NSArray*)tableViewCellArray :(NSArray*)needsAccessoryIcon{
-    
-    //UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
-    //UIColor *midGrey = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
-    //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
-    
-    // TableView background color
-    //self.tableView.backgroundColor = midGrey;
-    
+- (void)configureAccessoryIconNonWorkoutList:(NSArray*)tableViewCellArray :(NSArray*)needsAccessoryIcon {
+
     // Accessory view icon
-    UIImage* accessory = [UIImage imageNamed:@"nav_r_arrow_grey"];
+    UIImage* accessoryArrow = [UIImage imageNamed:@"nav_r_arrow_grey"];
     UITableViewCell *cell;
     UIImageView* accessoryView;
     
     for (int i = 0; i < tableViewCellArray.count; i++) {
         
         cell = tableViewCellArray[i];
-        
-        // Label backgrounds
-        //UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
-        //UIColor* detailTextColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
-        //cell.detailTextLabel.textColor = [UIColor orangeColor];
         
         // Label and Subtitle Font Size
         UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
@@ -43,16 +31,82 @@
         
         // Accessory view icon
         if ([needsAccessoryIcon[i] boolValue]) {
-            accessoryView = [[UIImageView alloc] initWithImage:accessory];
+            
+            accessoryView = [[UIImageView alloc] initWithImage:accessoryArrow];
             cell.accessoryView = accessoryView;
         }
+    }
+}
+
+- (void)configureAccessoryIconWorkoutList:(NSArray*)tableViewCellArray {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *week = ((DataNavController *)self.parentViewController).week;
+    NSString *routine = ((DataNavController *)self.parentViewController).routine;
+    NSArray *workoutNameList;
+    NSArray *workoutIndexList;
+    
+    if ([routine isEqualToString:@"Bulk"]) {
         
-        /*
-        // Cell background color
-        if ([needCellColor[i] boolValue]) {
-            cell.backgroundColor = lightGrey;
+        // Bulk
+        for (int i = 0; i < appDelegate.build_WorkoutNameArray.count; i++) {
+            
+            //
+            NSString *tempWeek = [NSString stringWithFormat:@"Week %d", i + 1];
+            
+            if ([week isEqualToString:tempWeek]) {
+                
+                workoutNameList = appDelegate.build_WorkoutNameArray[i];
+                workoutIndexList = appDelegate.build_WorkoutIndexArray[i];
+            }
         }
-         */
+    }
+    
+    else {
+        
+        // Tone
+        for (int i = 0; i < appDelegate.tone_WorkoutNameArray.count; i++) {
+            
+            //
+            NSString *tempWeek = [NSString stringWithFormat:@"Week %d", i + 1];
+            
+            if ([week isEqualToString:tempWeek]) {
+                
+                workoutNameList = appDelegate.tone_WorkoutNameArray[i];
+                workoutIndexList = appDelegate.tone_WorkoutIndexArray[i];
+            }
+        }
+    }
+    
+    UITableViewCell *cell;
+    
+    for (int i = 0; i < tableViewCellArray.count; i++) {
+        
+        cell = tableViewCellArray[i];
+        
+        // Label and Subtitle Font Size
+        UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        [cell.textLabel setFont:labelFont];
+        
+        UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        [cell.detailTextLabel setFont:detailFont];
+        
+        BOOL tempWorkoutCompleted = [self workoutCompletedWithArguments:workoutIndexList[i] :routine :workoutNameList[i]];
+        
+        // Accessory view icon
+        if (tempWorkoutCompleted == YES) {
+            
+            //
+            cell.accessoryView = nil;
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        
+        else {
+
+            UIImage* accessoryArrow = [UIImage imageNamed:@"nav_r_arrow_grey"];
+            UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessoryArrow];
+            cell.accessoryView = accessoryView;
+        }
     }
 }
 

@@ -41,7 +41,7 @@
                                 @YES,
                                 @YES];
     
-    [self configureAccessoryIcon:tableCell :accessoryIcon];
+    [self configureAccessoryIconNonWorkoutList:tableCell :accessoryIcon];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

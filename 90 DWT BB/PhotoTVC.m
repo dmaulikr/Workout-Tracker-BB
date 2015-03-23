@@ -48,7 +48,7 @@
                                 @YES,
                                 @YES];
 
-    [self configureAccessoryIcon:tableCell :accessoryIcon];
+    [self configureAccessoryIconNonWorkoutList:tableCell :accessoryIcon];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

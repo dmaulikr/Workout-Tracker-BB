@@ -33,7 +33,7 @@
     
     [self configureCellBox:self.cellBoxArray];
     
-    [self configureAccessoryIcon:self.tableCellArray :self.accessoryIconArray];
+    [self configureAccessoryIconWorkoutList:self.tableCellArray];
     
     [self configureWorkoutLabels:self.tableLabelArray :self.tableDetailArray];
 
@@ -54,6 +54,13 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+    
+    [self configureAccessoryIconWorkoutList:self.tableCellArray];
 }
 
 - (void)LoadArray {

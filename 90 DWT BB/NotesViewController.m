@@ -9,6 +9,7 @@
 #import "NotesViewController.h"
 #import "90DWTBBIAPHelper.h"
 //#import "SWRevealViewController.h"
+#import "DatePickerViewController.h"
 
 @interface NotesViewController ()
 
@@ -29,6 +30,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self saveDataNavControllerToAppDelegate];
+    
+    [self updateWorkoutCompleteCell];
     
     [self configureViewForIOSVersion];
     
@@ -134,11 +139,13 @@
 
 -(void)viewWillAppear:(BOOL)animated 
 {
-    
+    [super viewWillAppear:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self viewDidLoad];
+    
+    [self updateWorkoutCompleteCell];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -245,7 +252,7 @@
     
     // Colors
     UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
-    UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
+    //UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
     UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
     //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
     UIColor *lightGreyBlueColor = [UIColor colorWithRed:219/255.0f green:224/255.0f blue:234/255.0f alpha:1.0f];
@@ -262,7 +269,7 @@
     self.previousNotes.backgroundColor = lightGreyBlueColor;
     
     self.view.backgroundColor = lightGrey;
-    self.toolbar.backgroundColor = midGrey;
+    //self.toolbar.backgroundColor = midGrey;
     
     // Apply Border to TextViews
     self.currentNotes.layer.borderWidth = 0.5f;
@@ -290,7 +297,6 @@
         // Show the Banner Ad
         self.canDisplayBannerAds = YES;
     }
-
 }
 
 - (void)emailResults
@@ -379,4 +385,168 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Popover methods
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    UINavigationController *destNav = segue.destinationViewController;
+    
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (sysVer >= 8.0) {
+        
+        // iOS 8 or greater show popover of chart/grid
+        
+        // This is the important part
+        UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
+        popPC.delegate = self;
+        popPC.sourceView = sender;
+        //popPC.sourceRect = sender.bounds;
+        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    }
+    
+    else {
+        
+        if ([[segue identifier] isEqualToString:@"showPush"]) {
+            
+            AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            destNav.title = mainAppDelegate.graphTitle;
+        }
+        
+        if ([[segue identifier] isEqualToString:@"iOS7_ModalDatePicker"]) {
+            
+            // Put code here.
+        }
+        
+        if ([[segue identifier] isEqualToString:@"iOS7_PopoverDatePicker"]) {
+            
+            // Put code here.
+            ((UIStoryboardPopoverSegue *)segue).popoverController.delegate = self ;
+        }
+    }
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    
+    [self updateWorkoutCompleteCell];
+}
+
+-(void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    
+    [self updateWorkoutCompleteCell];
+}
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    
+    return UIModalPresentationNone;
+}
+
+- (IBAction)workoutCompletedToday:(UIButton *)sender {
+    
+    [self submitEntry:self];
+    
+    [self saveWorkoutComplete:[NSDate date]];
+    
+    [self updateWorkoutCompleteCell];
+}
+
+- (IBAction)workoutCompletedPrevious:(UIButton *)sender {
+    
+    [self submitEntry:self];
+    
+    
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (sysVer >= 8.0) {
+        
+        // iOS 8 or greater show popover of chart/grid
+        [self performSegueWithIdentifier:@"iOS8_PopoverDatePicker" sender:sender];
+        
+    } else {
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            //  iOS 7 iPad and below show datepicker in popover
+            [self performSegueWithIdentifier:@"iOS7_PopoverDatePicker" sender:sender];
+        }
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            // iOS 7 iPhone and below modally show the datepicker
+            [self performSegueWithIdentifier:@"iOS7_ModalDatePicker" sender:sender];
+        }
+    }
+}
+
+- (IBAction)workoutCompletedDelete:(UIButton *)sender {
+    
+    [self submitEntry:self];
+    
+    [self deleteDate];
+    
+    [self updateWorkoutCompleteCell];
+}
+
+- (void)updateWorkoutCompleteCell {
+    
+    UIColor *orange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
+    UIColor *green = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:1.0f];
+    UIColor *red = [UIColor colorWithRed:178/255.0f green:42/255.0f blue:9/255.0f alpha:1.0f];
+    
+    UIColor *lightOrange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:0.75f];
+    UIColor *lightGreen = [UIColor colorWithRed:133/255.0f green:187/255.0f blue:60/255.0f alpha:0.75f];
+    UIColor *lightRed = [UIColor colorWithRed:178/255.0f green:42/255.0f blue:9/255.0f alpha:0.75f];
+    
+    BOOL tempWorkoutCompleted = [self workoutCompleted];
+    
+    if (tempWorkoutCompleted == YES) {
+        
+        //  Workout Completed
+        
+        // Cell
+        self.datePickerView.backgroundColor = [UIColor darkGrayColor];
+        
+        // Label
+        self.dateLabel.text = [NSString stringWithFormat:@"Workout Completed: %@", [self getWorkoutCompletedDate]];
+        self.dateLabel.textColor = [UIColor whiteColor];
+    }
+    else {
+        
+        // Workout Not Completed
+        
+        // Cell
+        self.datePickerView.backgroundColor = [UIColor whiteColor];
+        
+        // Label
+        self.dateLabel.text = @"Workout Completed: __/__/__";
+        self.dateLabel.textColor = [UIColor blackColor];
+    }
+    
+    // Delete Button
+    self.deleteDateButton.tintColor = [UIColor whiteColor];
+    self.deleteDateButton.backgroundColor = lightRed;
+    self.deleteDateButton.layer.borderWidth = 1.0f;
+    self.deleteDateButton.layer.borderColor = [red CGColor];
+    self.deleteDateButton.layer.cornerRadius = 5;
+    self.deleteDateButton.clipsToBounds = YES;
+    
+    // Today Button
+    self.todayDateButton.tintColor = [UIColor whiteColor];
+    self.todayDateButton.backgroundColor = lightGreen;
+    self.todayDateButton.layer.borderWidth = 1.0f;
+    self.todayDateButton.layer.borderColor = [green CGColor];
+    self.todayDateButton.layer.cornerRadius = 5;
+    self.todayDateButton.clipsToBounds = YES;
+    
+    // Previous Button
+    self.previousDateButton.tintColor = [UIColor whiteColor];
+    self.previousDateButton.backgroundColor = lightOrange;
+    self.previousDateButton.layer.borderWidth = 1.0f;
+    self.previousDateButton.layer.borderColor = [orange CGColor];
+    self.previousDateButton.layer.cornerRadius = 5;
+    self.previousDateButton.clipsToBounds = YES;
+}
+
 @end

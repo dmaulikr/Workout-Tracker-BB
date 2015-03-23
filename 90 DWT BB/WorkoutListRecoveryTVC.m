@@ -35,6 +35,7 @@
                             self.cell5,
                             self.cell6,
                             self.cell7];
+    /*
     NSArray *accessoryIcon = @[@YES,
                                 @YES,
                                 @YES,
@@ -42,9 +43,9 @@
                                 @YES,
                                 @YES,
                                 @YES];
+    */
     
-    
-    [self configureAccessoryIcon:tableCell :accessoryIcon];
+    [self configureAccessoryIconWorkoutList:tableCell];
     
     // Label Text
     self.cell5.textLabel.text = ((DataNavController *)self.parentViewController).lightCell5;

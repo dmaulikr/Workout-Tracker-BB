@@ -33,7 +33,7 @@
     
     [self configureCellBox:self.cellBoxArray];
     
-    [self configureAccessoryIcon:self.tableCellArray :self.accessoryIconArray];
+    [self configureAccessoryIconWorkoutList:self.tableCellArray];
     
     [self configureWorkoutLabels:self.tableLabelArray :self.tableDetailArray];
 
