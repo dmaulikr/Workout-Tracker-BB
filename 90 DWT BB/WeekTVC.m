@@ -210,7 +210,123 @@
         cell.accessoryView = accessoryView;
     }
     
+    // Configure Gesture Recognizer
+    //self.longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:cell action:@selector(handleLongPressGestures:)];
+    self.longPGR.minimumPressDuration = 1.0f;
+    //self.longPGR.allowableMovement = 100.0f;
+    
     return cell;
+}
+
+- (IBAction)longPressGRAction:(UILongPressGestureRecognizer*)sender {
+    
+    if ([sender isEqual:self.longPGR]) {
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            
+            AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            CGPoint p = [sender locationInView:self.tableView];
+            
+            NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+            
+            //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
+            
+            // get affected cell
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            
+            NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@ workouts.", cell.textLabel.text];
+            
+            if ([UIAlertController class]) {
+                
+                // Use UIAlertController (iOS 8 and above)
+                UIAlertController *alertController = [UIAlertController
+                                                      alertControllerWithTitle:@"Workout Status"
+                                                      message:tempMessage
+                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+                
+                UIAlertAction *notCompletedAction = [UIAlertAction
+                                                     actionWithTitle:@"Not Completed"
+                                                     style:UIAlertActionStyleDestructive
+                                                     handler:^(UIAlertAction *action) {
+                                                         
+                                                         NSLog(@"Not Completed action");
+                                                     }];
+                
+                UIAlertAction *completedAction = [UIAlertAction
+                                                  actionWithTitle:NSLocalizedString(@"Completed", @"Completed action")
+                                                  style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction *action) {
+                                                      
+                                                      NSInteger position = [self findArrayPosition:indexPath];
+                                                      
+                                                      // Bulk
+                                                      if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+                                                          
+                                                          NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[position];
+                                                          NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[position];
+                                                          
+                                                          for (int i = 0; i < nameArray.count; i++) {
+                                                              
+                                                              [self saveWorkoutCompleteWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
+                                                          }
+                                                      }
+                                                      else {
+                                                          
+                                                          // Tone
+                                                          NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[position];
+                                                          NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[position];
+                                                          
+                                                          for (int i = 0; i < nameArray.count; i++) {
+                                                              
+                                                              [self saveWorkoutCompleteWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
+                                                          }
+                                                      }
+                                                      
+                                                      [self.tableView reloadData];
+                                                      
+                                                      NSLog(@"Completed action");
+                                                      NSLog(@"Position = %ld", (long)position);
+                                                  }];
+                
+                UIAlertAction *cancelAction = [UIAlertAction
+                                               actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                               style:UIAlertActionStyleCancel
+                                               handler:^(UIAlertAction *action)
+                                               {
+                                                   NSLog(@"Cancel action");
+                                               }];
+                
+                [alertController addAction:notCompletedAction];
+                [alertController addAction:completedAction];
+                [alertController addAction:cancelAction];
+                
+                UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+                
+                if (popover)
+                {
+                    popover.sourceView = cell;
+                    popover.delegate = self;
+                    popover.sourceRect = cell.bounds;
+                    popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+                }
+                
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+            
+            else {
+                
+                // Use UIAlertView (iOS 7 and below)
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Gestures"
+                                                                    message:@"Long Gesture Detected"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Cancel"
+                                                          otherButtonTitles:@"Delete", @"Add", nil];
+                [alertView show];
+            }
+        }
+    }
 }
 
 - (void)findDefaultWorkout
@@ -241,7 +357,6 @@
 }
 
 #pragma mark - Table view delegate
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -1145,4 +1260,47 @@
     
     return completed;
 }
+
+#pragma mark - Popover methods
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    
+    //[self updateWorkoutCompleteCell];
+}
+
+-(void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    
+    //[self updateWorkoutCompleteCell];
+}
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    
+    return UIModalPresentationNone;
+}
+
+- (NSInteger)findArrayPosition:(NSIndexPath*)indexPath {
+    
+    //NSInteger tempSection = indexPath.section;
+    //NSInteger tempRow = indexPath.row;
+    
+    NSInteger position = 0;
+    
+    for (int i = 0; i <= indexPath.section; i++) {
+        
+        if (i == indexPath.section) {
+            
+            position = position + (indexPath.row + 1);
+        }
+        
+        else {
+            
+            NSInteger totalRowsInSection = [self.tableView numberOfRowsInSection:i];
+        
+            position = position + totalRowsInSection;
+        }
+    }
+    
+    return position - 1;
+}
+
 @end

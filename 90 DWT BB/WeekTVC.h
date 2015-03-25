@@ -14,7 +14,8 @@
 #import "AppDelegate.h"
 #import <iAd/iAd.h>
 
-@interface WeekTVC : UITableViewController
+@interface WeekTVC : UITableViewController <UIActionSheetDelegate, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, UIGestureRecognizerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell3;
@@ -33,4 +34,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell16;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell17;
 
+@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPGR;
+
+- (IBAction)longPressGRAction:(UILongPressGestureRecognizer*)sender;
 @end
