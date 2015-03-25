@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Workout.h"
+#import "WorkoutCompleteDate.h"
 
 @interface UIViewController (CoreData)
 

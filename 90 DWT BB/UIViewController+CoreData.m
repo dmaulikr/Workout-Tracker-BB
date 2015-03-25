@@ -39,11 +39,12 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
-    Workout *matches;
+    WorkoutCompleteDate *matches;
+    WorkoutCompleteDate *insertWorkoutInfo;
     
     NSError *error;
     NSArray *fetchedOjectsArray;
@@ -61,8 +62,15 @@
     fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
     
     if ([fetchedOjectsArray count] == 0) {
-        //NSLog(@"submitEntry = No matches - create new record and save");
         
+        //NSLog(@"submitEntry = No matches - create new record and save");
+        insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
+        
+        insertWorkoutInfo.routine = routine;
+        insertWorkoutInfo.workout = workout;
+        insertWorkoutInfo.index = workoutIndex;
+        insertWorkoutInfo.workoutCompleted = [NSNumber numberWithBool:YES];
+        insertWorkoutInfo.date = [NSDate date];
     }
     
     else {
@@ -72,7 +80,7 @@
         // Mark the workout completed to the last object in the workout database which isn't used by anything else.
         matches = [fetchedOjectsArray objectAtIndex:[fetchedOjectsArray count] - 1];
         
-        matches.exerciseCompleted = [NSNumber numberWithBool:YES];
+        matches.workoutCompleted = [NSNumber numberWithBool:YES];
         matches.date = useDate;
     }
     
@@ -87,11 +95,11 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
-    Workout *matches;
+    WorkoutCompleteDate *matches;
     
     NSError *error;
     NSArray *fetchedOjectsArray;
@@ -120,7 +128,7 @@
         // Mark the workout completed to the last object in the workout database which isn't used by anything else.
         matches = [fetchedOjectsArray objectAtIndex:[fetchedOjectsArray count] - 1];
         
-        matches.exerciseCompleted = [NSNumber numberWithBool:NO];
+        matches.workoutCompleted = [NSNumber numberWithBool:NO];
         matches.date = nil;
         
         //NSLog(@"Date = %@", matches.date);
@@ -149,12 +157,12 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
-    Workout *matches;
-    //Workout *insertWorkoutInfo;
+    WorkoutCompleteDate *matches;
+    //WorkoutCompleteDate *insertWorkoutInfo;
     
     NSError *error;
     NSArray *fetchedOjectsArray;
@@ -174,8 +182,9 @@
     BOOL tempWorkoutCompleted = false;
     
     if ([fetchedOjectsArray count] == 0) {
-        //NSLog(@"submitEntry = No matches - create new record and save");
         
+        //NSLog(@"submitEntry = No matches - create new record and save");
+        tempWorkoutCompleted = NO;
     }
     
     else {
@@ -183,7 +192,7 @@
         // Mark the workout completed to the last object in the workout database which isn't used by anything else.
         matches = [fetchedOjectsArray objectAtIndex:[fetchedOjectsArray count] - 1];
         
-        tempWorkoutCompleted = [matches.exerciseCompleted boolValue];
+        tempWorkoutCompleted = [matches.workoutCompleted boolValue];
     }
     
     return tempWorkoutCompleted;
@@ -193,12 +202,12 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
     NSPredicate *pred;
-    Workout *matches;
-    //Workout *insertWorkoutInfo;
+    WorkoutCompleteDate *matches;
+    //WorkoutCompleteDate *insertWorkoutInfo;
     
     NSError *error;
     NSArray *fetchedOjectsArray;
@@ -219,8 +228,9 @@
     NSString *getDate;
     
     if ([fetchedOjectsArray count] == 0) {
-        //NSLog(@"submitEntry = No matches - create new record and save");
         
+        //NSLog(@"submitEntry = No matches - create new record and save");
+        getDate = nil;
     }
     
     else {
