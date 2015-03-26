@@ -18,6 +18,7 @@
 -(void)saveWorkoutComplete:(NSDate*)useDate;
 -(void)saveWorkoutCompleteWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout;
 -(void)deleteDate;
+-(void)deleteDateWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout;
 -(BOOL)workoutCompleted;
 -(BOOL)workoutCompletedWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout;
 -(NSString*)getWorkoutCompletedDate;

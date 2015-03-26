@@ -224,16 +224,14 @@
         if (sender.state == UIGestureRecognizerStateBegan)
         {
             
-            AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
             CGPoint p = [sender locationInView:self.tableView];
             
-            NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+            self.indexPath = [self.tableView indexPathForRowAtPoint:p];
             
             //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
             
             // get affected cell
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
             
             NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@ workouts.", cell.textLabel.text];
             
@@ -250,7 +248,8 @@
                                                      style:UIAlertActionStyleDestructive
                                                      handler:^(UIAlertAction *action) {
                                                          
-                                                         NSLog(@"Not Completed action");
+                                                         self.request = @"Not Completed";
+                                                         [self verifyAddDeleteRequestFromTableViewCell];
                                                      }];
                 
                 UIAlertAction *completedAction = [UIAlertAction
@@ -258,35 +257,8 @@
                                                   style:UIAlertActionStyleDefault
                                                   handler:^(UIAlertAction *action) {
                                                       
-                                                      NSInteger position = [self findArrayPosition:indexPath];
-                                                      
-                                                      // Bulk
-                                                      if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
-                                                          
-                                                          NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[position];
-                                                          NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[position];
-                                                          
-                                                          for (int i = 0; i < nameArray.count; i++) {
-                                                              
-                                                              [self saveWorkoutCompleteWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
-                                                          }
-                                                      }
-                                                      else {
-                                                          
-                                                          // Tone
-                                                          NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[position];
-                                                          NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[position];
-                                                          
-                                                          for (int i = 0; i < nameArray.count; i++) {
-                                                              
-                                                              [self saveWorkoutCompleteWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
-                                                          }
-                                                      }
-                                                      
-                                                      [self.tableView reloadData];
-                                                      
-                                                      NSLog(@"Completed action");
-                                                      NSLog(@"Position = %ld", (long)position);
+                                                      self.request = @"Completed";
+                                                      [self verifyAddDeleteRequestFromTableViewCell];
                                                   }];
                 
                 UIAlertAction *cancelAction = [UIAlertAction
@@ -317,15 +289,459 @@
             
             else {
                 
-                // Use UIAlertView (iOS 7 and below)
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Gestures"
-                                                                    message:@"Long Gesture Detected"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Cancel"
-                                                          otherButtonTitles:@"Delete", @"Add", nil];
-                [alertView show];
+                // Use UIActionSheet (iOS 7 and below)
+                
+                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Workout Status"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Cancel"
+                                                          destructiveButtonTitle:@"Not Completed"
+                                                               otherButtonTitles:@"Completed", nil];
+                
+                // Action sheet from tableview Cell
+                actionSheet.tag = 100;
+                
+                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                    
+                    // In this case the device is an iPad.
+                    //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
+                    [actionSheet showFromRect:cell.bounds inView:cell animated:YES];
+                }
+                else{
+                    
+                    // In this case the device is an iPhone/iPod Touch.
+                    [actionSheet showInView:self.view];
+                }
             }
         }
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (actionSheet.tag == 100) {
+        
+        // Action sheet from tableview Cell
+        
+        if (buttonIndex == 0) {
+            
+            // Not Completed
+            NSLog(@"Not Completed");
+            
+            self.request = @"Not Completed";
+            [self verifyAddDeleteRequestFromTableViewCell];
+        }
+        
+        else if (buttonIndex == 1) {
+            
+            // Completed
+            NSLog(@"Completed");
+            
+            self.request = @"Completed";
+            [self verifyAddDeleteRequestFromTableViewCell];
+        }
+        
+        else {
+            
+            // Cancel
+            NSLog(@"Cancel");
+        }
+    }
+    
+    else if (actionSheet.tag == 200) {
+        
+        // Action sheet from a barbuttonitem
+        
+        if (buttonIndex == 0) {
+            
+            // Not Completed
+            NSLog(@"Not Completed");
+            
+            self.request = @"Not Completed";
+            [self verifyAddDeleteRequestFromBarButtonItem];
+        }
+        
+        else if (buttonIndex == 1) {
+            
+            // Completed
+            NSLog(@"Completed");
+            
+            self.request = @"Completed";
+            [self verifyAddDeleteRequestFromBarButtonItem];
+        }
+        
+        else {
+            
+            // Cancel
+            NSLog(@"Cancel");
+        }
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (alertView.tag == 100) {
+        
+        // Alert View for a tableview Cell
+        
+        if (buttonIndex == 0) {
+            
+            // Cancel
+            NSLog(@"Cancel");
+        }
+        
+        else if (buttonIndex == 1) {
+            
+            // Yes
+            NSLog(@"Yes");
+            
+            [self AddDeleteDatesFromOneWeek];
+            [self.tableView reloadData];
+        }
+    }
+    
+    else if (alertView.tag == 200) {
+        
+        // Alert View for a barbuttonitem
+        
+        if (buttonIndex == 0) {
+            
+            // Cancel
+            NSLog(@"Cancel");
+        }
+        
+        else if (buttonIndex == 1) {
+            
+            // Yes
+            NSLog(@"Yes");
+            
+            [self AddDeleteDatesFromAllWeeks];
+            [self.tableView reloadData];
+        }
+    }
+}
+
+- (IBAction)editButtonPressed:(UIBarButtonItem *)sender {
+    
+    NSString *tempMessage = [NSString stringWithFormat:@"Set the status for every week of %@ workouts.", ((DataNavController *)self.parentViewController).routine];
+    
+    if ([UIAlertController class]) {
+        
+        // Use UIAlertController (iOS 8 and above)
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Workout Status"
+                                              message:tempMessage
+                                              preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *notCompletedAction = [UIAlertAction
+                                             actionWithTitle:@"Not Completed"
+                                             style:UIAlertActionStyleDestructive
+                                             handler:^(UIAlertAction *action) {
+                                                 
+                                                 self.request = @"Not Completed";
+                                                 [self verifyAddDeleteRequestFromBarButtonItem];
+                                             }];
+        
+        UIAlertAction *completedAction = [UIAlertAction
+                                          actionWithTitle:NSLocalizedString(@"Completed", @"Completed action")
+                                          style:UIAlertActionStyleDefault
+                                          handler:^(UIAlertAction *action) {
+                                              
+                                              self.request = @"Completed";
+                                              [self verifyAddDeleteRequestFromBarButtonItem];
+                                          }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                       }];
+        
+        [alertController addAction:notCompletedAction];
+        [alertController addAction:completedAction];
+        [alertController addAction:cancelAction];
+        
+        UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+        
+        if (popover)
+        {
+            popover.barButtonItem = sender;
+            popover.sourceView = self.view;
+            popover.delegate = self;
+            popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        }
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    else {
+        
+        // Use UIAlertView (iOS 7 and below)
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Workout Status"
+                                                                delegate:self
+                                                       cancelButtonTitle:@"Cancel"
+                                                  destructiveButtonTitle:@"Not Completed"
+                                                       otherButtonTitles:@"Completed", nil];
+        
+        // Action sheet from barbuttonitem
+        actionSheet.tag = 200;
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            // In this case the device is an iPad.
+            //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
+            [actionSheet showFromBarButtonItem:sender animated:YES];
+        }
+        else{
+            
+            // In this case the device is an iPhone/iPod Touch.
+            [actionSheet showInView:self.view];
+        }
+    }
+}
+
+- (void)AddDeleteDatesFromOneWeek {
+    
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // ***DELETE***
+    
+    if ([self.request isEqualToString:@"Not Completed"]) {
+        
+        // Bulk
+        if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+            
+            NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[self.position];
+            NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[self.position];
+            
+            for (int i = 0; i < nameArray.count; i++) {
+                
+                [self deleteDateWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
+            }
+        }
+        else {
+            
+            // Tone
+            NSArray *nameArray = mainAppDelegate.tone_WorkoutNameArray[self.position];
+            NSArray *indexArray = mainAppDelegate.tone_WorkoutIndexArray[self.position];
+            
+            for (int i = 0; i < nameArray.count; i++) {
+                
+                [self deleteDateWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
+            }
+        }
+    }
+    
+    else {
+        
+        // ***ADD***
+        
+        // Bulk
+        if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+            
+            NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[self.position];
+            NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[self.position];
+            
+            for (int i = 0; i < nameArray.count; i++) {
+                
+                [self saveWorkoutCompleteWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
+            }
+        }
+        else {
+            
+            // Tone
+            NSArray *nameArray = mainAppDelegate.tone_WorkoutNameArray[self.position];
+            NSArray *indexArray = mainAppDelegate.tone_WorkoutIndexArray[self.position];
+            
+            for (int i = 0; i < nameArray.count; i++) {
+                
+                [self saveWorkoutCompleteWithArguments:indexArray[i] :((DataNavController *)self.parentViewController).routine :nameArray[i]];
+            }
+        }
+    }
+}
+
+- (void)AddDeleteDatesFromAllWeeks {
+    
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // ***DELETE***
+    
+    if ([self.request isEqualToString:@"Not Completed"]) {
+        
+        // Bulk
+        if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+            
+            for (int i = 0; i < mainAppDelegate.build_WorkoutNameArray.count; i++) {
+                
+                NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[i];
+                NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[i];
+                
+                for (int j = 0; j < nameArray.count; j++) {
+                    
+                    [self deleteDateWithArguments:indexArray[j] :((DataNavController *)self.parentViewController).routine :nameArray[j]];
+                }
+            }
+        }
+        else {
+            
+            // Tone
+            for (int i = 0; i < mainAppDelegate.tone_WorkoutNameArray.count; i++) {
+                
+                NSArray *nameArray = mainAppDelegate.tone_WorkoutNameArray[i];
+                NSArray *indexArray = mainAppDelegate.tone_WorkoutIndexArray[i];
+                
+                for (int j = 0; j < nameArray.count; j++) {
+                    
+                    [self deleteDateWithArguments:indexArray[j] :((DataNavController *)self.parentViewController).routine :nameArray[j]];
+                }
+            }
+        }
+    }
+    
+    else {
+        
+        // ***ADD***
+        
+        // Bulk
+        if ([((DataNavController *)self.parentViewController).routine isEqualToString:@"Bulk"]) {
+            
+            for (int i = 0; i < mainAppDelegate.build_WorkoutNameArray.count; i++) {
+                
+                NSArray *nameArray = mainAppDelegate.build_WorkoutNameArray[i];
+                NSArray *indexArray = mainAppDelegate.build_WorkoutIndexArray[i];
+                
+                for (int j = 0; j < nameArray.count; j++) {
+                    
+                    [self saveWorkoutCompleteWithArguments:indexArray[j] :((DataNavController *)self.parentViewController).routine :nameArray[j]];
+                }
+            }
+        }
+        else {
+            
+            // Tone
+            for (int i = 0; i < mainAppDelegate.tone_WorkoutNameArray.count; i++) {
+                
+                NSArray *nameArray = mainAppDelegate.tone_WorkoutNameArray[i];
+                NSArray *indexArray = mainAppDelegate.tone_WorkoutIndexArray[i];
+                
+                for (int j = 0; j < nameArray.count; j++) {
+                    
+                    [self saveWorkoutCompleteWithArguments:indexArray[j] :((DataNavController *)self.parentViewController).routine :nameArray[j]];
+                }
+            }
+        }
+    }
+}
+
+- (void)verifyAddDeleteRequestFromTableViewCell {
+    
+    // get affected cell
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
+    
+    self.position = [self findArrayPosition:self.indexPath];
+    
+    NSString *tempMessage = [NSString stringWithFormat:@"You are about to set the status for all %@-%@ workouts to:\n\n%@\n\nDo you want to proceed?", ((DataNavController *)self.parentViewController).routine, cell.textLabel.text, self.request];
+    
+    if ([UIAlertController class]) {
+        
+        // Use UIAlertController (iOS 8 and above)
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Warning"
+                                              message:tempMessage
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yesAction = [UIAlertAction
+                                             actionWithTitle:@"Yes"
+                                             style:UIAlertActionStyleDefault
+                                             handler:^(UIAlertAction *action) {
+                                                 
+                                                 [self AddDeleteDatesFromOneWeek];
+                                                 
+                                                 [self.tableView reloadData];
+                                                 
+                                                 //NSLog(@"Not Completed action");
+                                                 NSLog(@"Position = %ld", (long)self.position);
+                                             }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                       }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:yesAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    else {
+        
+        // Use UIAlertView (iOS 7 and below)
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                            message:tempMessage
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Yes", nil];
+        alertView.tag = 100;
+        
+        [alertView show];
+    }
+}
+
+- (void)verifyAddDeleteRequestFromBarButtonItem {
+    
+    NSString *tempMessage = [NSString stringWithFormat:@"You are about to set the status for every week of the %@ workout to:\n\n%@\n\nDo you want to proceed?", ((DataNavController *)self.parentViewController).routine, self.request];
+    
+    if ([UIAlertController class]) {
+        
+        // Use UIAlertController (iOS 8 and above)
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Warning"
+                                              message:tempMessage
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yesAction = [UIAlertAction
+                                    actionWithTitle:@"Yes"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *action) {
+                                        
+                                        [self AddDeleteDatesFromAllWeeks];
+                                        
+                                        [self.tableView reloadData];
+                                    }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                       }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:yesAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    else {
+        
+        // Use UIAlertView (iOS 7 and below)
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                            message:tempMessage
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Yes", nil];
+        
+        alertView.tag = 200;
+        
+        [alertView show];
     }
 }
 

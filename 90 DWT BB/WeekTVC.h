@@ -35,6 +35,12 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell17;
 
 @property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPGR;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *edit;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) NSString *request;
+@property NSInteger position;
 
 - (IBAction)longPressGRAction:(UILongPressGestureRecognizer*)sender;
+- (IBAction)editButtonPressed:(UIBarButtonItem *)sender;
+
 @end
