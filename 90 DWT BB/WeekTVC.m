@@ -291,7 +291,9 @@
                 
                 // Use UIActionSheet (iOS 7 and below)
                 
-                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Workout Status"
+                NSString *tempMessage_iOS7 = [NSString stringWithFormat:@"Workout Status\n\n%@", tempMessage];
+                
+                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:tempMessage_iOS7
                                                                         delegate:self
                                                                cancelButtonTitle:@"Cancel"
                                                           destructiveButtonTitle:@"Not Completed"
@@ -478,8 +480,9 @@
     else {
         
         // Use UIAlertView (iOS 7 and below)
+        NSString *tempMessage_iOS7 = [NSString stringWithFormat:@"Workout Status\n\n%@", tempMessage];
         
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Workout Status"
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:tempMessage_iOS7
                                                                 delegate:self
                                                        cancelButtonTitle:@"Cancel"
                                                   destructiveButtonTitle:@"Not Completed"
@@ -776,6 +779,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *workoutSegueName = self.navigationItem.title;
     
     if ([self.navigationItem.title isEqualToString:@"Bulk"]) {
@@ -803,6 +807,7 @@
     NSString *cellText = selectedCell.textLabel.text;
     
     ((DataNavController *)self.parentViewController).week = cellText;
+    mainAppDelegate.weekArrayPositionValue = [self findArrayPosition:indexPath];
     workoutSegueName = [workoutSegueName stringByAppendingFormat:@" %@", cellText];
     
     [self performSegueWithIdentifier:workoutSegueName sender:self];

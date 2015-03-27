@@ -65,31 +65,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)editButtonPressed:(UIBarButtonItem *)sender {
-    
-    //
-    NSLog(@"Edit Button Pressed");
-}
-
-- (void)longPressGRAction:(UILongPressGestureRecognizer*)sender {
-    
-    if (sender.state == UIGestureRecognizerStateBegan)
-    {
-        
-        CGPoint p = [sender locationInView:self.tableView];
-        
-        self.indexPath = [self.tableView indexPathForRowAtPoint:p];
-        
-        //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
-        
-        // get affected cell
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
-        
-        NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@ workouts.", cell.textLabel.text];
-        NSLog(@"%@", tempMessage);
-    }
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:YES];
@@ -136,17 +111,6 @@
                               self.cell6Detail,
                               self.cell9Detail,
                               self.cell10Detail];
-    
-    self.accessoryIconArray = @[@YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -257,14 +221,35 @@
     //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
 }
 
-/*
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    
+    NSInteger rows = 0;
+    
+    if (section == 0) {
+        rows = 4;
+    }
+    
+    else if (section == 1) {
+       
+        rows = 3;
+    }
+    
+    else if (section == 2) {
+        
+        rows = 1;
+    }
+    
+    else if (section == 3) {
+        
+        rows = 2;
+    }
+    
+    return rows;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -339,5 +324,61 @@
         
         return @"";
     }
+}
+
+- (void)longPressGRAction:(UILongPressGestureRecognizer*)sender {
+    
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        
+        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        CGPoint p = [sender locationInView:self.tableView];
+        
+        self.indexPath = [self.tableView indexPathForRowAtPoint:p];
+        
+        //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
+        
+        if (self.indexPath) {
+            
+            // get affected cell and label
+            
+            //UITableViewCell *cell;
+            //NSString *cellTitle;
+            
+            //self.position = [self findArrayPosition:self.indexPath];
+            mainAppDelegate.selectedWorkoutArrayPositionValue = [self findArrayPosition:self.indexPath];
+            
+            for (int i = 0; i < self.tableCellArray.count; i++) {
+                
+                if (mainAppDelegate.selectedWorkoutArrayPositionValue == i) {
+                    
+                    self.argCell = self.tableCellArray[i];
+                    UILabel *cellLabel = self.tableLabelArray[i];
+                    self.cellTitle = cellLabel.text;
+                }
+            }
+            
+            if (self.argCell.isHighlighted) {
+                
+                [self LPGR_PressedSuccessfully:self.argCell :self.cellTitle];
+            }
+        }
+    }
+}
+
+- (void)editButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self BBI_EditButtonPressed:sender :self.tableCellArray];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self actionSheetDisplay:actionSheet clickedButtonAtIndex:buttonIndex :(UITableViewCell*)self.argCell :(NSString*)self.cellTitle :self.tableCellArray];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self alertViewDisplay:alertView clickedButtonAtIndex:buttonIndex :self.argCell :self.tableCellArray];
 }
 @end

@@ -72,6 +72,7 @@
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488A9E1AC349C600BF0225 /* WorkoutCompleteDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488A9D1AC349C600BF0225 /* WorkoutCompleteDate.m */; };
+		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
 		A552C4E218BFF90700798347 /* Build_Back+Bi_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */; };
 		A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0D818AAC9450012E943 /* Bulk_1_TVC.m */; };
 		A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0DC18AADA520012E943 /* Bulk_2_TVC.m */; };
@@ -236,6 +237,8 @@
 		A5488A9B1AC3488D00BF0225 /* _0_DWT_BB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_BB 2.xcdatamodel"; sourceTree = "<group>"; };
 		A5488A9C1AC349C600BF0225 /* WorkoutCompleteDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutCompleteDate.h; sourceTree = "<group>"; };
 		A5488A9D1AC349C600BF0225 /* WorkoutCompleteDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutCompleteDate.m; sourceTree = "<group>"; };
+		A5488A9F1AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+CheckMarkStatus.h"; sourceTree = "<group>"; };
+		A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+CheckMarkStatus.m"; sourceTree = "<group>"; };
 		A552C4E018BFF90700798347 /* Build_Back+Bi_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Build_Back+Bi_1_TVC.h"; sourceTree = "<group>"; };
 		A552C4E118BFF90700798347 /* Build_Back+Bi_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Build_Back+Bi_1_TVC.m"; sourceTree = "<group>"; };
 		A56DA0D718AAC9450012E943 /* Bulk_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_1_TVC.h; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */,
 				A544F9E918C67B79000B2A8C /* UITableViewController+Email.h */,
 				A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */,
+				A5488A9F1AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.h */,
+				A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1050,6 +1055,7 @@
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
 				A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
+				A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */,
 				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,
 				A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */,
 			);

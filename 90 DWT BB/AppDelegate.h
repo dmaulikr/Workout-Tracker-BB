@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSNumber *index;          // The number of times this workout has been done.
 @property (strong, nonatomic) NSString *exerciseName;   // Full name of an individual exercise.
 @property (strong, nonatomic) NSString *exerciseRound;  // Round of an individual exercise (1 or 2).
+@property NSInteger weekArrayPositionValue;             // Current week as a number.
+@property NSInteger selectedWorkoutArrayPositionValue;  // Selected workout in the tableview as a number.
+@property (strong, nonatomic) NSString *request;        // Checkmark request (Completed) or (Not Completed).
 
 @property (strong, nonatomic) NSString *graphRoutine;
 @property (strong, nonatomic) NSString *graphWorkout;
