@@ -49,11 +49,45 @@
         self.canDisplayBannerAds = YES;
     }
     
+    // Add rightBarButtonItem
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
+    
+    // Add a long press gesture recognizer
+    UILongPressGestureRecognizer *longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGRAction:)];
+    longPGR.minimumPressDuration = 1.0f;
+    longPGR.allowableMovement = 10.0f;
+    [self.tableView addGestureRecognizer:longPGR];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)editButtonPressed:(UIBarButtonItem *)sender {
+    
+    //
+    NSLog(@"Edit Button Pressed");
+}
+
+- (void)longPressGRAction:(UILongPressGestureRecognizer*)sender {
+    
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        
+        CGPoint p = [sender locationInView:self.tableView];
+        
+        self.indexPath = [self.tableView indexPathForRowAtPoint:p];
+        
+        //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
+        
+        // get affected cell
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
+        
+        NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@ workouts.", cell.textLabel.text];
+        NSLog(@"%@", tempMessage);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

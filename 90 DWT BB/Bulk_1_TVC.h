@@ -55,4 +55,6 @@
 @property (strong, nonatomic) NSArray *tableLabelArray;
 @property (strong, nonatomic) NSArray *tableDetailArray;
 
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
 @end
