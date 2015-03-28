@@ -48,6 +48,15 @@
         // Show the Banner Ad
         self.canDisplayBannerAds = YES;
     }
+    
+    // Add rightBarButtonItem
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
+    
+    // Add a long press gesture recognizer
+    UILongPressGestureRecognizer *longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGRAction:)];
+    longPGR.minimumPressDuration = 1.0f;
+    longPGR.allowableMovement = 10.0f;
+    [self.tableView addGestureRecognizer:longPGR];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -96,16 +105,6 @@
                              self.cell9Label];
     
     self.tableDetailArray = @[];
-    
-    self.accessoryIconArray = @[@YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -207,14 +206,31 @@
     //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
 }
 
-/*
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    
+    NSInteger rows = 0;
+    
+    if (section == 0) {
+        rows = 2;
+    }
+    
+    else if (section == 1) {
+        
+        rows = 5;
+    }
+    
+    else if (section == 2) {
+        
+        rows = 2;
+    }
+    
+    return rows;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";

@@ -14,7 +14,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSString *tempMessage = [NSString stringWithFormat:@"Set the status for:\n%@ - %@ - %@", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week, cellTitle];
+    NSString *tempMessage = [NSString stringWithFormat:@"Set the status for:\n\n%@ - %@ - %@", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week, cellTitle];
     
     NSLog(@"%@", tempMessage);
     
@@ -86,7 +86,6 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             
             // In this case the device is an iPad.
-            //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
             [actionSheet showFromRect:argCell.bounds inView:argCell animated:YES];
         }
         else{
@@ -101,7 +100,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSString *tempMessage = [NSString stringWithFormat:@"Set the status for every %@-%@ workout.", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week];
+    NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all workouts of:\n\n%@ - %@", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week];
     
     if ([UIAlertController class]) {
         
@@ -186,7 +185,7 @@
     
     AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSString *tempMessage = [NSString stringWithFormat:@"You are about to set the status for %@-%@ to:\n\n%@\n\nDo you want to proceed?", ((DataNavController *)self.parentViewController).routine, cellTitle, mainAppDelegate.request];
+    NSString *tempMessage = [NSString stringWithFormat:@"You are about to set the status for\n\n%@ - %@ - %@\n\nto:\n\n%@\n\nDo you want to proceed?", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week ,cellTitle, mainAppDelegate.request];
     
     if ([UIAlertController class]) {
         
@@ -240,7 +239,7 @@
     
     AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSString *tempMessage = [NSString stringWithFormat:@"You are about to set the status for every workout of %@-%@ to:\n\n%@\n\nDo you want to proceed?", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week, mainAppDelegate.request];
+    NSString *tempMessage = [NSString stringWithFormat:@"You are about to set the status for all workouts of:\n\n%@ - %@\n\nto:\n\n%@\n\nDo you want to proceed?", ((DataNavController *)self.parentViewController).routine, ((DataNavController *)self.parentViewController).week, mainAppDelegate.request];
     
     if ([UIAlertController class]) {
         

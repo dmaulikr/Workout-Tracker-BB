@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataNavController.h"
 #import "UITableViewController+Design.h"
+#import "UITableViewController+CheckMarkStatus.h"
 
 @interface Bulk_11_TVC : UITableViewController
 
@@ -54,4 +55,7 @@
 @property (strong, nonatomic) NSArray *tableLabelArray;
 @property (strong, nonatomic) NSArray *tableDetailArray;
 
+@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) UITableViewCell *argCell;
+@property (strong, nonatomic) NSString *cellTitle;
 @end

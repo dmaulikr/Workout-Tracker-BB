@@ -48,6 +48,15 @@
         // Show the Banner Ad
         self.canDisplayBannerAds = YES;
     }
+    
+    // Add rightBarButtonItem
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)];
+    
+    // Add a long press gesture recognizer
+    UILongPressGestureRecognizer *longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGRAction:)];
+    longPGR.minimumPressDuration = 1.0f;
+    longPGR.allowableMovement = 10.0f;
+    [self.tableView addGestureRecognizer:longPGR];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -102,17 +111,6 @@
                               self.cell3Detail,
                               self.cell8Detail,
                               self.cell9Detail];
-    
-    self.accessoryIconArray = @[@YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES,
-                                @YES];
 }
 
 - (void)didReceiveMemoryWarning
