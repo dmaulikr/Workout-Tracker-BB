@@ -238,6 +238,7 @@
     NSInteger rows = 0;
     
     if (section == 0) {
+        
         rows = 1;
     }
     

@@ -196,14 +196,31 @@
     //NSLog(@"%@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
 }
 
-/*
  - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
  {
- #warning Incomplete method implementation.
- // Return the number of rows in the section.
- return 0;
+     // Return the number of rows in the section.
+     
+     NSInteger rows = 0;
+     
+     if (section == 0) {
+         
+         rows = 3;
+     }
+     
+     else if (section == 1) {
+         
+         rows = 2;
+     }
+     
+     else if (section == 2) {
+         
+         rows = 3;
+     }
+     
+    return rows;
  }
- 
+
+ /*
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
  {
  static NSString *CellIdentifier = @"Cell";
