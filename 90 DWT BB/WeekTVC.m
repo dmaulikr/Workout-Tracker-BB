@@ -233,7 +233,7 @@
             // get affected cell
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
             
-            NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@ workouts.", cell.textLabel.text];
+            NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@-%@ workouts.", ((DataNavController *)self.parentViewController).routine, cell.textLabel.text];
             
             if ([UIAlertController class]) {
                 
@@ -266,7 +266,7 @@
                                                style:UIAlertActionStyleCancel
                                                handler:^(UIAlertAction *action)
                                                {
-                                                   NSLog(@"Cancel action");
+                                                   //NSLog(@"Cancel action");
                                                }];
                 
                 [alertController addAction:notCompletedAction];
@@ -327,7 +327,7 @@
         if (buttonIndex == 0) {
             
             // Not Completed
-            NSLog(@"Not Completed");
+            //NSLog(@"Not Completed");
             
             self.request = @"Not Completed";
             [self verifyAddDeleteRequestFromTableViewCell];
@@ -336,7 +336,7 @@
         else if (buttonIndex == 1) {
             
             // Completed
-            NSLog(@"Completed");
+            //NSLog(@"Completed");
             
             self.request = @"Completed";
             [self verifyAddDeleteRequestFromTableViewCell];
@@ -345,7 +345,7 @@
         else {
             
             // Cancel
-            NSLog(@"Cancel");
+            //NSLog(@"Cancel");
         }
     }
     
@@ -356,7 +356,7 @@
         if (buttonIndex == 0) {
             
             // Not Completed
-            NSLog(@"Not Completed");
+            //NSLog(@"Not Completed");
             
             self.request = @"Not Completed";
             [self verifyAddDeleteRequestFromBarButtonItem];
@@ -365,7 +365,7 @@
         else if (buttonIndex == 1) {
             
             // Completed
-            NSLog(@"Completed");
+            //NSLog(@"Completed");
             
             self.request = @"Completed";
             [self verifyAddDeleteRequestFromBarButtonItem];
@@ -374,7 +374,7 @@
         else {
             
             // Cancel
-            NSLog(@"Cancel");
+            //NSLog(@"Cancel");
         }
     }
 }
@@ -388,13 +388,13 @@
         if (buttonIndex == 0) {
             
             // Cancel
-            NSLog(@"Cancel");
+            //NSLog(@"Cancel");
         }
         
         else if (buttonIndex == 1) {
             
             // Yes
-            NSLog(@"Yes");
+            //NSLog(@"Yes");
             
             [self AddDeleteDatesFromOneWeek];
             [self.tableView reloadData];
@@ -408,13 +408,13 @@
         if (buttonIndex == 0) {
             
             // Cancel
-            NSLog(@"Cancel");
+            //NSLog(@"Cancel");
         }
         
         else if (buttonIndex == 1) {
             
             // Yes
-            NSLog(@"Yes");
+            //NSLog(@"Yes");
             
             [self AddDeleteDatesFromAllWeeks];
             [self.tableView reloadData];
@@ -457,7 +457,7 @@
                                        style:UIAlertActionStyleCancel
                                        handler:^(UIAlertAction *action)
                                        {
-                                           NSLog(@"Cancel action");
+                                           //NSLog(@"Cancel action");
                                        }];
         
         [alertController addAction:notCompletedAction];
@@ -666,7 +666,7 @@
                                                  [self.tableView reloadData];
                                                  
                                                  //NSLog(@"Not Completed action");
-                                                 NSLog(@"Position = %ld", (long)self.position);
+                                                 //NSLog(@"Position = %ld", (long)self.position);
                                              }];
         
         UIAlertAction *cancelAction = [UIAlertAction
@@ -674,7 +674,7 @@
                                        style:UIAlertActionStyleCancel
                                        handler:^(UIAlertAction *action)
                                        {
-                                           NSLog(@"Cancel action");
+                                           //NSLog(@"Cancel action");
                                        }];
         
         [alertController addAction:cancelAction];
@@ -724,7 +724,7 @@
                                        style:UIAlertActionStyleCancel
                                        handler:^(UIAlertAction *action)
                                        {
-                                           NSLog(@"Cancel action");
+                                           //NSLog(@"Cancel action");
                                        }];
         
         [alertController addAction:cancelAction];

@@ -296,4 +296,59 @@
     }
 }
 
+- (void)longPressGRAction:(UILongPressGestureRecognizer*)sender {
+    
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        
+        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        CGPoint p = [sender locationInView:self.tableView];
+        
+        self.indexPath = [self.tableView indexPathForRowAtPoint:p];
+        
+        //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
+        
+        if (self.indexPath) {
+            
+            // get affected cell and label
+            
+            //UITableViewCell *cell;
+            //NSString *cellTitle;
+            
+            //self.position = [self findArrayPosition:self.indexPath];
+            mainAppDelegate.selectedWorkoutArrayPositionValue = [self findArrayPosition:self.indexPath];
+            
+            for (int i = 0; i < self.tableCellArray.count; i++) {
+                
+                if (mainAppDelegate.selectedWorkoutArrayPositionValue == i) {
+                    
+                    self.argCell = self.tableCellArray[i];
+                    UILabel *cellLabel = self.tableLabelArray[i];
+                    self.cellTitle = cellLabel.text;
+                }
+            }
+            
+            if (self.argCell.isHighlighted) {
+                
+                [self LPGR_PressedSuccessfully:self.argCell :self.cellTitle];
+            }
+        }
+    }
+}
+
+- (void)editButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self BBI_EditButtonPressed:sender :self.tableCellArray];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self actionSheetDisplay:actionSheet clickedButtonAtIndex:buttonIndex :(UITableViewCell*)self.argCell :(NSString*)self.cellTitle :self.tableCellArray];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self alertViewDisplay:alertView clickedButtonAtIndex:buttonIndex :self.argCell :self.tableCellArray];
+}
 @end
