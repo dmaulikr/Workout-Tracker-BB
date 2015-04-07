@@ -65,6 +65,25 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+    
+    // Show or Hide Ads
+    if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
+    
+    [self configureAccessoryIconWorkoutList:self.tableCellArray];
+}
+
 - (void)LoadArray {
     
     self.cellBoxArray = @[self.cell1Box,

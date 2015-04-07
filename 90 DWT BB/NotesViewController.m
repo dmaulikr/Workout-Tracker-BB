@@ -140,6 +140,18 @@
 -(void)viewWillAppear:(BOOL)animated 
 {
     [super viewWillAppear:YES];
+    
+    // Show or Hide Ads
+    if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
