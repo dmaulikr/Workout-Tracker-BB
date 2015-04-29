@@ -70,7 +70,7 @@
         insertWorkoutInfo.workout = workout;
         insertWorkoutInfo.index = workoutIndex;
         insertWorkoutInfo.workoutCompleted = [NSNumber numberWithBool:YES];
-        insertWorkoutInfo.date = [NSDate date];
+        insertWorkoutInfo.date = useDate;
     }
     
     else {
