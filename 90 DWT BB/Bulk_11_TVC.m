@@ -95,7 +95,8 @@
                           self.cell7Box,
                           self.cell8Box,
                           self.cell9Box,
-                          self.cell10Box];
+                          self.cell10Box,
+                          self.cell11Box];
     
     self.tableCellArray = @[self.cell1,
                             self.cell2,
@@ -106,7 +107,8 @@
                             self.cell7,
                             self.cell8,
                             self.cell9,
-                            self.cell10];
+                            self.cell10,
+                            self.cell11];
     
     self.tableLabelArray = @[self.cell1Label,
                              self.cell2Label,
@@ -117,10 +119,13 @@
                              self.cell7Label,
                              self.cell8Label,
                              self.cell9Label,
-                             self.cell10Label];
+                             self.cell10Label,
+                             self.cell11Label];
     
     self.tableDetailArray = @[self.cell3Detail,
-                              self.cell4Detail];
+                              self.cell4Detail,
+                              self.cell10Detail,
+                              self.cell11Detail];
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,18 +148,9 @@
     NSString *week = ((DataNavController *)self.parentViewController).week;
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *workoutArray;
-    
-    workoutArray = @[@"B2: Chest",
-                     @"B1: Legs",
-                     @"B3: Cardio",
-                     @"B3: Complete Body",
-                     @"B3: Ab Workout",
-                     @"Rest",
-                     @"B2: Back",
-                     @"B2: Arms",
-                     @"B3: Ab Workout",
-                     @"B3: Cardio"];
+    workoutArray = appDelegate.build_Week11_WorkoutNameArray;
     
     ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     
@@ -185,7 +181,7 @@
             else if (selectedCell.tag == 4) {
                 
                 // B3: Complete Body
-                ((DataNavController *)self.parentViewController).index = @3;
+                ((DataNavController *)self.parentViewController).index = @4;
             }
             
             else if (selectedCell.tag == 5) {
@@ -223,6 +219,12 @@
                 // B3: Cardio
                 ((DataNavController *)self.parentViewController).index = @5;
             }
+            
+            else if (selectedCell.tag == 11) {
+                
+                // B3: Complete Body
+                ((DataNavController *)self.parentViewController).index = @5;
+            }
         }
     }
     
@@ -256,7 +258,7 @@
     
     else if (section == 4) {
         
-        rows = 1;
+        rows = 2;
     }
     
     return rows;

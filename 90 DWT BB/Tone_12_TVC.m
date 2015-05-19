@@ -93,7 +93,8 @@
                           self.cell5Box,
                           self.cell6Box,
                           self.cell7Box,
-                          self.cell8Box];
+                          self.cell8Box,
+                          self.cell9Box];
     
     self.tableCellArray = @[self.cell1,
                             self.cell2,
@@ -102,7 +103,8 @@
                             self.cell5,
                             self.cell6,
                             self.cell7,
-                            self.cell8];
+                            self.cell8,
+                            self.cell9];
     
     self.tableLabelArray = @[self.cell1Label,
                              self.cell2Label,
@@ -111,9 +113,11 @@
                              self.cell5Label,
                              self.cell6Label,
                              self.cell7Label,
-                             self.cell8Label];
+                             self.cell8Label,
+                             self.cell9Label];
     
-    self.tableDetailArray = @[];
+    self.tableDetailArray = @[self.cell6Detail,
+                              self.cell7Detail];
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,16 +140,9 @@
     NSString *week = ((DataNavController *)self.parentViewController).week;
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *workoutArray;
-    
-    workoutArray = @[@"B2: Chest",
-                     @"B1: Legs",
-                     @"B2: Shoulders",
-                     @"B2: Back",
-                     @"B2: Arms",
-                     @"B3: Cardio",
-                     @"B3: Ab Workout",
-                     @"Rest"];
+    workoutArray = appDelegate.tone_Week12_WorkoutNameArray;
     
     ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     
@@ -193,11 +190,17 @@
             
             else if (selectedCell.tag == 7) {
                 
-                // B3: Ab Workout
+                // B3: Complete Body
                 ((DataNavController *)self.parentViewController).index = @14;
             }
             
             else if (selectedCell.tag == 8) {
+                
+                // B3: Ab Workout
+                ((DataNavController *)self.parentViewController).index = @14;
+            }
+            
+            else if (selectedCell.tag == 9) {
                 
                 // Rest
                 ((DataNavController *)self.parentViewController).index = @12;
@@ -221,7 +224,7 @@
      
      else if (section == 1) {
          
-         rows = 2;
+         rows = 3;
      }
      
      else if (section == 2) {

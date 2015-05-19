@@ -136,16 +136,9 @@
     NSString *week = ((DataNavController *)self.parentViewController).week;
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *workoutArray;
-    
-    workoutArray = @[@"B2: Legs",
-                     @"B2: Back",
-                     @"B2: Arms",
-                     @"B3: Ab Workout",
-                     @"B2: Shoulders",
-                     @"Rest",
-                     @"B2: Chest",
-                     @"B2: Legs"];
+    workoutArray = appDelegate.build_Week5_WorkoutNameArray;
     
     ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     

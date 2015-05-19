@@ -293,6 +293,7 @@
                                            @"B1: Back+Bi",
                                            @"T1: Back+Bi",
                                            @"B3: Cardio",
+                                           @"B3: Complete Body",// Added
                                            @"B3: Ab Workout",
                                            @"Rest",
                                            @"B2: Arms",
@@ -307,12 +308,14 @@
                                            @"B2: Back",
                                            @"B2: Arms",
                                            @"B3: Ab Workout",
-                                           @"B3: Cardio"];
+                                           @"B3: Cardio",
+                                           @"B3: Complete Body"];// Added
     
     self.build_Week12_WorkoutNameArray = @[@"B1: Chest+Tri",
                                            @"T1: Chest+Tri",
                                            @"B2: Legs",
                                            @"B3: Cardio",
+                                           @"B3: Complete Body",// Added
                                            @"B3: Ab Workout",
                                            @"Rest",
                                            @"B1: Back+Bi",
@@ -342,6 +345,7 @@
                                          @"B1: Legs",
                                          @"B1: Back+Bi",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B1: Shoulders",
                                          @"Rest",
@@ -352,6 +356,7 @@
                                          @"B1: Back+Bi",
                                          @"T1: Back+Bi",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B1: Shoulders",
                                          @"Rest",
@@ -362,6 +367,7 @@
     self.tone_Week3_WorkoutNameArray = @[@"B1: Back+Bi",
                                          @"T1: Back+Bi",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B1: Shoulders",
                                          @"Rest",
@@ -375,6 +381,7 @@
                                          @"B2: Legs",
                                          @"B2: Arms",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B2: Back",
                                          @"B2: Shoulders",
@@ -384,6 +391,7 @@
                                          @"B2: Legs",
                                          @"B2: Arms",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B2: Back",
                                          @"B2: Shoulders",
@@ -393,6 +401,7 @@
                                          @"B2: Legs",
                                          @"B2: Arms",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B2: Back",
                                          @"B2: Shoulders",
@@ -402,6 +411,7 @@
                                          @"B2: Legs",
                                          @"B2: Arms",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B2: Back",
                                          @"B2: Shoulders",
@@ -411,6 +421,7 @@
                                          @"B2: Legs",
                                          @"B2: Arms",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B2: Back",
                                          @"B2: Shoulders",
@@ -422,6 +433,7 @@
                                          @"B1: Back+Bi",
                                          @"T1: Back+Bi",
                                          @"B3: Cardio",
+                                         @"B3: Complete Body",// Added
                                          @"B3: Ab Workout",
                                          @"B1: Shoulders",
                                          @"Rest",
@@ -435,6 +447,7 @@
                                           @"B2: Back",
                                           @"B2: Arms",
                                           @"B3: Cardio",
+                                          @"B3: Complete Body",// Added
                                           @"B3: Ab Workout",
                                           @"Rest"];
     
@@ -444,6 +457,7 @@
                                           @"B1: Back+Bi",
                                           @"T1: Back+Bi",
                                           @"B3: Cardio",
+                                          @"B3: Complete Body",// Added
                                           @"B3: Ab Workout",
                                           @"B1: Shoulders",
                                           @"Rest",
@@ -457,6 +471,7 @@
                                           @"B2: Back",
                                           @"B2: Arms",
                                           @"B3: Cardio",
+                                          @"B3: Complete Body",// Added
                                           @"B3: Ab Workout",
                                           @"Rest"];
     
@@ -573,6 +588,7 @@
                                             @5,
                                             @4,
                                             @3,
+                                            @3,
                                             @13,
                                             @11,
                                             @8,
@@ -581,17 +597,19 @@
     self.build_Week11_WorkoutIndexArray = @[@8,
                                             @5,
                                             @4,
-                                            @3,
+                                            @4,
                                             @14,
                                             @12,
                                             @8,
                                             @9,
                                             @15,
+                                            @5,
                                             @5];
     
     self.build_Week12_WorkoutIndexArray = @[@6,
                                             @5,
                                             @9,
+                                            @6,
                                             @6,
                                             @16,
                                             @13,
@@ -599,7 +617,7 @@
                                             @5,
                                             @8,
                                             @7,
-                                            @4,
+                                            @7,
                                             @17];
     
     self.build_WorkoutIndexArray = @[self.build_Week1_WorkoutIndexArray,
@@ -624,6 +642,7 @@
                                           @1,
                                           @1,
                                           @1,
+                                          @1,
                                           @2,
                                           @1];
     
@@ -634,12 +653,14 @@
                                           @2,
                                           @2,
                                           @2,
+                                          @2,
                                           @3,
                                           @2,
                                           @3];
     
     self.tone_Week3_WorkoutIndexArray = @[@3,
                                           @2,
+                                          @3,
                                           @3,
                                           @3,
                                           @3,
@@ -655,6 +676,7 @@
                                           @1,
                                           @4,
                                           @4,
+                                          @4,
                                           @1,
                                           @1,
                                           @4];
@@ -662,6 +684,7 @@
     self.tone_Week5_WorkoutIndexArray = @[@2,
                                           @2,
                                           @2,
+                                          @5,
                                           @5,
                                           @5,
                                           @2,
@@ -673,6 +696,7 @@
                                           @3,
                                           @6,
                                           @6,
+                                          @6,
                                           @3,
                                           @3,
                                           @6];
@@ -682,6 +706,7 @@
                                           @4,
                                           @7,
                                           @7,
+                                          @7,
                                           @4,
                                           @4,
                                           @7];
@@ -689,6 +714,7 @@
     self.tone_Week8_WorkoutIndexArray = @[@5,
                                           @5,
                                           @5,
+                                          @8,
                                           @8,
                                           @8,
                                           @5,
@@ -702,10 +728,11 @@
                                           @4,
                                           @9,
                                           @9,
+                                          @9,
                                           @4,
                                           @9,
                                           @10,
-                                          @1,
+                                          @10,
                                           @10];
     
     self.tone_Week10_WorkoutIndexArray = @[@6,
@@ -713,6 +740,7 @@
                                            @6,
                                            @6,
                                            @6,
+                                           @11,
                                            @11,
                                            @11,
                                            @10];
@@ -724,10 +752,11 @@
                                            @5,
                                            @12,
                                            @12,
+                                           @12,
                                            @5,
                                            @11,
                                            @13,
-                                           @2,
+                                           @13,
                                            @13];
     
     self.tone_Week12_WorkoutIndexArray = @[@7,
@@ -735,6 +764,7 @@
                                            @7,
                                            @7,
                                            @7,
+                                           @14,
                                            @14,
                                            @14,
                                            @12];

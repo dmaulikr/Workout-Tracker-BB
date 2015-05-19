@@ -95,7 +95,8 @@
                           self.cell7Box,
                           self.cell8Box,
                           self.cell9Box,
-                          self.cell10Box];
+                          self.cell10Box,
+                          self.cell11Box];
     
     self.tableCellArray = @[self.cell1,
                             self.cell2,
@@ -106,7 +107,8 @@
                             self.cell7,
                             self.cell8,
                             self.cell9,
-                            self.cell10];
+                            self.cell10,
+                            self.cell11];
     
     self.tableLabelArray = @[self.cell1Label,
                              self.cell2Label,
@@ -117,10 +119,13 @@
                              self.cell7Label,
                              self.cell8Label,
                              self.cell9Label,
-                             self.cell10Label];
+                             self.cell10Label,
+                             self.cell11Label];
     
     self.tableDetailArray = @[self.cell2Detail,
                               self.cell3Detail,
+                              self.cell4Detail,
+                              self.cell5Detail,
                               self.cell8Detail,
                               self.cell9Detail];
 }
@@ -145,18 +150,9 @@
     NSString *week = ((DataNavController *)self.parentViewController).week;
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *workoutArray;
-    
-    workoutArray = @[@"B1: Legs",
-                     @"B1: Back+Bi",
-                     @"T1: Back+Bi",
-                     @"B3: Cardio",
-                     @"B3: Ab Workout",
-                     @"B1: Shoulders",
-                     @"Rest",
-                     @"B1: Chest+Tri",
-                     @"T1: Chest+Tri",
-                     @"B1: Legs"];
+    workoutArray = appDelegate.tone_Week2_WorkoutNameArray;
     
     ((DataNavController *)self.parentViewController).workout = workoutArray[selectedCell.tag - 1];
     
@@ -192,35 +188,41 @@
             
             else if (selectedCell.tag == 5) {
                 
-                // B3: Ab Workout
+                // B3: Complete Body
                 ((DataNavController *)self.parentViewController).index = @2;
             }
             
             else if (selectedCell.tag == 6) {
                 
-                // B1: Shoulders
+                // B3: Ab Workout
                 ((DataNavController *)self.parentViewController).index = @2;
             }
             
             else if (selectedCell.tag == 7) {
                 
-                // Rest
+                // B1: Shoulders
                 ((DataNavController *)self.parentViewController).index = @2;
             }
             
             else if (selectedCell.tag == 8) {
                 
+                // Rest
+                ((DataNavController *)self.parentViewController).index = @2;
+            }
+            
+            else if (selectedCell.tag == 9) {
+                
                 // B1: Chest+Tri
                 ((DataNavController *)self.parentViewController).index = @3;
             }
             
-            else if (selectedCell.tag == 9) {
+            else if (selectedCell.tag == 10) {
                 
                 // T1: Chest+Tri
                 ((DataNavController *)self.parentViewController).index = @2;
             }
             
-            else if (selectedCell.tag == 10) {
+            else if (selectedCell.tag == 11) {
                 
                 // B1: Legs
                 ((DataNavController *)self.parentViewController).index = @3;
@@ -249,7 +251,7 @@
      
      else if (section == 2) {
          
-         rows = 2;
+         rows = 3;
      }
      
      else if (section == 3) {

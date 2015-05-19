@@ -53,6 +53,7 @@
     }
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;
+    //NSLog(@"%@", self.navigationItem.title);
     
     //  Configure the cell...
     [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray :self.previousNotesArray :self.currentNotesArray :self.graphButtonArray];

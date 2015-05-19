@@ -70,6 +70,7 @@
 		A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */; };
 		A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */; };
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
+		A536D5461B0A39B90098B867 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488A9E1AC349C600BF0225 /* WorkoutCompleteDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488A9D1AC349C600BF0225 /* WorkoutCompleteDate.m */; };
 		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
@@ -110,7 +111,6 @@
 		A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD8718AD3B96000FD51E /* Tone_12_TVC.m */; };
 		A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F3478D18B67569009BBA33 /* Test_CVC.m */; };
 		A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F3479018B67622009BBA33 /* TestCVCCell.m */; };
-		A5FFDA5D1A6832F8002E6513 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */; };
 		A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */; };
 		A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA601A68558E002E6513 /* CoreText.framework */; };
 		A5FFDA631A6855B8002E6513 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA621A6855B8002E6513 /* libc++.dylib */; };
@@ -328,10 +328,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A536D5461B0A39B90098B867 /* ShinobiCharts.framework in Frameworks */,
 				A5FFDA631A6855B8002E6513 /* libc++.dylib in Frameworks */,
 				A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */,
 				A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */,
-				A5FFDA5D1A6832F8002E6513 /* ShinobiCharts.framework in Frameworks */,
 				58F21B0318A6E62600DE043E /* Security.framework in Frameworks */,
 				58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */,
 				58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */,
