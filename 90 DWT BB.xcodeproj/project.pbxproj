@@ -70,7 +70,6 @@
 		A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */; };
 		A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */; };
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
-		A536D5461B0A39B90098B867 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488A9E1AC349C600BF0225 /* WorkoutCompleteDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488A9D1AC349C600BF0225 /* WorkoutCompleteDate.m */; };
 		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
@@ -88,6 +87,7 @@
 		A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0F718AADB9B0012E943 /* Bulk_11_TVC.m */; };
 		A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A56DA0FA18AADBB00012E943 /* Bulk_12_TVC.m */; };
 		A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A9A4E18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m */; };
+		A59A5DB01B14C94B0031738D /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5C1A6832F8002E6513 /* ShinobiCharts.framework */; };
 		A5A3A6AF19C88104006090D9 /* 90DWTBBIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6AE19C88104006090D9 /* 90DWTBBIAPHelper.m */; };
 		A5A3A6B219C88581006090D9 /* StoreListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6B119C88581006090D9 /* StoreListTVC.m */; };
 		A5A3A6B919C8885C006090D9 /* StoreListTVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A6B819C8885C006090D9 /* StoreListTVCCell.m */; };
@@ -328,7 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A536D5461B0A39B90098B867 /* ShinobiCharts.framework in Frameworks */,
+				A59A5DB01B14C94B0031738D /* ShinobiCharts.framework in Frameworks */,
 				A5FFDA631A6855B8002E6513 /* libc++.dylib in Frameworks */,
 				A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */,
 				A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */,
