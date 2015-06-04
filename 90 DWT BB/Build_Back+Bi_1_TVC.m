@@ -567,7 +567,7 @@
     else {
         
         NSNumber *headerSection = [NSNumber numberWithInteger:section +1];
-        NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections];
+        NSNumber *numberOfSections = [NSNumber numberWithInteger:self.tableView.numberOfSections - 1];
         NSString *headerTitle = @"";
         headerTitle = [headerTitle stringByAppendingFormat:@"Set %@ of %@", headerSection, numberOfSections];
         

@@ -166,8 +166,17 @@
     if  ([self weekCompleted:weekNum]) {
         
         // Week completed so put a checkmark as the accessoryview icon
+        
+        
+        UIImage* accessoryCheckMark = [UIImage imageNamed:@"checkMark_orange_22"];
+        UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessoryCheckMark];
+        cell.accessoryView = accessoryView;
+        
+        
+        /*
         cell.accessoryView = nil;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+         */
 
     }
     else {

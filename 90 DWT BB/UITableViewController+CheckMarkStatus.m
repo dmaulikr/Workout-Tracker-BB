@@ -356,8 +356,17 @@
         }
         
         // Update TableViewCell Accessory Icon - Checkmark
+        
+        
+        UIImage* accessoryCheckMark = [UIImage imageNamed:@"checkMark_orange_22"];
+        UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessoryCheckMark];
+        argCell.accessoryView = accessoryView;
+        
+        
+        /*
         argCell.accessoryView = nil;
         argCell.accessoryType = UITableViewCellAccessoryCheckmark;
+         */
     }
 }
 
@@ -443,8 +452,16 @@
             
             UITableViewCell *cell = argTableCellArray[i];
             
+            
+            UIImage* accessoryCheckMark = [UIImage imageNamed:@"checkMark_orange_22"];
+            UIImageView* accessoryView = [[UIImageView alloc] initWithImage:accessoryCheckMark];
+            cell.accessoryView = accessoryView;
+            
+            
+            /*
             cell.accessoryView = nil;
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+             */
         }
     }
 }
