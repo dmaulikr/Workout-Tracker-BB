@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
 #import "UIViewController+Social.h"
 #import "UITableViewController+Email.h"
 #import "AppDelegate.h"
+#import "MPAdView.h"
 
-@interface Build_Chest_Tri_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate>
+@interface Build_Chest_Tri_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, MPAdViewDelegate>
+
+@property (nonatomic) MPAdView *adView;
+
+@property (nonatomic, strong) UIView *headerView;
+
+@property CGSize bannerSize;
 
 @property (strong, nonatomic) NSArray *Titles;
 @property (strong, nonatomic) NSArray *Reps;

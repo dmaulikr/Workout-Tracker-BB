@@ -15,5 +15,4 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     //#import <iAd/iAd.h>
-    //#import "CorePlot-CocoaTouch.h"
 #endif

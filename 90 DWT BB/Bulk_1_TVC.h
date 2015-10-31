@@ -10,8 +10,16 @@
 #import "DataNavController.h"
 #import "UITableViewController+Design.h"
 #import "UITableViewController+CheckMarkStatus.h"
+#import "MPAdView.h"
 
-@interface Bulk_1_TVC : UITableViewController
+@interface Bulk_1_TVC : UITableViewController <MPAdViewDelegate>
+
+@property (nonatomic) MPAdView *adView;
+
+@property (nonatomic, strong) UIView *headerView;
+
+@property CGSize bannerSize;
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell3;

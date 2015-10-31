@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
 #import "DataNavController.h"
 #import "AppDelegate.h"
 #import "ResultsViewController.h"
 #import "MainTBC.h"
 //#import "ScatterPlotViewController.h"
-//#import "DWT3IAPHelper.h"
+#import "90DWTBBIAPHelper.h"
+#import "MPAdView.h"
 
-@interface ExerciseViewController : UIViewController <ADBannerViewDelegate>
+@interface ExerciseViewController : UIViewController <MPAdViewDelegate>
+
+@property (nonatomic) MPAdView *adView;
+
+@property CGSize bannerSize;
 
 // Current Labels
 @property (weak, nonatomic) IBOutlet UILabel *currentRepsLabel;
