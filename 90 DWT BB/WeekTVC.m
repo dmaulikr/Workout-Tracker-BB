@@ -70,6 +70,13 @@
         
         [self.adView loadAd];
     }
+    
+    // Add a long press gesture recognizer
+    //UILongPressGestureRecognizer *longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGRAction:)];
+    self.longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGRAction:)];
+    self.longPGR.minimumPressDuration = 1.0f;
+    self.longPGR.allowableMovement = 10.0f;
+    [self.tableView addGestureRecognizer:self.longPGR];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -233,17 +240,13 @@
         cell.accessoryView = accessoryView;
     }
     
-    // Configure Gesture Recognizer
-    //self.longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:cell action:@selector(handleLongPressGestures:)];
-    self.longPGR.minimumPressDuration = 1.0f;
-    //self.longPGR.allowableMovement = 100.0f;
-    
     return cell;
 }
 
-- (IBAction)longPressGRAction:(UILongPressGestureRecognizer*)sender {
+- (void)longPressGRAction:(UILongPressGestureRecognizer*)sender {
     
     if ([sender isEqual:self.longPGR]) {
+     
         if (sender.state == UIGestureRecognizerStateBegan)
         {
             
@@ -251,95 +254,200 @@
             
             self.indexPath = [self.tableView indexPathForRowAtPoint:p];
             
-            //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
-            
-            // get affected cell
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
-            
-            NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@-%@ workouts.", ((DataNavController *)self.parentViewController).routine, cell.textLabel.text];
-            
-            if ([UIAlertController class]) {
+            // Only show the alertview if longpressed on a cell, not a section header.
+            if (self.indexPath) {
                 
-                // Use UIAlertController (iOS 8 and above)
-                UIAlertController *alertController = [UIAlertController
-                                                      alertControllerWithTitle:@"Workout Status"
-                                                      message:tempMessage
-                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+                //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
                 
-                UIAlertAction *notCompletedAction = [UIAlertAction
-                                                     actionWithTitle:@"Not Completed"
-                                                     style:UIAlertActionStyleDestructive
-                                                     handler:^(UIAlertAction *action) {
-                                                         
-                                                         self.request = @"Not Completed";
-                                                         [self verifyAddDeleteRequestFromTableViewCell];
-                                                     }];
+                // get affected cell
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
                 
-                UIAlertAction *completedAction = [UIAlertAction
-                                                  actionWithTitle:NSLocalizedString(@"Completed", @"Completed action")
-                                                  style:UIAlertActionStyleDefault
-                                                  handler:^(UIAlertAction *action) {
-                                                      
-                                                      self.request = @"Completed";
-                                                      [self verifyAddDeleteRequestFromTableViewCell];
-                                                  }];
+                NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@-%@ workouts.", ((DataNavController *)self.parentViewController).routine, cell.textLabel.text];
                 
-                UIAlertAction *cancelAction = [UIAlertAction
-                                               actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
-                                               style:UIAlertActionStyleCancel
-                                               handler:^(UIAlertAction *action)
-                                               {
-                                                   //NSLog(@"Cancel action");
-                                               }];
-                
-                [alertController addAction:notCompletedAction];
-                [alertController addAction:completedAction];
-                [alertController addAction:cancelAction];
-                
-                UIPopoverPresentationController *popover = alertController.popoverPresentationController;
-                
-                if (popover)
-                {
-                    popover.sourceView = cell;
-                    popover.delegate = self;
-                    popover.sourceRect = cell.bounds;
-                    popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
-                }
-                
-                
-                [self presentViewController:alertController animated:YES completion:nil];
-            }
-            
-            else {
-                
-                // Use UIActionSheet (iOS 7 and below)
-                
-                NSString *tempMessage_iOS7 = [NSString stringWithFormat:@"Workout Status\n\n%@", tempMessage];
-                
-                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:tempMessage_iOS7
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Cancel"
-                                                          destructiveButtonTitle:@"Not Completed"
-                                                               otherButtonTitles:@"Completed", nil];
-                
-                // Action sheet from tableview Cell
-                actionSheet.tag = 100;
-                
-                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                if ([UIAlertController class]) {
                     
-                    // In this case the device is an iPad.
-                    //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
-                    [actionSheet showFromRect:cell.bounds inView:cell animated:YES];
-                }
-                else{
+                    // Use UIAlertController (iOS 8 and above)
+                    UIAlertController *alertController = [UIAlertController
+                                                          alertControllerWithTitle:@"Workout Status"
+                                                          message:tempMessage
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
                     
-                    // In this case the device is an iPhone/iPod Touch.
-                    [actionSheet showInView:self.view];
+                    UIAlertAction *notCompletedAction = [UIAlertAction
+                                                         actionWithTitle:@"Not Completed"
+                                                         style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             
+                                                             self.request = @"Not Completed";
+                                                             [self verifyAddDeleteRequestFromTableViewCell];
+                                                         }];
+                    
+                    UIAlertAction *completedAction = [UIAlertAction
+                                                      actionWithTitle:NSLocalizedString(@"Completed", @"Completed action")
+                                                      style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          
+                                                          self.request = @"Completed";
+                                                          [self verifyAddDeleteRequestFromTableViewCell];
+                                                      }];
+                    
+                    UIAlertAction *cancelAction = [UIAlertAction
+                                                   actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                                   style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction *action)
+                                                   {
+                                                       //NSLog(@"Cancel action");
+                                                   }];
+                    
+                    [alertController addAction:notCompletedAction];
+                    [alertController addAction:completedAction];
+                    [alertController addAction:cancelAction];
+                    
+                    UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+                    
+                    if (popover)
+                    {
+                        popover.sourceView = cell;
+                        popover.delegate = self;
+                        popover.sourceRect = cell.bounds;
+                        popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+                    }
+                    
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
                 }
+                
+                else {
+                    
+                    // Use UIActionSheet (iOS 7 and below)
+                    
+                    NSString *tempMessage_iOS7 = [NSString stringWithFormat:@"Workout Status\n\n%@", tempMessage];
+                    
+                    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:tempMessage_iOS7
+                                                                            delegate:self
+                                                                   cancelButtonTitle:@"Cancel"
+                                                              destructiveButtonTitle:@"Not Completed"
+                                                                   otherButtonTitles:@"Completed", nil];
+                    
+                    // Action sheet from tableview Cell
+                    actionSheet.tag = 100;
+                    
+                    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                        
+                        // In this case the device is an iPad.
+                        //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
+                        [actionSheet showFromRect:cell.bounds inView:cell animated:YES];
+                    }
+                    else{
+                        
+                        // In this case the device is an iPhone/iPod Touch.
+                        [actionSheet showInView:self.view];
+                    }
+                }
+
             }
         }
     }
-}
+ }
+
+//- (IBAction)longPressGRAction:(UILongPressGestureRecognizer*)sender {
+//    
+//    if ([sender isEqual:self.longPGR]) {
+//        if (sender.state == UIGestureRecognizerStateBegan)
+//        {
+//            
+//            CGPoint p = [sender locationInView:self.tableView];
+//            
+//            self.indexPath = [self.tableView indexPathForRowAtPoint:p];
+//            
+//            //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
+//            
+//            // get affected cell
+//            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
+//            
+//            NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@-%@ workouts.", ((DataNavController *)self.parentViewController).routine, cell.textLabel.text];
+//            
+//            if ([UIAlertController class]) {
+//                
+//                // Use UIAlertController (iOS 8 and above)
+//                UIAlertController *alertController = [UIAlertController
+//                                                      alertControllerWithTitle:@"Workout Status"
+//                                                      message:tempMessage
+//                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+//                
+//                UIAlertAction *notCompletedAction = [UIAlertAction
+//                                                     actionWithTitle:@"Not Completed"
+//                                                     style:UIAlertActionStyleDestructive
+//                                                     handler:^(UIAlertAction *action) {
+//                                                         
+//                                                         self.request = @"Not Completed";
+//                                                         [self verifyAddDeleteRequestFromTableViewCell];
+//                                                     }];
+//                
+//                UIAlertAction *completedAction = [UIAlertAction
+//                                                  actionWithTitle:NSLocalizedString(@"Completed", @"Completed action")
+//                                                  style:UIAlertActionStyleDefault
+//                                                  handler:^(UIAlertAction *action) {
+//                                                      
+//                                                      self.request = @"Completed";
+//                                                      [self verifyAddDeleteRequestFromTableViewCell];
+//                                                  }];
+//                
+//                UIAlertAction *cancelAction = [UIAlertAction
+//                                               actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+//                                               style:UIAlertActionStyleCancel
+//                                               handler:^(UIAlertAction *action)
+//                                               {
+//                                                   //NSLog(@"Cancel action");
+//                                               }];
+//                
+//                [alertController addAction:notCompletedAction];
+//                [alertController addAction:completedAction];
+//                [alertController addAction:cancelAction];
+//                
+//                UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+//                
+//                if (popover)
+//                {
+//                    popover.sourceView = cell;
+//                    popover.delegate = self;
+//                    popover.sourceRect = cell.bounds;
+//                    popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+//                }
+//                
+//                
+//                [self presentViewController:alertController animated:YES completion:nil];
+//            }
+//            
+//            else {
+//                
+//                // Use UIActionSheet (iOS 7 and below)
+//                
+//                NSString *tempMessage_iOS7 = [NSString stringWithFormat:@"Workout Status\n\n%@", tempMessage];
+//                
+//                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:tempMessage_iOS7
+//                                                                        delegate:self
+//                                                               cancelButtonTitle:@"Cancel"
+//                                                          destructiveButtonTitle:@"Not Completed"
+//                                                               otherButtonTitles:@"Completed", nil];
+//                
+//                // Action sheet from tableview Cell
+//                actionSheet.tag = 100;
+//                
+//                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//                    
+//                    // In this case the device is an iPad.
+//                    //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
+//                    [actionSheet showFromRect:cell.bounds inView:cell animated:YES];
+//                }
+//                else{
+//                    
+//                    // In this case the device is an iPhone/iPod Touch.
+//                    [actionSheet showInView:self.view];
+//                }
+//            }
+//        }
+//    }
+//}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
