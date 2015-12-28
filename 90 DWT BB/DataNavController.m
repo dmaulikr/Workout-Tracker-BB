@@ -7,6 +7,8 @@
 //
 
 #import "DataNavController.h"
+#import "90DWTBBIAPHelper.h"
+#import "AppDelegate.h"
 
 @interface DataNavController ()
 
@@ -29,6 +31,20 @@
         
         [self popToRootViewControllerAnimated:YES];
         ((MainTBC *)self.parentViewController).workoutChanged = NO;
+    }
+    
+    if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if (appDelegate.purchasedAdRemoveBeforeAppLaunch) {
+            
+            // Do nothing.  No need to pop to root view controller.
+            
+        } else {
+            
+            [self popToRootViewControllerAnimated:YES];
+        }
     }
 }
 

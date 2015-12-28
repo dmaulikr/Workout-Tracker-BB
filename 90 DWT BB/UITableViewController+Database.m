@@ -8,14 +8,21 @@
 
 #import "UITableViewController+Database.h"
 #import "DataNavController.h"
+#import "CoreDataHelper.h"
 
 @implementation UITableViewController (Database)
 
 -(void)exerciseMatches:(NSArray*)exerciseTitlesArray :(NSArray*)previousTFArray :(NSArray*)currentTFArray :(NSArray*)prevNotesArray :(NSArray*)curNotesArray{
     
     // Get Data from the database.
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Get workout data using the current session
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -37,7 +44,7 @@
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    appDelegate.index = workoutIndex;
+    mainAppDelegate.index = workoutIndex;
     
     for (int i = 0; i < exerciseTitlesArray.count; i++) {
         
@@ -52,7 +59,8 @@
             tempCurrentTF = currentTFArray[textFieldCount];
             roundConverted = [NSNumber numberWithInt:round];
             
-            pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %@) AND (index == %@)",
+            pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %@) AND (index == %@)",
+                    currentSessionString,
                     routine,
                     workout,
                     tempExerciseName,
@@ -82,7 +90,8 @@
                 else {
                     //NSLog(@"viewDidLoad = Match found - set previous textfields to stored values for this weeks workout");
                     
-                    matches = [fetchedOjectsArray objectAtIndex:0];
+                    matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                    //matches = [fetchedOjectsArray objectAtIndex:0];
                     
                     tempCurrentTF.text = matches.weight;
                     tempPreviousTF.text = matches.weight;
@@ -97,14 +106,16 @@
                 
                 // This workout with this index has been done before.
                 // User came back to look at his results so display this weeks results in the current results section.
-                if ([fetchedOjectsArray count] == 1) {
+                if ([fetchedOjectsArray count] >= 1) {
                     
-                    matches = [fetchedOjectsArray objectAtIndex:0];
+                    matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                    //matches = [fetchedOjectsArray objectAtIndex:0];
                     
                     tempCurrentTF.text = matches.weight;
                     tempCurrentNotes.text = matches.notes;
                     
-                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                            currentSessionString,
                             routine,
                             workout,
                             tempExerciseName,
@@ -114,9 +125,10 @@
                     matches = nil;
                     fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
                     
-                    if ([fetchedOjectsArray count] == 1) {
+                    if ([fetchedOjectsArray count] >= 1) {
                         
-                        matches = [fetchedOjectsArray objectAtIndex:0];
+                        matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                        //matches = [fetchedOjectsArray objectAtIndex:0];
                         
                         tempPreviousTF.text = matches.weight;
                         tempPreviousNotes.text = matches.notes;
@@ -135,7 +147,8 @@
                     
                     tempCurrentTF.text = @"0.0";
                     
-                    pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                            currentSessionString,
                             routine,
                             workout,
                             tempExerciseName,
@@ -145,9 +158,10 @@
                     matches = nil;
                     fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
                     
-                    if ([fetchedOjectsArray count] == 1) {
+                    if ([fetchedOjectsArray count] >= 1) {
                         
-                        matches = [fetchedOjectsArray objectAtIndex:0];
+                        matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                        //matches = [fetchedOjectsArray objectAtIndex:0];
                         
                         tempPreviousTF.text = matches.weight;
                         tempPreviousNotes.text = matches.notes;
@@ -171,8 +185,14 @@
     
     NSDate *todaysDate = [NSDate date];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Get workout data with the current session
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -208,7 +228,8 @@
             tempCurrentTF = currentTFArray[textFieldCount];
             roundConverted = [NSNumber numberWithInt:round];
             
-            pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %@) AND (index == %@)",
+            pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (exercise == %@) AND (round == %@) AND (index == %@)",
+                    currentSessionString,
                     routine,
                     workout,
                     tempExerciseName,
@@ -227,6 +248,7 @@
                     
                     insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
                     
+                    insertWorkoutInfo.session = currentSessionString;
                     insertWorkoutInfo.reps = tempRepName;
                     insertWorkoutInfo.weight = tempCurrentTF.text;
                     insertWorkoutInfo.notes = tempCurrentNotes.text;
@@ -244,8 +266,8 @@
             else {
                 //NSLog(@"submitEntry = Match found - update existing record and save");
                 
-                //matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
-                matches = [fetchedOjectsArray objectAtIndex:0];
+                matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                //matches = [fetchedOjectsArray objectAtIndex:0];
                 
                 // Make sure the text field is not empty
                 if (tempCurrentTF.text.length != 0) {
@@ -271,10 +293,7 @@
             }
             
             // Save the object to persistent store
-            if (![context save:&error]) {
-                
-                NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-            }
+            [[CoreDataHelper sharedHelper] backgroundSaveContext];
             
             // End of the round "if statement"
             textFieldCount++;
@@ -287,8 +306,14 @@
 
 -(void)saveWorkoutComplete:(NSDate*)useDate {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Save the workout data with the current session
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -303,7 +328,8 @@
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];
@@ -316,6 +342,7 @@
         //NSLog(@"submitEntry = No matches - create new record and save");
         insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
         
+        insertWorkoutInfo.routine = currentSessionString;
         insertWorkoutInfo.routine = routine;
         insertWorkoutInfo.workout = workout;
         insertWorkoutInfo.index = workoutIndex;
@@ -335,16 +362,19 @@
     }
     
     // Save the object to persistent store
-    if (![context save:&error]) {
-        
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
 }
 
 -(void)saveWorkoutCompleteWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Save the workout data with the current session
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -355,7 +385,8 @@
     NSError *error;
     NSArray *fetchedOjectsArray;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];
@@ -368,6 +399,7 @@
         //NSLog(@"submitEntry = No matches - create new record and save");
         insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
         
+        insertWorkoutInfo.routine = currentSessionString;
         insertWorkoutInfo.routine = routine;
         insertWorkoutInfo.workout = workout;
         insertWorkoutInfo.index = workoutIndex;
@@ -388,16 +420,18 @@
     }
     
     // Save the object to persistent store
-    if (![context save:&error]) {
-        
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
 }
 
 -(void)deleteDate {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -411,7 +445,8 @@
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];
@@ -438,10 +473,7 @@
     }
     
     // Save the object to persistent store
-    if (![context save:&error]) {
-        
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
     
     //NSLog(@"Exercise Completed = %@", matches.exerciseCompleted);
     //NSLog(@"Exercise Completed = %@", insertWorkoutInfo.exerciseCompleted);
@@ -449,8 +481,13 @@
 
 -(void)deleteDateWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -464,7 +501,8 @@
     //NSString *routine = ((DataNavController *)self.parentViewController).routine;
     //NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];
@@ -491,10 +529,7 @@
     }
     
     // Save the object to persistent store
-    if (![context save:&error]) {
-        
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
     
     //NSLog(@"Exercise Completed = %@", matches.exerciseCompleted);
     //NSLog(@"Exercise Completed = %@", insertWorkoutInfo.exerciseCompleted);
@@ -502,8 +537,13 @@
 
 -(BOOL)workoutCompleted {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -518,7 +558,8 @@
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];
@@ -549,8 +590,13 @@
 
 -(BOOL)workoutCompletedWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -565,7 +611,8 @@
     //NSString *routine = ((DataNavController *)self.parentViewController).routine;
     //NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];
@@ -596,8 +643,13 @@
 
 -(NSString*)getWorkoutCompletedDate {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
@@ -612,7 +664,8 @@
     NSString *routine = ((DataNavController *)self.parentViewController).routine;
     NSString *workout = ((DataNavController *)self.parentViewController).workout;
     
-    pred = [NSPredicate predicateWithFormat:@"(routine == %@) AND (workout == %@) AND (index == %@)",
+    pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine == %@) AND (workout == %@) AND (index == %@)",
+            currentSessionString,
             routine,
             workout,
             workoutIndex];

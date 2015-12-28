@@ -12,9 +12,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+//@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+//@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) NSString *month;          // Current month.
 @property (strong, nonatomic) NSString *routine;        // Current workout routine (Normal, 2-A-Days, or Tone).
@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSNumber *index;          // The number of times this workout has been done.
 @property (strong, nonatomic) NSString *exerciseName;   // Full name of an individual exercise.
 @property (strong, nonatomic) NSString *exerciseRound;  // Round of an individual exercise (1 or 2).
+
+@property BOOL purchasedAdRemoveBeforeAppLaunch;
+
 @property NSInteger weekArrayPositionValue;             // Current week as a number.
 @property NSInteger selectedWorkoutArrayPositionValue;  // Selected workout in the tableview as a number.
 @property (strong, nonatomic) NSString *request;        // Checkmark request (Completed) or (Not Completed).
@@ -106,7 +109,8 @@
 @property (strong, nonatomic) NSArray *tone_Week11_WorkoutIndexArray;
 @property (strong, nonatomic) NSArray *tone_Week12_WorkoutIndexArray;
 
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+- (NSString *)getCurrentSession;
+//- (void)saveContext;
+//- (NSURL *)applicationDocumentsDirectory;
 
 @end

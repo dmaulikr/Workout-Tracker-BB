@@ -76,7 +76,7 @@
         
         [self.headerView addSubview:self.adView];
         
-        [self.adView loadAd];
+        //[self.adView loadAd];
     }
     
     self.navigationItem.title = ((DataNavController *)self.parentViewController).workout;

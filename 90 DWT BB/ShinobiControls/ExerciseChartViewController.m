@@ -8,6 +8,7 @@
 
 #import "ExerciseChartViewController.h"
 #import <ShinobiCharts/ShinobiCharts.h>
+#import "CoreDataHelper.h"
 
 @interface ExerciseChartViewController () <SChartDatasource>
 
@@ -254,11 +255,16 @@
 -(NSInteger)GetHighestDatabaseIndex {
     
     // Get Data from the database.
-    self.context = [self.appDelegate managedObjectContext];
+    self.context = [[CoreDataHelper sharedHelper] context];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [self.appDelegate getCurrentSession];
+    
     self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
     self.request = [[NSFetchRequest alloc] init];
     [self.request setEntity:self.entityDesc];
-    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@)",
+    self.pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@)",
+                         currentSessionString,
                          self.appDelegate.graphRoutine,
                          self.appDelegate.graphWorkout,
                          self.appDelegate.graphTitle];
@@ -291,11 +297,16 @@
     NSNumber *tempWorkoutIndex = [NSNumber numberWithInteger:workoutIndex + 1];
     
     // Get Data from the database.
-    self.context = [self.appDelegate managedObjectContext];
+    self.context = [[CoreDataHelper sharedHelper] context];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [self.appDelegate getCurrentSession];
+    
     self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
     self.request = [[NSFetchRequest alloc] init];
     [self.request setEntity:self.entityDesc];
-    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (index == %@)",
+    self.pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (index == %@)",
+                 currentSessionString,
                  self.appDelegate.graphRoutine,
                  self.appDelegate.graphWorkout,
                  self.appDelegate.graphTitle,
@@ -330,11 +341,16 @@
     }
     
     // Get Data from the database.
-    self.context = [self.appDelegate managedObjectContext];
+    self.context = [[CoreDataHelper sharedHelper] context];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [self.appDelegate getCurrentSession];
+    
     self.entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:self.context];
     self.request = [[NSFetchRequest alloc] init];
     [self.request setEntity:self.entityDesc];
-    self.pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round == %@) AND (index == %@)",
+    self.pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round == %@) AND (index == %@)",
+                 currentSessionString,
                  self.appDelegate.graphRoutine,
                  self.appDelegate.graphWorkout,
                  self.appDelegate.graphTitle,
