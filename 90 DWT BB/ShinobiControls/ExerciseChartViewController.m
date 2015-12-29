@@ -181,6 +181,7 @@
     if ([self ColumnSeriesMatchAtIndex:index]) {
         
         self.matches = [self.objects objectAtIndex:0];
+        //self.matches = [self.objects objectAtIndex:[self.objects count] - 1];
         NSString *tempNote = self.matches.notes;
         
         columnSeries.title = [NSString stringWithFormat:@"Try %@ - %@", tryNumber, tempNote];
@@ -242,7 +243,8 @@
     else {
         
         // Found a match
-        self.matches = [self.objects objectAtIndex:0];
+        //self.matches = [self.objects objectAtIndex:0];
+        self.matches = [self.objects objectAtIndex:[self.objects count] - 1];
         double yValue = [self.matches.weight doubleValue];
         dataPoint.yValue = [NSNumber numberWithDouble:yValue];
     }

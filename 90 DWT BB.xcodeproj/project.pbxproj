@@ -305,6 +305,7 @@
 		A5BF8BFC18C4F3F90077D6DF /* Bulk_Back_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFB18C4F3F90077D6DF /* Bulk_Back_1_TVC.m */; };
 		A5BF8BFF18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFE18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m */; };
 		A5BF8C0218C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */; };
+		A5D57F991C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D57F981C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m */; };
 		A5DC5F1E1BE3F8FB00C1E73E /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */; };
 		A5DC5F201BE3FC9200C1E73E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1F1BE3FC9200C1E73E /* AdSupport.framework */; };
 		A5DC5F221BE3FCA400C1E73E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F211BE3FCA400C1E73E /* AVFoundation.framework */; };
@@ -904,6 +905,8 @@
 		A5BF8BFE18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Arms_1_TVC.m; sourceTree = "<group>"; };
 		A5BF8C0018C4F4250077D6DF /* Bulk_Shoulders_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bulk_Shoulders_1_TVC.h; sourceTree = "<group>"; };
 		A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Shoulders_1_TVC.m; sourceTree = "<group>"; };
+		A5D57F971C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+ConvertAllToCoreData.h"; sourceTree = "<group>"; };
+		A5D57F981C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+ConvertAllToCoreData.m"; sourceTree = "<group>"; };
 		A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
 		A5DC5F1F1BE3FC9200C1E73E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A5DC5F211BE3FCA400C1E73E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1205,18 +1208,20 @@
 			children = (
 				58F21A9918A6DEC400DE043E /* UIImage+Resizing.h */,
 				58F21A9A18A6DEC400DE043E /* UIImage+Resizing.m */,
-				58F21A9B18A6DEC400DE043E /* UITableViewController+Design.h */,
-				58F21A9C18A6DEC400DE043E /* UITableViewController+Design.m */,
 				58F21A9D18A6DEC400DE043E /* UIViewController+CoreData.h */,
 				58F21A9E18A6DEC400DE043E /* UIViewController+CoreData.m */,
 				58F21A9F18A6DEC400DE043E /* UIViewController+Social.h */,
 				58F21AA018A6DEC400DE043E /* UIViewController+Social.m */,
+				58F21A9B18A6DEC400DE043E /* UITableViewController+Design.h */,
+				58F21A9C18A6DEC400DE043E /* UITableViewController+Design.m */,
 				A51B6EE218B500A700F34A11 /* UITableViewController+Database.h */,
 				A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */,
 				A544F9E918C67B79000B2A8C /* UITableViewController+Email.h */,
 				A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */,
 				A5488A9F1AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.h */,
 				A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */,
+				A5D57F971C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.h */,
+				A5D57F981C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1282,10 +1287,10 @@
 		58F21AC718A6DFC100DE043E /* Measure */ = {
 			isa = PBXGroup;
 			children = (
-				58F21AD018A6E02F00DE043E /* MeasurementsReportViewController.h */,
-				58F21AD118A6E02F00DE043E /* MeasurementsReportViewController.m */,
 				58F21AD218A6E02F00DE043E /* MeasurementsViewController.h */,
 				58F21AD318A6E02F00DE043E /* MeasurementsViewController.m */,
+				58F21AD018A6E02F00DE043E /* MeasurementsReportViewController.h */,
+				58F21AD118A6E02F00DE043E /* MeasurementsReportViewController.m */,
 			);
 			name = Measure;
 			sourceTree = "<group>";
@@ -2487,6 +2492,7 @@
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
 				A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
+				A5D57F991C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m in Sources */,
 				A54E886E1C29BD95006C8FFC /* MPRetryingHTTPOperation.m in Sources */,
 				A54E88A31C29BD95006C8FFC /* MPVASTDurationOffset.m in Sources */,
 				A54E88E11C29BD95006C8FFC /* MOPUBNativeVideoCustomEvent.m in Sources */,

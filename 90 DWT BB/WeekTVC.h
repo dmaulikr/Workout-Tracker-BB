@@ -11,9 +11,11 @@
 //#import "WorkoutListRecoveryTVC.h"
 #import "UITableViewController+Design.h"
 #import "UITableViewController+Database.h"
+#import "CoreDataHelper.h"
 #import "AppDelegate.h"
 //#import <iAd/iAd.h>
 #import "MPAdView.h"
+#import "UITableViewController+ConvertAllToCoreData.h"
 
 @interface WeekTVC : UITableViewController <UIActionSheetDelegate, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, UIGestureRecognizerDelegate, MPAdViewDelegate>
 

@@ -73,7 +73,7 @@
         
         [self.headerView addSubview:self.adView];
         
-        //[self.adView loadAd];
+        [self.adView loadAd];
     }
     
     // Add rightBarButtonItem

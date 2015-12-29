@@ -142,6 +142,12 @@
     
     [self queryDatabase];
     
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
+
     // Show or Hide Ads
     if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
         
@@ -176,7 +182,7 @@
         
         [self.view addSubview:self.adView];
         
-        //[self.adView loadAd];
+        [self.adView loadAd];
     }
 }
 
@@ -503,27 +509,6 @@
         //popPC.sourceRect = sender.bounds;
         popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
     }
-    
-    else {
-        
-        if ([[segue identifier] isEqualToString:@"showPush"]) {
-            
-            AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
-            destNav.title = mainAppDelegate.graphTitle;
-        }
-        
-        if ([[segue identifier] isEqualToString:@"iOS7_ModalDatePicker"]) {
-            
-            // Put code here.
-        }
-        
-        if ([[segue identifier] isEqualToString:@"iOS7_PopoverDatePicker"]) {
-            
-            // Put code here.
-            ((UIStoryboardPopoverSegue *)segue).popoverController.delegate = self ;
-        }
-    }
 }
 
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
@@ -561,20 +546,6 @@
         
         // iOS 8 or greater show popover of chart/grid
         [self performSegueWithIdentifier:@"iOS8_PopoverDatePicker" sender:sender];
-        
-    } else {
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            
-            //  iOS 7 iPad and below show datepicker in popover
-            [self performSegueWithIdentifier:@"iOS7_PopoverDatePicker" sender:sender];
-        }
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            
-            // iOS 7 iPhone and below modally show the datepicker
-            [self performSegueWithIdentifier:@"iOS7_ModalDatePicker" sender:sender];
-        }
     }
 }
 
@@ -673,5 +644,12 @@
     self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
     
     self.adView.hidden = NO;
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        [self queryDatabase];
+    }
 }
 @end

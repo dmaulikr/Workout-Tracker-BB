@@ -646,7 +646,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         
         NSLog(@"*** STARTED DEEP COPY FROM DEFAULT DATA PERSISTENT STORE ***");
         
-        NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"Workout", @"Session", @"Routine", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
+        NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"WorkoutCompleteDate", @"Workout", @"Session", @"Routine", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
         
         CoreDataImporter *importer = [[CoreDataImporter alloc] initWithUniqueAttributes:[self selectedUniqueAttributes]];
         
@@ -782,6 +782,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
 #pragma mark - If you adapt this code to your own projects and plan to use deep copy, choose a unique attribute for each entity.
     
     // Select an attribute in each entity for uniqueness
+    [entities addObject:@"WorkoutCompleteDate"];[attributes addObject:@"date"];
     [entities addObject:@"Workout"];[attributes addObject:@"date"];
     [entities addObject:@"Session"];[attributes addObject:@"date"];
     [entities addObject:@"Routine"];[attributes addObject:@"date"];
@@ -1156,7 +1157,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
             NSLog(@"*** STARTED DEEP COPY FROM NON-ICLOUD STORE TO ICLOUD STORE ***");
 
             //#warning Customize this array to choose what entities should be merged with iCloud
-            NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"Workout", @"Session", @"Routine", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
+            NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"WorkoutCompleteDate", @"Workout", @"Session", @"Routine", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
             
             CoreDataImporter *importer = [[CoreDataImporter alloc] initWithUniqueAttributes:[self selectedUniqueAttributes]];
             

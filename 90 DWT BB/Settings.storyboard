@@ -79,6 +79,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXE-6x-gDC">
                                                     <rect key="frame" x="534" y="6" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.99607849120000003" green="0.50588238240000005" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
+                                                    <connections>
+                                                        <action selector="toggleAutoLock:" destination="li3-4X-M7f" eventType="valueChanged" id="XEa-Sy-Nzb"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable Auto-Lock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlc-6p-0WG">
                                                     <rect key="frame" x="15" y="11" width="143" height="22"/>
@@ -121,11 +124,43 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQE-fd-eM1">
                                                     <rect key="frame" x="160" y="7" width="188" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="188" id="Rze-Xx-Aim"/>
+                                                    </constraints>
                                                     <state key="normal" title="-"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Rze-Xx-Aim"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular">
+                                                        <mask key="constraints">
+                                                            <include reference="Rze-Xx-Aim"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="decreaseSession:" destination="li3-4X-M7f" eventType="touchUpInside" id="Cgk-c2-gwZ"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ed-7s-vCr">
                                                     <rect key="frame" x="356" y="7" width="188" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="188" id="zNh-2Q-EMs"/>
+                                                    </constraints>
                                                     <state key="normal" title="+"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="zNh-2Q-EMs"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular">
+                                                        <mask key="constraints">
+                                                            <include reference="zNh-2Q-EMs"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="increaseSession:" destination="li3-4X-M7f" eventType="touchUpInside" id="fgb-4e-WKH"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -161,11 +196,17 @@
                                                     <rect key="frame" x="15" y="7" width="281" height="30"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <state key="normal" title="All Data"/>
+                                                    <connections>
+                                                        <action selector="resetAllData:" destination="li3-4X-M7f" eventType="touchUpInside" id="WY0-ZC-ji5"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMV-K2-wSg">
                                                     <rect key="frame" x="304" y="7" width="281" height="30"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <state key="normal" title="Current Session Data"/>
+                                                    <connections>
+                                                        <action selector="resetCurrentSessionData:" destination="li3-4X-M7f" eventType="touchUpInside" id="may-SZ-cOm"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

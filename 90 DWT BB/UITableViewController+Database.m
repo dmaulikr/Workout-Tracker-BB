@@ -292,8 +292,8 @@
                 }
             }
             
-            // Save the object to persistent store
-            [[CoreDataHelper sharedHelper] backgroundSaveContext];
+//            // Save the object to persistent store
+//            [[CoreDataHelper sharedHelper] backgroundSaveContext];
             
             // End of the round "if statement"
             textFieldCount++;
@@ -302,6 +302,9 @@
             [tempCurrentNotes resignFirstResponder];
         }
     }
+    
+    // Save the object to persistent store
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
 }
 
 -(void)saveWorkoutComplete:(NSDate*)useDate {
@@ -342,7 +345,7 @@
         //NSLog(@"submitEntry = No matches - create new record and save");
         insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
         
-        insertWorkoutInfo.routine = currentSessionString;
+        insertWorkoutInfo.session = currentSessionString;
         insertWorkoutInfo.routine = routine;
         insertWorkoutInfo.workout = workout;
         insertWorkoutInfo.index = workoutIndex;
@@ -399,7 +402,7 @@
         //NSLog(@"submitEntry = No matches - create new record and save");
         insertWorkoutInfo = [NSEntityDescription insertNewObjectForEntityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
         
-        insertWorkoutInfo.routine = currentSessionString;
+        insertWorkoutInfo.session = currentSessionString;
         insertWorkoutInfo.routine = routine;
         insertWorkoutInfo.workout = workout;
         insertWorkoutInfo.index = workoutIndex;

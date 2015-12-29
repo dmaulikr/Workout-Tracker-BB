@@ -3531,30 +3531,17 @@
                         <outlet property="rep_8" destination="bfy-ZC-mIx" id="l45-xA-fVx"/>
                         <outlet property="rep_9" destination="aZz-qF-4bJ" id="Sz4-vW-fIP"/>
                         <outlet property="todayDateButton" destination="aRO-TS-mLB" id="NdR-tP-jeS"/>
-                        <segue destination="UMj-zy-B23" kind="show" identifier="showPush" id="Wsg-HS-9VJ"/>
                         <segue destination="aBa-wx-UTD" kind="popoverPresentation" identifier="showPopover" popoverAnchorView="GsH-r3-c5K" id="DJQ-VF-iU7">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="YPd-tn-zcl" kind="popoverPresentation" identifier="iOS8_PopoverDatePicker" popoverAnchorView="eFY-fd-eZT" id="I7o-Bv-3lM">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
-                        <segue destination="YPd-tn-zcl" kind="popoverPresentation" identifier="iOS7_PopoverDatePicker" popoverAnchorView="eFY-fd-eZT" id="Ckl-AB-17Z">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
-                        <segue destination="vwY-Ve-Uja" kind="presentation" identifier="iOS7_ModalDatePicker" id="ewz-vA-dOw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DR5-QK-YD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11113" y="77"/>
-        </scene>
-        <!--UIViewController-nCJ-9S-TQl-->
-        <scene sceneID="fkK-kI-G4E">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UIViewController-nCJ-9S-TQl" storyboardName="Main" referencedIdentifier="UIViewController-nCJ-9S-TQl" id="UMj-zy-B23" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d41-ru-NXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="13788" y="7942"/>
         </scene>
         <!--UIViewController-N5a-ua-Cdf-->
         <scene sceneID="JDq-9Y-6fg">
@@ -3572,17 +3559,6 @@
             </objects>
             <point key="canvasLocation" x="11820" y="8338"/>
         </scene>
-        <!--UIViewController-lq6-11-WH4-->
-        <scene sceneID="fyZ-A8-OUd">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UIViewController-lq6-11-WH4" storyboardName="Main" referencedIdentifier="UIViewController-lq6-11-WH4" id="vwY-Ve-Uja" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vhb-vn-ovU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11960" y="8828"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="I7o-Bv-3lM"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.99607849120000003" green="0.50588238240000005" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
 </document>

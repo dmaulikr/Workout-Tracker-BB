@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m1d-83-7H0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m1d-83-7H0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
@@ -9117,10 +9117,6 @@
                         <outlet property="round" destination="skh-wl-2bd" id="ceN-Zg-TE4"/>
                         <outlet property="shareActionButton" destination="e2d-q6-c7P" id="72m-Dg-DYt"/>
                         <outlet property="todayDateButton" destination="Y3U-k8-2kr" id="jUH-L8-lye"/>
-                        <segue destination="lq6-11-WH4" kind="presentation" identifier="iOS7_ModalDatePicker" id="ez7-DR-BBB"/>
-                        <segue destination="GkV-fR-jHI" kind="popoverPresentation" identifier="iOS7_PopoverDatePicker" popoverAnchorView="Pgt-8f-3ME" id="F5d-Ro-DIf">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                         <segue destination="GkV-fR-jHI" kind="popoverPresentation" identifier="iOS8_PopoverDatePicker" popoverAnchorView="Pgt-8f-3ME" id="LrR-v7-9sb">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -9320,10 +9316,6 @@
                         <outlet property="round" destination="NGf-RM-xwH" id="Wx1-qg-1Rd"/>
                         <outlet property="shareActionButton" destination="Wb4-IN-Qja" id="47f-Df-3bN"/>
                         <outlet property="todayDateButton" destination="xPR-In-hXp" id="hPk-pf-oLh"/>
-                        <segue destination="lq6-11-WH4" kind="presentation" identifier="iOS7_ModalDatePicker" id="OJN-IO-Dz4"/>
-                        <segue destination="GkV-fR-jHI" kind="popoverPresentation" identifier="iOS7_PopoverDatePicker" popoverAnchorView="65U-gj-br5" id="AQW-BR-XKI">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                         <segue destination="GkV-fR-jHI" kind="popoverPresentation" identifier="iOS8_PopoverDatePicker" popoverAnchorView="65U-gj-br5" id="qos-ym-BWV">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -9523,10 +9515,6 @@
                         <outlet property="round" destination="fHM-S3-n7Z" id="PgY-7e-ty3"/>
                         <outlet property="shareActionButton" destination="ilf-sS-oIC" id="eYf-gO-Fg0"/>
                         <outlet property="todayDateButton" destination="umd-G3-7S7" id="xjp-2B-wPa"/>
-                        <segue destination="lq6-11-WH4" kind="presentation" identifier="iOS7_ModalDatePicker" id="jCO-1n-7SV"/>
-                        <segue destination="GkV-fR-jHI" kind="popoverPresentation" identifier="iOS7_PopoverDatePicker" popoverAnchorView="vo0-UL-F2R" id="Yvn-tG-YCy">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                         <segue destination="GkV-fR-jHI" kind="popoverPresentation" identifier="iOS8_PopoverDatePicker" popoverAnchorView="vo0-UL-F2R" id="vgc-mY-fGO">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -9647,116 +9635,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFn-yP-LdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11820" y="8338"/>
-        </scene>
-        <!--Date Picker View Controller-->
-        <scene sceneID="cXu-Av-aMz">
-            <objects>
-                <viewController storyboardIdentifier="UIViewController-lq6-11-WH4" automaticallyAdjustsScrollViewInsets="NO" id="lq6-11-WH4" customClass="DatePickerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AuC-fe-xFd"/>
-                        <viewControllerLayoutGuide type="bottom" id="iJA-Qe-GrA"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ApW-Pf-2Qe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LRv-2H-Vfv">
-                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="RJD-IM-Gca"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="447543770.79985303">
-                                    <!--2015-03-08 21:42:50 +0000-->
-                                </date>
-                            </datePicker>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4l-15-jn5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="219"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFF-EV-WVv">
-                                        <rect key="frame" x="229" y="92" width="143" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="uFF-EV-WVv" secondAttribute="centerY" id="CPs-26-dy5"/>
-                                    <constraint firstAttribute="centerX" secondItem="uFF-EV-WVv" secondAttribute="centerX" id="KES-FD-tLM"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTD-ne-f6p">
-                                <rect key="frame" x="0.0" y="381" width="600" height="219"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kb-V6-Ekl">
-                                        <rect key="frame" x="30" y="75" width="255" height="70"/>
-                                        <color key="backgroundColor" red="0.52156862749999999" green="0.73333333329999995" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="r0a-Kx-Ca0"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="vk2-4S-pzy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="25"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cancelButtonPressed:" destination="lq6-11-WH4" eventType="touchUpInside" id="rfU-J3-nKP"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztz-I5-j0q">
-                                        <rect key="frame" x="315" y="75" width="255" height="70"/>
-                                        <color key="backgroundColor" red="0.52156862749999999" green="0.73333333329999995" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="06K-3A-fIn"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="6Me-8E-aXh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="25"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveButtonPressed:" destination="lq6-11-WH4" eventType="touchUpInside" id="IXH-aQ-cji"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ztz-I5-j0q" secondAttribute="trailing" constant="30" id="Amd-dq-5Gi"/>
-                                    <constraint firstItem="ztz-I5-j0q" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8kb-V6-Ekl" secondAttribute="trailing" priority="750" constant="30" id="E2m-r4-xyC"/>
-                                    <constraint firstItem="8kb-V6-Ekl" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wTD-ne-f6p" secondAttribute="leading" constant="30" id="nMi-rA-DHd"/>
-                                    <constraint firstAttribute="centerY" secondItem="8kb-V6-Ekl" secondAttribute="centerY" id="sH2-CP-gq5"/>
-                                    <constraint firstAttribute="centerY" secondItem="ztz-I5-j0q" secondAttribute="centerY" id="x8m-jQ-ndH"/>
-                                    <constraint firstItem="8kb-V6-Ekl" firstAttribute="width" secondItem="ztz-I5-j0q" secondAttribute="width" id="zba-al-Zd3"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="LRv-2H-Vfv" secondAttribute="centerX" id="3m7-e9-o9H"/>
-                            <constraint firstAttribute="trailing" secondItem="LRv-2H-Vfv" secondAttribute="trailing" id="58O-hm-DiZ"/>
-                            <constraint firstAttribute="trailing" secondItem="q4l-15-jn5" secondAttribute="trailing" id="80Y-HQ-VEv"/>
-                            <constraint firstItem="LRv-2H-Vfv" firstAttribute="top" secondItem="q4l-15-jn5" secondAttribute="bottom" id="9js-7P-REm"/>
-                            <constraint firstItem="iJA-Qe-GrA" firstAttribute="top" secondItem="wTD-ne-f6p" secondAttribute="bottom" id="CK7-bw-SvM"/>
-                            <constraint firstItem="wTD-ne-f6p" firstAttribute="leading" secondItem="ApW-Pf-2Qe" secondAttribute="leading" id="McX-9f-Jum"/>
-                            <constraint firstItem="q4l-15-jn5" firstAttribute="top" secondItem="ApW-Pf-2Qe" secondAttribute="top" id="Uzq-jy-KLB"/>
-                            <constraint firstAttribute="trailing" secondItem="wTD-ne-f6p" secondAttribute="trailing" id="Y5K-O7-Zq0"/>
-                            <constraint firstItem="LRv-2H-Vfv" firstAttribute="leading" secondItem="ApW-Pf-2Qe" secondAttribute="leading" id="hRf-jO-PrG"/>
-                            <constraint firstItem="q4l-15-jn5" firstAttribute="leading" secondItem="ApW-Pf-2Qe" secondAttribute="leading" id="m7Y-Bl-48M"/>
-                            <constraint firstItem="wTD-ne-f6p" firstAttribute="top" secondItem="LRv-2H-Vfv" secondAttribute="bottom" id="nNJ-X3-q68"/>
-                            <constraint firstAttribute="centerY" secondItem="LRv-2H-Vfv" secondAttribute="centerY" id="uAv-Ar-q20"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="cancelButton" destination="8kb-V6-Ekl" id="w1I-86-y9s"/>
-                        <outlet property="dateLabel" destination="uFF-EV-WVv" id="tjH-Fw-Fd3"/>
-                        <outlet property="datePicker" destination="LRv-2H-Vfv" id="m2p-oi-CLn"/>
-                        <outlet property="saveButton" destination="ztz-I5-j0q" id="yu3-1a-fOb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DsL-aa-Duv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11960" y="8828"/>
         </scene>
         <!--Settings-->
         <scene sceneID="gFN-K8-Wc9">
@@ -9899,23 +9777,22 @@
         <image name="weight_lifting" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fOV-TL-R1Y"/>
         <segue reference="vkl-0I-YMZ"/>
-        <segue reference="zfO-xS-taK"/>
-        <segue reference="NTa-0E-2Hw"/>
-        <segue reference="0jd-5r-Xbl"/>
-        <segue reference="vYO-y4-UrU"/>
-        <segue reference="M7E-tw-VR3"/>
-        <segue reference="OJN-IO-Dz4"/>
-        <segue reference="qos-ym-BWV"/>
-        <segue reference="zMT-ID-CMh"/>
-        <segue reference="tyW-Ee-2YB"/>
-        <segue reference="xgK-mi-GGl"/>
+        <segue reference="fOV-TL-R1Y"/>
         <segue reference="z3N-b3-KE1"/>
+        <segue reference="xgK-mi-GGl"/>
         <segue reference="rZ8-6c-qE4"/>
         <segue reference="sfv-pI-dgR"/>
-        <segue reference="kFE-zB-ubi"/>
+        <segue reference="zMT-ID-CMh"/>
+        <segue reference="tyW-Ee-2YB"/>
+        <segue reference="zfO-xS-taK"/>
         <segue reference="zgP-OG-856"/>
+        <segue reference="kFE-zB-ubi"/>
+        <segue reference="vYO-y4-UrU"/>
+        <segue reference="M7E-tw-VR3"/>
+        <segue reference="0jd-5r-Xbl"/>
+        <segue reference="NTa-0E-2Hw"/>
+        <segue reference="qos-ym-BWV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.99607849120000003" green="0.50588238240000005" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
 </document>

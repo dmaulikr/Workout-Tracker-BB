@@ -15,6 +15,8 @@
 
 @implementation WeekTVC
 
+#define debug 0
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,9 +30,17 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
     
-    [self findDefaultWorkout];
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
+
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
     
     // Show or Hide Ads
     if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
@@ -68,7 +78,7 @@
         
         [self.headerView addSubview:self.adView];
         
-        //[self.adView loadAd];
+        [self.adView loadAd];
     }
     
     // Add a long press gesture recognizer
@@ -77,6 +87,14 @@
     self.longPGR.minimumPressDuration = 1.0f;
     self.longPGR.allowableMovement = 10.0f;
     [self.tableView addGestureRecognizer:self.longPGR];
+    
+    [self convertPhotosToCoreData];
+    [self convertMeasurementsToCoreData];
+    [self convertSettingsToCoreData];
+    [self addSession1ToExistingCoreDataObjects];
+    [self findAutoLockSetting];
+    
+    [self findDefaultRoutine];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -102,7 +120,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    [self findDefaultWorkout];
+    [self findDefaultRoutine];
     
     // Show or Hide Ads
     if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
@@ -348,106 +366,6 @@
         }
     }
  }
-
-//- (IBAction)longPressGRAction:(UILongPressGestureRecognizer*)sender {
-//    
-//    if ([sender isEqual:self.longPGR]) {
-//        if (sender.state == UIGestureRecognizerStateBegan)
-//        {
-//            
-//            CGPoint p = [sender locationInView:self.tableView];
-//            
-//            self.indexPath = [self.tableView indexPathForRowAtPoint:p];
-//            
-//            //NSLog(@"long press on table view at Section %d Row %d", indexPath.section, indexPath.row);
-//            
-//            // get affected cell
-//            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPath];
-//            
-//            NSString *tempMessage = [NSString stringWithFormat:@"Set the status for all %@-%@ workouts.", ((DataNavController *)self.parentViewController).routine, cell.textLabel.text];
-//            
-//            if ([UIAlertController class]) {
-//                
-//                // Use UIAlertController (iOS 8 and above)
-//                UIAlertController *alertController = [UIAlertController
-//                                                      alertControllerWithTitle:@"Workout Status"
-//                                                      message:tempMessage
-//                                                      preferredStyle:UIAlertControllerStyleActionSheet];
-//                
-//                UIAlertAction *notCompletedAction = [UIAlertAction
-//                                                     actionWithTitle:@"Not Completed"
-//                                                     style:UIAlertActionStyleDestructive
-//                                                     handler:^(UIAlertAction *action) {
-//                                                         
-//                                                         self.request = @"Not Completed";
-//                                                         [self verifyAddDeleteRequestFromTableViewCell];
-//                                                     }];
-//                
-//                UIAlertAction *completedAction = [UIAlertAction
-//                                                  actionWithTitle:NSLocalizedString(@"Completed", @"Completed action")
-//                                                  style:UIAlertActionStyleDefault
-//                                                  handler:^(UIAlertAction *action) {
-//                                                      
-//                                                      self.request = @"Completed";
-//                                                      [self verifyAddDeleteRequestFromTableViewCell];
-//                                                  }];
-//                
-//                UIAlertAction *cancelAction = [UIAlertAction
-//                                               actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
-//                                               style:UIAlertActionStyleCancel
-//                                               handler:^(UIAlertAction *action)
-//                                               {
-//                                                   //NSLog(@"Cancel action");
-//                                               }];
-//                
-//                [alertController addAction:notCompletedAction];
-//                [alertController addAction:completedAction];
-//                [alertController addAction:cancelAction];
-//                
-//                UIPopoverPresentationController *popover = alertController.popoverPresentationController;
-//                
-//                if (popover)
-//                {
-//                    popover.sourceView = cell;
-//                    popover.delegate = self;
-//                    popover.sourceRect = cell.bounds;
-//                    popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
-//                }
-//                
-//                
-//                [self presentViewController:alertController animated:YES completion:nil];
-//            }
-//            
-//            else {
-//                
-//                // Use UIActionSheet (iOS 7 and below)
-//                
-//                NSString *tempMessage_iOS7 = [NSString stringWithFormat:@"Workout Status\n\n%@", tempMessage];
-//                
-//                UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:tempMessage_iOS7
-//                                                                        delegate:self
-//                                                               cancelButtonTitle:@"Cancel"
-//                                                          destructiveButtonTitle:@"Not Completed"
-//                                                               otherButtonTitles:@"Completed", nil];
-//                
-//                // Action sheet from tableview Cell
-//                actionSheet.tag = 100;
-//                
-//                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//                    
-//                    // In this case the device is an iPad.
-//                    //CGRect frame = [self.view convertRect:cell.bounds fromView:cell];
-//                    [actionSheet showFromRect:cell.bounds inView:cell animated:YES];
-//                }
-//                else{
-//                    
-//                    // In this case the device is an iPhone/iPod Touch.
-//                    [actionSheet showInView:self.view];
-//                }
-//            }
-//        }
-//    }
-//}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
@@ -877,33 +795,6 @@
         
         [alertView show];
     }
-}
-
-- (void)findDefaultWorkout
-{
-    // Get path to documents directory
-    NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *defaultWorkoutFile = nil;
-    defaultWorkoutFile = [docDir stringByAppendingPathComponent:@"Default Workout.out"];
-    
-    if  ([[NSFileManager defaultManager] fileExistsAtPath:defaultWorkoutFile]) {
-        
-        // File has already been created. Get value of routine from it.
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:defaultWorkoutFile];
-        self.navigationItem.title = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
-        [fileHandle closeFile];
-        
-        ((DataNavController *)self.parentViewController).routine = self.navigationItem.title;
-    }
-    
-    else {
-        
-        // File has not been created so this is the first time the app has been opened or user has not changed workout.
-        ((DataNavController *)self.parentViewController).routine = @"Bulk";
-        self.navigationItem.title = ((DataNavController *)self.parentViewController).routine;
-    }
-    
-    //NSLog(@"Routine = %@", ((DataNavController *)self.parentViewController).routine);
 }
 
 #pragma mark - Table view delegate
@@ -2077,5 +1968,97 @@
     self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
     
     self.adView.hidden = NO;
+}
+
+- (void)findDefaultRoutine {
+    
+    // Fetch defaultRoutine objects
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Routine" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] != 0) {
+        
+        // Object has already been created. Get value of routine from it.
+        matches = objects[[objects count] - 1];
+        self.navigationItem.title = [matches valueForKey:@"defaultRoutine"];
+        ((DataNavController *)self.parentViewController).routine = self.navigationItem.title;
+    }
+    else {
+        
+        // Object has not been created so this is the first time the app has been opened.
+        ((DataNavController *)self.parentViewController).routine = @"Bulk";
+        self.navigationItem.title = ((DataNavController *)self.parentViewController).routine;
+    }
+}
+
+- (void)findAutoLockSetting {
+    
+    // Fetch useBands objects
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"AutoLock" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    NSString *coredataAutoLockSetting;
+    
+    if ([objects count] != 0) {
+        
+        // Object has already been created. Get value of autolock from it.
+        matches = objects[[objects count] - 1];
+        
+        coredataAutoLockSetting = [matches valueForKey:@"useAutoLock"];
+    }
+    
+    else {
+        
+        // No matches.
+        if (debug==1) {
+            NSLog(@"No match found");
+        }
+        
+        // Default setting is OFF
+        coredataAutoLockSetting = @"OFF";
+    }
+    
+    if ([coredataAutoLockSetting isEqualToString:@"ON"]) {
+        
+        // User wants to disable the autolock timer.
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+    }
+    
+    else {
+        // User doesn't want to disable the autolock timer.
+        [UIApplication sharedApplication].idleTimerDisabled = NO;
+    }
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        
+        [self performSelector:@selector(updateTableView) withObject:nil afterDelay:5.0 ];
+    }
+    else {
+
+        [self findDefaultRoutine];
+        [self findAutoLockSetting];
+    }
+}
+
+- (void)updateTableView {
+    
+    [self findDefaultRoutine];
+    [self findAutoLockSetting];
+    [self.tableView reloadData];
 }
 @end

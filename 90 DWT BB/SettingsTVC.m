@@ -89,7 +89,6 @@
     
     [self findiCloudStatus];
     [self findRoutineSetting];
-    //[self findUseBandsSetting];
     [self findUseAutoLockSetting];
 }
 
@@ -462,8 +461,21 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] saveContext];
+                                  //[[CoreDataHelper sharedHelper] saveContext];
                                   
+                                  
+                                  // DELETE all from entity - WorkoutCompleteDate
+                                  entityDesc = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
+                                  [request setEntity:entityDesc];
+                                  error = nil;
+                                  objects = [context executeFetchRequest:request error:&error];
+                                  
+                                  for (NSManagedObject *info in objects) {
+                                      [context deleteObject:info];
+                                  }
+                                  
+                                  //[[CoreDataHelper sharedHelper] saveContext];
+
                                   
                                   // DELETE all from entity - Session
                                   entityDesc = [NSEntityDescription entityForName:@"Session" inManagedObjectContext:context];
@@ -475,7 +487,7 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] saveContext];
+                                  //[[CoreDataHelper sharedHelper] saveContext];
                                   
                                   // Set session to default - 1
                                   self.currentSessionLabel.text = @"1";
@@ -491,7 +503,7 @@
                                       [insertSession setValue:todaysDate forKey:@"date"];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   
                                   // DELETE all from entity - Photo
@@ -506,7 +518,7 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   
                                   // DELETE all from entity - Measurement
@@ -521,7 +533,7 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   
                                   // DELETE all from entity - Routine
@@ -536,7 +548,7 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   // Set routine to default - Normal
                                   self.defaultWorkout.selectedSegmentIndex = 1;
@@ -548,12 +560,12 @@
                                       
                                       NSManagedObject *newRoutine;
                                       newRoutine = [NSEntityDescription insertNewObjectForEntityForName:@"Routine" inManagedObjectContext:context];
-                                      [newRoutine setValue:@"Normal" forKey:@"defaultRoutine"];
+                                      [newRoutine setValue:@"Bulk" forKey:@"defaultRoutine"];
                                       [newRoutine setValue:todaysDate forKey:@"date"];
                                   }
                                   
                                   // Save to core data
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   // Save default workout to SettingsNavController
                                   ((SettingsNavController *)self.parentViewController).defaultWorkout = [self.defaultWorkout titleForSegmentAtIndex:self.defaultWorkout.selectedSegmentIndex];
@@ -574,7 +586,7 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   // Set email to default
                                   self.emailDetail.text = @"youremail@abc.com";
@@ -599,25 +611,27 @@
 //                                  [self.bandsSwitch setOn:NO animated:YES];
 //                                  
 //                                  
-//                                  // DELETE all from entity - AutoLock
-//                                  NSEntityDescription *entityDescAutoLock = [NSEntityDescription entityForName:@"AutoLock" inManagedObjectContext:context];
-//                                  NSFetchRequest *requestAutoLock = [[NSFetchRequest alloc] init];
-//                                  [requestAutoLock setEntity:entityDescAutoLock];
-//                                  
-//                                  error = nil;
-//                                  objects = [context executeFetchRequest:requestAutoLock error:&error];
-//                                  
-//                                  for (NSManagedObject *info in objects) {
-//                                      [context deleteObject:info];
-//                                  }
-//                                  
-//                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  // DELETE all from entity - AutoLock
+                                  NSEntityDescription *entityDescAutoLock = [NSEntityDescription entityForName:@"AutoLock" inManagedObjectContext:context];
+                                  NSFetchRequest *requestAutoLock = [[NSFetchRequest alloc] init];
+                                  [requestAutoLock setEntity:entityDescAutoLock];
+                                  
+                                  error = nil;
+                                  objects = [context executeFetchRequest:requestAutoLock error:&error];
+                                  
+                                  for (NSManagedObject *info in objects) {
+                                      [context deleteObject:info];
+                                  }
+                                  
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   // Set disable autolock to default - OFF
                                   [self.autoLockSwitch setOn:NO animated:YES];
                                   [UIApplication sharedApplication].idleTimerDisabled = NO;
                                   
                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                  
+                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
                               }];
     
     UIAlertAction* cancel = [UIAlertAction
@@ -670,8 +684,26 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
+                                  
+                                  // Fetch workout data.
+                                  NSEntityDescription *entityDescWorkoutCompleteDate = [NSEntityDescription entityForName:@"WorkoutCompleteDate" inManagedObjectContext:context];
+                                  NSFetchRequest *requestWorkoutCompleteDate = [[NSFetchRequest alloc] init];
+                                  [requestWorkoutCompleteDate setEntity:entityDescWorkoutCompleteDate];
+                                  
+                                  NSPredicate *predWorkoutCompleteDate = [NSPredicate predicateWithFormat:@"(session = %@)", currentSessionString];
+                                  [requestWorkoutCompleteDate setPredicate:predWorkoutCompleteDate];
+                                  
+                                  error = nil;
+                                  objects = [context executeFetchRequest:requestWorkoutCompleteDate error:&error];
+                                  
+                                  for (NSManagedObject *info in objects) {
+                                      [context deleteObject:info];
+                                  }
+                                  
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
+
                                   
                                   // Fetch Photo data.
                                   NSEntityDescription *entityDescPhoto = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
@@ -688,7 +720,7 @@
                                       [context deleteObject:info];
                                   }
                                   
-                                  [[CoreDataHelper sharedHelper] backgroundSaveContext];
+                                  //[[CoreDataHelper sharedHelper] backgroundSaveContext];
                                   
                                   
                                   // Fetch Measurement data.
