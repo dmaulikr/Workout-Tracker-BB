@@ -16,4 +16,8 @@
 
 - (NSString*)stringForEmail:(NSArray*)allTitleArray;
 - (void)sendEmail:(NSString*)csvString;
+- (void)sendCurrentSessionEmail:(NSString*)csvString;
+- (void)sendAllSessionEmail:(NSString*)csvString;
+- (NSString*)currentSessionStringForEmail;
+- (NSString*)allSessionStringForEmail:(NSArray*)allSessionTitleArray;
 @end

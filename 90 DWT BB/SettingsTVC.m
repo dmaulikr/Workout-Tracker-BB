@@ -40,7 +40,7 @@
     // Configure tableview.
     NSArray *tableCell = @[self.cell1,   // email
                            self.cell2,   // version
-                           self.cell3,   // author
+                           self.cell3,   // export data
                            self.cell4,   // website
                            self.cell6,   // workout level
                            self.cell7,   // current session
@@ -107,7 +107,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -121,10 +121,13 @@
         return 1;
     
     else if (section == 2)
+        return 1;
+    
+    else if (section == 3)
         return 2;
     
     else {
-        return 3;
+        return 2;
     }
 }
 
@@ -813,6 +816,17 @@
     }
 }
 
+- (IBAction)exportAllData:(id)sender {
+    
+    
+}
+
+- (IBAction)exportCurrentSessionData:(id)sender {
+    
+    //  Get the csvstring and then send the email
+    [self sendCurrentSessionEmail:[self currentSessionStringForEmail]];
+}
+
 - (void)configureButtonBorder {
     
     UIColor *orange = [UIColor colorWithRed:254/255.0f green:129/255.0f blue:48/255.0f alpha:1.0f];
@@ -849,6 +863,22 @@
     self.resetCurrentSessionDataButton.layer.borderColor = [orange CGColor];
     self.resetCurrentSessionDataButton.layer.cornerRadius = 5;
     self.resetCurrentSessionDataButton.clipsToBounds = YES;
+    
+    // ExportAllData Button
+    self.exportAllDataButton.tintColor = [UIColor whiteColor];
+    self.exportAllDataButton.backgroundColor = lightOrange;
+    self.exportAllDataButton.layer.borderWidth = 1.0f;
+    self.exportAllDataButton.layer.borderColor = [orange CGColor];
+    self.exportAllDataButton.layer.cornerRadius = 5;
+    self.exportAllDataButton.clipsToBounds = YES;
+    
+    // ExportCurrentSessionData Button
+    self.exportCurrentSessionDataButton.tintColor = [UIColor whiteColor];
+    self.exportCurrentSessionDataButton.backgroundColor = lightOrange;
+    self.exportCurrentSessionDataButton.layer.borderWidth = 1.0f;
+    self.exportCurrentSessionDataButton.layer.borderColor = [orange CGColor];
+    self.exportCurrentSessionDataButton.layer.cornerRadius = 5;
+    self.exportCurrentSessionDataButton.clipsToBounds = YES;
 }
 
 - (void)findiCloudStatus {

@@ -12,13 +12,14 @@
 #import "MainTBC.h"
 #import "EmailViewController.h"
 #import "UITableViewController+Design.h"
+#import "UITableViewController+Email.h"
 #import "CoreDataHelper.h"
 #import "AppDelegate.h"
 
 @interface SettingsTVC : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;  // Email.  Default is youremail@abc.com.
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell2;  // Version
-@property (weak, nonatomic) IBOutlet UITableViewCell *cell3;  // Author
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell3;  // Export Data
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell4;  // Website
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell5;  // Bands
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell6;  // Workout level
@@ -39,6 +40,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *increaseSessionButton;
 @property (weak, nonatomic) IBOutlet UILabel *iCloudAccountStatusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *iCloudAppStatusLabel;
+@property (weak, nonatomic) IBOutlet UIButton *exportAllDataButton;
+@property (weak, nonatomic) IBOutlet UIButton *exportCurrentSessionDataButton;
 
 - (IBAction)selectDefaultWorkout:(id)sender;
 - (IBAction)toggleBands:(id)sender;
@@ -47,4 +50,6 @@
 - (IBAction)resetAllData:(id)sender;
 - (IBAction)resetCurrentSessionData:(id)sender;
 - (IBAction)toggleAutoLock:(id)sender;
+- (IBAction)exportAllData:(id)sender;
+- (IBAction)exportCurrentSessionData:(id)sender;
 @end
