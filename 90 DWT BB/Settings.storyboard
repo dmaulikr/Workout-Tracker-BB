@@ -200,9 +200,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3o-gA-OO8">
                                                     <rect key="frame" x="15" y="7" width="281" height="30"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                                    <state key="normal" title="All Data">
-                                                        <color key="titleColor" red="0.98431372549019602" green="0.42352941176470588" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
+                                                    <state key="normal" title="All Data"/>
                                                     <connections>
                                                         <action selector="exportAllData:" destination="li3-4X-M7f" eventType="touchUpInside" id="Q4X-wH-MQC"/>
                                                     </connections>

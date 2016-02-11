@@ -388,9 +388,10 @@
     
     NSArray *rountineArray = @[@"Bulk",
                                @"Tone"];
-    
+    // Routine
     for (int routineIndex = 0; routineIndex < rountineArray.count; routineIndex++) {
         
+        // Workout
         for (int i = 0; i < allWorkoutTitlesArray.count; i++) {
             
             NSArray *tempExerciseTitlesArray = allExerciseTitlesArray[i];
@@ -408,6 +409,8 @@
             NSError *error;
             NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
             
+            int maxIndex = [[self findMaxIndexValue:fetchedOjectsArray] intValue];
+            
             NSString *session;
             NSString *routine;
             NSString *month;
@@ -415,8 +418,6 @@
             NSString *workout;
             NSDate  *date;
             NSString *dateString;
-            
-            int maxIndex = [[self findMaxIndexValue:fetchedOjectsArray] intValue];
             
             NSString *tempExerciseName;
             NSString *tempWeightData;
@@ -427,206 +428,30 @@
             // Get the values for each index that was found for this workout
             for (int index = 1; index <= maxIndex; index++) {
                 
-                // Add column headers
-                for (int a = 0; a < 1; a++)
-                {
-                    
-                    //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                    [writeString appendString:[NSString stringWithFormat:@"Session,Routine,Week,Try,Workout,Date\n"]];
-                    
-                    matches = fetchedOjectsArray[a];
-                    
-                    session = matches.session;
-                    routine = matches.routine;
-                    month = matches.month;
-                    week = matches.week;
-                    workout = matches.workout;
-                    date = matches.date;
-                    
-                    dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
-                    
-                    // Add column headers for indivialual workouts based on workout index number
-                    [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%i,%@,%@\n",
-                                               session, routine, week, index, workout, dateString]];
-                }
-
-                NSNumber *workoutIndex = [NSNumber numberWithInt:index];
+                NSNumber *convertedIndex = [NSNumber numberWithInt:index];
                 
-                //  Add the exercise name, reps and weight
-                for (int b = 0; b < tempExerciseTitlesArray.count; b++) {
-                    
-                    tempExerciseName = tempExerciseTitlesArray[b];
-                    
-                    //  Add the exercise title to the string
-                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempExerciseName]];
-                    validRepFields = 0;
-                    
-                    //  Add the reps to the string
-                    for (int round = 0; round < 6; round++) {
-                        
-                        roundConverted = [NSNumber numberWithInt:round];
-                        
-                        pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
-                                currentSessionString,
-                                routine,
-                                workout,
-                                tempExerciseName,
-                                roundConverted,
-                                workoutIndex];
-                        
-                        [fetchRequest setPredicate:pred];
-                        matches = nil;
-                        fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
-                        
-                        if ([fetchedOjectsArray count] >= 1) {
-                            
-                            //  Match found
-                            //matches = [fetchedOjectsArray objectAtIndex:0];
-                            matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
-                            
-                            tempRepData = matches.reps;
-                            //tempRepData = [matches valueForKey:@"reps"];
-                        }
-                        
-                        else {
-                            
-                            //  No match found
-                            
-                        }
-                        
-                        if (![tempRepData isEqualToString:@""]) {
-                            
-                            if (round != 5) {
-                                
-                                //  Add the data to the string with a "," after it
-                                [writeString appendString:[NSString stringWithFormat:@"%@,", tempRepData]];
-                            }
-                            
-                            else {
-                                
-                                //  Last entry for the line so "," is not needed
-                                //  Add a line break to the end of the line
-                                [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepData]];
-                            }
-                            
-                            validRepFields++;
-                        }
-                        
-                        else {
-                            
-                            if (round == 5) {
-                                
-                                [writeString appendString:[NSString stringWithFormat:@"\n"]];
-                            }
-                        }
-                    }
-                    
-                    
-                    //  Add the weight line from the database
-                    for (int round = 0; round < validRepFields; round++) {
-                        
-                        roundConverted = [NSNumber numberWithInt:round];
-                        
-                        pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
-                                currentSessionString,
-                                routine,
-                                workout,
-                                tempExerciseName,
-                                roundConverted,
-                                workoutIndex];
-                        [fetchRequest setPredicate:pred];
-                        matches = nil;
-                        fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
-                        
-                        if ([fetchedOjectsArray count] >= 1) {
-                            
-                            //matches = [fetchedOjectsArray objectAtIndex:0];
-                            matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
-                            
-                            tempWeightData = matches.weight;
-                            //tempWeightData = [matches valueForKey:@"weight"];
-                            
-                            if (round != validRepFields -1) {
-                                
-                                //  Add  the data to the string with a "," after it
-                                [writeString appendString:[NSString stringWithFormat:@"%@,", tempWeightData]];
-                            }
-                            
-                            else {
-                                
-                                //  Last entry for the line so "," is not needed
-                                //  Add a line break to the end of the line
-                                [writeString appendString:[NSString stringWithFormat:@"%@\n", tempWeightData]];
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    //  Return the string
-    return writeString;
-}
-
-- (NSString*)allSessionStringForEmail {
-    
-    // Get Data from the database.
-    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
-    
-    NSArray *allWorkoutTitlesArray = [self allWorkoutTitleArray];
-    NSArray *allExerciseTitlesArray = [self allExerciseTitleArray];
-    NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
-    
-    NSArray *rountineArray = @[@"Bulk",
-                               @"Tone"];
-    
-    // Get the highest session value stored in the database
-    int maxSession = [[self findMaxSessionValue]intValue];
-    
-    // For each session, list each workouts data.  Bulk then tone.
-    for (int session = 1; session <= maxSession; session++) {
-        
-        // Get session value.
-        NSString *currentSessionString = [NSString stringWithFormat:@"%i", session];
-
-        for (int routineIndex = 0; routineIndex < rountineArray.count; routineIndex++) {
-            
-            for (int i = 0; i < allWorkoutTitlesArray.count; i++) {
-                
-                NSArray *tempExerciseTitlesArray = allExerciseTitlesArray[i];
-                
-                // Get workout data with the current session
+                // Get workout data with workout index
                 NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
                 NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
                 [fetchRequest setEntity:entityDesc];
-                NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@)",
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (index == %@)",
                                      currentSessionString,
                                      rountineArray[routineIndex],
-                                     allWorkoutTitlesArray[i]];
+                                     allWorkoutTitlesArray[i],
+                                     convertedIndex];
                 [fetchRequest setPredicate:pred];
-                Workout *matches = nil;
+                matches = nil;
                 NSError *error;
-                NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                NSArray *fetchedOjectsArrayWithIndex = [context executeFetchRequest:fetchRequest error:&error];
                 
-                NSString *session;
-                NSString *routine;
-                NSString *month;
-                NSString *week;
-                NSString *workout;
-                NSDate  *date;
-                NSString *dateString;
-                
-                int maxIndex = [[self findMaxIndexValue:fetchedOjectsArray] intValue];
-                
-                NSString *tempExerciseName;
-                NSString *tempWeightData;
-                NSString *tempRepData;
-                NSNumber *roundConverted;
-                int validRepFields;
-                
-                // Get the values for each index that was found for this workout
-                for (int index = 1; index <= maxIndex; index++) {
+                // Check if there are any matches for the given index.  If none skip the index.
+                if ([fetchedOjectsArrayWithIndex count] == 0) {
+                    
+                    //NSLog(@"No Matches for this workout with index");
+                }
+                else {
+                    
+                    //NSLog(@"Matches found");
                     
                     // Add column headers
                     for (int a = 0; a < 1; a++)
@@ -635,7 +460,7 @@
                         //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
                         [writeString appendString:[NSString stringWithFormat:@"Session,Routine,Week,Try,Workout,Date\n"]];
                         
-                        matches = fetchedOjectsArray[a];
+                        matches = fetchedOjectsArrayWithIndex[a];
                         
                         session = matches.session;
                         routine = matches.routine;
@@ -758,6 +583,236 @@
                                     //  Last entry for the line so "," is not needed
                                     //  Add a line break to the end of the line
                                     [writeString appendString:[NSString stringWithFormat:@"%@\n", tempWeightData]];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //  Return the string
+    return writeString;
+}
+
+- (NSString*)allSessionStringForEmail {
+    
+    // Get Data from the database.
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    
+    NSArray *allWorkoutTitlesArray = [self allWorkoutTitleArray];
+    NSArray *allExerciseTitlesArray = [self allExerciseTitleArray];
+    NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
+    
+    NSArray *rountineArray = @[@"Bulk",
+                               @"Tone"];
+    
+    // Get the highest session value stored in the database
+    int maxSession = [[self findMaxSessionValue]intValue];
+    
+    // For each session, list each workouts data.  Bulk then tone.
+    for (int session = 1; session <= maxSession; session++) {
+        
+        // Get session value.
+        NSString *currentSessionString = [NSString stringWithFormat:@"%i", session];
+        
+        // Routine
+        for (int routineIndex = 0; routineIndex < rountineArray.count; routineIndex++) {
+            
+            // Workout
+            for (int i = 0; i < allWorkoutTitlesArray.count; i++) {
+                
+                NSArray *tempExerciseTitlesArray = allExerciseTitlesArray[i];
+                
+                // Get workout data with the current session
+                NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                [fetchRequest setEntity:entityDesc];
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@)",
+                                     currentSessionString,
+                                     rountineArray[routineIndex],
+                                     allWorkoutTitlesArray[i]];
+                [fetchRequest setPredicate:pred];
+                Workout *matches = nil;
+                NSError *error;
+                NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                
+                int maxIndex = [[self findMaxIndexValue:fetchedOjectsArray] intValue];
+                
+                NSString *session;
+                NSString *routine;
+                NSString *month;
+                NSString *week;
+                NSString *workout;
+                NSDate  *date;
+                NSString *dateString;
+                
+                NSString *tempExerciseName;
+                NSString *tempWeightData;
+                NSString *tempRepData;
+                NSNumber *roundConverted;
+                int validRepFields;
+                
+                // Get the values for each index that was found for this workout
+                for (int index = 1; index <= maxIndex; index++) {
+                    
+                    NSNumber *convertedIndex = [NSNumber numberWithInt:index];
+                    
+                    // Get workout data with workout index
+                    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+                    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                    [fetchRequest setEntity:entityDesc];
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (index == %@)",
+                                         currentSessionString,
+                                         rountineArray[routineIndex],
+                                         allWorkoutTitlesArray[i],
+                                         convertedIndex];
+                    [fetchRequest setPredicate:pred];
+                    matches = nil;
+                    NSError *error;
+                    NSArray *fetchedOjectsArrayWithIndex = [context executeFetchRequest:fetchRequest error:&error];
+
+                    // Check if there are any matches for the given index.  If none skip the index.
+                    if ([fetchedOjectsArrayWithIndex count] == 0) {
+                        
+                        //NSLog(@"No Matches for this workout with index");
+                    }
+                    else {
+                        
+                        //NSLog(@"Matches found");
+                        
+                        // Add column headers
+                        for (int a = 0; a < 1; a++)
+                        {
+                            
+                            //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
+                            [writeString appendString:[NSString stringWithFormat:@"Session,Routine,Week,Try,Workout,Date\n"]];
+                            
+                            matches = fetchedOjectsArrayWithIndex[a];
+                            
+                            session = matches.session;
+                            routine = matches.routine;
+                            month = matches.month;
+                            week = matches.week;
+                            workout = matches.workout;
+                            date = matches.date;
+                            
+                            dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+                            
+                            // Add column headers for indivialual workouts based on workout index number
+                            [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%i,%@,%@\n",
+                                                       session, routine, week, index, workout, dateString]];
+                        }
+                        
+                        NSNumber *workoutIndex = [NSNumber numberWithInt:index];
+                        
+                        //  Add the exercise name, reps and weight
+                        for (int b = 0; b < tempExerciseTitlesArray.count; b++) {
+                            
+                            tempExerciseName = tempExerciseTitlesArray[b];
+                            
+                            //  Add the exercise title to the string
+                            [writeString appendString:[NSString stringWithFormat:@"%@\n", tempExerciseName]];
+                            validRepFields = 0;
+                            
+                            //  Add the reps to the string
+                            for (int round = 0; round < 6; round++) {
+                                
+                                roundConverted = [NSNumber numberWithInt:round];
+                                
+                                pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                                        currentSessionString,
+                                        routine,
+                                        workout,
+                                        tempExerciseName,
+                                        roundConverted,
+                                        workoutIndex];
+                                
+                                [fetchRequest setPredicate:pred];
+                                matches = nil;
+                                fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                                
+                                if ([fetchedOjectsArray count] >= 1) {
+                                    
+                                    //  Match found
+                                    //matches = [fetchedOjectsArray objectAtIndex:0];
+                                    matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                                    
+                                    tempRepData = matches.reps;
+                                    //tempRepData = [matches valueForKey:@"reps"];
+                                }
+                                
+                                else {
+                                    
+                                    //  No match found
+                                    
+                                }
+                                
+                                if (![tempRepData isEqualToString:@""]) {
+                                    
+                                    if (round != 5) {
+                                        
+                                        //  Add the data to the string with a "," after it
+                                        [writeString appendString:[NSString stringWithFormat:@"%@,", tempRepData]];
+                                    }
+                                    
+                                    else {
+                                        
+                                        //  Last entry for the line so "," is not needed
+                                        //  Add a line break to the end of the line
+                                        [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepData]];
+                                    }
+                                    
+                                    validRepFields++;
+                                }
+                                
+                                else {
+                                    
+                                    if (round == 5) {
+                                        
+                                        [writeString appendString:[NSString stringWithFormat:@"\n"]];
+                                    }
+                                }
+                            }
+                            
+                            
+                            //  Add the weight line from the database
+                            for (int round = 0; round < validRepFields; round++) {
+                                
+                                roundConverted = [NSNumber numberWithInt:round];
+                                
+                                pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                                        currentSessionString,
+                                        routine,
+                                        workout,
+                                        tempExerciseName,
+                                        roundConverted,
+                                        workoutIndex];
+                                [fetchRequest setPredicate:pred];
+                                matches = nil;
+                                fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                                
+                                if ([fetchedOjectsArray count] >= 1) {
+                                    
+                                    //matches = [fetchedOjectsArray objectAtIndex:0];
+                                    matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
+                                    
+                                    tempWeightData = matches.weight;
+                                    //tempWeightData = [matches valueForKey:@"weight"];
+                                    
+                                    if (round != validRepFields -1) {
+                                        
+                                        //  Add  the data to the string with a "," after it
+                                        [writeString appendString:[NSString stringWithFormat:@"%@,", tempWeightData]];
+                                    }
+                                    
+                                    else {
+                                        
+                                        //  Last entry for the line so "," is not needed
+                                        //  Add a line break to the end of the line
+                                        [writeString appendString:[NSString stringWithFormat:@"%@\n", tempWeightData]];
+                                    }
                                 }
                             }
                         }
