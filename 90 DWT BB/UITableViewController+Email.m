@@ -306,7 +306,53 @@
 
 - (void)sendAllSessionEmail:(NSString*)csvString {
     
+    // Create MailComposerViewController object.
+    MFMailComposeViewController *mailComposer;
+    mailComposer = [[MFMailComposeViewController alloc] init];
+    mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
+    // Check to see if the device has at least 1 email account configured
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        NSData *csvData = [csvString dataUsingEncoding:NSASCIIStringEncoding];
+        NSString *csvTitle = @"AllSessionsData";
+        csvTitle = [csvTitle stringByAppendingString:@".csv"];
+        
+        // Get the objects for the current session
+        NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+        
+        // Fetch defaultEmail data.
+        NSEntityDescription *entityDescEmail = [NSEntityDescription entityForName:@"Email" inManagedObjectContext:context];
+        NSFetchRequest *requestEmail = [[NSFetchRequest alloc] init];
+        [requestEmail setEntity:entityDescEmail];
+        NSManagedObject *matches = nil;
+        NSError *error = nil;
+        NSArray *objects = [context executeFetchRequest:requestEmail error:&error];
+        
+        // Array to store the default email address.
+        NSArray *emailAddresses;
+        
+        if ([objects count] != 0) {
+            
+            matches = objects[[objects count] - 1];
+            
+            // There is a default email address.
+            emailAddresses = @[[matches valueForKey:@"defaultEmail"]];
+        }
+        else {
+            
+            // There is NOT a default email address.  Put an empty email address in the arrary.
+            emailAddresses = @[@""];
+        }
+        
+        [mailComposer setToRecipients:emailAddresses];
+        [mailComposer setSubject:@"90 DWT BB All Sessions Workout Data"];
+        [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:csvTitle];
+        [self presentViewController:mailComposer animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
+    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
@@ -523,43 +569,207 @@
     return writeString;
 }
 
-//- (NSString*)allSessionStringForEmail:(NSArray*)allSessionTitleArray {
-//    
-//    //Set any objects in Core Data that don't have a session assigned to them to session 1
-//    
-//    // Workout Entity
-//    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
-//    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
-//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//    [request setEntity:entityDesc];
-//    NSError *error;
-//    NSArray *objects = [context executeFetchRequest:request error:&error];
-//    
-//    int objectsUpdatedCount = 0;
-//    
-//    for (Workout *info in objects) {
-//        
-//        NSString *sessionValue = info.session;
-//        
-//        if (sessionValue == nil) {
-//            
-//            info.session = @"1";
-//            objectsUpdatedCount++;
-//        }
-//    }
-//    
-//    if (objectsUpdatedCount != 0) {
-//        
-//        if (debug==1) {
-//            NSLog(@"Workout ObjectsUpdatedCount = %d", objectsUpdatedCount);
-//        }
-//        
-//        [[CoreDataHelper sharedHelper] backgroundSaveContext];
-//    }
-//
-//    //  Return the string
-//    return writeString;
-//}
+- (NSString*)allSessionStringForEmail {
+    
+    // Get Data from the database.
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    
+    NSArray *allWorkoutTitlesArray = [self allWorkoutTitleArray];
+    NSArray *allExerciseTitlesArray = [self allExerciseTitleArray];
+    NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
+    
+    NSArray *rountineArray = @[@"Bulk",
+                               @"Tone"];
+    
+    // Get the highest session value stored in the database
+    int maxSession = [[self findMaxSessionValue]intValue];
+    
+    // For each session, list each workouts data.  Bulk then tone.
+    for (int session = 1; session <= maxSession; session++) {
+        
+        // Get session value.
+        NSString *currentSessionString = [NSString stringWithFormat:@"%i", session];
+
+        for (int routineIndex = 0; routineIndex < rountineArray.count; routineIndex++) {
+            
+            for (int i = 0; i < allWorkoutTitlesArray.count; i++) {
+                
+                NSArray *tempExerciseTitlesArray = allExerciseTitlesArray[i];
+                
+                // Get workout data with the current session
+                NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                [fetchRequest setEntity:entityDesc];
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@)",
+                                     currentSessionString,
+                                     rountineArray[routineIndex],
+                                     allWorkoutTitlesArray[i]];
+                [fetchRequest setPredicate:pred];
+                Workout *matches = nil;
+                NSError *error;
+                NSArray *fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                
+                NSString *session;
+                NSString *routine;
+                NSString *month;
+                NSString *week;
+                NSString *workout;
+                NSDate  *date;
+                NSString *dateString;
+                
+                int maxIndex = [[self findMaxIndexValue:fetchedOjectsArray] intValue];
+                
+                NSString *tempExerciseName;
+                NSString *tempWeightData;
+                NSString *tempRepData;
+                NSNumber *roundConverted;
+                int validRepFields;
+                
+                // Get the values for each index that was found for this workout
+                for (int index = 1; index <= maxIndex; index++) {
+                    
+                    // Add column headers
+                    for (int a = 0; a < 1; a++)
+                    {
+                        
+                        //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
+                        [writeString appendString:[NSString stringWithFormat:@"Session,Routine,Week,Try,Workout,Date\n"]];
+                        
+                        matches = fetchedOjectsArray[a];
+                        
+                        session = matches.session;
+                        routine = matches.routine;
+                        month = matches.month;
+                        week = matches.week;
+                        workout = matches.workout;
+                        date = matches.date;
+                        
+                        dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+                        
+                        // Add column headers for indivialual workouts based on workout index number
+                        [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%i,%@,%@\n",
+                                                   session, routine, week, index, workout, dateString]];
+                    }
+                    
+                    NSNumber *workoutIndex = [NSNumber numberWithInt:index];
+                    
+                    //  Add the exercise name, reps and weight
+                    for (int b = 0; b < tempExerciseTitlesArray.count; b++) {
+                        
+                        tempExerciseName = tempExerciseTitlesArray[b];
+                        
+                        //  Add the exercise title to the string
+                        [writeString appendString:[NSString stringWithFormat:@"%@\n", tempExerciseName]];
+                        validRepFields = 0;
+                        
+                        //  Add the reps to the string
+                        for (int round = 0; round < 6; round++) {
+                            
+                            roundConverted = [NSNumber numberWithInt:round];
+                            
+                            pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                                    currentSessionString,
+                                    routine,
+                                    workout,
+                                    tempExerciseName,
+                                    roundConverted,
+                                    workoutIndex];
+                            
+                            [fetchRequest setPredicate:pred];
+                            matches = nil;
+                            fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                            
+                            if ([fetchedOjectsArray count] >= 1) {
+                                
+                                //  Match found
+                                //matches = [fetchedOjectsArray objectAtIndex:0];
+                                matches = fetchedOjectsArray[[fetchedOjectsArray count] - 1];
+                                
+                                tempRepData = matches.reps;
+                                //tempRepData = [matches valueForKey:@"reps"];
+                            }
+                            
+                            else {
+                                
+                                //  No match found
+                                
+                            }
+                            
+                            if (![tempRepData isEqualToString:@""]) {
+                                
+                                if (round != 5) {
+                                    
+                                    //  Add the data to the string with a "," after it
+                                    [writeString appendString:[NSString stringWithFormat:@"%@,", tempRepData]];
+                                }
+                                
+                                else {
+                                    
+                                    //  Last entry for the line so "," is not needed
+                                    //  Add a line break to the end of the line
+                                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempRepData]];
+                                }
+                                
+                                validRepFields++;
+                            }
+                            
+                            else {
+                                
+                                if (round == 5) {
+                                    
+                                    [writeString appendString:[NSString stringWithFormat:@"\n"]];
+                                }
+                            }
+                        }
+                        
+                        
+                        //  Add the weight line from the database
+                        for (int round = 0; round < validRepFields; round++) {
+                            
+                            roundConverted = [NSNumber numberWithInt:round];
+                            
+                            pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %@)",
+                                    currentSessionString,
+                                    routine,
+                                    workout,
+                                    tempExerciseName,
+                                    roundConverted,
+                                    workoutIndex];
+                            [fetchRequest setPredicate:pred];
+                            matches = nil;
+                            fetchedOjectsArray = [context executeFetchRequest:fetchRequest error:&error];
+                            
+                            if ([fetchedOjectsArray count] >= 1) {
+                                
+                                //matches = [fetchedOjectsArray objectAtIndex:0];
+                                matches = fetchedOjectsArray[[fetchedOjectsArray count]-1];
+                                
+                                tempWeightData = matches.weight;
+                                //tempWeightData = [matches valueForKey:@"weight"];
+                                
+                                if (round != validRepFields -1) {
+                                    
+                                    //  Add  the data to the string with a "," after it
+                                    [writeString appendString:[NSString stringWithFormat:@"%@,", tempWeightData]];
+                                }
+                                
+                                else {
+                                    
+                                    //  Last entry for the line so "," is not needed
+                                    //  Add a line break to the end of the line
+                                    [writeString appendString:[NSString stringWithFormat:@"%@\n", tempWeightData]];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //  Return the string
+    return writeString;
+}
 
 - (NSArray*)allExerciseTitleArray {
     
@@ -814,5 +1024,4 @@
     
     return maxIndexStringValue;
 }
-
 @end

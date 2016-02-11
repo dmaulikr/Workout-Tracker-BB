@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "checkMark_orange_22.png"
+      "filename" : "Orange-White-Check-22.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "checkMark_orange_44.png"
+      "filename" : "Orange-White-Check-44.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "checkMark_orange_66.png"
+      "filename" : "Orange-White-Check-66.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

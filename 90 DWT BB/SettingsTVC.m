@@ -818,12 +818,13 @@
 
 - (IBAction)exportAllData:(id)sender {
     
-    
+    //  Get the ALL SESSIONS csvstring and then send the email
+    [self sendAllSessionEmail:[self allSessionStringForEmail]];
 }
 
 - (IBAction)exportCurrentSessionData:(id)sender {
     
-    //  Get the csvstring and then send the email
+    //  Get the CURRENT SESSION csvstring and then send the email
     [self sendCurrentSessionEmail:[self currentSessionStringForEmail]];
 }
 

@@ -19,5 +19,5 @@
 - (void)sendCurrentSessionEmail:(NSString*)csvString;
 - (void)sendAllSessionEmail:(NSString*)csvString;
 - (NSString*)currentSessionStringForEmail;
-- (NSString*)allSessionStringForEmail:(NSArray*)allSessionTitleArray;
+- (NSString*)allSessionStringForEmail;
 @end
