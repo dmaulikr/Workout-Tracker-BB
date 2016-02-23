@@ -408,6 +408,28 @@
     previousButton.clipsToBounds = YES;
 }
 
+- (void)configureRoundBackgroundColor:(NSArray*)roundBackgroundColorViews {
+    
+    UIColor* normalColor;
+    UIColor* lightColor;
+    
+    // Orange background color
+    normalColor = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
+    lightColor = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:0.1f];
+    
+    for (int i = 0; i < roundBackgroundColorViews.count; i++) {
+        
+        UIView *roundBGCV = roundBackgroundColorViews[i];
+        
+        // roundBackgroundColorView Boarder
+        roundBGCV.backgroundColor = lightColor;
+        roundBGCV.layer.borderWidth = 2.0f;
+        roundBGCV.layer.borderColor = [normalColor CGColor];
+        roundBGCV.layer.cornerRadius = 5;
+        roundBGCV.clipsToBounds = YES;
+    }
+}
+
 /*
 - (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection {
     
