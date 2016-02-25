@@ -473,10 +473,7 @@
                                             self.roundBackgroundColorView_10,
                                             self.roundBackgroundColorView_11,
                                             self.roundBackgroundColorView_12,
-                                            self.roundBackgroundColorView_13,
-                                            self.roundBackgroundColorView_14,
-                                            self.roundBackgroundColorView_15,
-                                            self.roundBackgroundColorView_16];
+                                            self.roundBackgroundColorView_13];
 }
 
 - (void)addAccessoryToolBar
