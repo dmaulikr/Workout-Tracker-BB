@@ -439,10 +439,7 @@
                                             self.roundBackgroundColorView_7,
                                             self.roundBackgroundColorView_8,
                                             self.roundBackgroundColorView_9,
-                                            self.roundBackgroundColorView_10,
-                                            self.roundBackgroundColorView_11,
-                                            self.roundBackgroundColorView_12,
-                                            self.roundBackgroundColorView_13];
+                                            self.roundBackgroundColorView_10];
 }
 
 - (void)addAccessoryToolBar

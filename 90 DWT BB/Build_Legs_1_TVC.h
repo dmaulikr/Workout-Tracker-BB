@@ -307,9 +307,6 @@
 @property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_8;
 @property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_9;
 @property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_10;
-@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_11;
-@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_12;
-@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_13;
 
 - (IBAction)submitEntries:(id)sender;
 - (IBAction)showGraph:(UIButton *)sender;
