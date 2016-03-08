@@ -23,4 +23,5 @@
 - (void)configureStoreTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon :(NSArray*)needCellColor;
 - (void)configureDateCell:(UITableViewCell*)dateCell :(UIButton*)deleteButton :(UIButton*)todayButton :(UIButton*)previousButton :(UILabel*)dateLabel;
 - (void)configureRoundBackgroundColor:(NSArray*)roundBackgroundColorViews;
+- (void)configureRoundBackgroundColorDropSet:(NSArray*)roundBackgroundColorViews;
 @end
