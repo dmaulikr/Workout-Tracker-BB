@@ -84,6 +84,10 @@
     //  Configure the cell...
     [self configureExerciseCell:self.CellArray :self.Reps :self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.exerciseLabelArray :self.repLabelArray :self.previousNotesArray :self.currentNotesArray :self.graphButtonArray];
     
+    //  Configure roundBackgroundColorViews
+    [self configureRoundBackgroundColor:self.roundBackgroundColorViewsArray];
+    [self configureRoundBackgroundColorDropSet:self.roundBackgroundColorViewsDropSetArray];
+    
     //  Get data from the database
     [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.previousNotesArray :self.currentNotesArray];
 
@@ -395,6 +399,17 @@
                               self.graphButton_6,
                               self.graphButton_7,
                               self.graphButton_8];
+    
+    self.roundBackgroundColorViewsArray = @[self.roundBackgroundColorView_1,
+                                            self.roundBackgroundColorView_2,
+                                            self.roundBackgroundColorView_3,
+                                            self.roundBackgroundColorView_4,
+                                            self.roundBackgroundColorView_5,
+                                            self.roundBackgroundColorView_6,
+                                            self.roundBackgroundColorView_7,
+                                            self.roundBackgroundColorView_8];
+    
+    self.roundBackgroundColorViewsDropSetArray = @[self.roundBackgroundColorView_DropSet_1];
 }
 
 - (void)addAccessoryToolBar

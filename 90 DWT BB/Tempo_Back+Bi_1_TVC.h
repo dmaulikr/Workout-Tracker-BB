@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSArray *CellArray;
 @property (strong, nonatomic) NSArray *exerciseLabelArray;
 @property (strong, nonatomic) NSArray *repLabelArray;
+@property (strong, nonatomic) NSArray *roundBackgroundColorViewsArray;
+@property (strong, nonatomic) NSArray *roundBackgroundColorViewsDropSetArray;
 
 @property (strong, nonatomic) NSArray *currentNotesArray;
 @property (strong, nonatomic) NSArray *previousNotesArray;
@@ -319,6 +321,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *graphButton_8;
 @property (weak, nonatomic) IBOutlet UIButton *graphButton_9;
 @property (weak, nonatomic) IBOutlet UIButton *graphButton_10;
+
+
+// Background Color Views
+@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_1;
+@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_2;
+@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_3;
+@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_4;
+@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_5;
 
 - (IBAction)submitEntries:(id)sender;
 - (IBAction)showGraph:(UIButton *)sender;

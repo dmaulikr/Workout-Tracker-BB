@@ -31,7 +31,6 @@
 @property (strong, nonatomic) NSArray *roundBackgroundColorViewsArray;
 @property (strong, nonatomic) NSArray *roundBackgroundColorViewsDropSetArray;
 
-
 @property (strong, nonatomic) NSArray *currentNotesArray;
 @property (strong, nonatomic) NSArray *previousNotesArray;
 @property (strong, nonatomic) NSArray *graphButtonArray;

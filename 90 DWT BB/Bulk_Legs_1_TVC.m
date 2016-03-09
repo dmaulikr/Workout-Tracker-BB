@@ -88,7 +88,6 @@
     [self configureRoundBackgroundColor:self.roundBackgroundColorViewsArray];
     [self configureRoundBackgroundColorDropSet:self.roundBackgroundColorViewsDropSetArray];
 
-    
     //  Get data from the database
     [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.previousNotesArray :self.currentNotesArray];
 
