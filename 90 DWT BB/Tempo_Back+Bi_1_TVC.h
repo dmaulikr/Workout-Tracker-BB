@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSArray *repLabelArray;
 @property (strong, nonatomic) NSArray *roundBackgroundColorViewsArray;
 @property (strong, nonatomic) NSArray *roundBackgroundColorViewsDropSetArray;
+//@property (strong, nonatomic) NSArray *roundBackgroundColorViewsDropSetArray;
 
 @property (strong, nonatomic) NSArray *currentNotesArray;
 @property (strong, nonatomic) NSArray *previousNotesArray;
@@ -329,6 +330,9 @@
 @property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_3;
 @property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_4;
 @property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_5;
+
+// Background Color Views Drop Sets
+//@property (weak, nonatomic) IBOutlet UIView *roundBackgroundColorView_DropSet_1;
 
 - (IBAction)submitEntries:(id)sender;
 - (IBAction)showGraph:(UIButton *)sender;

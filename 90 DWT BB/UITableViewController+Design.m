@@ -23,10 +23,12 @@
         cell = tableViewCellArray[i];
         
         // Label and Subtitle Font Size
-        UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        //UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        UIFont *labelFont = [UIFont systemFontOfSize:18];
         [cell.textLabel setFont:labelFont];
         
-        UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        //UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        UIFont *detailFont = [UIFont systemFontOfSize:17];
         [cell.detailTextLabel setFont:detailFont];
         
         // Accessory view icon
@@ -85,10 +87,12 @@
         cell = tableViewCellArray[i];
         
         // Label and Subtitle Font Size
-        UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        //UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        UIFont *labelFont = [UIFont systemFontOfSize:18];
         [cell.textLabel setFont:labelFont];
         
-        UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        //UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        UIFont *detailFont = [UIFont systemFontOfSize:17];
         [cell.detailTextLabel setFont:detailFont];
         
         BOOL tempWorkoutCompleted = [self workoutCompletedWithArguments:workoutIndexList[i] :routine :workoutNameList[i]];
@@ -130,7 +134,8 @@
         tempTextBox.layer.cornerRadius = 15.0f;
         tempTextBox.clipsToBounds = YES;
         
-        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        //UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        UIFont *font = [UIFont systemFontOfSize:18];
         [tempTextBox setFont:font];
         
     }
@@ -143,8 +148,11 @@
     
     UIColor *orange = [UIColor colorWithRed:251/255.0f green:105/255.0f blue:55/255.0f alpha:1.0f];
     
-    UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-    UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    //UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    //UIFont *detailFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    
+    UIFont *labelFont = [UIFont systemFontOfSize:18];
+    UIFont *detailFont = [UIFont systemFontOfSize:17];
     
     // Label
     for (int i = 0; i < tableViewLabelArray.count; i++) {
@@ -183,12 +191,14 @@
         tempExerciseLabel = exerciseLabelsArray[i];
         tempExerciseLabel.text = exerciseNamesArray[i];
         tempExerciseLabel.textColor = orange;
-        UIFont *exerciseLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        //UIFont *exerciseLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        UIFont *exerciseLabelFont = [UIFont systemFontOfSize:17];
         [tempExerciseLabel setFont:exerciseLabelFont];
         
         // Graph Button
         tempGraphButton = graphBtnArray[i];
-        UIFont *graphButtonFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        //UIFont *graphButtonFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        UIFont *graphButtonFont = [UIFont systemFontOfSize:17];
         tempGraphButton.titleLabel.font = graphButtonFont;
         //[tempGraphButton.titleLabel sizeToFit];
         tempGraphButton.titleLabel.adjustsFontSizeToFitWidth = YES;

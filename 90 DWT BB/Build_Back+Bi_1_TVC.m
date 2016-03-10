@@ -86,6 +86,7 @@
     
     //  Configure roundBackgroundColorViews
     [self configureRoundBackgroundColor:self.roundBackgroundColorViewsArray];
+    [self configureRoundBackgroundColorDropSet:self.roundBackgroundColorViewsDropSetArray];
     
     //  Get data from the database
     [self exerciseMatches:self.Titles :self.previousTextFieldArray :self.currentTextFieldArray :self.previousNotesArray :self.currentNotesArray];
@@ -502,11 +503,12 @@
                                             self.roundBackgroundColorView_8,
                                             self.roundBackgroundColorView_9,
                                             self.roundBackgroundColorView_10,
-                                            self.roundBackgroundColorView_11,
-                                            self.roundBackgroundColorView_12,
-                                            self.roundBackgroundColorView_13,
-                                            self.roundBackgroundColorView_14,
-                                            self.roundBackgroundColorView_15];
+                                            self.roundBackgroundColorView_11];
+    
+    self.roundBackgroundColorViewsDropSetArray = @[self.roundBackgroundColorView_DropSet_1,
+                                                   self.roundBackgroundColorView_DropSet_2,
+                                                   self.roundBackgroundColorView_DropSet_3,
+                                                   self.roundBackgroundColorView_DropSet_4];
 }
 
 - (void)addAccessoryToolBar
