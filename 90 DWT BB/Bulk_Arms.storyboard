@@ -2704,11 +2704,11 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Section-7" id="sLS-AL-HvX">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell1" rowHeight="246" id="bwO-Kt-CwP">
-                                        <rect key="frame" x="0.0" y="1630" width="600" height="246"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell1" rowHeight="239" id="bwO-Kt-CwP">
+                                        <rect key="frame" x="0.0" y="1630" width="600" height="239"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bwO-Kt-CwP" id="L3J-PU-cjO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="238"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hly-a1-avb">
@@ -2964,16 +2964,6 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vIu-XG-BPx">
-                                                    <rect key="frame" x="0.0" y="227" width="600" height="18"/>
-                                                    <color key="backgroundColor" red="0.98431372549999996" green="0.41176470590000003" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="R7y-Wt-A1a"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76P-qM-pTQ">
                                                     <rect key="frame" x="4" y="67" width="92" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
@@ -3061,7 +3051,6 @@
                                                 <constraint firstItem="pEd-Hz-qFp" firstAttribute="width" secondItem="ErA-nk-q5T" secondAttribute="width" id="VKz-0z-v2v"/>
                                                 <constraint firstItem="cMS-Tl-VOh" firstAttribute="top" secondItem="hly-a1-avb" secondAttribute="bottom" constant="8" id="W4b-4p-lp0"/>
                                                 <constraint firstItem="GQX-sk-38c" firstAttribute="width" secondItem="ErA-nk-q5T" secondAttribute="width" id="WFI-MN-i7a"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vIu-XG-BPx" secondAttribute="bottom" constant="-8" id="Wso-ea-IuY"/>
                                                 <constraint firstItem="DHg-ey-1re" firstAttribute="width" secondItem="ErA-nk-q5T" secondAttribute="width" id="XDx-Rh-cpL"/>
                                                 <constraint firstItem="VRV-ZH-0gb" firstAttribute="top" secondItem="iph-ih-OWN" secondAttribute="bottom" constant="8" id="Xb0-Ys-Dgd"/>
                                                 <constraint firstItem="8Mh-sp-AwZ" firstAttribute="leading" secondItem="pv8-dr-lOo" secondAttribute="trailing" constant="8" id="Y1H-A8-CXs"/>
@@ -3069,10 +3058,8 @@
                                                 <constraint firstItem="pv8-dr-lOo" firstAttribute="width" secondItem="ErA-nk-q5T" secondAttribute="width" id="YpA-qj-3rB"/>
                                                 <constraint firstItem="CT3-XB-yzN" firstAttribute="top" secondItem="L3J-PU-cjO" secondAttribute="topMargin" constant="12" id="atE-4e-DfU"/>
                                                 <constraint firstItem="fsB-VL-X0M" firstAttribute="width" secondItem="ErA-nk-q5T" secondAttribute="width" id="bVM-se-iKr"/>
-                                                <constraint firstItem="vIu-XG-BPx" firstAttribute="leading" secondItem="L3J-PU-cjO" secondAttribute="leadingMargin" constant="-8" id="bo9-d2-ihG"/>
                                                 <constraint firstItem="OmL-xy-KvR" firstAttribute="top" secondItem="iph-ih-OWN" secondAttribute="bottom" constant="8" id="c9a-Nc-rzw"/>
                                                 <constraint firstItem="76P-qM-pTQ" firstAttribute="width" secondItem="ErA-nk-q5T" secondAttribute="width" id="cGi-g2-lcu"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vIu-XG-BPx" secondAttribute="trailing" constant="-8" id="cYu-4a-J8a"/>
                                                 <constraint firstItem="pv8-dr-lOo" firstAttribute="leading" secondItem="ErA-nk-q5T" secondAttribute="trailing" constant="8" id="csS-Xd-FjE"/>
                                                 <constraint firstItem="aeD-KH-xh6" firstAttribute="top" secondItem="hly-a1-avb" secondAttribute="bottom" constant="8" id="d3p-6I-SWZ"/>
                                                 <constraint firstItem="ifE-fR-Lkf" firstAttribute="leading" secondItem="CqN-4C-cZE" secondAttribute="trailing" constant="8" id="e0Y-hZ-Jdz"/>
@@ -3090,14 +3077,12 @@
                                                 <constraint firstItem="CqN-4C-cZE" firstAttribute="leading" secondItem="quA-hw-wLK" secondAttribute="trailing" constant="8" id="joA-aP-9Wm"/>
                                                 <constraint firstItem="76P-qM-pTQ" firstAttribute="leading" secondItem="L3J-PU-cjO" secondAttribute="leadingMargin" constant="-4" id="kHt-BN-JKs"/>
                                                 <constraint firstItem="DHg-ey-1re" firstAttribute="top" secondItem="quA-hw-wLK" secondAttribute="bottom" constant="8" id="kge-ZX-180"/>
-                                                <constraint firstItem="vIu-XG-BPx" firstAttribute="top" secondItem="Mxk-iP-9K2" secondAttribute="bottom" constant="8" id="lDW-yg-3gu"/>
                                                 <constraint firstItem="fcS-BA-XWQ" firstAttribute="top" secondItem="CqN-4C-cZE" secondAttribute="bottom" constant="8" id="lTC-oh-4dI"/>
                                                 <constraint firstItem="OmL-xy-KvR" firstAttribute="leading" secondItem="j6I-Yu-xo9" secondAttribute="trailing" constant="8" id="lfr-wA-9rU"/>
                                                 <constraint firstItem="byP-wH-eDX" firstAttribute="top" secondItem="PJ5-yz-jmg" secondAttribute="bottom" id="mED-E6-g4n"/>
                                                 <constraint firstItem="fsB-VL-X0M" firstAttribute="leading" secondItem="KEX-9E-KHf" secondAttribute="trailing" constant="8" id="mKy-nr-shY"/>
                                                 <constraint firstItem="R8f-cM-Uop" firstAttribute="top" secondItem="quA-hw-wLK" secondAttribute="bottom" constant="8" id="mTi-vy-ME8"/>
                                                 <constraint firstItem="GRV-9Q-XXM" firstAttribute="top" secondItem="pv8-dr-lOo" secondAttribute="bottom" id="mYD-Gf-PXy"/>
-                                                <constraint firstItem="vIu-XG-BPx" firstAttribute="top" secondItem="iW8-0f-tcj" secondAttribute="bottom" constant="8" id="mZ6-wg-xfZ"/>
                                                 <constraint firstItem="lLb-BG-RJw" firstAttribute="top" secondItem="fcS-BA-XWQ" secondAttribute="bottom" constant="40" id="mb5-Bo-LpS"/>
                                                 <constraint firstItem="byP-wH-eDX" firstAttribute="top" secondItem="phb-wk-vQS" secondAttribute="bottom" constant="40" id="mh9-UZ-FZG"/>
                                                 <constraint firstItem="KEX-9E-KHf" firstAttribute="leading" secondItem="lLb-BG-RJw" secondAttribute="trailing" constant="8" id="nBd-Va-pHO"/>
@@ -3141,7 +3126,7 @@
                             <tableViewSection headerTitle="Section-8" id="VeX-2B-EI0">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell1" rowHeight="162" id="ZDt-nQ-brP" userLabel="ExerciseCell8">
-                                        <rect key="frame" x="0.0" y="1898" width="600" height="162"/>
+                                        <rect key="frame" x="0.0" y="1891" width="600" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZDt-nQ-brP" id="dGE-82-gOS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="161"/>
