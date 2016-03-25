@@ -64,6 +64,195 @@
 		A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE318B500A700F34A11 /* UITableViewController+Database.m */; };
 		A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */; };
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
+		A531702F1CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA01CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m */; };
+		A53170301CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA21CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m */; };
+		A53170311CA5C9FC00B406FE /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */; };
+		A53170321CA5C9FC00B406FE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA51CA5C9FC00B406FE /* README.md */; };
+		A53170331CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA81CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m */; };
+		A53170341CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EAA1CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m */; };
+		A53170351CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EAD1CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m */; };
+		A53170361CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EAF1CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m */; };
+		A53170371CA5C9FC00B406FE /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */; };
+		A53170381CA5C9FC00B406FE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A5316EB21CA5C9FC00B406FE /* README.md */; };
+		A53170391CA5C9FC00B406FE /* MPBannerAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EB61CA5C9FC00B406FE /* MPBannerAdManager.m */; };
+		A531703A1CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EB91CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m */; };
+		A531703B1CA5C9FC00B406FE /* MPBaseBannerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EBB1CA5C9FC00B406FE /* MPBaseBannerAdapter.m */; };
+		A531703C1CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EC01CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.m */; };
+		A531703D1CA5C9FC00B406FE /* MPAdAlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EC21CA5C9FC00B406FE /* MPAdAlertManager.m */; };
+		A531703E1CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EC41CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.m */; };
+		A531703F1CA5C9FC00B406FE /* MPActivityViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EC61CA5C9FC00B406FE /* MPActivityViewControllerHelper.m */; };
+		A53170401CA5C9FC00B406FE /* MPAdBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EC81CA5C9FC00B406FE /* MPAdBrowserController.m */; };
+		A53170411CA5C9FC00B406FE /* MPAdBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5316EC91CA5C9FC00B406FE /* MPAdBrowserController.xib */; };
+		A53170421CA5C9FC00B406FE /* MPAdConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ECB1CA5C9FC00B406FE /* MPAdConfiguration.m */; };
+		A53170431CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ECD1CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.m */; };
+		A53170441CA5C9FC00B406FE /* MPAdServerCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ECF1CA5C9FC00B406FE /* MPAdServerCommunicator.m */; };
+		A53170451CA5C9FC00B406FE /* MPAdServerURLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ED11CA5C9FC00B406FE /* MPAdServerURLBuilder.m */; };
+		A53170461CA5C9FC00B406FE /* MPAPIEndpoints.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ED31CA5C9FC00B406FE /* MPAPIEndpoints.m */; };
+		A53170471CA5C9FC00B406FE /* MPClosableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ED51CA5C9FC00B406FE /* MPClosableView.m */; };
+		A53170481CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ED71CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.m */; };
+		A53170491CA5C9FC00B406FE /* MPFacebookKeywordProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316ED91CA5C9FC00B406FE /* MPFacebookKeywordProvider.m */; };
+		A531704A1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EDC1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.m */; };
+		A531704B1CA5C9FC00B406FE /* MPLastResortDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EDE1CA5C9FC00B406FE /* MPLastResortDelegate.m */; };
+		A531704C1CA5C9FC00B406FE /* MPProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EE01CA5C9FC00B406FE /* MPProgressOverlayView.m */; };
+		A531704D1CA5C9FC00B406FE /* MPURLActionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EE21CA5C9FC00B406FE /* MPURLActionInfo.m */; };
+		A531704E1CA5C9FC00B406FE /* MPURLResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EE41CA5C9FC00B406FE /* MPURLResolver.m */; };
+		A531704F1CA5C9FC00B406FE /* MPVideoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EE61CA5C9FC00B406FE /* MPVideoConfig.m */; };
+		A53170501CA5C9FC00B406FE /* MPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EE81CA5C9FC00B406FE /* MPXMLParser.m */; };
+		A53170511CA5C9FC00B406FE /* MPLogEvent+NativeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EEB1CA5C9FC00B406FE /* MPLogEvent+NativeVideo.m */; };
+		A53170521CA5C9FC00B406FE /* MPLogEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EED1CA5C9FC00B406FE /* MPLogEvent.m */; };
+		A53170531CA5C9FC00B406FE /* MPLogEventCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EEF1CA5C9FC00B406FE /* MPLogEventCommunicator.m */; };
+		A53170541CA5C9FC00B406FE /* MPLogEventRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EF11CA5C9FC00B406FE /* MPLogEventRecorder.m */; };
+		A53170551CA5C9FC00B406FE /* MPNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EF31CA5C9FC00B406FE /* MPNetworkManager.m */; };
+		A53170561CA5C9FC00B406FE /* MPQRunLoopOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EF51CA5C9FC00B406FE /* MPQRunLoopOperation.m */; };
+		A53170571CA5C9FC00B406FE /* MPRetryingHTTPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EF71CA5C9FC00B406FE /* MPRetryingHTTPOperation.m */; };
+		A53170581CA5C9FC00B406FE /* MPAdWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EFF1CA5C9FC00B406FE /* MPAdWebView.m */; };
+		A53170591CA5C9FC00B406FE /* MPAdWebViewAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F011CA5C9FC00B406FE /* MPAdWebViewAgent.m */; };
+		A531705A1CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F031CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.m */; };
+		A531705B1CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F051CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.m */; };
+		A531705C1CA5C9FC00B406FE /* MPHTMLInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F071CA5C9FC00B406FE /* MPHTMLInterstitialViewController.m */; };
+		A531705D1CA5C9FC00B406FE /* MPBaseInterstitialAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F0A1CA5C9FC00B406FE /* MPBaseInterstitialAdapter.m */; };
+		A531705E1CA5C9FC00B406FE /* MPInterstitialAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F0C1CA5C9FC00B406FE /* MPInterstitialAdManager.m */; };
+		A531705F1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F0F1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.m */; };
+		A53170601CA5C9FC00B406FE /* MPInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F111CA5C9FC00B406FE /* MPInterstitialViewController.m */; };
+		A53170611CA5C9FC00B406FE /* MPCoreInstanceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F141CA5C9FC00B406FE /* MPCoreInstanceProvider.m */; };
+		A53170621CA5C9FC00B406FE /* MPInstanceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F161CA5C9FC00B406FE /* MPInstanceProvider.m */; };
+		A53170631CA5C9FC00B406FE /* MPVASTTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F181CA5C9FC00B406FE /* MPVASTTracking.m */; };
+		A53170641CA5C9FC00B406FE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A5316F1A1CA5C9FC00B406FE /* LICENSE */; };
+		A53170651CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F1D1CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.m */; };
+		A53170661CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F1F1CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.m */; };
+		A53170671CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F211CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.m */; };
+		A53170681CA5C9FC00B406FE /* MRBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F231CA5C9FC00B406FE /* MRBridge.m */; };
+		A53170691CA5C9FC00B406FE /* MRBundleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F251CA5C9FC00B406FE /* MRBundleManager.m */; };
+		A531706A1CA5C9FC00B406FE /* MRCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F271CA5C9FC00B406FE /* MRCalendarManager.m */; };
+		A531706B1CA5C9FC00B406FE /* MRCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F291CA5C9FC00B406FE /* MRCommand.m */; };
+		A531706C1CA5C9FC00B406FE /* MRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F2B1CA5C9FC00B406FE /* MRConstants.m */; };
+		A531706D1CA5C9FC00B406FE /* MRController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F2D1CA5C9FC00B406FE /* MRController.m */; };
+		A531706E1CA5C9FC00B406FE /* MRError.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F2F1CA5C9FC00B406FE /* MRError.m */; };
+		A531706F1CA5C9FC00B406FE /* MRExpandModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F311CA5C9FC00B406FE /* MRExpandModalViewController.m */; };
+		A53170701CA5C9FC00B406FE /* MRImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F331CA5C9FC00B406FE /* MRImageDownloader.m */; };
+		A53170711CA5C9FC00B406FE /* MRNativeCommandHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F351CA5C9FC00B406FE /* MRNativeCommandHandler.m */; };
+		A53170721CA5C9FC00B406FE /* MRPictureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F371CA5C9FC00B406FE /* MRPictureManager.m */; };
+		A53170731CA5C9FC00B406FE /* MRProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F391CA5C9FC00B406FE /* MRProperty.m */; };
+		A53170741CA5C9FC00B406FE /* MRVideoPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F3B1CA5C9FC00B406FE /* MRVideoPlayerManager.m */; };
+		A53170751CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F3F1CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.m */; };
+		A53170761CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F411CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.m */; };
+		A53170771CA5C9FC00B406FE /* NSURL+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F431CA5C9FC00B406FE /* NSURL+MPAdditions.m */; };
+		A53170781CA5C9FC00B406FE /* UIButton+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F451CA5C9FC00B406FE /* UIButton+MPAdditions.m */; };
+		A53170791CA5C9FC00B406FE /* UIColor+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F471CA5C9FC00B406FE /* UIColor+MPAdditions.m */; };
+		A531707A1CA5C9FC00B406FE /* UIView+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F491CA5C9FC00B406FE /* UIView+MPAdditions.m */; };
+		A531707B1CA5C9FC00B406FE /* UIWebView+MPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F4B1CA5C9FC00B406FE /* UIWebView+MPAdditions.m */; };
+		A531707C1CA5C9FC00B406FE /* MPAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F4D1CA5C9FC00B406FE /* MPAnalyticsTracker.m */; };
+		A531707D1CA5C9FC00B406FE /* MPError.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F4F1CA5C9FC00B406FE /* MPError.m */; };
+		A531707E1CA5C9FC00B406FE /* MPGeolocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F511CA5C9FC00B406FE /* MPGeolocationProvider.m */; };
+		A531707F1CA5C9FC00B406FE /* MPGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F531CA5C9FC00B406FE /* MPGlobal.m */; };
+		A53170801CA5C9FC00B406FE /* MPIdentityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F551CA5C9FC00B406FE /* MPIdentityProvider.m */; };
+		A53170811CA5C9FC00B406FE /* MPInternalUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F571CA5C9FC00B406FE /* MPInternalUtils.m */; };
+		A53170821CA5C9FC00B406FE /* MPLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F591CA5C9FC00B406FE /* MPLogging.m */; };
+		A53170831CA5C9FC00B406FE /* MPLogProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F5B1CA5C9FC00B406FE /* MPLogProvider.m */; };
+		A53170841CA5C9FC00B406FE /* MPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F5D1CA5C9FC00B406FE /* MPReachability.m */; };
+		A53170851CA5C9FC00B406FE /* MPSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F5F1CA5C9FC00B406FE /* MPSessionTracker.m */; };
+		A53170861CA5C9FC00B406FE /* MPStoreKitProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F611CA5C9FC00B406FE /* MPStoreKitProvider.m */; };
+		A53170871CA5C9FC00B406FE /* MPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F631CA5C9FC00B406FE /* MPTimer.m */; };
+		A53170881CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F651CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.m */; };
+		A53170891CA5C9FC00B406FE /* MPVASTAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F681CA5C9FC00B406FE /* MPVASTAd.m */; };
+		A531708A1CA5C9FC00B406FE /* MPVASTCompanionAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F6A1CA5C9FC00B406FE /* MPVASTCompanionAd.m */; };
+		A531708B1CA5C9FC00B406FE /* MPVASTCreative.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F6C1CA5C9FC00B406FE /* MPVASTCreative.m */; };
+		A531708C1CA5C9FC00B406FE /* MPVASTDurationOffset.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F6E1CA5C9FC00B406FE /* MPVASTDurationOffset.m */; };
+		A531708D1CA5C9FC00B406FE /* MPVASTIndustryIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F701CA5C9FC00B406FE /* MPVASTIndustryIcon.m */; };
+		A531708E1CA5C9FC00B406FE /* MPVASTInline.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F721CA5C9FC00B406FE /* MPVASTInline.m */; };
+		A531708F1CA5C9FC00B406FE /* MPVASTLinearAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F741CA5C9FC00B406FE /* MPVASTLinearAd.m */; };
+		A53170901CA5C9FC00B406FE /* MPVASTMacroProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F761CA5C9FC00B406FE /* MPVASTMacroProcessor.m */; };
+		A53170911CA5C9FC00B406FE /* MPVASTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F781CA5C9FC00B406FE /* MPVASTManager.m */; };
+		A53170921CA5C9FC00B406FE /* MPVASTMediaFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F7A1CA5C9FC00B406FE /* MPVASTMediaFile.m */; };
+		A53170931CA5C9FC00B406FE /* MPVASTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F7C1CA5C9FC00B406FE /* MPVASTModel.m */; };
+		A53170941CA5C9FC00B406FE /* MPVASTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F7E1CA5C9FC00B406FE /* MPVASTResource.m */; };
+		A53170951CA5C9FC00B406FE /* MPVASTResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F801CA5C9FC00B406FE /* MPVASTResponse.m */; };
+		A53170961CA5C9FC00B406FE /* MPVASTStringUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F821CA5C9FC00B406FE /* MPVASTStringUtilities.m */; };
+		A53170971CA5C9FC00B406FE /* MPVASTTrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F841CA5C9FC00B406FE /* MPVASTTrackingEvent.m */; };
+		A53170981CA5C9FC00B406FE /* MPVASTWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F861CA5C9FC00B406FE /* MPVASTWrapper.m */; };
+		A53170991CA5C9FC00B406FE /* MoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F891CA5C9FC00B406FE /* MoPub.m */; };
+		A531709A1CA5C9FC00B406FE /* MPAdConversionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F8B1CA5C9FC00B406FE /* MPAdConversionTracker.m */; };
+		A531709B1CA5C9FC00B406FE /* MPAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F8D1CA5C9FC00B406FE /* MPAdView.m */; };
+		A531709C1CA5C9FC00B406FE /* MPBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F8F1CA5C9FC00B406FE /* MPBannerCustomEvent.m */; };
+		A531709D1CA5C9FC00B406FE /* MPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F921CA5C9FC00B406FE /* MPConstants.m */; };
+		A531709E1CA5C9FC00B406FE /* MPInterstitialAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F941CA5C9FC00B406FE /* MPInterstitialAdController.m */; };
+		A531709F1CA5C9FC00B406FE /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F961CA5C9FC00B406FE /* MPInterstitialCustomEvent.m */; };
+		A53170A01CA5C9FC00B406FE /* MPAdPlacerInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F9D1CA5C9FC00B406FE /* MPAdPlacerInvocation.m */; };
+		A53170A11CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316F9F1CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.m */; };
+		A53170A21CA5C9FC00B406FE /* MPDiskLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FA11CA5C9FC00B406FE /* MPDiskLRUCache.m */; };
+		A53170A31CA5C9FC00B406FE /* MPImageDownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FA31CA5C9FC00B406FE /* MPImageDownloadQueue.m */; };
+		A53170A41CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FA51CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.m */; };
+		A53170A51CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FA71CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.m */; };
+		A53170A61CA5C9FC00B406FE /* MPNativeAd+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FA91CA5C9FC00B406FE /* MPNativeAd+Internal.m */; };
+		A53170A71CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FAB1CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.m */; };
+		A53170A81CA5C9FC00B406FE /* MPNativeAdSourceQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FAD1CA5C9FC00B406FE /* MPNativeAdSourceQueue.m */; };
+		A53170A91CA5C9FC00B406FE /* MPNativeAdUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FAF1CA5C9FC00B406FE /* MPNativeAdUtils.m */; };
+		A53170AA1CA5C9FC00B406FE /* MPNativeCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FB11CA5C9FC00B406FE /* MPNativeCache.m */; };
+		A53170AB1CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FB31CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.m */; };
+		A53170AC1CA5C9FC00B406FE /* MPNativePositionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FB51CA5C9FC00B406FE /* MPNativePositionSource.m */; };
+		A53170AD1CA5C9FC00B406FE /* MPNativeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FB71CA5C9FC00B406FE /* MPNativeView.m */; };
+		A53170AE1CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FB91CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.m */; };
+		A53170AF1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FBB1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.m */; };
+		A53170B01CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FBD1CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.m */; };
+		A53170B11CA5C9FC00B406FE /* MPAdPositioning.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FBF1CA5C9FC00B406FE /* MPAdPositioning.m */; };
+		A53170B21CA5C9FC00B406FE /* MPClientAdPositioning.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FC11CA5C9FC00B406FE /* MPClientAdPositioning.m */; };
+		A53170B31CA5C9FC00B406FE /* MPCollectionViewAdPlacer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FC31CA5C9FC00B406FE /* MPCollectionViewAdPlacer.m */; };
+		A53170B41CA5C9FC00B406FE /* MPNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FC51CA5C9FC00B406FE /* MPNativeAd.m */; };
+		A53170B51CA5C9FC00B406FE /* MPNativeAdConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FC81CA5C9FC00B406FE /* MPNativeAdConstants.m */; };
+		A53170B61CA5C9FC00B406FE /* MPNativeAdData.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FCA1CA5C9FC00B406FE /* MPNativeAdData.m */; };
+		A53170B71CA5C9FC00B406FE /* MPNativeAdError.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FCD1CA5C9FC00B406FE /* MPNativeAdError.m */; };
+		A53170B81CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FD01CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.m */; };
+		A53170B91CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FD41CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.m */; };
+		A53170BA1CA5C9FC00B406FE /* MPNativeAdRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FD61CA5C9FC00B406FE /* MPNativeAdRequest.m */; };
+		A53170BB1CA5C9FC00B406FE /* MPNativeAdRequestTargeting.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FD81CA5C9FC00B406FE /* MPNativeAdRequestTargeting.m */; };
+		A53170BC1CA5C9FC00B406FE /* MPNativeAdSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FDA1CA5C9FC00B406FE /* MPNativeAdSource.m */; };
+		A53170BD1CA5C9FC00B406FE /* MPNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FDD1CA5C9FC00B406FE /* MPNativeCustomEvent.m */; };
+		A53170BE1CA5C9FC00B406FE /* MPServerAdPositioning.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FE01CA5C9FC00B406FE /* MPServerAdPositioning.m */; };
+		A53170BF1CA5C9FC00B406FE /* MPStaticNativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FE21CA5C9FC00B406FE /* MPStaticNativeAdRenderer.m */; };
+		A53170C01CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FE41CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.m */; };
+		A53170C11CA5C9FC00B406FE /* MPStreamAdPlacementData.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FE61CA5C9FC00B406FE /* MPStreamAdPlacementData.m */; };
+		A53170C21CA5C9FC00B406FE /* MPStreamAdPlacer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FE81CA5C9FC00B406FE /* MPStreamAdPlacer.m */; };
+		A53170C31CA5C9FC00B406FE /* MPTableViewAdPlacer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FEA1CA5C9FC00B406FE /* MPTableViewAdPlacer.m */; };
+		A53170C41CA5C9FC00B406FE /* MOPUBActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FEE1CA5C9FC00B406FE /* MOPUBActivityIndicatorView.m */; };
+		A53170C51CA5C9FC00B406FE /* MOPUBAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FF01CA5C9FC00B406FE /* MOPUBAVPlayer.m */; };
+		A53170C61CA5C9FC00B406FE /* MOPUBAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FF21CA5C9FC00B406FE /* MOPUBAVPlayerView.m */; };
+		A53170C71CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FF41CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.m */; };
+		A53170C81CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FF61CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.m */; };
+		A53170C91CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FF81CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.m */; };
+		A53170CA1CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FFA1CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.m */; };
+		A53170CB1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FFC1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.m */; };
+		A53170CC1CA5C9FC00B406FE /* MOPUBPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316FFE1CA5C9FC00B406FE /* MOPUBPlayerManager.m */; };
+		A53170CD1CA5C9FC00B406FE /* MOPUBPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170001CA5C9FC00B406FE /* MOPUBPlayerView.m */; };
+		A53170CE1CA5C9FC00B406FE /* MOPUBPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170021CA5C9FC00B406FE /* MOPUBPlayerViewController.m */; };
+		A53170CF1CA5C9FC00B406FE /* MOPUBReplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170041CA5C9FC00B406FE /* MOPUBReplayView.m */; };
+		A53170D01CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170061CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.m */; };
+		A53170D11CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170081CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.m */; };
+		A53170D21CA5C9FC00B406FE /* MPCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = A531700A1CA5C9FC00B406FE /* MPCloseBtn.png */; };
+		A53170D31CA5C9FC00B406FE /* MPCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A531700B1CA5C9FC00B406FE /* MPCloseBtn@2x.png */; };
+		A53170D41CA5C9FC00B406FE /* MPCloseBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A531700C1CA5C9FC00B406FE /* MPCloseBtn@3x.png */; };
+		A53170D51CA5C9FC00B406FE /* MPCloseButtonX.png in Resources */ = {isa = PBXBuildFile; fileRef = A531700D1CA5C9FC00B406FE /* MPCloseButtonX.png */; };
+		A53170D61CA5C9FC00B406FE /* MPCloseButtonX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A531700E1CA5C9FC00B406FE /* MPCloseButtonX@2x.png */; };
+		A53170D71CA5C9FC00B406FE /* MPCloseButtonX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A531700F1CA5C9FC00B406FE /* MPCloseButtonX@3x.png */; };
+		A53170D81CA5C9FC00B406FE /* MPDAAIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170101CA5C9FC00B406FE /* MPDAAIcon.png */; };
+		A53170D91CA5C9FC00B406FE /* MPDAAIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170111CA5C9FC00B406FE /* MPDAAIcon@2x.png */; };
+		A53170DA1CA5C9FC00B406FE /* MPDAAIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170121CA5C9FC00B406FE /* MPDAAIcon@3x.png */; };
+		A53170DB1CA5C9FC00B406FE /* MPMutedBtn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170131CA5C9FC00B406FE /* MPMutedBtn@1x.png */; };
+		A53170DC1CA5C9FC00B406FE /* MPMutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170141CA5C9FC00B406FE /* MPMutedBtn@2x.png */; };
+		A53170DD1CA5C9FC00B406FE /* MPMutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170151CA5C9FC00B406FE /* MPMutedBtn@3x.png */; };
+		A53170DE1CA5C9FC00B406FE /* MPPlayBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170161CA5C9FC00B406FE /* MPPlayBtn.png */; };
+		A53170DF1CA5C9FC00B406FE /* MPPlayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170171CA5C9FC00B406FE /* MPPlayBtn@2x.png */; };
+		A53170E01CA5C9FC00B406FE /* MPPlayBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170181CA5C9FC00B406FE /* MPPlayBtn@3x.png */; };
+		A53170E11CA5C9FC00B406FE /* MPUnmutedBtn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53170191CA5C9FC00B406FE /* MPUnmutedBtn@1x.png */; };
+		A53170E21CA5C9FC00B406FE /* MPUnmutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A531701A1CA5C9FC00B406FE /* MPUnmutedBtn@2x.png */; };
+		A53170E31CA5C9FC00B406FE /* MPUnmutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A531701B1CA5C9FC00B406FE /* MPUnmutedBtn@3x.png */; };
+		A53170E41CA5C9FC00B406FE /* MRAID.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A531701C1CA5C9FC00B406FE /* MRAID.bundle */; };
+		A53170E51CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170201CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.m */; };
+		A53170E61CA5C9FC00B406FE /* MPRewardedVideoAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170231CA5C9FC00B406FE /* MPRewardedVideoAdapter.m */; };
+		A53170E71CA5C9FC00B406FE /* MPRewardedVideoAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170251CA5C9FC00B406FE /* MPRewardedVideoAdManager.m */; };
+		A53170E81CA5C9FC00B406FE /* MPRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A53170281CA5C9FC00B406FE /* MPRewardedVideo.m */; };
+		A53170E91CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702A1CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m */; };
+		A53170EA1CA5C9FC00B406FE /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702C1CA5C9FC00B406FE /* MPRewardedVideoError.m */; };
+		A53170EB1CA5C9FC00B406FE /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
@@ -252,6 +441,382 @@
 		A51B6EE918B55A4A00F34A11 /* ExerciseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCell.m; sourceTree = "<group>"; };
 		A51B6EEB18B5655900F34A11 /* Build_Legs_1_TVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build_Legs_1_TVC.h; sourceTree = "<group>"; };
 		A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build_Legs_1_TVC.m; sourceTree = "<group>"; };
+		A5316E9F1CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobBannerCustomEvent.h; sourceTree = "<group>"; };
+		A5316EA01CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobBannerCustomEvent.m; sourceTree = "<group>"; };
+		A5316EA11CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		A5316EA21CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		A5316EA51CA5C9FC00B406FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A5316EA71CA5C9FC00B406FE /* MPiAdBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPiAdBannerCustomEvent.h; sourceTree = "<group>"; };
+		A5316EA81CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPiAdBannerCustomEvent.m; sourceTree = "<group>"; };
+		A5316EA91CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPiAdInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		A5316EAA1CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPiAdInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		A5316EAC1CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMillennialBannerCustomEvent.h; sourceTree = "<group>"; };
+		A5316EAD1CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMillennialBannerCustomEvent.m; sourceTree = "<group>"; };
+		A5316EAE1CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMillennialInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		A5316EAF1CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMillennialInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MMAdSDK.framework; sourceTree = "<group>"; };
+		A5316EB21CA5C9FC00B406FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A5316EB51CA5C9FC00B406FE /* MPBannerAdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBannerAdManager.h; sourceTree = "<group>"; };
+		A5316EB61CA5C9FC00B406FE /* MPBannerAdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBannerAdManager.m; sourceTree = "<group>"; };
+		A5316EB71CA5C9FC00B406FE /* MPBannerAdManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBannerAdManagerDelegate.h; sourceTree = "<group>"; };
+		A5316EB81CA5C9FC00B406FE /* MPBannerCustomEventAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBannerCustomEventAdapter.h; sourceTree = "<group>"; };
+		A5316EB91CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBannerCustomEventAdapter.m; sourceTree = "<group>"; };
+		A5316EBA1CA5C9FC00B406FE /* MPBaseBannerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBaseBannerAdapter.h; sourceTree = "<group>"; };
+		A5316EBB1CA5C9FC00B406FE /* MPBaseBannerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBaseBannerAdapter.m; sourceTree = "<group>"; };
+		A5316EBC1CA5C9FC00B406FE /* MPPrivateBannerCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPrivateBannerCustomEventDelegate.h; sourceTree = "<group>"; };
+		A5316EBF1CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdAlertGestureRecognizer.h; sourceTree = "<group>"; };
+		A5316EC01CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdAlertGestureRecognizer.m; sourceTree = "<group>"; };
+		A5316EC11CA5C9FC00B406FE /* MPAdAlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdAlertManager.h; sourceTree = "<group>"; };
+		A5316EC21CA5C9FC00B406FE /* MPAdAlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdAlertManager.m; sourceTree = "<group>"; };
+		A5316EC31CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPActivityViewControllerHelper+TweetShare.h"; sourceTree = "<group>"; };
+		A5316EC41CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPActivityViewControllerHelper+TweetShare.m"; sourceTree = "<group>"; };
+		A5316EC51CA5C9FC00B406FE /* MPActivityViewControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPActivityViewControllerHelper.h; sourceTree = "<group>"; };
+		A5316EC61CA5C9FC00B406FE /* MPActivityViewControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPActivityViewControllerHelper.m; sourceTree = "<group>"; };
+		A5316EC71CA5C9FC00B406FE /* MPAdBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdBrowserController.h; sourceTree = "<group>"; };
+		A5316EC81CA5C9FC00B406FE /* MPAdBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdBrowserController.m; sourceTree = "<group>"; };
+		A5316EC91CA5C9FC00B406FE /* MPAdBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAdBrowserController.xib; sourceTree = "<group>"; };
+		A5316ECA1CA5C9FC00B406FE /* MPAdConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdConfiguration.h; sourceTree = "<group>"; };
+		A5316ECB1CA5C9FC00B406FE /* MPAdConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdConfiguration.m; sourceTree = "<group>"; };
+		A5316ECC1CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdDestinationDisplayAgent.h; sourceTree = "<group>"; };
+		A5316ECD1CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdDestinationDisplayAgent.m; sourceTree = "<group>"; };
+		A5316ECE1CA5C9FC00B406FE /* MPAdServerCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdServerCommunicator.h; sourceTree = "<group>"; };
+		A5316ECF1CA5C9FC00B406FE /* MPAdServerCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdServerCommunicator.m; sourceTree = "<group>"; };
+		A5316ED01CA5C9FC00B406FE /* MPAdServerURLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdServerURLBuilder.h; sourceTree = "<group>"; };
+		A5316ED11CA5C9FC00B406FE /* MPAdServerURLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdServerURLBuilder.m; sourceTree = "<group>"; };
+		A5316ED21CA5C9FC00B406FE /* MPAPIEndpoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAPIEndpoints.h; sourceTree = "<group>"; };
+		A5316ED31CA5C9FC00B406FE /* MPAPIEndpoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAPIEndpoints.m; sourceTree = "<group>"; };
+		A5316ED41CA5C9FC00B406FE /* MPClosableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPClosableView.h; sourceTree = "<group>"; };
+		A5316ED51CA5C9FC00B406FE /* MPClosableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPClosableView.m; sourceTree = "<group>"; };
+		A5316ED61CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPEnhancedDeeplinkRequest.h; sourceTree = "<group>"; };
+		A5316ED71CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPEnhancedDeeplinkRequest.m; sourceTree = "<group>"; };
+		A5316ED81CA5C9FC00B406FE /* MPFacebookKeywordProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFacebookKeywordProvider.h; sourceTree = "<group>"; };
+		A5316ED91CA5C9FC00B406FE /* MPFacebookKeywordProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFacebookKeywordProvider.m; sourceTree = "<group>"; };
+		A5316EDA1CA5C9FC00B406FE /* MPKeywordProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPKeywordProvider.h; sourceTree = "<group>"; };
+		A5316EDB1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPLastResortDelegate+EventKit.h"; sourceTree = "<group>"; };
+		A5316EDC1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPLastResortDelegate+EventKit.m"; sourceTree = "<group>"; };
+		A5316EDD1CA5C9FC00B406FE /* MPLastResortDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLastResortDelegate.h; sourceTree = "<group>"; };
+		A5316EDE1CA5C9FC00B406FE /* MPLastResortDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLastResortDelegate.m; sourceTree = "<group>"; };
+		A5316EDF1CA5C9FC00B406FE /* MPProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPProgressOverlayView.h; sourceTree = "<group>"; };
+		A5316EE01CA5C9FC00B406FE /* MPProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPProgressOverlayView.m; sourceTree = "<group>"; };
+		A5316EE11CA5C9FC00B406FE /* MPURLActionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPURLActionInfo.h; sourceTree = "<group>"; };
+		A5316EE21CA5C9FC00B406FE /* MPURLActionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPURLActionInfo.m; sourceTree = "<group>"; };
+		A5316EE31CA5C9FC00B406FE /* MPURLResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPURLResolver.h; sourceTree = "<group>"; };
+		A5316EE41CA5C9FC00B406FE /* MPURLResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPURLResolver.m; sourceTree = "<group>"; };
+		A5316EE51CA5C9FC00B406FE /* MPVideoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVideoConfig.h; sourceTree = "<group>"; };
+		A5316EE61CA5C9FC00B406FE /* MPVideoConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVideoConfig.m; sourceTree = "<group>"; };
+		A5316EE71CA5C9FC00B406FE /* MPXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPXMLParser.h; sourceTree = "<group>"; };
+		A5316EE81CA5C9FC00B406FE /* MPXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPXMLParser.m; sourceTree = "<group>"; };
+		A5316EEA1CA5C9FC00B406FE /* MPLogEvent+NativeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPLogEvent+NativeVideo.h"; sourceTree = "<group>"; };
+		A5316EEB1CA5C9FC00B406FE /* MPLogEvent+NativeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPLogEvent+NativeVideo.m"; sourceTree = "<group>"; };
+		A5316EEC1CA5C9FC00B406FE /* MPLogEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLogEvent.h; sourceTree = "<group>"; };
+		A5316EED1CA5C9FC00B406FE /* MPLogEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLogEvent.m; sourceTree = "<group>"; };
+		A5316EEE1CA5C9FC00B406FE /* MPLogEventCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLogEventCommunicator.h; sourceTree = "<group>"; };
+		A5316EEF1CA5C9FC00B406FE /* MPLogEventCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLogEventCommunicator.m; sourceTree = "<group>"; };
+		A5316EF01CA5C9FC00B406FE /* MPLogEventRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLogEventRecorder.h; sourceTree = "<group>"; };
+		A5316EF11CA5C9FC00B406FE /* MPLogEventRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLogEventRecorder.m; sourceTree = "<group>"; };
+		A5316EF21CA5C9FC00B406FE /* MPNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNetworkManager.h; sourceTree = "<group>"; };
+		A5316EF31CA5C9FC00B406FE /* MPNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNetworkManager.m; sourceTree = "<group>"; };
+		A5316EF41CA5C9FC00B406FE /* MPQRunLoopOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPQRunLoopOperation.h; sourceTree = "<group>"; };
+		A5316EF51CA5C9FC00B406FE /* MPQRunLoopOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPQRunLoopOperation.m; sourceTree = "<group>"; };
+		A5316EF61CA5C9FC00B406FE /* MPRetryingHTTPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRetryingHTTPOperation.h; sourceTree = "<group>"; };
+		A5316EF71CA5C9FC00B406FE /* MPRetryingHTTPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRetryingHTTPOperation.m; sourceTree = "<group>"; };
+		A5316EF91CA5C9FC00B406FE /* FABAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FABAttributes.h; sourceTree = "<group>"; };
+		A5316EFA1CA5C9FC00B406FE /* FABKitProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FABKitProtocol.h; sourceTree = "<group>"; };
+		A5316EFB1CA5C9FC00B406FE /* Fabric+FABKits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Fabric+FABKits.h"; sourceTree = "<group>"; };
+		A5316EFC1CA5C9FC00B406FE /* Fabric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fabric.h; sourceTree = "<group>"; };
+		A5316EFE1CA5C9FC00B406FE /* MPAdWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdWebView.h; sourceTree = "<group>"; };
+		A5316EFF1CA5C9FC00B406FE /* MPAdWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdWebView.m; sourceTree = "<group>"; };
+		A5316F001CA5C9FC00B406FE /* MPAdWebViewAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdWebViewAgent.h; sourceTree = "<group>"; };
+		A5316F011CA5C9FC00B406FE /* MPAdWebViewAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdWebViewAgent.m; sourceTree = "<group>"; };
+		A5316F021CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPHTMLBannerCustomEvent.h; sourceTree = "<group>"; };
+		A5316F031CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPHTMLBannerCustomEvent.m; sourceTree = "<group>"; };
+		A5316F041CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPHTMLInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		A5316F051CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPHTMLInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		A5316F061CA5C9FC00B406FE /* MPHTMLInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPHTMLInterstitialViewController.h; sourceTree = "<group>"; };
+		A5316F071CA5C9FC00B406FE /* MPHTMLInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPHTMLInterstitialViewController.m; sourceTree = "<group>"; };
+		A5316F091CA5C9FC00B406FE /* MPBaseInterstitialAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBaseInterstitialAdapter.h; sourceTree = "<group>"; };
+		A5316F0A1CA5C9FC00B406FE /* MPBaseInterstitialAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBaseInterstitialAdapter.m; sourceTree = "<group>"; };
+		A5316F0B1CA5C9FC00B406FE /* MPInterstitialAdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdManager.h; sourceTree = "<group>"; };
+		A5316F0C1CA5C9FC00B406FE /* MPInterstitialAdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInterstitialAdManager.m; sourceTree = "<group>"; };
+		A5316F0D1CA5C9FC00B406FE /* MPInterstitialAdManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdManagerDelegate.h; sourceTree = "<group>"; };
+		A5316F0E1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialCustomEventAdapter.h; sourceTree = "<group>"; };
+		A5316F0F1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInterstitialCustomEventAdapter.m; sourceTree = "<group>"; };
+		A5316F101CA5C9FC00B406FE /* MPInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialViewController.h; sourceTree = "<group>"; };
+		A5316F111CA5C9FC00B406FE /* MPInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInterstitialViewController.m; sourceTree = "<group>"; };
+		A5316F121CA5C9FC00B406FE /* MPPrivateInterstitialCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPrivateInterstitialCustomEventDelegate.h; sourceTree = "<group>"; };
+		A5316F131CA5C9FC00B406FE /* MPCoreInstanceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCoreInstanceProvider.h; sourceTree = "<group>"; };
+		A5316F141CA5C9FC00B406FE /* MPCoreInstanceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCoreInstanceProvider.m; sourceTree = "<group>"; };
+		A5316F151CA5C9FC00B406FE /* MPInstanceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInstanceProvider.h; sourceTree = "<group>"; };
+		A5316F161CA5C9FC00B406FE /* MPInstanceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInstanceProvider.m; sourceTree = "<group>"; };
+		A5316F171CA5C9FC00B406FE /* MPVASTTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTTracking.h; sourceTree = "<group>"; };
+		A5316F181CA5C9FC00B406FE /* MPVASTTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTTracking.m; sourceTree = "<group>"; };
+		A5316F1A1CA5C9FC00B406FE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A5316F1B1CA5C9FC00B406FE /* MPForceableOrientationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPForceableOrientationProtocol.h; sourceTree = "<group>"; };
+		A5316F1C1CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMRAIDBannerCustomEvent.h; sourceTree = "<group>"; };
+		A5316F1D1CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMRAIDBannerCustomEvent.m; sourceTree = "<group>"; };
+		A5316F1E1CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMRAIDInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		A5316F1F1CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMRAIDInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		A5316F201CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMRAIDInterstitialViewController.h; sourceTree = "<group>"; };
+		A5316F211CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMRAIDInterstitialViewController.m; sourceTree = "<group>"; };
+		A5316F221CA5C9FC00B406FE /* MRBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBridge.h; sourceTree = "<group>"; };
+		A5316F231CA5C9FC00B406FE /* MRBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBridge.m; sourceTree = "<group>"; };
+		A5316F241CA5C9FC00B406FE /* MRBundleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBundleManager.h; sourceTree = "<group>"; };
+		A5316F251CA5C9FC00B406FE /* MRBundleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBundleManager.m; sourceTree = "<group>"; };
+		A5316F261CA5C9FC00B406FE /* MRCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCalendarManager.h; sourceTree = "<group>"; };
+		A5316F271CA5C9FC00B406FE /* MRCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCalendarManager.m; sourceTree = "<group>"; };
+		A5316F281CA5C9FC00B406FE /* MRCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCommand.h; sourceTree = "<group>"; };
+		A5316F291CA5C9FC00B406FE /* MRCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCommand.m; sourceTree = "<group>"; };
+		A5316F2A1CA5C9FC00B406FE /* MRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRConstants.h; sourceTree = "<group>"; };
+		A5316F2B1CA5C9FC00B406FE /* MRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRConstants.m; sourceTree = "<group>"; };
+		A5316F2C1CA5C9FC00B406FE /* MRController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRController.h; sourceTree = "<group>"; };
+		A5316F2D1CA5C9FC00B406FE /* MRController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRController.m; sourceTree = "<group>"; };
+		A5316F2E1CA5C9FC00B406FE /* MRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRError.h; sourceTree = "<group>"; };
+		A5316F2F1CA5C9FC00B406FE /* MRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRError.m; sourceTree = "<group>"; };
+		A5316F301CA5C9FC00B406FE /* MRExpandModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRExpandModalViewController.h; sourceTree = "<group>"; };
+		A5316F311CA5C9FC00B406FE /* MRExpandModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRExpandModalViewController.m; sourceTree = "<group>"; };
+		A5316F321CA5C9FC00B406FE /* MRImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRImageDownloader.h; sourceTree = "<group>"; };
+		A5316F331CA5C9FC00B406FE /* MRImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRImageDownloader.m; sourceTree = "<group>"; };
+		A5316F341CA5C9FC00B406FE /* MRNativeCommandHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNativeCommandHandler.h; sourceTree = "<group>"; };
+		A5316F351CA5C9FC00B406FE /* MRNativeCommandHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNativeCommandHandler.m; sourceTree = "<group>"; };
+		A5316F361CA5C9FC00B406FE /* MRPictureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPictureManager.h; sourceTree = "<group>"; };
+		A5316F371CA5C9FC00B406FE /* MRPictureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPictureManager.m; sourceTree = "<group>"; };
+		A5316F381CA5C9FC00B406FE /* MRProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProperty.h; sourceTree = "<group>"; };
+		A5316F391CA5C9FC00B406FE /* MRProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProperty.m; sourceTree = "<group>"; };
+		A5316F3A1CA5C9FC00B406FE /* MRVideoPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRVideoPlayerManager.h; sourceTree = "<group>"; };
+		A5316F3B1CA5C9FC00B406FE /* MRVideoPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRVideoPlayerManager.m; sourceTree = "<group>"; };
+		A5316F3E1CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F3F1CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F401CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F411CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F421CA5C9FC00B406FE /* NSURL+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F431CA5C9FC00B406FE /* NSURL+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F441CA5C9FC00B406FE /* UIButton+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F451CA5C9FC00B406FE /* UIButton+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F461CA5C9FC00B406FE /* UIColor+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F471CA5C9FC00B406FE /* UIColor+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F481CA5C9FC00B406FE /* UIView+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F491CA5C9FC00B406FE /* UIView+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F4A1CA5C9FC00B406FE /* UIWebView+MPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+MPAdditions.h"; sourceTree = "<group>"; };
+		A5316F4B1CA5C9FC00B406FE /* UIWebView+MPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+MPAdditions.m"; sourceTree = "<group>"; };
+		A5316F4C1CA5C9FC00B406FE /* MPAnalyticsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAnalyticsTracker.h; sourceTree = "<group>"; };
+		A5316F4D1CA5C9FC00B406FE /* MPAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAnalyticsTracker.m; sourceTree = "<group>"; };
+		A5316F4E1CA5C9FC00B406FE /* MPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPError.h; sourceTree = "<group>"; };
+		A5316F4F1CA5C9FC00B406FE /* MPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPError.m; sourceTree = "<group>"; };
+		A5316F501CA5C9FC00B406FE /* MPGeolocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGeolocationProvider.h; sourceTree = "<group>"; };
+		A5316F511CA5C9FC00B406FE /* MPGeolocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGeolocationProvider.m; sourceTree = "<group>"; };
+		A5316F521CA5C9FC00B406FE /* MPGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGlobal.h; sourceTree = "<group>"; };
+		A5316F531CA5C9FC00B406FE /* MPGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGlobal.m; sourceTree = "<group>"; };
+		A5316F541CA5C9FC00B406FE /* MPIdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPIdentityProvider.h; sourceTree = "<group>"; };
+		A5316F551CA5C9FC00B406FE /* MPIdentityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPIdentityProvider.m; sourceTree = "<group>"; };
+		A5316F561CA5C9FC00B406FE /* MPInternalUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInternalUtils.h; sourceTree = "<group>"; };
+		A5316F571CA5C9FC00B406FE /* MPInternalUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInternalUtils.m; sourceTree = "<group>"; };
+		A5316F581CA5C9FC00B406FE /* MPLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLogging.h; sourceTree = "<group>"; };
+		A5316F591CA5C9FC00B406FE /* MPLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLogging.m; sourceTree = "<group>"; };
+		A5316F5A1CA5C9FC00B406FE /* MPLogProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLogProvider.h; sourceTree = "<group>"; };
+		A5316F5B1CA5C9FC00B406FE /* MPLogProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLogProvider.m; sourceTree = "<group>"; };
+		A5316F5C1CA5C9FC00B406FE /* MPReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPReachability.h; sourceTree = "<group>"; };
+		A5316F5D1CA5C9FC00B406FE /* MPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPReachability.m; sourceTree = "<group>"; };
+		A5316F5E1CA5C9FC00B406FE /* MPSessionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSessionTracker.h; sourceTree = "<group>"; };
+		A5316F5F1CA5C9FC00B406FE /* MPSessionTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSessionTracker.m; sourceTree = "<group>"; };
+		A5316F601CA5C9FC00B406FE /* MPStoreKitProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStoreKitProvider.h; sourceTree = "<group>"; };
+		A5316F611CA5C9FC00B406FE /* MPStoreKitProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStoreKitProvider.m; sourceTree = "<group>"; };
+		A5316F621CA5C9FC00B406FE /* MPTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTimer.h; sourceTree = "<group>"; };
+		A5316F631CA5C9FC00B406FE /* MPTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTimer.m; sourceTree = "<group>"; };
+		A5316F641CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPUserInteractionGestureRecognizer.h; sourceTree = "<group>"; };
+		A5316F651CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPUserInteractionGestureRecognizer.m; sourceTree = "<group>"; };
+		A5316F671CA5C9FC00B406FE /* MPVASTAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTAd.h; sourceTree = "<group>"; };
+		A5316F681CA5C9FC00B406FE /* MPVASTAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTAd.m; sourceTree = "<group>"; };
+		A5316F691CA5C9FC00B406FE /* MPVASTCompanionAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTCompanionAd.h; sourceTree = "<group>"; };
+		A5316F6A1CA5C9FC00B406FE /* MPVASTCompanionAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTCompanionAd.m; sourceTree = "<group>"; };
+		A5316F6B1CA5C9FC00B406FE /* MPVASTCreative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTCreative.h; sourceTree = "<group>"; };
+		A5316F6C1CA5C9FC00B406FE /* MPVASTCreative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTCreative.m; sourceTree = "<group>"; };
+		A5316F6D1CA5C9FC00B406FE /* MPVASTDurationOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTDurationOffset.h; sourceTree = "<group>"; };
+		A5316F6E1CA5C9FC00B406FE /* MPVASTDurationOffset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTDurationOffset.m; sourceTree = "<group>"; };
+		A5316F6F1CA5C9FC00B406FE /* MPVASTIndustryIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTIndustryIcon.h; sourceTree = "<group>"; };
+		A5316F701CA5C9FC00B406FE /* MPVASTIndustryIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTIndustryIcon.m; sourceTree = "<group>"; };
+		A5316F711CA5C9FC00B406FE /* MPVASTInline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTInline.h; sourceTree = "<group>"; };
+		A5316F721CA5C9FC00B406FE /* MPVASTInline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTInline.m; sourceTree = "<group>"; };
+		A5316F731CA5C9FC00B406FE /* MPVASTLinearAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTLinearAd.h; sourceTree = "<group>"; };
+		A5316F741CA5C9FC00B406FE /* MPVASTLinearAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTLinearAd.m; sourceTree = "<group>"; };
+		A5316F751CA5C9FC00B406FE /* MPVASTMacroProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTMacroProcessor.h; sourceTree = "<group>"; };
+		A5316F761CA5C9FC00B406FE /* MPVASTMacroProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTMacroProcessor.m; sourceTree = "<group>"; };
+		A5316F771CA5C9FC00B406FE /* MPVASTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTManager.h; sourceTree = "<group>"; };
+		A5316F781CA5C9FC00B406FE /* MPVASTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTManager.m; sourceTree = "<group>"; };
+		A5316F791CA5C9FC00B406FE /* MPVASTMediaFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTMediaFile.h; sourceTree = "<group>"; };
+		A5316F7A1CA5C9FC00B406FE /* MPVASTMediaFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTMediaFile.m; sourceTree = "<group>"; };
+		A5316F7B1CA5C9FC00B406FE /* MPVASTModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTModel.h; sourceTree = "<group>"; };
+		A5316F7C1CA5C9FC00B406FE /* MPVASTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTModel.m; sourceTree = "<group>"; };
+		A5316F7D1CA5C9FC00B406FE /* MPVASTResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTResource.h; sourceTree = "<group>"; };
+		A5316F7E1CA5C9FC00B406FE /* MPVASTResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTResource.m; sourceTree = "<group>"; };
+		A5316F7F1CA5C9FC00B406FE /* MPVASTResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTResponse.h; sourceTree = "<group>"; };
+		A5316F801CA5C9FC00B406FE /* MPVASTResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTResponse.m; sourceTree = "<group>"; };
+		A5316F811CA5C9FC00B406FE /* MPVASTStringUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTStringUtilities.h; sourceTree = "<group>"; };
+		A5316F821CA5C9FC00B406FE /* MPVASTStringUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTStringUtilities.m; sourceTree = "<group>"; };
+		A5316F831CA5C9FC00B406FE /* MPVASTTrackingEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTTrackingEvent.h; sourceTree = "<group>"; };
+		A5316F841CA5C9FC00B406FE /* MPVASTTrackingEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTTrackingEvent.m; sourceTree = "<group>"; };
+		A5316F851CA5C9FC00B406FE /* MPVASTWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVASTWrapper.h; sourceTree = "<group>"; };
+		A5316F861CA5C9FC00B406FE /* MPVASTWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVASTWrapper.m; sourceTree = "<group>"; };
+		A5316F871CA5C9FC00B406FE /* MoPub-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MoPub-Bridging-Header.h"; sourceTree = "<group>"; };
+		A5316F881CA5C9FC00B406FE /* MoPub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoPub.h; sourceTree = "<group>"; };
+		A5316F891CA5C9FC00B406FE /* MoPub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoPub.m; sourceTree = "<group>"; };
+		A5316F8A1CA5C9FC00B406FE /* MPAdConversionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdConversionTracker.h; sourceTree = "<group>"; };
+		A5316F8B1CA5C9FC00B406FE /* MPAdConversionTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdConversionTracker.m; sourceTree = "<group>"; };
+		A5316F8C1CA5C9FC00B406FE /* MPAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdView.h; sourceTree = "<group>"; };
+		A5316F8D1CA5C9FC00B406FE /* MPAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdView.m; sourceTree = "<group>"; };
+		A5316F8E1CA5C9FC00B406FE /* MPBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBannerCustomEvent.h; sourceTree = "<group>"; };
+		A5316F8F1CA5C9FC00B406FE /* MPBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBannerCustomEvent.m; sourceTree = "<group>"; };
+		A5316F901CA5C9FC00B406FE /* MPBannerCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBannerCustomEventDelegate.h; sourceTree = "<group>"; };
+		A5316F911CA5C9FC00B406FE /* MPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPConstants.h; sourceTree = "<group>"; };
+		A5316F921CA5C9FC00B406FE /* MPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPConstants.m; sourceTree = "<group>"; };
+		A5316F931CA5C9FC00B406FE /* MPInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdController.h; sourceTree = "<group>"; };
+		A5316F941CA5C9FC00B406FE /* MPInterstitialAdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInterstitialAdController.m; sourceTree = "<group>"; };
+		A5316F951CA5C9FC00B406FE /* MPInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		A5316F961CA5C9FC00B406FE /* MPInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		A5316F971CA5C9FC00B406FE /* MPInterstitialCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialCustomEventDelegate.h; sourceTree = "<group>"; };
+		A5316F9B1CA5C9FC00B406FE /* MPNativeAdRequest+MPNativeAdSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPNativeAdRequest+MPNativeAdSource.h"; sourceTree = "<group>"; };
+		A5316F9C1CA5C9FC00B406FE /* MPAdPlacerInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdPlacerInvocation.h; sourceTree = "<group>"; };
+		A5316F9D1CA5C9FC00B406FE /* MPAdPlacerInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdPlacerInvocation.m; sourceTree = "<group>"; };
+		A5316F9E1CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCollectionViewAdPlacerCell.h; sourceTree = "<group>"; };
+		A5316F9F1CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCollectionViewAdPlacerCell.m; sourceTree = "<group>"; };
+		A5316FA01CA5C9FC00B406FE /* MPDiskLRUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDiskLRUCache.h; sourceTree = "<group>"; };
+		A5316FA11CA5C9FC00B406FE /* MPDiskLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDiskLRUCache.m; sourceTree = "<group>"; };
+		A5316FA21CA5C9FC00B406FE /* MPImageDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPImageDownloadQueue.h; sourceTree = "<group>"; };
+		A5316FA31CA5C9FC00B406FE /* MPImageDownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPImageDownloadQueue.m; sourceTree = "<group>"; };
+		A5316FA41CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMoPubNativeAdAdapter.h; sourceTree = "<group>"; };
+		A5316FA51CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMoPubNativeAdAdapter.m; sourceTree = "<group>"; };
+		A5316FA61CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMoPubNativeCustomEvent.h; sourceTree = "<group>"; };
+		A5316FA71CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMoPubNativeCustomEvent.m; sourceTree = "<group>"; };
+		A5316FA81CA5C9FC00B406FE /* MPNativeAd+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPNativeAd+Internal.h"; sourceTree = "<group>"; };
+		A5316FA91CA5C9FC00B406FE /* MPNativeAd+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPNativeAd+Internal.m"; sourceTree = "<group>"; };
+		A5316FAA1CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRendererImageHandler.h; sourceTree = "<group>"; };
+		A5316FAB1CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdRendererImageHandler.m; sourceTree = "<group>"; };
+		A5316FAC1CA5C9FC00B406FE /* MPNativeAdSourceQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdSourceQueue.h; sourceTree = "<group>"; };
+		A5316FAD1CA5C9FC00B406FE /* MPNativeAdSourceQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdSourceQueue.m; sourceTree = "<group>"; };
+		A5316FAE1CA5C9FC00B406FE /* MPNativeAdUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdUtils.h; sourceTree = "<group>"; };
+		A5316FAF1CA5C9FC00B406FE /* MPNativeAdUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdUtils.m; sourceTree = "<group>"; };
+		A5316FB01CA5C9FC00B406FE /* MPNativeCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeCache.h; sourceTree = "<group>"; };
+		A5316FB11CA5C9FC00B406FE /* MPNativeCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeCache.m; sourceTree = "<group>"; };
+		A5316FB21CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativePositionResponseDeserializer.h; sourceTree = "<group>"; };
+		A5316FB31CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativePositionResponseDeserializer.m; sourceTree = "<group>"; };
+		A5316FB41CA5C9FC00B406FE /* MPNativePositionSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativePositionSource.h; sourceTree = "<group>"; };
+		A5316FB51CA5C9FC00B406FE /* MPNativePositionSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativePositionSource.m; sourceTree = "<group>"; };
+		A5316FB61CA5C9FC00B406FE /* MPNativeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeView.h; sourceTree = "<group>"; };
+		A5316FB71CA5C9FC00B406FE /* MPNativeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeView.m; sourceTree = "<group>"; };
+		A5316FB81CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStaticNativeAdImpressionTimer.h; sourceTree = "<group>"; };
+		A5316FB91CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStaticNativeAdImpressionTimer.m; sourceTree = "<group>"; };
+		A5316FBA1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTableViewAdPlacerCell.h; sourceTree = "<group>"; };
+		A5316FBB1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTableViewAdPlacerCell.m; sourceTree = "<group>"; };
+		A5316FBC1CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTableViewCellImpressionTracker.h; sourceTree = "<group>"; };
+		A5316FBD1CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTableViewCellImpressionTracker.m; sourceTree = "<group>"; };
+		A5316FBE1CA5C9FC00B406FE /* MPAdPositioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdPositioning.h; sourceTree = "<group>"; };
+		A5316FBF1CA5C9FC00B406FE /* MPAdPositioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdPositioning.m; sourceTree = "<group>"; };
+		A5316FC01CA5C9FC00B406FE /* MPClientAdPositioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPClientAdPositioning.h; sourceTree = "<group>"; };
+		A5316FC11CA5C9FC00B406FE /* MPClientAdPositioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPClientAdPositioning.m; sourceTree = "<group>"; };
+		A5316FC21CA5C9FC00B406FE /* MPCollectionViewAdPlacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCollectionViewAdPlacer.h; sourceTree = "<group>"; };
+		A5316FC31CA5C9FC00B406FE /* MPCollectionViewAdPlacer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCollectionViewAdPlacer.m; sourceTree = "<group>"; };
+		A5316FC41CA5C9FC00B406FE /* MPNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAd.h; sourceTree = "<group>"; };
+		A5316FC51CA5C9FC00B406FE /* MPNativeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAd.m; sourceTree = "<group>"; };
+		A5316FC61CA5C9FC00B406FE /* MPNativeAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdAdapter.h; sourceTree = "<group>"; };
+		A5316FC71CA5C9FC00B406FE /* MPNativeAdConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdConstants.h; sourceTree = "<group>"; };
+		A5316FC81CA5C9FC00B406FE /* MPNativeAdConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdConstants.m; sourceTree = "<group>"; };
+		A5316FC91CA5C9FC00B406FE /* MPNativeAdData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdData.h; sourceTree = "<group>"; };
+		A5316FCA1CA5C9FC00B406FE /* MPNativeAdData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdData.m; sourceTree = "<group>"; };
+		A5316FCB1CA5C9FC00B406FE /* MPNativeAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdDelegate.h; sourceTree = "<group>"; };
+		A5316FCC1CA5C9FC00B406FE /* MPNativeAdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdError.h; sourceTree = "<group>"; };
+		A5316FCD1CA5C9FC00B406FE /* MPNativeAdError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdError.m; sourceTree = "<group>"; };
+		A5316FCE1CA5C9FC00B406FE /* MPNativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRenderer.h; sourceTree = "<group>"; };
+		A5316FCF1CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRendererConfiguration.h; sourceTree = "<group>"; };
+		A5316FD01CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdRendererConfiguration.m; sourceTree = "<group>"; };
+		A5316FD11CA5C9FC00B406FE /* MPNativeAdRendererSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRendererSettings.h; sourceTree = "<group>"; };
+		A5316FD21CA5C9FC00B406FE /* MPNativeAdRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRendering.h; sourceTree = "<group>"; };
+		A5316FD31CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRenderingImageLoader.h; sourceTree = "<group>"; };
+		A5316FD41CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdRenderingImageLoader.m; sourceTree = "<group>"; };
+		A5316FD51CA5C9FC00B406FE /* MPNativeAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRequest.h; sourceTree = "<group>"; };
+		A5316FD61CA5C9FC00B406FE /* MPNativeAdRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdRequest.m; sourceTree = "<group>"; };
+		A5316FD71CA5C9FC00B406FE /* MPNativeAdRequestTargeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdRequestTargeting.h; sourceTree = "<group>"; };
+		A5316FD81CA5C9FC00B406FE /* MPNativeAdRequestTargeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdRequestTargeting.m; sourceTree = "<group>"; };
+		A5316FD91CA5C9FC00B406FE /* MPNativeAdSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdSource.h; sourceTree = "<group>"; };
+		A5316FDA1CA5C9FC00B406FE /* MPNativeAdSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeAdSource.m; sourceTree = "<group>"; };
+		A5316FDB1CA5C9FC00B406FE /* MPNativeAdSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeAdSourceDelegate.h; sourceTree = "<group>"; };
+		A5316FDC1CA5C9FC00B406FE /* MPNativeCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeCustomEvent.h; sourceTree = "<group>"; };
+		A5316FDD1CA5C9FC00B406FE /* MPNativeCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNativeCustomEvent.m; sourceTree = "<group>"; };
+		A5316FDE1CA5C9FC00B406FE /* MPNativeCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNativeCustomEventDelegate.h; sourceTree = "<group>"; };
+		A5316FDF1CA5C9FC00B406FE /* MPServerAdPositioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPServerAdPositioning.h; sourceTree = "<group>"; };
+		A5316FE01CA5C9FC00B406FE /* MPServerAdPositioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPServerAdPositioning.m; sourceTree = "<group>"; };
+		A5316FE11CA5C9FC00B406FE /* MPStaticNativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStaticNativeAdRenderer.h; sourceTree = "<group>"; };
+		A5316FE21CA5C9FC00B406FE /* MPStaticNativeAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStaticNativeAdRenderer.m; sourceTree = "<group>"; };
+		A5316FE31CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStaticNativeAdRendererSettings.h; sourceTree = "<group>"; };
+		A5316FE41CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStaticNativeAdRendererSettings.m; sourceTree = "<group>"; };
+		A5316FE51CA5C9FC00B406FE /* MPStreamAdPlacementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStreamAdPlacementData.h; sourceTree = "<group>"; };
+		A5316FE61CA5C9FC00B406FE /* MPStreamAdPlacementData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStreamAdPlacementData.m; sourceTree = "<group>"; };
+		A5316FE71CA5C9FC00B406FE /* MPStreamAdPlacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStreamAdPlacer.h; sourceTree = "<group>"; };
+		A5316FE81CA5C9FC00B406FE /* MPStreamAdPlacer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStreamAdPlacer.m; sourceTree = "<group>"; };
+		A5316FE91CA5C9FC00B406FE /* MPTableViewAdPlacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTableViewAdPlacer.h; sourceTree = "<group>"; };
+		A5316FEA1CA5C9FC00B406FE /* MPTableViewAdPlacer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTableViewAdPlacer.m; sourceTree = "<group>"; };
+		A5316FED1CA5C9FC00B406FE /* MOPUBActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBActivityIndicatorView.h; sourceTree = "<group>"; };
+		A5316FEE1CA5C9FC00B406FE /* MOPUBActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBActivityIndicatorView.m; sourceTree = "<group>"; };
+		A5316FEF1CA5C9FC00B406FE /* MOPUBAVPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBAVPlayer.h; sourceTree = "<group>"; };
+		A5316FF01CA5C9FC00B406FE /* MOPUBAVPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBAVPlayer.m; sourceTree = "<group>"; };
+		A5316FF11CA5C9FC00B406FE /* MOPUBAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBAVPlayerView.h; sourceTree = "<group>"; };
+		A5316FF21CA5C9FC00B406FE /* MOPUBAVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBAVPlayerView.m; sourceTree = "<group>"; };
+		A5316FF31CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBFullscreenPlayerViewController.h; sourceTree = "<group>"; };
+		A5316FF41CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBFullscreenPlayerViewController.m; sourceTree = "<group>"; };
+		A5316FF51CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBNativeVideoAdAdapter.h; sourceTree = "<group>"; };
+		A5316FF61CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBNativeVideoAdAdapter.m; sourceTree = "<group>"; };
+		A5316FF71CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBNativeVideoAdConfigValues.h; sourceTree = "<group>"; };
+		A5316FF81CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBNativeVideoAdConfigValues.m; sourceTree = "<group>"; };
+		A5316FF91CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBNativeVideoCustomEvent.h; sourceTree = "<group>"; };
+		A5316FFA1CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBNativeVideoCustomEvent.m; sourceTree = "<group>"; };
+		A5316FFB1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBNativeVideoImpressionAgent.h; sourceTree = "<group>"; };
+		A5316FFC1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBNativeVideoImpressionAgent.m; sourceTree = "<group>"; };
+		A5316FFD1CA5C9FC00B406FE /* MOPUBPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBPlayerManager.h; sourceTree = "<group>"; };
+		A5316FFE1CA5C9FC00B406FE /* MOPUBPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBPlayerManager.m; sourceTree = "<group>"; };
+		A5316FFF1CA5C9FC00B406FE /* MOPUBPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBPlayerView.h; sourceTree = "<group>"; };
+		A53170001CA5C9FC00B406FE /* MOPUBPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBPlayerView.m; sourceTree = "<group>"; };
+		A53170011CA5C9FC00B406FE /* MOPUBPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBPlayerViewController.h; sourceTree = "<group>"; };
+		A53170021CA5C9FC00B406FE /* MOPUBPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBPlayerViewController.m; sourceTree = "<group>"; };
+		A53170031CA5C9FC00B406FE /* MOPUBReplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBReplayView.h; sourceTree = "<group>"; };
+		A53170041CA5C9FC00B406FE /* MOPUBReplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBReplayView.m; sourceTree = "<group>"; };
+		A53170051CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBNativeVideoAdRenderer.h; sourceTree = "<group>"; };
+		A53170061CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBNativeVideoAdRenderer.m; sourceTree = "<group>"; };
+		A53170071CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOPUBNativeVideoAdRendererSettings.h; sourceTree = "<group>"; };
+		A53170081CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOPUBNativeVideoAdRendererSettings.m; sourceTree = "<group>"; };
+		A531700A1CA5C9FC00B406FE /* MPCloseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseBtn.png; sourceTree = "<group>"; };
+		A531700B1CA5C9FC00B406FE /* MPCloseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@2x.png"; sourceTree = "<group>"; };
+		A531700C1CA5C9FC00B406FE /* MPCloseBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@3x.png"; sourceTree = "<group>"; };
+		A531700D1CA5C9FC00B406FE /* MPCloseButtonX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseButtonX.png; sourceTree = "<group>"; };
+		A531700E1CA5C9FC00B406FE /* MPCloseButtonX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@2x.png"; sourceTree = "<group>"; };
+		A531700F1CA5C9FC00B406FE /* MPCloseButtonX@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@3x.png"; sourceTree = "<group>"; };
+		A53170101CA5C9FC00B406FE /* MPDAAIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPDAAIcon.png; sourceTree = "<group>"; };
+		A53170111CA5C9FC00B406FE /* MPDAAIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@2x.png"; sourceTree = "<group>"; };
+		A53170121CA5C9FC00B406FE /* MPDAAIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@3x.png"; sourceTree = "<group>"; };
+		A53170131CA5C9FC00B406FE /* MPMutedBtn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@1x.png"; sourceTree = "<group>"; };
+		A53170141CA5C9FC00B406FE /* MPMutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@2x.png"; sourceTree = "<group>"; };
+		A53170151CA5C9FC00B406FE /* MPMutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@3x.png"; sourceTree = "<group>"; };
+		A53170161CA5C9FC00B406FE /* MPPlayBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPPlayBtn.png; sourceTree = "<group>"; };
+		A53170171CA5C9FC00B406FE /* MPPlayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@2x.png"; sourceTree = "<group>"; };
+		A53170181CA5C9FC00B406FE /* MPPlayBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@3x.png"; sourceTree = "<group>"; };
+		A53170191CA5C9FC00B406FE /* MPUnmutedBtn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@1x.png"; sourceTree = "<group>"; };
+		A531701A1CA5C9FC00B406FE /* MPUnmutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@2x.png"; sourceTree = "<group>"; };
+		A531701B1CA5C9FC00B406FE /* MPUnmutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@3x.png"; sourceTree = "<group>"; };
+		A531701C1CA5C9FC00B406FE /* MRAID.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MRAID.bundle; sourceTree = "<group>"; };
+		A531701F1CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMoPubRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		A53170201CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMoPubRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
+		A53170211CA5C9FC00B406FE /* MPPrivateRewardedVideoCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPrivateRewardedVideoCustomEventDelegate.h; sourceTree = "<group>"; };
+		A53170221CA5C9FC00B406FE /* MPRewardedVideoAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoAdapter.h; sourceTree = "<group>"; };
+		A53170231CA5C9FC00B406FE /* MPRewardedVideoAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoAdapter.m; sourceTree = "<group>"; };
+		A53170241CA5C9FC00B406FE /* MPRewardedVideoAdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoAdManager.h; sourceTree = "<group>"; };
+		A53170251CA5C9FC00B406FE /* MPRewardedVideoAdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoAdManager.m; sourceTree = "<group>"; };
+		A53170261CA5C9FC00B406FE /* MPMediationSettingsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMediationSettingsProtocol.h; sourceTree = "<group>"; };
+		A53170271CA5C9FC00B406FE /* MPRewardedVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideo.h; sourceTree = "<group>"; };
+		A53170281CA5C9FC00B406FE /* MPRewardedVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideo.m; sourceTree = "<group>"; };
+		A53170291CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		A531702A1CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
+		A531702B1CA5C9FC00B406FE /* MPRewardedVideoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoError.h; sourceTree = "<group>"; };
+		A531702C1CA5C9FC00B406FE /* MPRewardedVideoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoError.m; sourceTree = "<group>"; };
+		A531702D1CA5C9FC00B406FE /* MPRewardedVideoReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoReward.h; sourceTree = "<group>"; };
+		A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoReward.m; sourceTree = "<group>"; };
 		A544F9E918C67B79000B2A8C /* UITableViewController+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Email.h"; sourceTree = "<group>"; };
 		A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Email.m"; sourceTree = "<group>"; };
 		A5488A9B1AC3488D00BF0225 /* _0_DWT_BB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_BB 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -400,6 +965,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53170371CA5C9FC00B406FE /* MMAdSDK.framework in Frameworks */,
+				A53170311CA5C9FC00B406FE /* GoogleMobileAds.framework in Frameworks */,
 				A5DC5F341BE3FD6400C1E73E /* CoreBluetooth.framework in Frameworks */,
 				A5DC5F321BE3FD5D00C1E73E /* libxml2.tbd in Frameworks */,
 				A5DC5F2F1BE3FD3400C1E73E /* EventKit.framework in Frameworks */,
@@ -483,6 +1050,7 @@
 				A54E89471C29F635006C8FFC /* Workout+CoreDataProperties.m */,
 				A54E89481C29F635006C8FFC /* Workout.h */,
 				A54E89491C29F635006C8FFC /* Workout.m */,
+				A5316E9C1CA5C9FC00B406FE /* MoPubSDK */,
 				A54E892B1C29E9AF006C8FFC /* Generic Core Data Classes */,
 				587CFB68189DD9B8006FA541 /* 90 DWT BB */,
 				587CFB77189DD9B8006FA541 /* Images.xcassets */,
@@ -749,6 +1317,597 @@
 				58F21ADD18A6E08500DE043E /* NotesViewController.m */,
 			);
 			name = "Summary's";
+			sourceTree = "<group>";
+		};
+		A5316E9C1CA5C9FC00B406FE /* MoPubSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A5316E9D1CA5C9FC00B406FE /* AdNetworkSupport */,
+				A5316EB31CA5C9FC00B406FE /* Internal */,
+				A5316F871CA5C9FC00B406FE /* MoPub-Bridging-Header.h */,
+				A5316F881CA5C9FC00B406FE /* MoPub.h */,
+				A5316F891CA5C9FC00B406FE /* MoPub.m */,
+				A5316F8A1CA5C9FC00B406FE /* MPAdConversionTracker.h */,
+				A5316F8B1CA5C9FC00B406FE /* MPAdConversionTracker.m */,
+				A5316F8C1CA5C9FC00B406FE /* MPAdView.h */,
+				A5316F8D1CA5C9FC00B406FE /* MPAdView.m */,
+				A5316F8E1CA5C9FC00B406FE /* MPBannerCustomEvent.h */,
+				A5316F8F1CA5C9FC00B406FE /* MPBannerCustomEvent.m */,
+				A5316F901CA5C9FC00B406FE /* MPBannerCustomEventDelegate.h */,
+				A5316F911CA5C9FC00B406FE /* MPConstants.h */,
+				A5316F921CA5C9FC00B406FE /* MPConstants.m */,
+				A5316F931CA5C9FC00B406FE /* MPInterstitialAdController.h */,
+				A5316F941CA5C9FC00B406FE /* MPInterstitialAdController.m */,
+				A5316F951CA5C9FC00B406FE /* MPInterstitialCustomEvent.h */,
+				A5316F961CA5C9FC00B406FE /* MPInterstitialCustomEvent.m */,
+				A5316F971CA5C9FC00B406FE /* MPInterstitialCustomEventDelegate.h */,
+				A5316F981CA5C9FC00B406FE /* Native Ads */,
+				A5316FEB1CA5C9FC00B406FE /* NativeVideo */,
+				A53170091CA5C9FC00B406FE /* Resources */,
+				A531701D1CA5C9FC00B406FE /* RewardedVideo */,
+			);
+			path = MoPubSDK;
+			sourceTree = "<group>";
+		};
+		A5316E9D1CA5C9FC00B406FE /* AdNetworkSupport */ = {
+			isa = PBXGroup;
+			children = (
+				A5316E9E1CA5C9FC00B406FE /* GoogleAdMob */,
+				A5316EA61CA5C9FC00B406FE /* iAd */,
+				A5316EAB1CA5C9FC00B406FE /* Millennial */,
+			);
+			path = AdNetworkSupport;
+			sourceTree = "<group>";
+		};
+		A5316E9E1CA5C9FC00B406FE /* GoogleAdMob */ = {
+			isa = PBXGroup;
+			children = (
+				A5316E9F1CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.h */,
+				A5316EA01CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m */,
+				A5316EA11CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.h */,
+				A5316EA21CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m */,
+				A5316EA31CA5C9FC00B406FE /* SDK */,
+			);
+			path = GoogleAdMob;
+			sourceTree = "<group>";
+		};
+		A5316EA31CA5C9FC00B406FE /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */,
+				A5316EA51CA5C9FC00B406FE /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		A5316EA61CA5C9FC00B406FE /* iAd */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EA71CA5C9FC00B406FE /* MPiAdBannerCustomEvent.h */,
+				A5316EA81CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m */,
+				A5316EA91CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.h */,
+				A5316EAA1CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m */,
+			);
+			path = iAd;
+			sourceTree = "<group>";
+		};
+		A5316EAB1CA5C9FC00B406FE /* Millennial */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EAC1CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.h */,
+				A5316EAD1CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m */,
+				A5316EAE1CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.h */,
+				A5316EAF1CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m */,
+				A5316EB01CA5C9FC00B406FE /* SDK */,
+			);
+			path = Millennial;
+			sourceTree = "<group>";
+		};
+		A5316EB01CA5C9FC00B406FE /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */,
+				A5316EB21CA5C9FC00B406FE /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		A5316EB31CA5C9FC00B406FE /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EB41CA5C9FC00B406FE /* Banners */,
+				A5316EBD1CA5C9FC00B406FE /* Common */,
+				A5316EE91CA5C9FC00B406FE /* Event Logging */,
+				A5316EF81CA5C9FC00B406FE /* Fabric */,
+				A5316EFD1CA5C9FC00B406FE /* HTML */,
+				A5316F081CA5C9FC00B406FE /* Interstitials */,
+				A5316F131CA5C9FC00B406FE /* MPCoreInstanceProvider.h */,
+				A5316F141CA5C9FC00B406FE /* MPCoreInstanceProvider.m */,
+				A5316F151CA5C9FC00B406FE /* MPInstanceProvider.h */,
+				A5316F161CA5C9FC00B406FE /* MPInstanceProvider.m */,
+				A5316F171CA5C9FC00B406FE /* MPVASTTracking.h */,
+				A5316F181CA5C9FC00B406FE /* MPVASTTracking.m */,
+				A5316F191CA5C9FC00B406FE /* MRAID */,
+				A5316F3C1CA5C9FC00B406FE /* Utility */,
+				A5316F661CA5C9FC00B406FE /* VAST */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		A5316EB41CA5C9FC00B406FE /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EB51CA5C9FC00B406FE /* MPBannerAdManager.h */,
+				A5316EB61CA5C9FC00B406FE /* MPBannerAdManager.m */,
+				A5316EB71CA5C9FC00B406FE /* MPBannerAdManagerDelegate.h */,
+				A5316EB81CA5C9FC00B406FE /* MPBannerCustomEventAdapter.h */,
+				A5316EB91CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m */,
+				A5316EBA1CA5C9FC00B406FE /* MPBaseBannerAdapter.h */,
+				A5316EBB1CA5C9FC00B406FE /* MPBaseBannerAdapter.m */,
+				A5316EBC1CA5C9FC00B406FE /* MPPrivateBannerCustomEventDelegate.h */,
+			);
+			path = Banners;
+			sourceTree = "<group>";
+		};
+		A5316EBD1CA5C9FC00B406FE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EBE1CA5C9FC00B406FE /* AdAlerts */,
+				A5316EC31CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.h */,
+				A5316EC41CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.m */,
+				A5316EC51CA5C9FC00B406FE /* MPActivityViewControllerHelper.h */,
+				A5316EC61CA5C9FC00B406FE /* MPActivityViewControllerHelper.m */,
+				A5316EC71CA5C9FC00B406FE /* MPAdBrowserController.h */,
+				A5316EC81CA5C9FC00B406FE /* MPAdBrowserController.m */,
+				A5316EC91CA5C9FC00B406FE /* MPAdBrowserController.xib */,
+				A5316ECA1CA5C9FC00B406FE /* MPAdConfiguration.h */,
+				A5316ECB1CA5C9FC00B406FE /* MPAdConfiguration.m */,
+				A5316ECC1CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.h */,
+				A5316ECD1CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.m */,
+				A5316ECE1CA5C9FC00B406FE /* MPAdServerCommunicator.h */,
+				A5316ECF1CA5C9FC00B406FE /* MPAdServerCommunicator.m */,
+				A5316ED01CA5C9FC00B406FE /* MPAdServerURLBuilder.h */,
+				A5316ED11CA5C9FC00B406FE /* MPAdServerURLBuilder.m */,
+				A5316ED21CA5C9FC00B406FE /* MPAPIEndpoints.h */,
+				A5316ED31CA5C9FC00B406FE /* MPAPIEndpoints.m */,
+				A5316ED41CA5C9FC00B406FE /* MPClosableView.h */,
+				A5316ED51CA5C9FC00B406FE /* MPClosableView.m */,
+				A5316ED61CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.h */,
+				A5316ED71CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.m */,
+				A5316ED81CA5C9FC00B406FE /* MPFacebookKeywordProvider.h */,
+				A5316ED91CA5C9FC00B406FE /* MPFacebookKeywordProvider.m */,
+				A5316EDA1CA5C9FC00B406FE /* MPKeywordProvider.h */,
+				A5316EDB1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.h */,
+				A5316EDC1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.m */,
+				A5316EDD1CA5C9FC00B406FE /* MPLastResortDelegate.h */,
+				A5316EDE1CA5C9FC00B406FE /* MPLastResortDelegate.m */,
+				A5316EDF1CA5C9FC00B406FE /* MPProgressOverlayView.h */,
+				A5316EE01CA5C9FC00B406FE /* MPProgressOverlayView.m */,
+				A5316EE11CA5C9FC00B406FE /* MPURLActionInfo.h */,
+				A5316EE21CA5C9FC00B406FE /* MPURLActionInfo.m */,
+				A5316EE31CA5C9FC00B406FE /* MPURLResolver.h */,
+				A5316EE41CA5C9FC00B406FE /* MPURLResolver.m */,
+				A5316EE51CA5C9FC00B406FE /* MPVideoConfig.h */,
+				A5316EE61CA5C9FC00B406FE /* MPVideoConfig.m */,
+				A5316EE71CA5C9FC00B406FE /* MPXMLParser.h */,
+				A5316EE81CA5C9FC00B406FE /* MPXMLParser.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A5316EBE1CA5C9FC00B406FE /* AdAlerts */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EBF1CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.h */,
+				A5316EC01CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.m */,
+				A5316EC11CA5C9FC00B406FE /* MPAdAlertManager.h */,
+				A5316EC21CA5C9FC00B406FE /* MPAdAlertManager.m */,
+			);
+			path = AdAlerts;
+			sourceTree = "<group>";
+		};
+		A5316EE91CA5C9FC00B406FE /* Event Logging */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EEA1CA5C9FC00B406FE /* MPLogEvent+NativeVideo.h */,
+				A5316EEB1CA5C9FC00B406FE /* MPLogEvent+NativeVideo.m */,
+				A5316EEC1CA5C9FC00B406FE /* MPLogEvent.h */,
+				A5316EED1CA5C9FC00B406FE /* MPLogEvent.m */,
+				A5316EEE1CA5C9FC00B406FE /* MPLogEventCommunicator.h */,
+				A5316EEF1CA5C9FC00B406FE /* MPLogEventCommunicator.m */,
+				A5316EF01CA5C9FC00B406FE /* MPLogEventRecorder.h */,
+				A5316EF11CA5C9FC00B406FE /* MPLogEventRecorder.m */,
+				A5316EF21CA5C9FC00B406FE /* MPNetworkManager.h */,
+				A5316EF31CA5C9FC00B406FE /* MPNetworkManager.m */,
+				A5316EF41CA5C9FC00B406FE /* MPQRunLoopOperation.h */,
+				A5316EF51CA5C9FC00B406FE /* MPQRunLoopOperation.m */,
+				A5316EF61CA5C9FC00B406FE /* MPRetryingHTTPOperation.h */,
+				A5316EF71CA5C9FC00B406FE /* MPRetryingHTTPOperation.m */,
+			);
+			path = "Event Logging";
+			sourceTree = "<group>";
+		};
+		A5316EF81CA5C9FC00B406FE /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EF91CA5C9FC00B406FE /* FABAttributes.h */,
+				A5316EFA1CA5C9FC00B406FE /* FABKitProtocol.h */,
+				A5316EFB1CA5C9FC00B406FE /* Fabric+FABKits.h */,
+				A5316EFC1CA5C9FC00B406FE /* Fabric.h */,
+			);
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		A5316EFD1CA5C9FC00B406FE /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				A5316EFE1CA5C9FC00B406FE /* MPAdWebView.h */,
+				A5316EFF1CA5C9FC00B406FE /* MPAdWebView.m */,
+				A5316F001CA5C9FC00B406FE /* MPAdWebViewAgent.h */,
+				A5316F011CA5C9FC00B406FE /* MPAdWebViewAgent.m */,
+				A5316F021CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.h */,
+				A5316F031CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.m */,
+				A5316F041CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.h */,
+				A5316F051CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.m */,
+				A5316F061CA5C9FC00B406FE /* MPHTMLInterstitialViewController.h */,
+				A5316F071CA5C9FC00B406FE /* MPHTMLInterstitialViewController.m */,
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		A5316F081CA5C9FC00B406FE /* Interstitials */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F091CA5C9FC00B406FE /* MPBaseInterstitialAdapter.h */,
+				A5316F0A1CA5C9FC00B406FE /* MPBaseInterstitialAdapter.m */,
+				A5316F0B1CA5C9FC00B406FE /* MPInterstitialAdManager.h */,
+				A5316F0C1CA5C9FC00B406FE /* MPInterstitialAdManager.m */,
+				A5316F0D1CA5C9FC00B406FE /* MPInterstitialAdManagerDelegate.h */,
+				A5316F0E1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.h */,
+				A5316F0F1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.m */,
+				A5316F101CA5C9FC00B406FE /* MPInterstitialViewController.h */,
+				A5316F111CA5C9FC00B406FE /* MPInterstitialViewController.m */,
+				A5316F121CA5C9FC00B406FE /* MPPrivateInterstitialCustomEventDelegate.h */,
+			);
+			path = Interstitials;
+			sourceTree = "<group>";
+		};
+		A5316F191CA5C9FC00B406FE /* MRAID */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F1A1CA5C9FC00B406FE /* LICENSE */,
+				A5316F1B1CA5C9FC00B406FE /* MPForceableOrientationProtocol.h */,
+				A5316F1C1CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.h */,
+				A5316F1D1CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.m */,
+				A5316F1E1CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.h */,
+				A5316F1F1CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.m */,
+				A5316F201CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.h */,
+				A5316F211CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.m */,
+				A5316F221CA5C9FC00B406FE /* MRBridge.h */,
+				A5316F231CA5C9FC00B406FE /* MRBridge.m */,
+				A5316F241CA5C9FC00B406FE /* MRBundleManager.h */,
+				A5316F251CA5C9FC00B406FE /* MRBundleManager.m */,
+				A5316F261CA5C9FC00B406FE /* MRCalendarManager.h */,
+				A5316F271CA5C9FC00B406FE /* MRCalendarManager.m */,
+				A5316F281CA5C9FC00B406FE /* MRCommand.h */,
+				A5316F291CA5C9FC00B406FE /* MRCommand.m */,
+				A5316F2A1CA5C9FC00B406FE /* MRConstants.h */,
+				A5316F2B1CA5C9FC00B406FE /* MRConstants.m */,
+				A5316F2C1CA5C9FC00B406FE /* MRController.h */,
+				A5316F2D1CA5C9FC00B406FE /* MRController.m */,
+				A5316F2E1CA5C9FC00B406FE /* MRError.h */,
+				A5316F2F1CA5C9FC00B406FE /* MRError.m */,
+				A5316F301CA5C9FC00B406FE /* MRExpandModalViewController.h */,
+				A5316F311CA5C9FC00B406FE /* MRExpandModalViewController.m */,
+				A5316F321CA5C9FC00B406FE /* MRImageDownloader.h */,
+				A5316F331CA5C9FC00B406FE /* MRImageDownloader.m */,
+				A5316F341CA5C9FC00B406FE /* MRNativeCommandHandler.h */,
+				A5316F351CA5C9FC00B406FE /* MRNativeCommandHandler.m */,
+				A5316F361CA5C9FC00B406FE /* MRPictureManager.h */,
+				A5316F371CA5C9FC00B406FE /* MRPictureManager.m */,
+				A5316F381CA5C9FC00B406FE /* MRProperty.h */,
+				A5316F391CA5C9FC00B406FE /* MRProperty.m */,
+				A5316F3A1CA5C9FC00B406FE /* MRVideoPlayerManager.h */,
+				A5316F3B1CA5C9FC00B406FE /* MRVideoPlayerManager.m */,
+			);
+			path = MRAID;
+			sourceTree = "<group>";
+		};
+		A5316F3C1CA5C9FC00B406FE /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F3D1CA5C9FC00B406FE /* Categories */,
+				A5316F4C1CA5C9FC00B406FE /* MPAnalyticsTracker.h */,
+				A5316F4D1CA5C9FC00B406FE /* MPAnalyticsTracker.m */,
+				A5316F4E1CA5C9FC00B406FE /* MPError.h */,
+				A5316F4F1CA5C9FC00B406FE /* MPError.m */,
+				A5316F501CA5C9FC00B406FE /* MPGeolocationProvider.h */,
+				A5316F511CA5C9FC00B406FE /* MPGeolocationProvider.m */,
+				A5316F521CA5C9FC00B406FE /* MPGlobal.h */,
+				A5316F531CA5C9FC00B406FE /* MPGlobal.m */,
+				A5316F541CA5C9FC00B406FE /* MPIdentityProvider.h */,
+				A5316F551CA5C9FC00B406FE /* MPIdentityProvider.m */,
+				A5316F561CA5C9FC00B406FE /* MPInternalUtils.h */,
+				A5316F571CA5C9FC00B406FE /* MPInternalUtils.m */,
+				A5316F581CA5C9FC00B406FE /* MPLogging.h */,
+				A5316F591CA5C9FC00B406FE /* MPLogging.m */,
+				A5316F5A1CA5C9FC00B406FE /* MPLogProvider.h */,
+				A5316F5B1CA5C9FC00B406FE /* MPLogProvider.m */,
+				A5316F5C1CA5C9FC00B406FE /* MPReachability.h */,
+				A5316F5D1CA5C9FC00B406FE /* MPReachability.m */,
+				A5316F5E1CA5C9FC00B406FE /* MPSessionTracker.h */,
+				A5316F5F1CA5C9FC00B406FE /* MPSessionTracker.m */,
+				A5316F601CA5C9FC00B406FE /* MPStoreKitProvider.h */,
+				A5316F611CA5C9FC00B406FE /* MPStoreKitProvider.m */,
+				A5316F621CA5C9FC00B406FE /* MPTimer.h */,
+				A5316F631CA5C9FC00B406FE /* MPTimer.m */,
+				A5316F641CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.h */,
+				A5316F651CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		A5316F3D1CA5C9FC00B406FE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F3E1CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.h */,
+				A5316F3F1CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.m */,
+				A5316F401CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.h */,
+				A5316F411CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.m */,
+				A5316F421CA5C9FC00B406FE /* NSURL+MPAdditions.h */,
+				A5316F431CA5C9FC00B406FE /* NSURL+MPAdditions.m */,
+				A5316F441CA5C9FC00B406FE /* UIButton+MPAdditions.h */,
+				A5316F451CA5C9FC00B406FE /* UIButton+MPAdditions.m */,
+				A5316F461CA5C9FC00B406FE /* UIColor+MPAdditions.h */,
+				A5316F471CA5C9FC00B406FE /* UIColor+MPAdditions.m */,
+				A5316F481CA5C9FC00B406FE /* UIView+MPAdditions.h */,
+				A5316F491CA5C9FC00B406FE /* UIView+MPAdditions.m */,
+				A5316F4A1CA5C9FC00B406FE /* UIWebView+MPAdditions.h */,
+				A5316F4B1CA5C9FC00B406FE /* UIWebView+MPAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A5316F661CA5C9FC00B406FE /* VAST */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F671CA5C9FC00B406FE /* MPVASTAd.h */,
+				A5316F681CA5C9FC00B406FE /* MPVASTAd.m */,
+				A5316F691CA5C9FC00B406FE /* MPVASTCompanionAd.h */,
+				A5316F6A1CA5C9FC00B406FE /* MPVASTCompanionAd.m */,
+				A5316F6B1CA5C9FC00B406FE /* MPVASTCreative.h */,
+				A5316F6C1CA5C9FC00B406FE /* MPVASTCreative.m */,
+				A5316F6D1CA5C9FC00B406FE /* MPVASTDurationOffset.h */,
+				A5316F6E1CA5C9FC00B406FE /* MPVASTDurationOffset.m */,
+				A5316F6F1CA5C9FC00B406FE /* MPVASTIndustryIcon.h */,
+				A5316F701CA5C9FC00B406FE /* MPVASTIndustryIcon.m */,
+				A5316F711CA5C9FC00B406FE /* MPVASTInline.h */,
+				A5316F721CA5C9FC00B406FE /* MPVASTInline.m */,
+				A5316F731CA5C9FC00B406FE /* MPVASTLinearAd.h */,
+				A5316F741CA5C9FC00B406FE /* MPVASTLinearAd.m */,
+				A5316F751CA5C9FC00B406FE /* MPVASTMacroProcessor.h */,
+				A5316F761CA5C9FC00B406FE /* MPVASTMacroProcessor.m */,
+				A5316F771CA5C9FC00B406FE /* MPVASTManager.h */,
+				A5316F781CA5C9FC00B406FE /* MPVASTManager.m */,
+				A5316F791CA5C9FC00B406FE /* MPVASTMediaFile.h */,
+				A5316F7A1CA5C9FC00B406FE /* MPVASTMediaFile.m */,
+				A5316F7B1CA5C9FC00B406FE /* MPVASTModel.h */,
+				A5316F7C1CA5C9FC00B406FE /* MPVASTModel.m */,
+				A5316F7D1CA5C9FC00B406FE /* MPVASTResource.h */,
+				A5316F7E1CA5C9FC00B406FE /* MPVASTResource.m */,
+				A5316F7F1CA5C9FC00B406FE /* MPVASTResponse.h */,
+				A5316F801CA5C9FC00B406FE /* MPVASTResponse.m */,
+				A5316F811CA5C9FC00B406FE /* MPVASTStringUtilities.h */,
+				A5316F821CA5C9FC00B406FE /* MPVASTStringUtilities.m */,
+				A5316F831CA5C9FC00B406FE /* MPVASTTrackingEvent.h */,
+				A5316F841CA5C9FC00B406FE /* MPVASTTrackingEvent.m */,
+				A5316F851CA5C9FC00B406FE /* MPVASTWrapper.h */,
+				A5316F861CA5C9FC00B406FE /* MPVASTWrapper.m */,
+			);
+			path = VAST;
+			sourceTree = "<group>";
+		};
+		A5316F981CA5C9FC00B406FE /* Native Ads */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F991CA5C9FC00B406FE /* Internal */,
+				A5316FBE1CA5C9FC00B406FE /* MPAdPositioning.h */,
+				A5316FBF1CA5C9FC00B406FE /* MPAdPositioning.m */,
+				A5316FC01CA5C9FC00B406FE /* MPClientAdPositioning.h */,
+				A5316FC11CA5C9FC00B406FE /* MPClientAdPositioning.m */,
+				A5316FC21CA5C9FC00B406FE /* MPCollectionViewAdPlacer.h */,
+				A5316FC31CA5C9FC00B406FE /* MPCollectionViewAdPlacer.m */,
+				A5316FC41CA5C9FC00B406FE /* MPNativeAd.h */,
+				A5316FC51CA5C9FC00B406FE /* MPNativeAd.m */,
+				A5316FC61CA5C9FC00B406FE /* MPNativeAdAdapter.h */,
+				A5316FC71CA5C9FC00B406FE /* MPNativeAdConstants.h */,
+				A5316FC81CA5C9FC00B406FE /* MPNativeAdConstants.m */,
+				A5316FC91CA5C9FC00B406FE /* MPNativeAdData.h */,
+				A5316FCA1CA5C9FC00B406FE /* MPNativeAdData.m */,
+				A5316FCB1CA5C9FC00B406FE /* MPNativeAdDelegate.h */,
+				A5316FCC1CA5C9FC00B406FE /* MPNativeAdError.h */,
+				A5316FCD1CA5C9FC00B406FE /* MPNativeAdError.m */,
+				A5316FCE1CA5C9FC00B406FE /* MPNativeAdRenderer.h */,
+				A5316FCF1CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.h */,
+				A5316FD01CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.m */,
+				A5316FD11CA5C9FC00B406FE /* MPNativeAdRendererSettings.h */,
+				A5316FD21CA5C9FC00B406FE /* MPNativeAdRendering.h */,
+				A5316FD31CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.h */,
+				A5316FD41CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.m */,
+				A5316FD51CA5C9FC00B406FE /* MPNativeAdRequest.h */,
+				A5316FD61CA5C9FC00B406FE /* MPNativeAdRequest.m */,
+				A5316FD71CA5C9FC00B406FE /* MPNativeAdRequestTargeting.h */,
+				A5316FD81CA5C9FC00B406FE /* MPNativeAdRequestTargeting.m */,
+				A5316FD91CA5C9FC00B406FE /* MPNativeAdSource.h */,
+				A5316FDA1CA5C9FC00B406FE /* MPNativeAdSource.m */,
+				A5316FDB1CA5C9FC00B406FE /* MPNativeAdSourceDelegate.h */,
+				A5316FDC1CA5C9FC00B406FE /* MPNativeCustomEvent.h */,
+				A5316FDD1CA5C9FC00B406FE /* MPNativeCustomEvent.m */,
+				A5316FDE1CA5C9FC00B406FE /* MPNativeCustomEventDelegate.h */,
+				A5316FDF1CA5C9FC00B406FE /* MPServerAdPositioning.h */,
+				A5316FE01CA5C9FC00B406FE /* MPServerAdPositioning.m */,
+				A5316FE11CA5C9FC00B406FE /* MPStaticNativeAdRenderer.h */,
+				A5316FE21CA5C9FC00B406FE /* MPStaticNativeAdRenderer.m */,
+				A5316FE31CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.h */,
+				A5316FE41CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.m */,
+				A5316FE51CA5C9FC00B406FE /* MPStreamAdPlacementData.h */,
+				A5316FE61CA5C9FC00B406FE /* MPStreamAdPlacementData.m */,
+				A5316FE71CA5C9FC00B406FE /* MPStreamAdPlacer.h */,
+				A5316FE81CA5C9FC00B406FE /* MPStreamAdPlacer.m */,
+				A5316FE91CA5C9FC00B406FE /* MPTableViewAdPlacer.h */,
+				A5316FEA1CA5C9FC00B406FE /* MPTableViewAdPlacer.m */,
+			);
+			path = "Native Ads";
+			sourceTree = "<group>";
+		};
+		A5316F991CA5C9FC00B406FE /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F9A1CA5C9FC00B406FE /* Categories */,
+				A5316F9C1CA5C9FC00B406FE /* MPAdPlacerInvocation.h */,
+				A5316F9D1CA5C9FC00B406FE /* MPAdPlacerInvocation.m */,
+				A5316F9E1CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.h */,
+				A5316F9F1CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.m */,
+				A5316FA01CA5C9FC00B406FE /* MPDiskLRUCache.h */,
+				A5316FA11CA5C9FC00B406FE /* MPDiskLRUCache.m */,
+				A5316FA21CA5C9FC00B406FE /* MPImageDownloadQueue.h */,
+				A5316FA31CA5C9FC00B406FE /* MPImageDownloadQueue.m */,
+				A5316FA41CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.h */,
+				A5316FA51CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.m */,
+				A5316FA61CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.h */,
+				A5316FA71CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.m */,
+				A5316FA81CA5C9FC00B406FE /* MPNativeAd+Internal.h */,
+				A5316FA91CA5C9FC00B406FE /* MPNativeAd+Internal.m */,
+				A5316FAA1CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.h */,
+				A5316FAB1CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.m */,
+				A5316FAC1CA5C9FC00B406FE /* MPNativeAdSourceQueue.h */,
+				A5316FAD1CA5C9FC00B406FE /* MPNativeAdSourceQueue.m */,
+				A5316FAE1CA5C9FC00B406FE /* MPNativeAdUtils.h */,
+				A5316FAF1CA5C9FC00B406FE /* MPNativeAdUtils.m */,
+				A5316FB01CA5C9FC00B406FE /* MPNativeCache.h */,
+				A5316FB11CA5C9FC00B406FE /* MPNativeCache.m */,
+				A5316FB21CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.h */,
+				A5316FB31CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.m */,
+				A5316FB41CA5C9FC00B406FE /* MPNativePositionSource.h */,
+				A5316FB51CA5C9FC00B406FE /* MPNativePositionSource.m */,
+				A5316FB61CA5C9FC00B406FE /* MPNativeView.h */,
+				A5316FB71CA5C9FC00B406FE /* MPNativeView.m */,
+				A5316FB81CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.h */,
+				A5316FB91CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.m */,
+				A5316FBA1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.h */,
+				A5316FBB1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.m */,
+				A5316FBC1CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.h */,
+				A5316FBD1CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.m */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		A5316F9A1CA5C9FC00B406FE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A5316F9B1CA5C9FC00B406FE /* MPNativeAdRequest+MPNativeAdSource.h */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A5316FEB1CA5C9FC00B406FE /* NativeVideo */ = {
+			isa = PBXGroup;
+			children = (
+				A5316FEC1CA5C9FC00B406FE /* Internal */,
+				A53170051CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.h */,
+				A53170061CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.m */,
+				A53170071CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.h */,
+				A53170081CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.m */,
+			);
+			path = NativeVideo;
+			sourceTree = "<group>";
+		};
+		A5316FEC1CA5C9FC00B406FE /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				A5316FED1CA5C9FC00B406FE /* MOPUBActivityIndicatorView.h */,
+				A5316FEE1CA5C9FC00B406FE /* MOPUBActivityIndicatorView.m */,
+				A5316FEF1CA5C9FC00B406FE /* MOPUBAVPlayer.h */,
+				A5316FF01CA5C9FC00B406FE /* MOPUBAVPlayer.m */,
+				A5316FF11CA5C9FC00B406FE /* MOPUBAVPlayerView.h */,
+				A5316FF21CA5C9FC00B406FE /* MOPUBAVPlayerView.m */,
+				A5316FF31CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.h */,
+				A5316FF41CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.m */,
+				A5316FF51CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.h */,
+				A5316FF61CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.m */,
+				A5316FF71CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.h */,
+				A5316FF81CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.m */,
+				A5316FF91CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.h */,
+				A5316FFA1CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.m */,
+				A5316FFB1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.h */,
+				A5316FFC1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.m */,
+				A5316FFD1CA5C9FC00B406FE /* MOPUBPlayerManager.h */,
+				A5316FFE1CA5C9FC00B406FE /* MOPUBPlayerManager.m */,
+				A5316FFF1CA5C9FC00B406FE /* MOPUBPlayerView.h */,
+				A53170001CA5C9FC00B406FE /* MOPUBPlayerView.m */,
+				A53170011CA5C9FC00B406FE /* MOPUBPlayerViewController.h */,
+				A53170021CA5C9FC00B406FE /* MOPUBPlayerViewController.m */,
+				A53170031CA5C9FC00B406FE /* MOPUBReplayView.h */,
+				A53170041CA5C9FC00B406FE /* MOPUBReplayView.m */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		A53170091CA5C9FC00B406FE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A531700A1CA5C9FC00B406FE /* MPCloseBtn.png */,
+				A531700B1CA5C9FC00B406FE /* MPCloseBtn@2x.png */,
+				A531700C1CA5C9FC00B406FE /* MPCloseBtn@3x.png */,
+				A531700D1CA5C9FC00B406FE /* MPCloseButtonX.png */,
+				A531700E1CA5C9FC00B406FE /* MPCloseButtonX@2x.png */,
+				A531700F1CA5C9FC00B406FE /* MPCloseButtonX@3x.png */,
+				A53170101CA5C9FC00B406FE /* MPDAAIcon.png */,
+				A53170111CA5C9FC00B406FE /* MPDAAIcon@2x.png */,
+				A53170121CA5C9FC00B406FE /* MPDAAIcon@3x.png */,
+				A53170131CA5C9FC00B406FE /* MPMutedBtn@1x.png */,
+				A53170141CA5C9FC00B406FE /* MPMutedBtn@2x.png */,
+				A53170151CA5C9FC00B406FE /* MPMutedBtn@3x.png */,
+				A53170161CA5C9FC00B406FE /* MPPlayBtn.png */,
+				A53170171CA5C9FC00B406FE /* MPPlayBtn@2x.png */,
+				A53170181CA5C9FC00B406FE /* MPPlayBtn@3x.png */,
+				A53170191CA5C9FC00B406FE /* MPUnmutedBtn@1x.png */,
+				A531701A1CA5C9FC00B406FE /* MPUnmutedBtn@2x.png */,
+				A531701B1CA5C9FC00B406FE /* MPUnmutedBtn@3x.png */,
+				A531701C1CA5C9FC00B406FE /* MRAID.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A531701D1CA5C9FC00B406FE /* RewardedVideo */ = {
+			isa = PBXGroup;
+			children = (
+				A531701E1CA5C9FC00B406FE /* Internal */,
+				A53170261CA5C9FC00B406FE /* MPMediationSettingsProtocol.h */,
+				A53170271CA5C9FC00B406FE /* MPRewardedVideo.h */,
+				A53170281CA5C9FC00B406FE /* MPRewardedVideo.m */,
+				A53170291CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.h */,
+				A531702A1CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m */,
+				A531702B1CA5C9FC00B406FE /* MPRewardedVideoError.h */,
+				A531702C1CA5C9FC00B406FE /* MPRewardedVideoError.m */,
+				A531702D1CA5C9FC00B406FE /* MPRewardedVideoReward.h */,
+				A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */,
+			);
+			path = RewardedVideo;
+			sourceTree = "<group>";
+		};
+		A531701E1CA5C9FC00B406FE /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				A531701F1CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.h */,
+				A53170201CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.m */,
+				A53170211CA5C9FC00B406FE /* MPPrivateRewardedVideoCustomEventDelegate.h */,
+				A53170221CA5C9FC00B406FE /* MPRewardedVideoAdapter.h */,
+				A53170231CA5C9FC00B406FE /* MPRewardedVideoAdapter.m */,
+				A53170241CA5C9FC00B406FE /* MPRewardedVideoAdManager.h */,
+				A53170251CA5C9FC00B406FE /* MPRewardedVideoAdManager.m */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		A54E89051C29C6A7006C8FFC /* Storyboards */ = {
@@ -1138,23 +2297,44 @@
 			files = (
 				A54E891D1C29CF09006C8FFC /* Tempo_Chest_Tri.storyboard in Resources */,
 				A54E89181C29CDFD006C8FFC /* Build_Back_Bi.storyboard in Resources */,
+				A53170DE1CA5C9FC00B406FE /* MPPlayBtn.png in Resources */,
 				A54E89111C29CBCD006C8FFC /* Beast_Complete_Body.storyboard in Resources */,
 				A54E892A1C29D18E006C8FFC /* Bulk_Shoulders.storyboard in Resources */,
+				A53170411CA5C9FC00B406FE /* MPAdBrowserController.xib in Resources */,
 				A54E89161C29CD70006C8FFC /* Build_Legs.storyboard in Resources */,
+				A53170E01CA5C9FC00B406FE /* MPPlayBtn@3x.png in Resources */,
+				A53170D51CA5C9FC00B406FE /* MPCloseButtonX.png in Resources */,
+				A53170E41CA5C9FC00B406FE /* MRAID.bundle in Resources */,
 				A54E890D1C29C9C0006C8FFC /* Store.storyboard in Resources */,
+				A53170DA1CA5C9FC00B406FE /* MPDAAIcon@3x.png in Resources */,
 				A54E891A1C29CE7A006C8FFC /* Build_Shoulders.storyboard in Resources */,
+				A53170D41CA5C9FC00B406FE /* MPCloseBtn@3x.png in Resources */,
+				A53170D71CA5C9FC00B406FE /* MPCloseButtonX@3x.png in Resources */,
 				A54E89091C29C889006C8FFC /* Measurements.storyboard in Resources */,
+				A53170DD1CA5C9FC00B406FE /* MPMutedBtn@3x.png in Resources */,
+				A53170DB1CA5C9FC00B406FE /* MPMutedBtn@1x.png in Resources */,
 				A54E891F1C29CF82006C8FFC /* Tempo_Back_Bi.storyboard in Resources */,
 				A54E89071C29C7CF006C8FFC /* Settings.storyboard in Resources */,
+				A53170D61CA5C9FC00B406FE /* MPCloseButtonX@2x.png in Resources */,
+				A53170E31CA5C9FC00B406FE /* MPUnmutedBtn@3x.png in Resources */,
 				587CFB6D189DD9B8006FA541 /* InfoPlist.strings in Resources */,
 				A54E89141C29CCD3006C8FFC /* Build_Chest_Tri.storyboard in Resources */,
 				A54E89221C29D012006C8FFC /* Bulk_Chest.storyboard in Resources */,
+				A53170D81CA5C9FC00B406FE /* MPDAAIcon.png in Resources */,
 				A54E89281C29D13E006C8FFC /* Bulk_Arms.storyboard in Resources */,
+				A53170DF1CA5C9FC00B406FE /* MPPlayBtn@2x.png in Resources */,
 				587CFB78189DD9B8006FA541 /* Images.xcassets in Resources */,
+				A53170641CA5C9FC00B406FE /* LICENSE in Resources */,
+				A53170D21CA5C9FC00B406FE /* MPCloseBtn.png in Resources */,
 				A54E89261C29D0F2006C8FFC /* Bulk_Back.storyboard in Resources */,
 				A54E890B1C29C939006C8FFC /* Photos.storyboard in Resources */,
+				A53170E21CA5C9FC00B406FE /* MPUnmutedBtn@2x.png in Resources */,
+				A53170DC1CA5C9FC00B406FE /* MPMutedBtn@2x.png in Resources */,
+				A53170D91CA5C9FC00B406FE /* MPDAAIcon@2x.png in Resources */,
 				A54E89241C29D078006C8FFC /* Bulk_Legs.storyboard in Resources */,
+				A53170D31CA5C9FC00B406FE /* MPCloseBtn@2x.png in Resources */,
 				58F21A9118A6D81200DE043E /* Main.storyboard in Resources */,
+				A53170E11CA5C9FC00B406FE /* MPUnmutedBtn@1x.png in Resources */,
 				A54E89041C29C431006C8FFC /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,91 +2355,257 @@
 			buildActionMask = 2147483647;
 			files = (
 				A54E89401C29E9AF006C8FFC /* Thumbnailer.m in Sources */,
+				A531705D1CA5C9FC00B406FE /* MPBaseInterstitialAdapter.m in Sources */,
+				A53170C21CA5C9FC00B406FE /* MPStreamAdPlacer.m in Sources */,
+				A53170BD1CA5C9FC00B406FE /* MPNativeCustomEvent.m in Sources */,
+				A53170491CA5C9FC00B406FE /* MPFacebookKeywordProvider.m in Sources */,
+				A531704C1CA5C9FC00B406FE /* MPProgressOverlayView.m in Sources */,
+				A531706C1CA5C9FC00B406FE /* MRConstants.m in Sources */,
+				A53170331CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m in Sources */,
+				A53170781CA5C9FC00B406FE /* UIButton+MPAdditions.m in Sources */,
+				A53170951CA5C9FC00B406FE /* MPVASTResponse.m in Sources */,
+				A53170561CA5C9FC00B406FE /* MPQRunLoopOperation.m in Sources */,
+				A531705B1CA5C9FC00B406FE /* MPHTMLInterstitialCustomEvent.m in Sources */,
 				A54E894D1C29F635006C8FFC /* Workout.m in Sources */,
+				A531702F1CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m in Sources */,
+				A53170631CA5C9FC00B406FE /* MPVASTTracking.m in Sources */,
+				A53170721CA5C9FC00B406FE /* MRPictureManager.m in Sources */,
+				A531708E1CA5C9FC00B406FE /* MPVASTInline.m in Sources */,
+				A53170CD1CA5C9FC00B406FE /* MOPUBPlayerView.m in Sources */,
+				A53170C81CA5C9FC00B406FE /* MOPUBNativeVideoAdAdapter.m in Sources */,
 				A54E893E1C29E9AF006C8FFC /* Deduplicator.m in Sources */,
 				58F21AA318A6DEC400DE043E /* UIViewController+CoreData.m in Sources */,
 				58C1F2B11AACF68D0072F38A /* DatePickerViewController.m in Sources */,
 				58F21AA118A6DEC400DE043E /* UIImage+Resizing.m in Sources */,
+				A531703A1CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m in Sources */,
+				A53170E51CA5C9FC00B406FE /* MPMoPubRewardedVideoCustomEvent.m in Sources */,
+				A53170961CA5C9FC00B406FE /* MPVASTStringUtilities.m in Sources */,
 				58F21ACE18A6E00000DE043E /* EmailViewController.m in Sources */,
+				A531706E1CA5C9FC00B406FE /* MRError.m in Sources */,
 				58F21AC118A6DF8E00DE043E /* SettingsTVC.m in Sources */,
+				A53170941CA5C9FC00B406FE /* MPVASTResource.m in Sources */,
+				A53170B51CA5C9FC00B406FE /* MPNativeAdConstants.m in Sources */,
+				A53170E71CA5C9FC00B406FE /* MPRewardedVideoAdManager.m in Sources */,
+				A53170481CA5C9FC00B406FE /* MPEnhancedDeeplinkRequest.m in Sources */,
+				A53170CE1CA5C9FC00B406FE /* MOPUBPlayerViewController.m in Sources */,
+				A531706F1CA5C9FC00B406FE /* MRExpandModalViewController.m in Sources */,
+				A53170611CA5C9FC00B406FE /* MPCoreInstanceProvider.m in Sources */,
 				58F21AC318A6DF8E00DE043E /* WeekTVC.m in Sources */,
+				A53170EB1CA5C9FC00B406FE /* MPRewardedVideoReward.m in Sources */,
+				A53170971CA5C9FC00B406FE /* MPVASTTrackingEvent.m in Sources */,
+				A53170551CA5C9FC00B406FE /* MPNetworkManager.m in Sources */,
+				A531708A1CA5C9FC00B406FE /* MPVASTCompanionAd.m in Sources */,
+				A531709C1CA5C9FC00B406FE /* MPBannerCustomEvent.m in Sources */,
+				A53170671CA5C9FC00B406FE /* MPMRAIDInterstitialViewController.m in Sources */,
+				A53170B11CA5C9FC00B406FE /* MPAdPositioning.m in Sources */,
 				A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */,
+				A531705F1CA5C9FC00B406FE /* MPInterstitialCustomEventAdapter.m in Sources */,
 				587CFB73189DD9B8006FA541 /* AppDelegate.m in Sources */,
 				A54E893D1C29E9AF006C8FFC /* CoreDataTVC.m in Sources */,
 				58F21A9718A6DE5B00DE043E /* photoCollectionViewCell.m in Sources */,
+				A531707C1CA5C9FC00B406FE /* MPAnalyticsTracker.m in Sources */,
 				58F21AB118A6DF2200DE043E /* SettingsNavController.m in Sources */,
+				A53170C91CA5C9FC00B406FE /* MOPUBNativeVideoAdConfigValues.m in Sources */,
+				A53170B21CA5C9FC00B406FE /* MPClientAdPositioning.m in Sources */,
+				A53170D11CA5C9FC00B406FE /* MOPUBNativeVideoAdRendererSettings.m in Sources */,
+				A53170A81CA5C9FC00B406FE /* MPNativeAdSourceQueue.m in Sources */,
+				A53170881CA5C9FC00B406FE /* MPUserInteractionGestureRecognizer.m in Sources */,
 				A56DA0EF18AADB5E0012E943 /* Bulk_8_TVC.m in Sources */,
+				A531708F1CA5C9FC00B406FE /* MPVASTLinearAd.m in Sources */,
 				A5F1CD6718AD3523000FD51E /* Tone_2_TVC.m in Sources */,
 				58F21ACF18A6E00000DE043E /* WebsiteViewController.m in Sources */,
+				A53170BA1CA5C9FC00B406FE /* MPNativeAdRequest.m in Sources */,
+				A53170991CA5C9FC00B406FE /* MoPub.m in Sources */,
 				A58A9A4F18BFEC8C00DB3D6D /* Build_Chest+Tri_1_TVC.m in Sources */,
+				A53170C41CA5C9FC00B406FE /* MOPUBActivityIndicatorView.m in Sources */,
+				A53170901CA5C9FC00B406FE /* MPVASTMacroProcessor.m in Sources */,
+				A531707E1CA5C9FC00B406FE /* MPGeolocationProvider.m in Sources */,
+				A53170B91CA5C9FC00B406FE /* MPNativeAdRenderingImageLoader.m in Sources */,
 				587CFB76189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld in Sources */,
+				A53170451CA5C9FC00B406FE /* MPAdServerURLBuilder.m in Sources */,
+				A53170801CA5C9FC00B406FE /* MPIdentityProvider.m in Sources */,
+				A53170581CA5C9FC00B406FE /* MPAdWebView.m in Sources */,
+				A531708D1CA5C9FC00B406FE /* MPVASTIndustryIcon.m in Sources */,
+				A53170C31CA5C9FC00B406FE /* MPTableViewAdPlacer.m in Sources */,
+				A53170A71CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.m in Sources */,
 				582EFBFD19C7B00100721B8F /* IAPHelper.m in Sources */,
 				A5F1CD8218AD3B72000FD51E /* Tone_10_TVC.m in Sources */,
+				A53170A11CA5C9FC00B406FE /* MPCollectionViewAdPlacerCell.m in Sources */,
 				A56DA0E318AADAFF0012E943 /* Bulk_4_TVC.m in Sources */,
+				A53170791CA5C9FC00B406FE /* UIColor+MPAdditions.m in Sources */,
 				58F21ADA18A6E04F00DE043E /* PhotoScrollerViewController.m in Sources */,
+				A53170C61CA5C9FC00B406FE /* MOPUBAVPlayerView.m in Sources */,
+				A53170C71CA5C9FC00B406FE /* MOPUBFullscreenPlayerViewController.m in Sources */,
+				A53170CA1CA5C9FC00B406FE /* MOPUBNativeVideoCustomEvent.m in Sources */,
+				A53170AE1CA5C9FC00B406FE /* MPStaticNativeAdImpressionTimer.m in Sources */,
+				A53170D01CA5C9FC00B406FE /* MOPUBNativeVideoAdRenderer.m in Sources */,
+				A53170591CA5C9FC00B406FE /* MPAdWebViewAgent.m in Sources */,
 				58F21AD418A6E02F00DE043E /* MeasurementsReportViewController.m in Sources */,
 				A5BF8C0218C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m in Sources */,
+				A53170B31CA5C9FC00B406FE /* MPCollectionViewAdPlacer.m in Sources */,
+				A53170571CA5C9FC00B406FE /* MPRetryingHTTPOperation.m in Sources */,
+				A53170741CA5C9FC00B406FE /* MRVideoPlayerManager.m in Sources */,
+				A53170691CA5C9FC00B406FE /* MRBundleManager.m in Sources */,
+				A53170701CA5C9FC00B406FE /* MRImageDownloader.m in Sources */,
 				A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */,
+				A53170981CA5C9FC00B406FE /* MPVASTWrapper.m in Sources */,
+				A531705E1CA5C9FC00B406FE /* MPInterstitialAdManager.m in Sources */,
+				A53170851CA5C9FC00B406FE /* MPSessionTracker.m in Sources */,
+				A53170A41CA5C9FC00B406FE /* MPMoPubNativeAdAdapter.m in Sources */,
 				A5F1CD7F18AD3B5F000FD51E /* Tone_9_TVC.m in Sources */,
+				A531709F1CA5C9FC00B406FE /* MPInterstitialCustomEvent.m in Sources */,
+				A53170A51CA5C9FC00B406FE /* MPMoPubNativeCustomEvent.m in Sources */,
+				A53170821CA5C9FC00B406FE /* MPLogging.m in Sources */,
+				A53170401CA5C9FC00B406FE /* MPAdBrowserController.m in Sources */,
 				A5A3A6B919C8885C006090D9 /* StoreListTVCCell.m in Sources */,
+				A53170E61CA5C9FC00B406FE /* MPRewardedVideoAdapter.m in Sources */,
 				58F21AAE18A6DF2200DE043E /* DataNavController.m in Sources */,
 				588ABCDB18C018A400DEBCFC /* Build_Shoulders_1_TVC.m in Sources */,
 				587CFB6F189DD9B8006FA541 /* main.m in Sources */,
 				58F21AC018A6DF8E00DE043E /* PhotoTVC.m in Sources */,
+				A53170811CA5C9FC00B406FE /* MPInternalUtils.m in Sources */,
 				A54E894A1C29F635006C8FFC /* WorkoutCompleteDate+CoreDataProperties.m in Sources */,
 				A5A3A6BC19C8A4B7006090D9 /* IAPProduct.m in Sources */,
 				A5BF8BF918C4F3E80077D6DF /* Bulk_Legs_1_TVC.m in Sources */,
+				A53170A01CA5C9FC00B406FE /* MPAdPlacerInvocation.m in Sources */,
+				A53170CF1CA5C9FC00B406FE /* MOPUBReplayView.m in Sources */,
+				A53170CC1CA5C9FC00B406FE /* MOPUBPlayerManager.m in Sources */,
+				A53170A21CA5C9FC00B406FE /* MPDiskLRUCache.m in Sources */,
 				A56DA0F818AADB9B0012E943 /* Bulk_11_TVC.m in Sources */,
+				A531703D1CA5C9FC00B406FE /* MPAdAlertManager.m in Sources */,
+				A53170601CA5C9FC00B406FE /* MPInterstitialViewController.m in Sources */,
 				58F21AD518A6E02F00DE043E /* MeasurementsViewController.m in Sources */,
 				A56DA0E618AADB190012E943 /* Bulk_5_TVC.m in Sources */,
+				A53170BC1CA5C9FC00B406FE /* MPNativeAdSource.m in Sources */,
+				A53170751CA5C9FC00B406FE /* NSHTTPURLResponse+MPAdditions.m in Sources */,
 				A5F1CD6A18AD353A000FD51E /* Tone_3_TVC.m in Sources */,
 				A552C4E218BFF90700798347 /* Build_Back+Bi_1_TVC.m in Sources */,
+				A53170B81CA5C9FC00B406FE /* MPNativeAdRendererConfiguration.m in Sources */,
+				A53170B71CA5C9FC00B406FE /* MPNativeAdError.m in Sources */,
 				A5BF8BFF18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m in Sources */,
 				A56DA0F518AADB830012E943 /* Bulk_10_TVC.m in Sources */,
+				A53170AB1CA5C9FC00B406FE /* MPNativePositionResponseDeserializer.m in Sources */,
+				A53170861CA5C9FC00B406FE /* MPStoreKitProvider.m in Sources */,
+				A53170BF1CA5C9FC00B406FE /* MPStaticNativeAdRenderer.m in Sources */,
+				A531707D1CA5C9FC00B406FE /* MPError.m in Sources */,
 				A5F1CD8518AD3B83000FD51E /* Tone_11_TVC.m in Sources */,
+				A53170841CA5C9FC00B406FE /* MPReachability.m in Sources */,
+				A53170AD1CA5C9FC00B406FE /* MPNativeView.m in Sources */,
 				A54E893F1C29E9AF006C8FFC /* Faulter.m in Sources */,
+				A53170431CA5C9FC00B406FE /* MPAdDestinationDisplayAgent.m in Sources */,
 				A5A3A6AF19C88104006090D9 /* 90DWTBBIAPHelper.m in Sources */,
+				A531708C1CA5C9FC00B406FE /* MPVASTDurationOffset.m in Sources */,
 				A54E893A1C29E9AF006C8FFC /* CoreDataHelper.m in Sources */,
 				A51B6EE418B500A700F34A11 /* UITableViewController+Database.m in Sources */,
 				58F21ABF18A6DF8E00DE043E /* MeasurementsTVC.m in Sources */,
 				A56DA0E018AADAE00012E943 /* Bulk_3_TVC.m in Sources */,
 				58F21AA218A6DEC400DE043E /* UITableViewController+Design.m in Sources */,
+				A53170461CA5C9FC00B406FE /* MPAPIEndpoints.m in Sources */,
+				A531708B1CA5C9FC00B406FE /* MPVASTCreative.m in Sources */,
 				A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */,
+				A53170711CA5C9FC00B406FE /* MRNativeCommandHandler.m in Sources */,
+				A531706A1CA5C9FC00B406FE /* MRCalendarManager.m in Sources */,
+				A531706B1CA5C9FC00B406FE /* MRCommand.m in Sources */,
 				58F21AAF18A6DF2200DE043E /* MeasurementsNavController.m in Sources */,
 				A5D57F991C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m in Sources */,
 				A54E894B1C29F635006C8FFC /* WorkoutCompleteDate.m in Sources */,
+				A53170B61CA5C9FC00B406FE /* MPNativeAdData.m in Sources */,
+				A53170301CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */,
 				A54E894C1C29F635006C8FFC /* Workout+CoreDataProperties.m in Sources */,
+				A53170381CA5C9FC00B406FE /* README.md in Sources */,
 				58F21AEC18A6E12900DE043E /* MainTBC.m in Sources */,
+				A531709A1CA5C9FC00B406FE /* MPAdConversionTracker.m in Sources */,
 				A5BF8BFC18C4F3F90077D6DF /* Bulk_Back_1_TVC.m in Sources */,
+				A53170E81CA5C9FC00B406FE /* MPRewardedVideo.m in Sources */,
 				58DA7A6518C2901600ECF966 /* Tempo_Back+Bi_1_TVC.m in Sources */,
+				A53170C51CA5C9FC00B406FE /* MOPUBAVPlayer.m in Sources */,
 				A5F1CD7918AD36EE000FD51E /* Tone_7_TVC.m in Sources */,
+				A531709D1CA5C9FC00B406FE /* MPConstants.m in Sources */,
+				A53170661CA5C9FC00B406FE /* MPMRAIDInterstitialCustomEvent.m in Sources */,
+				A53170831CA5C9FC00B406FE /* MPLogProvider.m in Sources */,
+				A531703C1CA5C9FC00B406FE /* MPAdAlertGestureRecognizer.m in Sources */,
 				58F21AE218A6E08500DE043E /* NotesViewController.m in Sources */,
 				58F21AB018A6DF2200DE043E /* PhotoNavController.m in Sources */,
 				A5F1CD7618AD35CD000FD51E /* Tone_6_TVC.m in Sources */,
 				58F21ADB18A6E04F00DE043E /* PresentPhotosViewController.m in Sources */,
 				58F21AA418A6DEC400DE043E /* UIViewController+Social.m in Sources */,
+				A53170421CA5C9FC00B406FE /* MPAdConfiguration.m in Sources */,
+				A531704A1CA5C9FC00B406FE /* MPLastResortDelegate+EventKit.m in Sources */,
 				A56DA0F218AADB710012E943 /* Bulk_9_TVC.m in Sources */,
+				A53170891CA5C9FC00B406FE /* MPVASTAd.m in Sources */,
 				A56DA0DD18AADA520012E943 /* Bulk_2_TVC.m in Sources */,
 				A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */,
+				A53170EA1CA5C9FC00B406FE /* MPRewardedVideoError.m in Sources */,
 				A56DA0FB18AADBB00012E943 /* Bulk_12_TVC.m in Sources */,
+				A53170621CA5C9FC00B406FE /* MPInstanceProvider.m in Sources */,
+				A53170761CA5C9FC00B406FE /* NSJSONSerialization+MPAdditions.m in Sources */,
+				A53170731CA5C9FC00B406FE /* MRProperty.m in Sources */,
+				A53170651CA5C9FC00B406FE /* MPMRAIDBannerCustomEvent.m in Sources */,
+				A53170CB1CA5C9FC00B406FE /* MOPUBNativeVideoImpressionAgent.m in Sources */,
+				A531705C1CA5C9FC00B406FE /* MPHTMLInterstitialViewController.m in Sources */,
+				A53170921CA5C9FC00B406FE /* MPVASTMediaFile.m in Sources */,
 				A54E893B1C29E9AF006C8FFC /* CoreDataImporter.m in Sources */,
+				A53170531CA5C9FC00B406FE /* MPLogEventCommunicator.m in Sources */,
+				A531709E1CA5C9FC00B406FE /* MPInterstitialAdController.m in Sources */,
 				A5F1CD7018AD3572000FD51E /* Tone_4_TVC.m in Sources */,
 				A5A3A6B219C88581006090D9 /* StoreListTVC.m in Sources */,
+				A531706D1CA5C9FC00B406FE /* MRController.m in Sources */,
 				A5F1CD6418AD3505000FD51E /* Tone_1_TVC.m in Sources */,
 				A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */,
+				A53170541CA5C9FC00B406FE /* MPLogEventRecorder.m in Sources */,
+				A53170B41CA5C9FC00B406FE /* MPNativeAd.m in Sources */,
+				A53170A91CA5C9FC00B406FE /* MPNativeAdUtils.m in Sources */,
 				A5F1CD7C18AD3B4B000FD51E /* Tone_8_TVC.m in Sources */,
+				A531704D1CA5C9FC00B406FE /* MPURLActionInfo.m in Sources */,
+				A53170511CA5C9FC00B406FE /* MPLogEvent+NativeVideo.m in Sources */,
+				A53170931CA5C9FC00B406FE /* MPVASTModel.m in Sources */,
 				A5FFDA701A69AAE1002E6513 /* ShinobiViewController.m in Sources */,
+				A531704F1CA5C9FC00B406FE /* MPVideoConfig.m in Sources */,
+				A531709B1CA5C9FC00B406FE /* MPAdView.m in Sources */,
+				A53170AA1CA5C9FC00B406FE /* MPNativeCache.m in Sources */,
+				A53170681CA5C9FC00B406FE /* MRBridge.m in Sources */,
 				A5FFDA6A1A697BBC002E6513 /* ExerciseChartViewController.m in Sources */,
+				A53170A61CA5C9FC00B406FE /* MPNativeAd+Internal.m in Sources */,
+				A531707B1CA5C9FC00B406FE /* UIWebView+MPAdditions.m in Sources */,
+				A53170BE1CA5C9FC00B406FE /* MPServerAdPositioning.m in Sources */,
+				A53170871CA5C9FC00B406FE /* MPTimer.m in Sources */,
+				A53170501CA5C9FC00B406FE /* MPXMLParser.m in Sources */,
+				A53170C01CA5C9FC00B406FE /* MPStaticNativeAdRendererSettings.m in Sources */,
+				A53170BB1CA5C9FC00B406FE /* MPNativeAdRequestTargeting.m in Sources */,
+				A53170771CA5C9FC00B406FE /* NSURL+MPAdditions.m in Sources */,
+				A53170351CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m in Sources */,
+				A531704B1CA5C9FC00B406FE /* MPLastResortDelegate.m in Sources */,
+				A531707F1CA5C9FC00B406FE /* MPGlobal.m in Sources */,
 				58DA7A5918C28FBF00ECF966 /* Tempo_Chest+Tri_1_TVC.m in Sources */,
 				A51B6EEA18B55A4A00F34A11 /* ExerciseCell.m in Sources */,
+				A53170341CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m in Sources */,
+				A53170471CA5C9FC00B406FE /* MPClosableView.m in Sources */,
+				A531704E1CA5C9FC00B406FE /* MPURLResolver.m in Sources */,
+				A53170521CA5C9FC00B406FE /* MPLogEvent.m in Sources */,
+				A53170B01CA5C9FC00B406FE /* MPTableViewCellImpressionTracker.m in Sources */,
 				58DA7A4A18C16FF300ECF966 /* Beast_CompleteBody_1_TVC.m in Sources */,
+				A531703B1CA5C9FC00B406FE /* MPBaseBannerAdapter.m in Sources */,
+				A53170361CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m in Sources */,
 				A56DA0D918AAC9450012E943 /* Bulk_1_TVC.m in Sources */,
+				A531703F1CA5C9FC00B406FE /* MPActivityViewControllerHelper.m in Sources */,
 				A5BF8BF618C4F3D20077D6DF /* Bulk_Chest_1_TVC.m in Sources */,
+				A53170C11CA5C9FC00B406FE /* MPStreamAdPlacementData.m in Sources */,
 				A56DA0E918AADB2A0012E943 /* Bulk_6_TVC.m in Sources */,
+				A53170321CA5C9FC00B406FE /* README.md in Sources */,
 				A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */,
 				A54E893C1C29E9AF006C8FFC /* CoreDataPickerTF.m in Sources */,
+				A531705A1CA5C9FC00B406FE /* MPHTMLBannerCustomEvent.m in Sources */,
 				A56DA0EC18AADB3F0012E943 /* Bulk_7_TVC.m in Sources */,
+				A53170E91CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m in Sources */,
+				A53170441CA5C9FC00B406FE /* MPAdServerCommunicator.m in Sources */,
+				A53170AF1CA5C9FC00B406FE /* MPTableViewAdPlacerCell.m in Sources */,
+				A53170391CA5C9FC00B406FE /* MPBannerAdManager.m in Sources */,
+				A531707A1CA5C9FC00B406FE /* UIView+MPAdditions.m in Sources */,
+				A53170A31CA5C9FC00B406FE /* MPImageDownloadQueue.m in Sources */,
+				A531703E1CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.m in Sources */,
+				A53170AC1CA5C9FC00B406FE /* MPNativePositionSource.m in Sources */,
 				A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */,
+				A53170911CA5C9FC00B406FE /* MPVASTManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
