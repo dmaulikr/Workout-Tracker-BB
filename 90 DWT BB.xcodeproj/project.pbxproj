@@ -66,13 +66,11 @@
 		A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B6EEC18B5655900F34A11 /* Build_Legs_1_TVC.m */; };
 		A531702F1CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA01CA5C9FC00B406FE /* MPGoogleAdMobBannerCustomEvent.m */; };
 		A53170301CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA21CA5C9FC00B406FE /* MPGoogleAdMobInterstitialCustomEvent.m */; };
-		A53170311CA5C9FC00B406FE /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */; };
 		A53170321CA5C9FC00B406FE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA51CA5C9FC00B406FE /* README.md */; };
 		A53170331CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EA81CA5C9FC00B406FE /* MPiAdBannerCustomEvent.m */; };
 		A53170341CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EAA1CA5C9FC00B406FE /* MPiAdInterstitialCustomEvent.m */; };
 		A53170351CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EAD1CA5C9FC00B406FE /* MPMillennialBannerCustomEvent.m */; };
 		A53170361CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EAF1CA5C9FC00B406FE /* MPMillennialInterstitialCustomEvent.m */; };
-		A53170371CA5C9FC00B406FE /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */; };
 		A53170381CA5C9FC00B406FE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A5316EB21CA5C9FC00B406FE /* README.md */; };
 		A53170391CA5C9FC00B406FE /* MPBannerAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EB61CA5C9FC00B406FE /* MPBannerAdManager.m */; };
 		A531703A1CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5316EB91CA5C9FC00B406FE /* MPBannerCustomEventAdapter.m */; };
@@ -253,6 +251,9 @@
 		A53170E91CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702A1CA5C9FC00B406FE /* MPRewardedVideoCustomEvent.m */; };
 		A53170EA1CA5C9FC00B406FE /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702C1CA5C9FC00B406FE /* MPRewardedVideoError.m */; };
 		A53170EB1CA5C9FC00B406FE /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */; };
+		A53170EC1CA5CD4E00B406FE /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */; };
+		A53170ED1CA5CD5400B406FE /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */; };
+		A53170EE1CA5CD8E00B406FE /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
@@ -307,7 +308,6 @@
 		A5BF8BFF18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8BFE18C4F40D0077D6DF /* Bulk_Arms_1_TVC.m */; };
 		A5BF8C0218C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */; };
 		A5D57F991C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D57F981C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m */; };
-		A5DC5F1E1BE3F8FB00C1E73E /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */; };
 		A5DC5F201BE3FC9200C1E73E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1F1BE3FC9200C1E73E /* AdSupport.framework */; };
 		A5DC5F221BE3FCA400C1E73E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F211BE3FCA400C1E73E /* AVFoundation.framework */; };
 		A5DC5F241BE3FCB600C1E73E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F231BE3FCB600C1E73E /* CoreLocation.framework */; };
@@ -965,8 +965,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A53170371CA5C9FC00B406FE /* MMAdSDK.framework in Frameworks */,
-				A53170311CA5C9FC00B406FE /* GoogleMobileAds.framework in Frameworks */,
+				A53170EE1CA5CD8E00B406FE /* ShinobiCharts.framework in Frameworks */,
+				A53170ED1CA5CD5400B406FE /* MMAdSDK.framework in Frameworks */,
+				A53170EC1CA5CD4E00B406FE /* GoogleMobileAds.framework in Frameworks */,
 				A5DC5F341BE3FD6400C1E73E /* CoreBluetooth.framework in Frameworks */,
 				A5DC5F321BE3FD5D00C1E73E /* libxml2.tbd in Frameworks */,
 				A5DC5F2F1BE3FD3400C1E73E /* EventKit.framework in Frameworks */,
@@ -987,7 +988,6 @@
 				A5DC5F221BE3FCA400C1E73E /* AVFoundation.framework in Frameworks */,
 				58F21AFD18A6E5F400DE043E /* AudioToolbox.framework in Frameworks */,
 				A5DC5F201BE3FC9200C1E73E /* AdSupport.framework in Frameworks */,
-				A5DC5F1E1BE3F8FB00C1E73E /* ShinobiCharts.framework in Frameworks */,
 				A5E7C0601BE3E353008AA325 /* libc++.tbd in Frameworks */,
 				A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */,
 				A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */,
@@ -2730,9 +2730,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
 					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
@@ -2756,9 +2756,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
 					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
