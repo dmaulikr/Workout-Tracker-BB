@@ -253,7 +253,6 @@
 		A53170EB1CA5C9FC00B406FE /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */; };
 		A53170EC1CA5CD4E00B406FE /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */; };
 		A53170ED1CA5CD5400B406FE /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */; };
-		A53170EE1CA5CD8E00B406FE /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
@@ -911,7 +910,6 @@
 		A5BF8C0118C4F4250077D6DF /* Bulk_Shoulders_1_TVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bulk_Shoulders_1_TVC.m; sourceTree = "<group>"; };
 		A5D57F971C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+ConvertAllToCoreData.h"; sourceTree = "<group>"; };
 		A5D57F981C31FF2C005F821D /* UITableViewController+ConvertAllToCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+ConvertAllToCoreData.m"; sourceTree = "<group>"; };
-		A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
 		A5DC5F1F1BE3FC9200C1E73E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A5DC5F211BE3FCA400C1E73E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A5DC5F231BE3FCB600C1E73E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -965,7 +963,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A53170EE1CA5CD8E00B406FE /* ShinobiCharts.framework in Frameworks */,
 				A53170ED1CA5CD5400B406FE /* MMAdSDK.framework in Frameworks */,
 				A53170EC1CA5CD4E00B406FE /* GoogleMobileAds.framework in Frameworks */,
 				A5DC5F341BE3FD6400C1E73E /* CoreBluetooth.framework in Frameworks */,
@@ -1072,7 +1069,6 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5DC5F1D1BE3F8FB00C1E73E /* ShinobiCharts.framework */,
 				A5DC5F331BE3FD6400C1E73E /* CoreBluetooth.framework */,
 				A5DC5F311BE3FD5D00C1E73E /* libxml2.tbd */,
 				A5DC5F2D1BE3FD3400C1E73E /* EventKit.framework */,
