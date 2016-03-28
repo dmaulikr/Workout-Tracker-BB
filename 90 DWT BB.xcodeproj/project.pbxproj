@@ -253,6 +253,8 @@
 		A53170EB1CA5C9FC00B406FE /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */; };
 		A53170EC1CA5CD4E00B406FE /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EA41CA5C9FC00B406FE /* GoogleMobileAds.framework */; };
 		A53170ED1CA5CD5400B406FE /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5316EB11CA5C9FC00B406FE /* MMAdSDK.framework */; };
+		A53170F01CA97F0800B406FE /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53170EF1CA97F0800B406FE /* ShinobiCharts.framework */; };
+		A53170F21CA97F2700B406FE /* ShinobiGrids.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53170F11CA97F2700B406FE /* ShinobiGrids.framework */; };
 		A544F9EB18C67B79000B2A8C /* UITableViewController+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */; };
 		A5488AA11AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5488AA01AC590BF00BF0225 /* UITableViewController+CheckMarkStatus.m */; };
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
@@ -816,6 +818,8 @@
 		A531702C1CA5C9FC00B406FE /* MPRewardedVideoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoError.m; sourceTree = "<group>"; };
 		A531702D1CA5C9FC00B406FE /* MPRewardedVideoReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoReward.h; sourceTree = "<group>"; };
 		A531702E1CA5C9FC00B406FE /* MPRewardedVideoReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoReward.m; sourceTree = "<group>"; };
+		A53170EF1CA97F0800B406FE /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
+		A53170F11CA97F2700B406FE /* ShinobiGrids.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiGrids.framework; sourceTree = "<group>"; };
 		A544F9E918C67B79000B2A8C /* UITableViewController+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Email.h"; sourceTree = "<group>"; };
 		A544F9EA18C67B79000B2A8C /* UITableViewController+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Email.m"; sourceTree = "<group>"; };
 		A5488A9B1AC3488D00BF0225 /* _0_DWT_BB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_BB 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -963,6 +967,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53170F01CA97F0800B406FE /* ShinobiCharts.framework in Frameworks */,
+				A53170F21CA97F2700B406FE /* ShinobiGrids.framework in Frameworks */,
 				A53170ED1CA5CD5400B406FE /* MMAdSDK.framework in Frameworks */,
 				A53170EC1CA5CD4E00B406FE /* GoogleMobileAds.framework in Frameworks */,
 				A5DC5F341BE3FD6400C1E73E /* CoreBluetooth.framework in Frameworks */,
@@ -1069,6 +1075,8 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A53170F11CA97F2700B406FE /* ShinobiGrids.framework */,
+				A53170EF1CA97F0800B406FE /* ShinobiCharts.framework */,
 				A5DC5F331BE3FD6400C1E73E /* CoreBluetooth.framework */,
 				A5DC5F311BE3FD5D00C1E73E /* libxml2.tbd */,
 				A5DC5F2D1BE3FD3400C1E73E /* EventKit.framework */,
