@@ -343,4 +343,32 @@
     NSArray *objects = lastObjectForIndexArray;
     return objects;
 }
+
+- (NSString*)findMaxSessionValue {
+    
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    //NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    NSInteger maxSession = 0;
+    
+    for (Workout *info in objects) {
+        
+        NSInteger sessionIntegerValue = [info.session integerValue];
+        
+        if (sessionIntegerValue > maxSession) {
+            
+            maxSession = sessionIntegerValue;
+        }
+    }
+    
+    NSString *sessionStringValue = [NSString stringWithFormat:@"%ld", (long)maxSession];
+    
+    return sessionStringValue;
+}
 @end

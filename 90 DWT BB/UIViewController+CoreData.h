@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Workout.h"
 #import "WorkoutCompleteDate.h"
+#import "Session.h"
 
 @interface UIViewController (CoreData)
 
@@ -19,4 +20,5 @@
 -(void)saveDataNavControllerToAppDelegate;
 -(BOOL)workoutCompleted;
 -(NSString*)getWorkoutCompletedDate;
+- (NSString*)findMaxSessionValue;
 @end

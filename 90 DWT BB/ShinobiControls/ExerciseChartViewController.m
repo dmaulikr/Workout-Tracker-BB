@@ -33,8 +33,10 @@
     // Only show the graph title for iOS 8 and above.  iOS 7 get the title in the navigation bar.
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
     if (sysVer >= 8.0) {
-        
-        chart.title = self.appDelegate.graphTitle;
+        //NSString *title = self.appDelegate.graphTitle;
+        //chart.title = self.appDelegate.graphTitle;
+        //chart.title = title;
+        //chart.title =
         chart.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
         chart.titleCentresOn = SChartTitleCentresOnChart;
     }
@@ -53,7 +55,7 @@
     yAxis.title = [self findYAxisTitle];
     yAxis.style.titleStyle.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     //yAxis.rangePaddingLow = @(1.0);
-    //yAxis.rangePaddingHigh = @(1.0);
+    yAxis.rangePaddingHigh = @(0.5);
     chart.yAxis = yAxis;
     
     // Add the chart to the view controller
@@ -89,20 +91,6 @@
 -(NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart {
     
     NSInteger highestIndexFound = [self GetHighestDatabaseIndex];
-    
-    /*
-    if (highestIndexFound == 0) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Graph Data Error"
-                                                        message:@"All Rep/Weight fields for this exercise must have a number in order to display the graph data."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        
-        [alert show];
-    }
-     */
-    
     
     return highestIndexFound;
 }
@@ -170,9 +158,6 @@
     
     // ColumnSeries
     SChartColumnSeries *columnSeries = [[SChartColumnSeries alloc] init];
-    
-    // Enable area fill
-    //columnSeries.style.areaColorGradient = [UIColor clearColor];
     
     NSNumber *tryNumber = [NSNumber numberWithInteger:index + 1];
     

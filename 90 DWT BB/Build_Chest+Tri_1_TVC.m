@@ -667,56 +667,56 @@
 
 - (IBAction)showGraph:(UIButton *)sender {
     
-    [self saveData];
-    
-    int minRange;
-    int maxRange;
-    NSMutableArray *tempArray;
-    tempArray = [[NSMutableArray alloc] init];
-    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    for (int i = 0; i < self.graphButtonArray.count; i++) {
-        
-        if (self.graphButtonArray[i] == sender) {
-            
-            // Get name of exercise for this cell
-            UILabel *tempLabel = self.exerciseLabelArray[i];
-            //NSLog(@"Button = graphButton_%d", i + 1);
-            
-            mainAppDelegate.graphTitle = tempLabel.text;
-            mainAppDelegate.graphRoutine = ((DataNavController *)self.parentViewController).routine;
-            mainAppDelegate.graphWorkout = ((DataNavController *)self.parentViewController).workout;
-            //NSLog(@"GraphTitle = %@", mainAppDelegate.graphTitle);
-            //NSLog(@"GraphRoutine = %@", mainAppDelegate.graphRoutine);
-            //NSLog(@"GraphWorkout = %@", mainAppDelegate.graphWorkout)
-            
-            // Get the beginning and end range for the reps labels in the cell
-            minRange = i * 6;
-            maxRange = (i * 6) + 6;
-        }
-    }
-    
-    // Get the number of reps labels in the cell that aren't ""
-    for (int j = minRange; j < maxRange; j++) {
-        
-        if (![self.Reps[j] isEqualToString:@""]) {
-            
-            NSString *tempString = self.Reps[j];
-            [tempArray addObject:tempString];
-        }
-    }
-    
-    mainAppDelegate.graphDataPoints = tempArray;
-
-    
-    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
-    
-    if (sysVer >= 8.0) {
-        
-        // iOS 8 or greater show popover of chart/grid
-        [self performSegueWithIdentifier:@"showPopover" sender:sender];
-        
-    }
+//    [self saveData];
+//    
+//    int minRange;
+//    int maxRange;
+//    NSMutableArray *tempArray;
+//    tempArray = [[NSMutableArray alloc] init];
+//    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    
+//    for (int i = 0; i < self.graphButtonArray.count; i++) {
+//        
+//        if (self.graphButtonArray[i] == sender) {
+//            
+//            // Get name of exercise for this cell
+//            UILabel *tempLabel = self.exerciseLabelArray[i];
+//            //NSLog(@"Button = graphButton_%d", i + 1);
+//            
+//            mainAppDelegate.graphTitle = tempLabel.text;
+//            mainAppDelegate.graphRoutine = ((DataNavController *)self.parentViewController).routine;
+//            mainAppDelegate.graphWorkout = ((DataNavController *)self.parentViewController).workout;
+//            //NSLog(@"GraphTitle = %@", mainAppDelegate.graphTitle);
+//            //NSLog(@"GraphRoutine = %@", mainAppDelegate.graphRoutine);
+//            //NSLog(@"GraphWorkout = %@", mainAppDelegate.graphWorkout)
+//            
+//            // Get the beginning and end range for the reps labels in the cell
+//            minRange = i * 6;
+//            maxRange = (i * 6) + 6;
+//        }
+//    }
+//    
+//    // Get the number of reps labels in the cell that aren't ""
+//    for (int j = minRange; j < maxRange; j++) {
+//        
+//        if (![self.Reps[j] isEqualToString:@""]) {
+//            
+//            NSString *tempString = self.Reps[j];
+//            [tempArray addObject:tempString];
+//        }
+//    }
+//    
+//    mainAppDelegate.graphDataPoints = tempArray;
+//
+//    
+//    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+//    
+//    if (sysVer >= 8.0) {
+//        
+//        // iOS 8 or greater show popover of chart/grid
+//        [self performSegueWithIdentifier:@"showPopover" sender:sender];
+//        
+//    }
 }
 
 - (void)shareActionSheet {
@@ -772,20 +772,69 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     UINavigationController *destNav = segue.destinationViewController;
+//    
+//    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+//    
+//    if (sysVer >= 8.0) {
+//        
+//        // iOS 8 or greater show popover of chart/grid
+//        
+//        // This is the important part
+//        UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
+//        popPC.delegate = self;
+//        popPC.sourceView = sender;
+//        //popPC.sourceRect = sender.bounds;
+//        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+//    }
     
-    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    [self saveData];
     
-    if (sysVer >= 8.0) {
+    int minRange;
+    int maxRange;
+    NSMutableArray *tempArray;
+    tempArray = [[NSMutableArray alloc] init];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    for (int i = 0; i < self.graphButtonArray.count; i++) {
         
-        // iOS 8 or greater show popover of chart/grid
-        
-        // This is the important part
-        UIPopoverPresentationController *popPC = destNav.popoverPresentationController;
-        popPC.delegate = self;
-        popPC.sourceView = sender;
-        //popPC.sourceRect = sender.bounds;
-        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        if (self.graphButtonArray[i] == sender) {
+            
+            // Get name of exercise for this cell
+            UILabel *tempLabel = self.exerciseLabelArray[i];
+            //NSLog(@"Button = graphButton_%d", i + 1);
+            
+            mainAppDelegate.graphTitle = tempLabel.text;
+            mainAppDelegate.graphRoutine = ((DataNavController *)self.parentViewController).routine;
+            mainAppDelegate.graphWorkout = ((DataNavController *)self.parentViewController).workout;
+            //NSLog(@"GraphTitle = %@", mainAppDelegate.graphTitle);
+            //NSLog(@"GraphRoutine = %@", mainAppDelegate.graphRoutine);
+            //NSLog(@"GraphWorkout = %@", mainAppDelegate.graphWorkout)
+            
+            // Get the beginning and end range for the reps labels in the cell
+            minRange = i * 6;
+            maxRange = (i * 6) + 6;
+        }
     }
+    
+    // Get the number of reps labels in the cell that aren't ""
+    for (int j = minRange; j < maxRange; j++) {
+        
+        if (![self.Reps[j] isEqualToString:@""]) {
+            
+            NSString *tempString = self.Reps[j];
+            [tempArray addObject:tempString];
+        }
+    }
+    
+    mainAppDelegate.graphDataPoints = tempArray;
+    
+    
+    
+    
+}
+
+- (IBAction)backToTheStart:(UIStoryboardSegue *)segue {
+    
 }
 
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {

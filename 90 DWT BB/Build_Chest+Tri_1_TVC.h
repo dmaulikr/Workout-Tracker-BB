@@ -12,6 +12,7 @@
 #import "UITableViewController+Email.h"
 #import "AppDelegate.h"
 #import "MPAdView.h"
+#import "ShinobiViewController.h"
 
 @interface Build_Chest_Tri_1_TVC : UITableViewController <UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, MPAdViewDelegate>
 

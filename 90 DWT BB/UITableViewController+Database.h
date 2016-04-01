@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Workout.h"
 #import "WorkoutCompleteDate.h"
+#import "Session.h"
 
 @interface UITableViewController (Database)
 
@@ -23,5 +24,6 @@
 -(BOOL)workoutCompletedWithArguments:(NSNumber*)workoutIndex :(NSString*)routine :(NSString*)workout;
 -(NSString*)getWorkoutCompletedDate;
 -(void)saveDataNavControllerToAppDelegate;
+- (NSString*)findMaxSessionValue;
 //-(void)saveTextFieldToDatabase:(NSArray)
 @end

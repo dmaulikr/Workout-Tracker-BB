@@ -335,6 +335,9 @@
 		A5F1CD8818AD3B96000FD51E /* Tone_12_TVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F1CD8718AD3B96000FD51E /* Tone_12_TVC.m */; };
 		A5F3478E18B67569009BBA33 /* Test_CVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F3478D18B67569009BBA33 /* Test_CVC.m */; };
 		A5F3479118B67622009BBA33 /* TestCVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F3479018B67622009BBA33 /* TestCVCCell.m */; };
+		A5FE87021CAC644C00F109B2 /* ExerciseGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FE87011CAC644C00F109B2 /* ExerciseGridViewController.m */; };
+		A5FE87091CAD722200F109B2 /* Session+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FE87061CAD722200F109B2 /* Session+CoreDataProperties.m */; };
+		A5FE870A1CAD722200F109B2 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FE87081CAD722200F109B2 /* Session.m */; };
 		A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */; };
 		A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA601A68558E002E6513 /* CoreText.framework */; };
 		A5FFDA6A1A697BBC002E6513 /* ExerciseChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */; };
@@ -954,6 +957,12 @@
 		A5F3478D18B67569009BBA33 /* Test_CVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_CVC.m; sourceTree = "<group>"; };
 		A5F3478F18B67622009BBA33 /* TestCVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCVCCell.h; sourceTree = "<group>"; };
 		A5F3479018B67622009BBA33 /* TestCVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCVCCell.m; sourceTree = "<group>"; };
+		A5FE87001CAC644C00F109B2 /* ExerciseGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseGridViewController.h; sourceTree = "<group>"; };
+		A5FE87011CAC644C00F109B2 /* ExerciseGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseGridViewController.m; sourceTree = "<group>"; };
+		A5FE87051CAD722200F109B2 /* Session+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Session+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A5FE87061CAD722200F109B2 /* Session+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Session+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A5FE87071CAD722200F109B2 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		A5FE87081CAD722200F109B2 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A5FFDA601A68558E002E6513 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		A5FFDA681A697BBC002E6513 /* ExerciseChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseChartViewController.h; path = ShinobiControls/ExerciseChartViewController.h; sourceTree = "<group>"; };
@@ -1045,6 +1054,10 @@
 		587CFB54189DD9B8006FA541 = {
 			isa = PBXGroup;
 			children = (
+				A5FE87051CAD722200F109B2 /* Session+CoreDataProperties.h */,
+				A5FE87061CAD722200F109B2 /* Session+CoreDataProperties.m */,
+				A5FE87071CAD722200F109B2 /* Session.h */,
+				A5FE87081CAD722200F109B2 /* Session.m */,
 				A54E89421C29F635006C8FFC /* WorkoutCompleteDate+CoreDataProperties.h */,
 				A54E89431C29F635006C8FFC /* WorkoutCompleteDate+CoreDataProperties.m */,
 				A54E89441C29F635006C8FFC /* WorkoutCompleteDate.h */,
@@ -2207,6 +2220,8 @@
 			children = (
 				A5FFDA681A697BBC002E6513 /* ExerciseChartViewController.h */,
 				A5FFDA691A697BBC002E6513 /* ExerciseChartViewController.m */,
+				A5FE87001CAC644C00F109B2 /* ExerciseGridViewController.h */,
+				A5FE87011CAC644C00F109B2 /* ExerciseGridViewController.m */,
 				A5FFDA6E1A69AAE1002E6513 /* ShinobiViewController.h */,
 				A5FFDA6F1A69AAE1002E6513 /* ShinobiViewController.m */,
 			);
@@ -2429,6 +2444,7 @@
 				A53170451CA5C9FC00B406FE /* MPAdServerURLBuilder.m in Sources */,
 				A53170801CA5C9FC00B406FE /* MPIdentityProvider.m in Sources */,
 				A53170581CA5C9FC00B406FE /* MPAdWebView.m in Sources */,
+				A5FE870A1CAD722200F109B2 /* Session.m in Sources */,
 				A531708D1CA5C9FC00B406FE /* MPVASTIndustryIcon.m in Sources */,
 				A53170C31CA5C9FC00B406FE /* MPTableViewAdPlacer.m in Sources */,
 				A53170A71CA5C9FC00B406FE /* MPNativeAdRendererImageHandler.m in Sources */,
@@ -2452,6 +2468,7 @@
 				A53170691CA5C9FC00B406FE /* MRBundleManager.m in Sources */,
 				A53170701CA5C9FC00B406FE /* MRImageDownloader.m in Sources */,
 				A51B6EED18B5655900F34A11 /* Build_Legs_1_TVC.m in Sources */,
+				A5FE87021CAC644C00F109B2 /* ExerciseGridViewController.m in Sources */,
 				A53170981CA5C9FC00B406FE /* MPVASTWrapper.m in Sources */,
 				A531705E1CA5C9FC00B406FE /* MPInterstitialAdManager.m in Sources */,
 				A53170851CA5C9FC00B406FE /* MPSessionTracker.m in Sources */,
@@ -2609,6 +2626,7 @@
 				A531703E1CA5C9FC00B406FE /* MPActivityViewControllerHelper+TweetShare.m in Sources */,
 				A53170AC1CA5C9FC00B406FE /* MPNativePositionSource.m in Sources */,
 				A5F1CD7318AD35AF000FD51E /* Tone_5_TVC.m in Sources */,
+				A5FE87091CAD722200F109B2 /* Session+CoreDataProperties.m in Sources */,
 				A53170911CA5C9FC00B406FE /* MPVASTManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

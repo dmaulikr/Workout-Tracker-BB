@@ -209,23 +209,23 @@
         tempGraphButton.clipsToBounds = YES;
         
         // Uncomment Only For Testing the Graph Button
-        //tempGraphButton.hidden = NO;
+        tempGraphButton.hidden = NO;
         
         
         
         
         
-        // Show or Hide Graph Button
-        if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.graphview"]) {
-            
-            // User purchased the Graph View in-app purchase so show the Graph Button
-            tempGraphButton.hidden = NO;
-            
-        } else {
-            
-            // Hide the Graph Button
-            tempGraphButton.hidden = YES;
-        }
+//        // Show or Hide Graph Button
+//        if ([[_0DWTBBIAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.graphview"]) {
+//            
+//            // User purchased the Graph View in-app purchase so show the Graph Button
+//            tempGraphButton.hidden = NO;
+//            
+//        } else {
+//            
+//            // Hide the Graph Button
+//            tempGraphButton.hidden = YES;
+//        }
         
         
         

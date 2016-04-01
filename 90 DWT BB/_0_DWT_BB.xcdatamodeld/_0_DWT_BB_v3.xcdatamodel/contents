@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1509" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="AutoLock" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="useAutoLock" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,7 +32,7 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="defaultRoutine" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Session" syncable="YES">
+    <entity name="Session" representedClassName="Session" syncable="YES">
         <attribute name="currentSession" optional="YES" attributeType="String" defaultValueString="1" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -62,13 +62,13 @@
         <attribute name="workoutCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AutoLock" positionX="81" positionY="198" width="128" height="75"/>
+        <element name="Email" positionX="63" positionY="189" width="128" height="75"/>
+        <element name="Measurement" positionX="45" positionY="144" width="128" height="210"/>
+        <element name="Photo" positionX="27" positionY="135" width="128" height="120"/>
+        <element name="Routine" positionX="9" positionY="126" width="128" height="75"/>
+        <element name="Session" positionX="0" positionY="117" width="128" height="75"/>
         <element name="Workout" positionX="0" positionY="0" width="128" height="270"/>
         <element name="WorkoutCompleteDate" positionX="0" positionY="108" width="128" height="135"/>
-        <element name="Session" positionX="0" positionY="117" width="128" height="75"/>
-        <element name="Routine" positionX="9" positionY="126" width="128" height="75"/>
-        <element name="Photo" positionX="27" positionY="135" width="128" height="120"/>
-        <element name="Measurement" positionX="45" positionY="144" width="128" height="210"/>
-        <element name="Email" positionX="63" positionY="189" width="128" height="75"/>
-        <element name="AutoLock" positionX="81" positionY="198" width="128" height="75"/>
     </elements>
 </model>

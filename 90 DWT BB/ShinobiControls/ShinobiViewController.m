@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.navigationItem.title = mainAppDelegate.graphTitle;
 }
 
 - (void)didReceiveMemoryWarning {
