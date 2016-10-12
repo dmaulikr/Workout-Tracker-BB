@@ -19,7 +19,7 @@ class CDOperation {
         if let _error = error {
             print("\(#function) Error: \(_error.localizedDescription)")
         } else {
-            print("There are \(count) \(entityName) object(s) in \(context)")
+            // print("There are \(count) \(entityName) object(s) in \(context)")
         }
         return count
     }
@@ -160,13 +160,13 @@ class CDOperation {
         do {
             if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                 
-                print("workoutObjects.count = \(workoutObjects.count)")
+                // print("workoutObjects.count = \(workoutObjects.count)")
                 
                 switch workoutObjects.count {
                 case 0:
                     // No matches for this object.
                     // Insert a new record
-                    print("No Matches")
+                    // print("No Matches")
                     let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Workout", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Workout
                     
                     insertWorkoutInfo.session = session
@@ -195,7 +195,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and delete all but the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     for index in 0..<workoutObjects.count {
                         
                         if (index == workoutObjects.count - 1) {
@@ -239,13 +239,13 @@ class CDOperation {
         do {
             if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                 
-                print("workoutObjects.count = \(workoutObjects.count)")
+                // print("workoutObjects.count = \(workoutObjects.count)")
                 
                 switch workoutObjects.count {
                 case 0:
                     // No matches for this object.
                     // Insert a new record
-                    print("No Matches")
+                    // print("No Matches")
                     let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Workout", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Workout
                     
                     insertWorkoutInfo.session = session
@@ -273,7 +273,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and delete all but the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     for index in 0..<workoutObjects.count {
                         
                         if (index == workoutObjects.count - 1) {
@@ -316,13 +316,13 @@ class CDOperation {
         do {
             if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                 
-                print("workoutObjects.count = \(workoutObjects.count)")
+                // print("workoutObjects.count = \(workoutObjects.count)")
                 
                 switch workoutObjects.count {
                 case 0:
                     // No matches for this object.
                     // Insert a new record
-                    print("No Matches")
+                    // print("No Matches")
                     let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Workout", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Workout
                     
                     insertWorkoutInfo.session = session
@@ -349,7 +349,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and delete all but the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     for index in 0..<workoutObjects.count {
                         
                         if (index == workoutObjects.count - 1) {
@@ -456,7 +456,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and pick the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     let matchedWorkoutInfo = workoutObjects.last
                     
                     return matchedWorkoutInfo!.weight
@@ -502,7 +502,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and pick the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     let matchedWorkoutInfo = workoutObjects.last
                     
                     return matchedWorkoutInfo!.notes
@@ -532,7 +532,7 @@ class CDOperation {
         do {
             if let workoutNoteObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                 
-                print("workoutNoteObjects.count = \(workoutNoteObjects.count)")
+                // print("workoutNoteObjects.count = \(workoutNoteObjects.count)")
                 
                 return workoutNoteObjects
             }
@@ -551,7 +551,7 @@ class CDOperation {
         do {
             if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
                 
-                print("routineObjects.count = \(routineObjects.count)")
+                // print("routineObjects.count = \(routineObjects.count)")
                 
                 switch routineObjects.count {
                 case 0:
@@ -577,7 +577,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and pick the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     var routineString = ""
                     for index in 0..<routineObjects.count {
                         
@@ -611,7 +611,7 @@ class CDOperation {
         do {
             if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
                 
-                print("sessionObjects.count = \(sessionObjects.count)")
+                // print("sessionObjects.count = \(sessionObjects.count)")
                 
                 switch sessionObjects.count {
                 case 0:
@@ -637,7 +637,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and pick the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     var sessionString = ""
                     for index in 0..<sessionObjects.count {
                         
@@ -679,13 +679,13 @@ class CDOperation {
         do {
             if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
                 
-                print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
+                // print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                 
                 switch workoutCompleteDateObjects.count {
                 case 0:
                     // No matches for this object.
                     // Insert a new record
-                    print("No Matches")
+                    // print("No Matches")
                     let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("WorkoutCompleteDate", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! WorkoutCompleteDate
                     
                     insertWorkoutInfo.session = session as String
@@ -710,7 +710,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and delete all but the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     for index in 0..<workoutCompleteDateObjects.count {
                         
                         if (index == workoutCompleteDateObjects.count - 1) {
@@ -753,7 +753,7 @@ class CDOperation {
         do {
             if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
                 
-                print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
+                // print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                 
                 return workoutCompleteDateObjects
                 
@@ -781,7 +781,7 @@ class CDOperation {
         do {
             if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
                 
-                print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
+                // print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                 
                 if workoutCompleteDateObjects.count != 0 {
                     
@@ -812,7 +812,7 @@ class CDOperation {
         do {
             if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
                 
-                print("measurementObjects.count = \(measurementObjects.count)")
+                // print("measurementObjects.count = \(measurementObjects.count)")
                 
                 return measurementObjects
                 
@@ -838,13 +838,13 @@ class CDOperation {
         do {
             if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
                 
-                print("measurementObjects.count = \(measurementObjects.count)")
+                // print("measurementObjects.count = \(measurementObjects.count)")
                 
                 switch measurementObjects.count {
                 case 0:
                     // No matches for this object.
                     // Insert a new record
-                    print("No Matches")
+                    // print("No Matches")
                     let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Measurement", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Measurement
                     
                     insertWorkoutInfo.session = session
@@ -931,7 +931,7 @@ class CDOperation {
                 default:
                     // More than one match
                     // Sort by most recent date and delete all but the newest
-                    print("More than one match for object")
+                    // print("More than one match for object")
                     for index in 0..<measurementObjects.count {
                         
                         if (index == measurementObjects.count - 1) {
@@ -1814,7 +1814,7 @@ class CDOperation {
                     do {
                         if let workoutObjects1 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                             
-                            print("workoutObjects1.count = \(workoutObjects1.count)")
+                            // print("workoutObjects1.count = \(workoutObjects1.count)")
                             
                             var maxIndex = 0
                             
@@ -2054,7 +2054,7 @@ class CDOperation {
                 do {
                     if let workoutObjects1 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                         
-                        print("workoutObjects1.count = \(workoutObjects1.count)")
+                        // print("workoutObjects1.count = \(workoutObjects1.count)")
                         
                         var maxIndex = 0
                         

@@ -15,6 +15,7 @@
 @implementation CoreDataHelper
 
 #define debug 0
+#define debugStores 0
 
 #pragma mark - SHARED HELPER
 + (CoreDataHelper*)sharedHelper {
@@ -161,7 +162,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         if (!_store) {
             NSLog(@"Failed to add store. Error: %@", error);abort();
         } else {
-            NSLog(@"Successfully added store: %@", _store);
+            if (debugStores==1) {
+                NSLog(@"Successfully added store: %@", _store);
+            }
         }
     //}
 }
@@ -184,7 +187,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     if (!_sourceStore) {
         NSLog(@"Failed to add source store. Error: %@", error);abort();
     } else {
-        NSLog(@"Successfully added source store: %@", _sourceStore);
+        if (debugStores==1) {
+            NSLog(@"Successfully added source store: %@", _sourceStore);
+        }
     }
 }
 - (void)setupCoreData {
@@ -195,16 +200,25 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
 
 
         if ([self iCloudEnabledByUser] && [self iCloudAccountIsSignedIn]) {
-            NSLog(@"** Attempting to load the iCloud Store **");
+            
+            if (debugStores==1) {
+                NSLog(@"** Attempting to load the iCloud Store **");
+            }
+            
             if ([self loadiCloudStore]) {
                 return;
             }
         }
-        NSLog(@"** Attempting to load the Local, Non-iCloud Store **");
+        
+        if (debugStores==1) {
+            NSLog(@"** Attempting to load the Local, Non-iCloud Store **");
+        }
         //[self setDefaultDataStoreAsInitialStore]; // Enable if you have a DefaultData.sqlite file you'd like to ship with the application
         [self loadStore];
     } else {
-        NSLog(@"SKIPPED setupCoreData, there's an existing Store:\n ** _store(%@)\n ** _iCloudStore(%@)", _store, _iCloudStore);
+        if (debugStores==1) {
+            NSLog(@"SKIPPED setupCoreData, there's an existing Store:\n ** _store(%@)\n ** _iCloudStore(%@)", _store, _iCloudStore);
+        }
     }
 }
 
@@ -216,13 +230,17 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     if ([_context hasChanges]) {
         NSError *error = nil;
         if ([_context save:&error]) {
-            NSLog(@"_context SAVED changes to persistent store");
+            if (debug==1) {
+                NSLog(@"_context SAVED changes to persistent store");
+            }
         } else {
             NSLog(@"Failed to save _context: %@", error);
             [self showValidationError:error];
         }
     } else {
-        NSLog(@"SKIPPED _context save, there are no changes!");
+        if (debug==1) {
+            NSLog(@"SKIPPED _context save, there are no changes!");
+        }
     }
 }
 - (void)backgroundSaveContext {
@@ -237,7 +255,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         if ([_parentContext hasChanges]) {
             NSError *error = nil;
             if ([_parentContext save:&error]) {
-                NSLog(@"_parentContext SAVED changes to persistent store");
+                if (debug==1) {
+                    NSLog(@"_parentContext SAVED changes to persistent store");
+                }
             }
             else {
                 NSLog(@"_parentContext FAILED to save: %@", error);
@@ -245,7 +265,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
             }
         }
         else {
-            NSLog(@"_parentContext SKIPPED saving as there are no changes");
+            if (debug==1) {
+                NSLog(@"_parentContext SKIPPED saving as there are no changes");
+            }
         }
     }];
 }
@@ -257,7 +279,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
             if (![moc save:&error]) {
                 NSLog(@"ERROR Saving: %@",error);
             } else {
-                NSLog(@"SAVED %@", moc);
+                if (debug==1) {
+                    NSLog(@"SAVED %@", moc);
+                }
             }
         }
         // Save the parent context, if any.
@@ -960,7 +984,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     }
     id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
     if (token) {
-        NSLog(@"** iCloud is SIGNED IN with token '%@' **", token);
+        if (debug==1) {
+           NSLog(@"** iCloud is SIGNED IN with token '%@' **", token);
+        }
         return YES;
     }
     NSLog(@"** iCloud is NOT SIGNED IN **");
@@ -992,7 +1018,9 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
                                                     options:options
                                                       error:&error];
     if (_iCloudStore) {
-        NSLog(@"** The iCloud Store has been successfully configured at '%@' **", _iCloudStore.URL.path);
+        if (debugStores==1) {
+            NSLog(@"** The iCloud Store has been successfully configured at '%@' **", _iCloudStore.URL.path);
+        }
         [self confirmMergeWithiCloud];
         //[self destroyAlliCloudDataForThisApplication]; ////Comment out this line before submitting to Apple.  This will delete iCloud data.
         return YES;
@@ -1068,10 +1096,14 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     [[NSUserDefaults standardUserDefaults] synchronize]; // Ensure current value
     if ([[[NSUserDefaults standardUserDefaults]
           objectForKey:@"iCloudEnabled"] boolValue]) {
-        NSLog(@"** iCloud is ENABLED in Settings **");
+        if (debugStores==1) {
+            NSLog(@"** iCloud is ENABLED in Settings **");
+        }
         return YES;
     }
-    NSLog(@"** iCloud is DISABLED in Settings **");
+    if (debugStores==1) {
+        NSLog(@"** iCloud is DISABLED in Settings **");
+    }
     return NO;
 }
 - (void)ensureAppropriateStoreIsLoaded {
@@ -1082,14 +1114,20 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         return; // If neither store is loaded, skip (usually first launch)
     }
     if (![self iCloudEnabledByUser] && _store) {
-        NSLog(@"The Non-iCloud Store is loaded as it should be");
+        if (debugStores==1) {
+            NSLog(@"The Non-iCloud Store is loaded as it should be");
+        }
         return;
     }
     if ([self iCloudEnabledByUser] && _iCloudStore) {
-        NSLog(@"The iCloud Store is loaded as it should be");
+        if (debugStores==1) {
+            NSLog(@"The iCloud Store is loaded as it should be");
+        }
         return;
     }
-    NSLog(@"** The user preference on using iCloud with this application appears to have changed. Core Data will now be reset. **");
+    if (debugStores==1) {
+        NSLog(@"** The user preference on using iCloud with this application appears to have changed. Core Data will now be reset. **");
+    }
     
     [self resetCoreData];
     [self setupCoreData];

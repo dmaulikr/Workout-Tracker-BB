@@ -263,7 +263,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                 do {
                     if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
                         
-                        if debug == 1 {
+                        if self.debug == 1 {
                             
                             print("sessionObjects.count = \(sessionObjects.count)")
                         }
@@ -323,7 +323,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("sessionObjects.count = \(sessionObjects.count)")
                     }
@@ -394,7 +394,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("workoutObjects.count = \(workoutObjects.count)")
                     }
@@ -413,7 +413,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                     }
@@ -432,7 +432,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("sessionObjects.count = \(sessionObjects.count)")
                     }
@@ -449,7 +449,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("sessionObjects.count = \(sessionObjects.count)")
                     }
@@ -474,7 +474,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("photoObjects.count = \(photoObjects.count)")
                     }
@@ -493,7 +493,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("measurementObjects.count = \(measurementObjects.count)")
                     }
@@ -512,7 +512,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("routineObjects.count = \(routineObjects.count)")
                     }
@@ -529,7 +529,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("routineObjects.count = \(routineObjects.count)")
                     }
@@ -552,7 +552,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("emailObjects.count = \(emailObjects.count)")
                     }
@@ -569,7 +569,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("emailObjects.count = \(emailObjects.count)")
                     }
@@ -593,7 +593,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let autoLockObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [AutoLock] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("autoLockObjects.count = \(autoLockObjects.count)")
                     }
@@ -650,7 +650,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("workoutObjects.count = \(workoutObjects.count)")
                     }
@@ -670,7 +670,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                     }
@@ -689,7 +689,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("photoObjects.count = \(photoObjects.count)")
                     }
@@ -708,7 +708,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             do {
                 if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
                     
-                    if debug == 1 {
+                    if self.debug == 1 {
                         
                         print("measurementObjects.count = \(measurementObjects.count)")
                     }

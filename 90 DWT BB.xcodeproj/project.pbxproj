@@ -25,7 +25,6 @@
 		58F21AF118A6E5A900DE043E /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF018A6E5A900DE043E /* Twitter.framework */; };
 		58F21AF318A6E5B800DE043E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF218A6E5B800DE043E /* SystemConfiguration.framework */; };
 		58F21AF718A6E5D100DE043E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF618A6E5D100DE043E /* MessageUI.framework */; };
-		58F21AF918A6E5D900DE043E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AF818A6E5D900DE043E /* iAd.framework */; };
 		58F21AFB18A6E5E600DE043E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFA18A6E5E600DE043E /* CoreImage.framework */; };
 		58F21AFD18A6E5F400DE043E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFC18A6E5F400DE043E /* AudioToolbox.framework */; };
 		58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFE18A6E60400DE043E /* Social.framework */; };
@@ -978,7 +977,6 @@
 				A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */,
 				58F21B0318A6E62600DE043E /* Security.framework in Frameworks */,
 				58F21AFB18A6E5E600DE043E /* CoreImage.framework in Frameworks */,
-				58F21AF918A6E5D900DE043E /* iAd.framework in Frameworks */,
 				587CFB67189DD9B8006FA541 /* CoreData.framework in Frameworks */,
 				587CFB65189DD9B8006FA541 /* UIKit.framework in Frameworks */,
 				587CFB61189DD9B8006FA541 /* Foundation.framework in Frameworks */,
@@ -2464,22 +2462,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT BB/90 DWT BB-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/90",
-					DWT,
-					BB,
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2499,22 +2488,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT BB/90 DWT BB-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/90",
-					DWT,
-					BB,
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
