@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
-    <entity name="AutoLock" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Automatic">
+    <entity name="AutoLock" representedClassName=".AutoLock" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="useAutoLock" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Email" syncable="YES">
+    <entity name="Email" representedClassName=".Email" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="defaultEmail" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Measurement" syncable="YES">
+    <entity name="Measurement" representedClassName=".Measurement" syncable="YES">
         <attribute name="chest" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="hips" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,14 +21,14 @@
         <attribute name="waist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Photo" syncable="YES">
+    <entity name="Photo" representedClassName=".Photo" syncable="YES">
         <attribute name="angle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="month" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Routine" syncable="YES">
+    <entity name="Routine" representedClassName=".Routine" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="defaultRoutine" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
