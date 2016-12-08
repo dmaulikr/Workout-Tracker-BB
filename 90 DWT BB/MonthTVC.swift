@@ -17,7 +17,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     var sectionsArray = [[], []]
     var session = ""
     var longPGR = UILongPressGestureRecognizer()
-    var indexPath = NSIndexPath()
+    var indexPath = IndexPath()
     var request = ""
     var position = NSInteger()
     
@@ -25,7 +25,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     var headerView = UIView()
     var bannerSize = CGSize()
     
-    private struct Week {
+    fileprivate struct Week {
         static let week1 = "Week 1"
         static let week2 = "Week 2"
         static let week3 = "Week 3"
@@ -51,9 +51,9 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         else {
             
             // Show the Banner Ad
-            self.headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 0)
+            self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0)
             
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone) {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
                 self.adView = MPAdView(adUnitId: "4046208fc4a74de38212426cf30fc747", size: MOPUB_BANNER_SIZE)
@@ -67,9 +67,9 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             }
             
             self.adView.delegate = self
-            self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           self.bannerSize.height - self.bannerSize.height,
-                                           self.bannerSize.width, self.bannerSize.height)
+            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                           y: self.bannerSize.height - self.bannerSize.height,
+                                           width: self.bannerSize.width, height: self.bannerSize.height)
         }
 
         // Add a long press gesture recognizer
@@ -84,7 +84,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Get the current session
@@ -109,13 +109,13 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             
             self.adView.loadAd()
             
-            self.adView.hidden = true;
+            self.adView.isHidden = true;
         }
 
         self.tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if debug == 1 {
@@ -132,7 +132,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         findWeekList()
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWTBB.removeads") {
@@ -144,10 +144,10 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         } else {
             
             // Show ads
-            self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           self.bannerSize.height - self.bannerSize.height,
-                                           self.bannerSize.width, self.bannerSize.height)
-            self.adView.hidden = false
+            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                           y: self.bannerSize.height - self.bannerSize.height,
+                                           width: self.bannerSize.width, height: self.bannerSize.height)
+            self.adView.isHidden = false
         }
 
         self.tableView.reloadData()
@@ -158,10 +158,10 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
         
         self.adView.removeFromSuperview()
     }
@@ -174,20 +174,20 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         return sectionsArray.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return sectionsArray[section].count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         // Configure the cell...
         
@@ -238,7 +238,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
             
@@ -249,7 +249,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         }
     }
 
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return 10
     }
@@ -257,13 +257,13 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "toWeekWorkoutList" {
             
-            let destinationVC = segue.destinationViewController as? WeekTVC
+            let destinationVC = segue.destination as? WeekTVC
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.session = session
@@ -290,41 +290,41 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         }
     }
     
-    func longPressGRAction(sender: UILongPressGestureRecognizer) {
+    func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
         
         if (sender.isEqual(self.longPGR)) {
             
-            if (sender.state == UIGestureRecognizerState.Began) {
+            if (sender.state == UIGestureRecognizerState.began) {
                 
-                let p = sender.locationInView(self.tableView)
+                let p = sender.location(in: self.tableView)
                 
-                if let tempIndexPath = self.tableView.indexPathForRowAtPoint(p) {
+                if let tempIndexPath = self.tableView.indexPathForRow(at: p) {
                     
                     // Only show the alertview if longpressed on a cell, not a section header.
                     self.indexPath = tempIndexPath
                     
                     // get affected cell
-                    let cell = self.tableView.cellForRowAtIndexPath(self.indexPath)
+                    let cell = self.tableView.cellForRow(at: self.indexPath)
                     
                     let tempMessage = ("Set the status for all \(CDOperation.getCurrentRoutine())-\(cell!.textLabel!.text!) workouts.")
                     
-                    let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .ActionSheet)
+                    let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
                     
-                    let notCompletedAction = UIAlertAction(title: "Not Completed", style: .Destructive, handler: {
+                    let notCompletedAction = UIAlertAction(title: "Not Completed", style: .destructive, handler: {
                         action in
                         
                         self.request = "Not Completed"
                         self.verifyAddDeleteRequestFromTableViewCell()
                     })
                     
-                    let completedAction = UIAlertAction(title: "Completed", style: .Default, handler: {
+                    let completedAction = UIAlertAction(title: "Completed", style: .default, handler: {
                         action in
                         
                         self.request = "Completed"
                         self.verifyAddDeleteRequestFromTableViewCell()
                     })
                     
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                     
                     alertController.addAction(notCompletedAction)
                     alertController.addAction(completedAction)
@@ -335,30 +335,30 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                         popover.sourceView = cell
                         popover.delegate = self
                         popover.sourceRect = (cell?.bounds)!
-                        popover.permittedArrowDirections = .Any
+                        popover.permittedArrowDirections = .any
                     }
                     
-                    presentViewController(alertController, animated: true, completion: nil)
+                    present(alertController, animated: true, completion: nil)
 
                 }
             }
         }
     }
     
-    @IBAction func editButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         
         let tempMessage = "Set the status for every week of \(CDOperation.getCurrentRoutine()) workouts."
         
-        let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
         
-        let notCompletedAction = UIAlertAction(title: "Not Completed", style: .Destructive, handler: {
+        let notCompletedAction = UIAlertAction(title: "Not Completed", style: .destructive, handler: {
             action in
             
             self.request = "Not Completed"
             self.verifyAddDeleteRequestFromBarButtonItem()
         })
         
-        let completedAction = UIAlertAction(title: "Completed", style: .Default, handler: {
+        let completedAction = UIAlertAction(title: "Completed", style: .default, handler: {
             action in
             
             self.request = "Completed"
@@ -366,7 +366,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(notCompletedAction)
         alertController.addAction(completedAction)
@@ -377,10 +377,10 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func AddDeleteDatesFromOneWeek() {
@@ -399,7 +399,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.deleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[i], index: indexArray[1])
+                    CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
                 }
 
             default:
@@ -410,7 +410,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.deleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[i], index: indexArray[1])
+                    CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
                 }
             }
             
@@ -428,7 +428,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[i], index: indexArray[i], useDate: NSDate())
+                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
                 }
                 
             default:
@@ -439,7 +439,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[i], index: indexArray[i], useDate: NSDate())
+                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
                 }
             }
         }
@@ -463,7 +463,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     
                     for j in 0..<nameArray.count {
                         
-                        CDOperation.deleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[j], index: indexArray[j])
+                        CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber)
                     }
                 }
                 
@@ -477,7 +477,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     
                     for j in 0..<nameArray.count {
                         
-                        CDOperation.deleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[j], index: indexArray[j])
+                        CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber)
                     }
                 }
             }
@@ -498,7 +498,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     
                     for j in 0..<nameArray.count {
                         
-                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[j], index: indexArray[j], useDate: NSDate())
+                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
                     }
                 }
 
@@ -512,7 +512,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     
                     for j in 0..<nameArray.count {
                         
-                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: nameArray[j], index: indexArray[j], useDate: NSDate())
+                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
                     }
                 }
             }
@@ -522,51 +522,51 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     func verifyAddDeleteRequestFromTableViewCell() {
         
         // get affected cell
-        let cell = self.tableView.cellForRowAtIndexPath(self.indexPath)
+        let cell = self.tableView.cellForRow(at: self.indexPath)
         
         self.position = self.findArrayPosition(self.indexPath)
         
         let tempMessage = ("You are about to set the status for all \(CDOperation.getCurrentRoutine())-\(cell!.textLabel!.text!) workouts to:\n\n\(self.request)\n\nDo you want to proceed?")
         
-        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
-        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: {
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             
             self.AddDeleteDatesFromOneWeek()
             self.tableView.reloadData()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func verifyAddDeleteRequestFromBarButtonItem() {
         
         let tempMessage = ("You are about to set the status for every week of the \(CDOperation.getCurrentRoutine()) workout to:\n\n\(self.request)\n\nDo you want to proceed?")
         
-        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
-        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: {
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             
             self.AddDeleteDatesFromAllWeeks()
             self.tableView.reloadData()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    func findArrayPosition(indexPath: NSIndexPath) -> NSInteger {
+    func findArrayPosition(_ indexPath: IndexPath) -> NSInteger {
         
         var position = NSInteger(0)
         
@@ -578,7 +578,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             }
             else {
                 
-                let totalRowsInSection = self.tableView.numberOfRowsInSection(i)
+                let totalRowsInSection = self.tableView.numberOfRows(inSection: i)
                 
                 position = position + totalRowsInSection
             }
@@ -587,7 +587,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         return position - 1
     }
     
-    func weekCompleted(week: NSInteger) -> Bool {
+    func weekCompleted(_ week: NSInteger) -> Bool {
         
         var tempWorkoutNameArray = [String]()
         var tempWorkoutIndexArray = [Int]()
@@ -609,17 +609,17 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         
         for i in 0..<tempWorkoutIndexArray.count {
             
-            let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(CDOperation.getCurrentSession(), routine: CDOperation.getCurrentRoutine(), workout: tempWorkoutNameArray[i], index: tempWorkoutIndexArray[i])
+            let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: tempWorkoutNameArray[i] as NSString, index: tempWorkoutIndexArray[i] as NSNumber)
             
             if workoutCompletedObjects.count != 0 {
                 
                 // Workout Completed
-                resultsArray.insert("YES", atIndex: i)
+                resultsArray.insert("YES", at: i)
             }
             else {
                 
                 // Workout NOT Completed
-                resultsArray.insert("NO", atIndex: i)
+                resultsArray.insert("NO", at: i)
             }
         }
         
@@ -1612,23 +1612,23 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         return self
     }
     
-    func adViewDidLoadAd(view: MPAdView!) {
+    func adViewDidLoadAd(_ view: MPAdView!) {
         
         let size = view.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
         let bottomAlignedY = self.bannerSize.height - size.height
-        view.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height)
+        view.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
         
         if (self.headerView.frame.size.height == 0) {
             
             // No ads shown yet.  Animate showing the ad.
-            let headerViewFrame = CGRectMake(0, 0, self.view.bounds.size.width, self.bannerSize.height)
+            let headerViewFrame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.bannerSize.height)
             
-            UIView.animateWithDuration(0.25, animations: {self.headerView.frame = headerViewFrame
+            UIView.animate(withDuration: 0.25, animations: {self.headerView.frame = headerViewFrame
                 self.tableView.tableHeaderView = self.headerView
-                self.adView.hidden = true},
+                self.adView.isHidden = true},
                                        completion: {(finished: Bool) in
-                                        self.adView.hidden = false
+                                        self.adView.isHidden = false
                                         
             })
         }
@@ -1639,20 +1639,20 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         }
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        self.adView.hidden = true
-        self.adView.rotateToOrientation(toInterfaceOrientation)
+        self.adView.isHidden = true
+        self.adView.rotate(to: toInterfaceOrientation)
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         
         let size = self.adView.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
         let bottomAlignedY = self.headerView.bounds.size.height - size.height
         
-        self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height)
+        self.adView.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
         
-        self.adView.hidden = false
+        self.adView.isHidden = false
     }
 }

@@ -7,46 +7,83 @@
 
 import Foundation
 import CoreData
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CDOperation {
  
-    class func objectCountForEntity (entityName:String, context:NSManagedObjectContext) -> Int {
+    class func objectCountForEntity (_ entityName:String, context:NSManagedObjectContext) -> Int {
         
-        let request = NSFetchRequest(entityName: entityName)
-        var error:NSError?
-        let count = context.countForFetchRequest(request, error: &error)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        //var error:NSError? = nil
         
-        if let _error = error {
-            print("\(#function) Error: \(_error.localizedDescription)")
-        } else {
-            // print("There are \(count) \(entityName) object(s) in \(context)")
+        do {
+            
+            let count = try context.count(for: request)
+            print("There are \(count) \(entityName) object(s) in \(context)")
+            return count
+            
+        } catch let error as NSError {
+            
+            print("\(#function) Error: \(error.localizedDescription)")
+            return 0
         }
-        return count
+        
+        //        let count = context.count(for: request, error: &error)
+        //
+        //        if let _error = error {
+        //            print("\(#function) Error: \(_error.localizedDescription)")
+        //        } else {
+        //            print("There are \(count) \(entityName) object(s) in \(context)")
+        //        }
+        //        return count
     }
     
-    class func objectsForEntity(entityName:String, context:NSManagedObjectContext, filter:NSPredicate?, sort:[NSSortDescriptor]?) -> [AnyObject]? {
+    class func objectsForEntity(_ entityName:String, context:NSManagedObjectContext, filter:NSPredicate?, sort:[NSSortDescriptor]?) -> [AnyObject]? {
 
-        let request = NSFetchRequest(entityName:entityName)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName:entityName)
         request.predicate = filter
         request.sortDescriptors = sort
 
         do {
-            return try context.executeFetchRequest(request)
+            return try context.fetch(request)
         } catch {
             print("\(#function) FAILED to fetch objects for \(entityName) entity")
             return nil
         }
     }
     
-    class func objectName(object:NSManagedObject) -> String {
+    class func objectName(_ object:NSManagedObject) -> String {
         
-        if let name = object.valueForKey("name") as? String {
+        if let name = object.value(forKey: "name") as? String {
             return name
         }
         return object.description
     }
     
-    class func objectDeletionIsValid(object:NSManagedObject) -> Bool {
+    class func objectDeletionIsValid(_ object:NSManagedObject) -> Bool {
         
         do {
             try object.validateForDelete()
@@ -57,7 +94,7 @@ class CDOperation {
         }
     }
     
-    class func objectWithAttributeValueForEntity(entityName:String, context:NSManagedObjectContext, attribute:String, value:String) -> NSManagedObject? {
+    class func objectWithAttributeValueForEntity(_ entityName:String, context:NSManagedObjectContext, attribute:String, value:String) -> NSManagedObject? {
         
         let predicate = NSPredicate(format: "%K == %@", attribute, value)
         let objects = CDOperation.objectsForEntity(entityName, context: context, filter: predicate, sort: nil)
@@ -67,7 +104,7 @@ class CDOperation {
         return nil
     }
     
-    class func predicateForAttributes (attributes:[NSObject:AnyObject], type:NSCompoundPredicateType ) -> NSPredicate? {
+    class func predicateForAttributes (_ attributes:[AnyHashable: Any], type:NSCompoundPredicate.LogicalType ) -> NSPredicate? {
             
         // Create an array of predicates, which will be later combined into a compound predicate.
         var predicates:[NSPredicate]?
@@ -79,17 +116,17 @@ class CDOperation {
                 
             // If the value is a string, create the predicate based on a string value
             if let stringValue = value as? String {
-                predicate = NSPredicate(format: "%K == %@", attribute, stringValue)
+                predicate = NSPredicate(format: "%K == %@", attribute as CVarArg, stringValue)
             }
                 
             // If the value is a number, create the predicate based on a numerical value
             if let numericalValue = value as? NSNumber {
-                predicate = NSPredicate(format: "%K == %@", attribute, numericalValue)
+                predicate = NSPredicate(format: "%K == %@", attribute as CVarArg, numericalValue)
             }
             
             // If the value is a date, create the predicate based on a date value
-            if let dateValue = value as? NSDate {
-                predicate = NSPredicate(format: "%K == %@", attribute, dateValue)
+            if let dateValue = value as? Date {
+                predicate = NSPredicate(format: "%K == %@", attribute as CVarArg, dateValue as CVarArg)
             }
                 
             // Append new predicate to predicate array, or create it if it doesn't exist yet
@@ -107,9 +144,9 @@ class CDOperation {
         return nil
     }
     
-    class func uniqueObjectWithAttributeValuesForEntity(entityName:String, context:NSManagedObjectContext, uniqueAttributes:[NSObject:AnyObject]) -> NSManagedObject? {
+    class func uniqueObjectWithAttributeValuesForEntity(_ entityName:String, context:NSManagedObjectContext, uniqueAttributes:[AnyHashable: Any]) -> NSManagedObject? {
             
-        let predicate = CDOperation.predicateForAttributes(uniqueAttributes, type: .AndPredicateType)
+        let predicate = CDOperation.predicateForAttributes(uniqueAttributes, type: .and)
         let objects = CDOperation.objectsForEntity(entityName, context: context, filter: predicate, sort: nil)
             
         if objects?.count > 0 {
@@ -119,28 +156,28 @@ class CDOperation {
         }
         return nil
     }
-    class func insertUniqueObject(entityName:String, context:NSManagedObjectContext, uniqueAttributes:[String:AnyObject], additionalAttributes:[String:AnyObject]?) -> NSManagedObject {
+    class func insertUniqueObject(_ entityName:String, context:NSManagedObjectContext, uniqueAttributes:[String:AnyObject], additionalAttributes:[String:AnyObject]?) -> NSManagedObject {
             
         // Return existing object after adding the additional attributes.
         if let existingObject = CDOperation.uniqueObjectWithAttributeValuesForEntity(entityName, context: context, uniqueAttributes: uniqueAttributes) {            
             if let _additionalAttributes = additionalAttributes {
-                 existingObject.setValuesForKeysWithDictionary(_additionalAttributes)
+                 existingObject.setValuesForKeys(_additionalAttributes)
             }
             return existingObject
         }
         
         // Create object with given attribute value
-        let newObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context)
-        newObject.setValuesForKeysWithDictionary(uniqueAttributes)
+        let newObject = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
+        newObject.setValuesForKeys(uniqueAttributes)
         if let _additionalAttributes = additionalAttributes {
-            newObject.setValuesForKeysWithDictionary(_additionalAttributes)
+            newObject.setValuesForKeys(_additionalAttributes)
         }
         return newObject 
     }
     
-    class func saveWeightWithPredicate(session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, weight: String, round: NSNumber, reps: String) {
+    class func saveWeightWithPredicate(_ session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, weight: String, round: NSNumber, reps: String) {
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
         let sortExercise = NSSortDescriptor(key: "exercise", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         let sortWorkout = NSSortDescriptor(key: "workout", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
@@ -158,7 +195,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 // print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -167,7 +204,7 @@ class CDOperation {
                     // No matches for this object.
                     // Insert a new record
                     // print("No Matches")
-                    let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Workout", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Workout
+                    let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
@@ -178,9 +215,9 @@ class CDOperation {
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.weight = weight
                     insertWorkoutInfo.reps = reps
-                    insertWorkoutInfo.date = NSDate()
+                    insertWorkoutInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 case 1:
                     // Update existing record
@@ -188,9 +225,9 @@ class CDOperation {
                     let updateWorkoutInfo = workoutObjects[0]
                     
                     updateWorkoutInfo.weight = weight
-                    updateWorkoutInfo.date = NSDate()
+                    updateWorkoutInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 default:
                     // More than one match
@@ -203,23 +240,23 @@ class CDOperation {
                             let updateWorkoutInfo = workoutObjects[index]
                             
                             updateWorkoutInfo.weight = weight
-                            updateWorkoutInfo.date = NSDate()
+                            updateWorkoutInfo.date = Date()
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(workoutObjects[index])
+                            CoreDataHelper.shared().context.delete(workoutObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func saveNoteWithPredicate(session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, note: String, round: NSNumber) {
+    class func saveNoteWithPredicate(_ session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, note: String, round: NSNumber) {
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
         let sortExercise = NSSortDescriptor(key: "exercise", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         let sortWorkout = NSSortDescriptor(key: "workout", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
@@ -237,7 +274,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 // print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -246,7 +283,7 @@ class CDOperation {
                     // No matches for this object.
                     // Insert a new record
                     // print("No Matches")
-                    let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Workout", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Workout
+                    let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
@@ -256,9 +293,9 @@ class CDOperation {
                     insertWorkoutInfo.round = round
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.notes = note
-                    insertWorkoutInfo.date = NSDate()
+                    insertWorkoutInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 case 1:
                     // Update existing record
@@ -266,9 +303,9 @@ class CDOperation {
                     let updateWorkoutInfo = workoutObjects[0]
                     
                     updateWorkoutInfo.notes = note
-                    updateWorkoutInfo.date = NSDate()
+                    updateWorkoutInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 default:
                     // More than one match
@@ -281,23 +318,23 @@ class CDOperation {
                             let updateWorkoutInfo = workoutObjects[index]
                             
                             updateWorkoutInfo.notes = note
-                            updateWorkoutInfo.date = NSDate()
+                            updateWorkoutInfo.date = Date()
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(workoutObjects[index])
+                            CoreDataHelper.shared().context.delete(workoutObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func saveNoteWithPredicateNoExercise(session: String, routine: String, workout: String, week: String, index: NSNumber, note: String, round: NSNumber) {
+    class func saveNoteWithPredicateNoExercise(_ session: String, routine: String, workout: String, week: String, index: NSNumber, note: String, round: NSNumber) {
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
         let sortExercise = NSSortDescriptor(key: "exercise", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         let sortWorkout = NSSortDescriptor(key: "workout", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
@@ -314,7 +351,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 // print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -323,7 +360,7 @@ class CDOperation {
                     // No matches for this object.
                     // Insert a new record
                     // print("No Matches")
-                    let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Workout", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Workout
+                    let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
@@ -332,9 +369,9 @@ class CDOperation {
                     insertWorkoutInfo.round = round
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.notes = note
-                    insertWorkoutInfo.date = NSDate()
+                    insertWorkoutInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 case 1:
                     // Update existing record
@@ -342,9 +379,9 @@ class CDOperation {
                     let updateWorkoutInfo = workoutObjects[0]
                     
                     updateWorkoutInfo.notes = note
-                    updateWorkoutInfo.date = NSDate()
+                    updateWorkoutInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 default:
                     // More than one match
@@ -357,23 +394,23 @@ class CDOperation {
                             let updateWorkoutInfo = workoutObjects[index]
                             
                             updateWorkoutInfo.notes = note
-                            updateWorkoutInfo.date = NSDate()
+                            updateWorkoutInfo.date = Date()
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(workoutObjects[index])
+                            CoreDataHelper.shared().context.delete(workoutObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func getWeightTextForExercise(session: String, routine: String, workout: String, exercise: String, index: NSNumber) -> [NSManagedObject] {
+    class func getWeightTextForExercise(_ session: String, routine: String, workout: String, exercise: String, index: NSNumber) -> [NSManagedObject] {
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortRound, sortDate]
@@ -389,7 +426,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 //print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -401,7 +438,7 @@ class CDOperation {
                     
                     for object in workoutObjects {
                         
-                        if object.round == outerIndex {
+                        if object.round == outerIndex as NSNumber {
                             objectsAtIndexArray.append(object)
                         }
                     }
@@ -420,9 +457,9 @@ class CDOperation {
         return []
     }
     
-    class func getWeightTextForExerciseRound(session: String, routine: String, workout: String, exercise: String, round: NSNumber, index: NSNumber) -> String? {
+    class func getWeightTextForExerciseRound(_ session: String, routine: String, workout: String, exercise: String, round: NSNumber, index: NSNumber) -> String? {
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -438,7 +475,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 //print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -467,9 +504,9 @@ class CDOperation {
         return "0.0"
     }
     
-    class func getNotesTextForRound(session: String, routine: String, workout: String, round: NSNumber, index: NSNumber) -> String? {
+    class func getNotesTextForRound(_ session: String, routine: String, workout: String, round: NSNumber, index: NSNumber) -> String? {
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -484,7 +521,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 //print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -513,11 +550,11 @@ class CDOperation {
         return ""
     }
     
-    class func getNoteObjects(session: NSString, routine: NSString, workout: NSString, index: NSNumber) -> [Workout] {
+    class func getNoteObjects(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber) -> [Workout] {
         
         let tempWorkoutCompleteArray = [Workout]()
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -530,7 +567,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutNoteObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutNoteObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 // print("workoutNoteObjects.count = \(workoutNoteObjects.count)")
                 
@@ -544,12 +581,12 @@ class CDOperation {
     
     class func getCurrentRoutine() -> String {
         
-        let request = NSFetchRequest( entityName: "Routine")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Routine")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
+            if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
                 
                 // print("routineObjects.count = \(routineObjects.count)")
                 
@@ -557,12 +594,12 @@ class CDOperation {
                 case 0:
                     // No matches for this object.
                     // Create a new record with the default routine - Bulk
-                    let insertRoutineInfo = NSEntityDescription.insertNewObjectForEntityForName("Routine", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Routine
+                    let insertRoutineInfo = NSEntityDescription.insertNewObject(forEntityName: "Routine", into: CoreDataHelper.shared().context) as! Routine
                     
                     insertRoutineInfo.defaultRoutine = "Bulk"
-                    insertRoutineInfo.date = NSDate()
+                    insertRoutineInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                     // Return the default routine.
                     // Will be Bulk until the user changes it in settings tab.
@@ -589,11 +626,11 @@ class CDOperation {
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(routineObjects[index])
+                            CoreDataHelper.shared().context.delete(routineObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     return routineString
                 }
             }
@@ -604,12 +641,12 @@ class CDOperation {
     
     class func getCurrentSession() -> String {
         
-        let request = NSFetchRequest( entityName: "Session")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Session")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
+            if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
                 
                 // print("sessionObjects.count = \(sessionObjects.count)")
                 
@@ -617,12 +654,12 @@ class CDOperation {
                 case 0:
                     // No matches for this object.
                     // Create a new record with the default session - 1
-                    let insertSessionInfo = NSEntityDescription.insertNewObjectForEntityForName("Session", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Session
+                    let insertSessionInfo = NSEntityDescription.insertNewObject(forEntityName: "Session", into: CoreDataHelper.shared().context) as! Session
                     
                     insertSessionInfo.currentSession = "1"
-                    insertSessionInfo.date = NSDate()
+                    insertSessionInfo.date = Date()
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                     // Return the default routine.
                     // Will be 1 until the user changes it in settings tab.
@@ -649,11 +686,11 @@ class CDOperation {
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(sessionObjects[index])
+                            CoreDataHelper.shared().context.delete(sessionObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     return sessionString
                 }
             }
@@ -662,9 +699,9 @@ class CDOperation {
         return "1"
     }
     
-    class func saveWorkoutCompleteDate(session: NSString, routine: NSString, workout: NSString, index: NSNumber, useDate: NSDate) {
+    class func saveWorkoutCompleteDate(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber, useDate: Date) {
         
-        let request = NSFetchRequest( entityName: "WorkoutCompleteDate")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "WorkoutCompleteDate")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -677,7 +714,7 @@ class CDOperation {
         request.predicate = filter
 
         do {
-            if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
+            if let workoutCompleteDateObjects = try CoreDataHelper.shared().context.fetch(request) as? [WorkoutCompleteDate] {
                 
                 // print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                 
@@ -686,7 +723,7 @@ class CDOperation {
                     // No matches for this object.
                     // Insert a new record
                     // print("No Matches")
-                    let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("WorkoutCompleteDate", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! WorkoutCompleteDate
+                    let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "WorkoutCompleteDate", into: CoreDataHelper.shared().context) as! WorkoutCompleteDate
                     
                     insertWorkoutInfo.session = session as String
                     insertWorkoutInfo.routine = routine as String
@@ -695,7 +732,7 @@ class CDOperation {
                     insertWorkoutInfo.workoutCompleted = true
                     insertWorkoutInfo.date = useDate
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 case 1:
                     // Update existing record
@@ -705,7 +742,7 @@ class CDOperation {
                     updateWorkoutInfo.workoutCompleted = true
                     updateWorkoutInfo.date = useDate
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 default:
                     // More than one match
@@ -722,11 +759,11 @@ class CDOperation {
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(workoutCompleteDateObjects[index])
+                            CoreDataHelper.shared().context.delete(workoutCompleteDateObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
 
                 }
             }
@@ -734,11 +771,11 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func getWorkoutCompletedObjects(session: NSString, routine: NSString, workout: NSString, index: NSNumber) -> [WorkoutCompleteDate] {
+    class func getWorkoutCompletedObjects(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber) -> [WorkoutCompleteDate] {
         
         let tempWorkoutCompleteArray = [WorkoutCompleteDate]()
         
-        let request = NSFetchRequest( entityName: "WorkoutCompleteDate")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "WorkoutCompleteDate")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -751,7 +788,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
+            if let workoutCompleteDateObjects = try CoreDataHelper.shared().context.fetch(request) as? [WorkoutCompleteDate] {
                 
                 // print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                 
@@ -764,9 +801,9 @@ class CDOperation {
         return tempWorkoutCompleteArray
     }
     
-    class func deleteDate(session: NSString, routine: NSString, workout: NSString, index: NSNumber) {
+    class func deleteDate(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber) {
         
-        let request = NSFetchRequest( entityName: "WorkoutCompleteDate")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "WorkoutCompleteDate")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -779,7 +816,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
+            if let workoutCompleteDateObjects = try CoreDataHelper.shared().context.fetch(request) as? [WorkoutCompleteDate] {
                 
                 // print("workoutCompleteDateObjects.count = \(workoutCompleteDateObjects.count)")
                 
@@ -788,18 +825,18 @@ class CDOperation {
                     for object in workoutCompleteDateObjects {
                         
                         // Delete all date records for the index.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
 
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func getMeasurementObjects(session: NSString, month: NSString) -> [NSManagedObject] {
+    class func getMeasurementObjects(_ session: NSString, month: NSString) -> [NSManagedObject] {
         
-        let request = NSFetchRequest( entityName: "Measurement")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Measurement")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -810,7 +847,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
+            if let measurementObjects = try CoreDataHelper.shared().context.fetch(request) as? [Measurement] {
                 
                 // print("measurementObjects.count = \(measurementObjects.count)")
                 
@@ -823,9 +860,9 @@ class CDOperation {
         return []
     }
     
-    class func saveMeasurements(session: String, month: String, weight: String, chest: String, waist: String, hips: String, leftArm: String, rightArm: String, leftThigh: String, rightThigh: String) {
+    class func saveMeasurements(_ session: String, month: String, weight: String, chest: String, waist: String, hips: String, leftArm: String, rightArm: String, leftThigh: String, rightThigh: String) {
         
-        let request = NSFetchRequest( entityName: "Measurement")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Measurement")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -836,7 +873,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
+            if let measurementObjects = try CoreDataHelper.shared().context.fetch(request) as? [Measurement] {
                 
                 // print("measurementObjects.count = \(measurementObjects.count)")
                 
@@ -845,11 +882,11 @@ class CDOperation {
                     // No matches for this object.
                     // Insert a new record
                     // print("No Matches")
-                    let insertWorkoutInfo = NSEntityDescription.insertNewObjectForEntityForName("Measurement", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Measurement
+                    let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Measurement", into: CoreDataHelper.shared().context) as! Measurement
                     
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.month = month
-                    insertWorkoutInfo.date = NSDate()
+                    insertWorkoutInfo.date = Date()
                     
                     if weight != "" {
                         insertWorkoutInfo.weight = weight
@@ -883,7 +920,7 @@ class CDOperation {
                         insertWorkoutInfo.rightThigh = rightThigh
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 case 1:
                     // Update existing record
@@ -892,7 +929,7 @@ class CDOperation {
                     
                     updateWorkoutInfo.session = session
                     updateWorkoutInfo.month = month
-                    updateWorkoutInfo.date = NSDate()
+                    updateWorkoutInfo.date = Date()
                     
                     if weight != "" {
                         updateWorkoutInfo.weight = weight
@@ -926,7 +963,7 @@ class CDOperation {
                         updateWorkoutInfo.rightThigh = rightThigh
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 default:
                     // More than one match
@@ -940,7 +977,7 @@ class CDOperation {
                             
                             updateWorkoutInfo.session = session
                             updateWorkoutInfo.month = month
-                            updateWorkoutInfo.date = NSDate()
+                            updateWorkoutInfo.date = Date()
                             
                             if weight != "" {
                                 updateWorkoutInfo.weight = weight
@@ -976,11 +1013,11 @@ class CDOperation {
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(measurementObjects[index])
+                            CoreDataHelper.shared().context.delete(measurementObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                 }
             }
             
@@ -1799,7 +1836,7 @@ class CDOperation {
                     let tempExerciseTitlesArray = allExerciseTitlesArray[i]
                     
                     // Get workout data with the current session.  Sort by INDEX.
-                    let request = NSFetchRequest( entityName: "Workout")
+                    let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
                     let sortIndex = NSSortDescriptor( key: "index", ascending: true)
                     let sortDate = NSSortDescriptor( key: "date", ascending: true)
                     request.sortDescriptors = [sortIndex, sortDate]
@@ -1812,7 +1849,7 @@ class CDOperation {
                     request.predicate = filter
                     
                     do {
-                        if let workoutObjects1 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                        if let workoutObjects1 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                             
                             // print("workoutObjects1.count = \(workoutObjects1.count)")
                             
@@ -1826,7 +1863,7 @@ class CDOperation {
                                 var localRoutine = ""
                                 var localWeek = ""
                                 var localWorkout = ""
-                                var localDate = NSDate()
+                                var localDate = Date()
                                 var dateString = ""
                                 
                                 var tempExerciseName = ""
@@ -1837,10 +1874,10 @@ class CDOperation {
                                 // Get the values for each index that was found for this workout
                                 for index in 1...maxIndex {
                                     
-                                    let convertedIndex = NSNumber(integer: index)
+                                    let convertedIndex = NSNumber(value: index as Int)
                                     
                                     // Get workout data with workout index
-                                    let request = NSFetchRequest( entityName: "Workout")
+                                    let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
                                     
                                     var filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index == %@",
                                                              currentSessionString,
@@ -1851,7 +1888,7 @@ class CDOperation {
                                     request.predicate = filter
                                     
                                     do {
-                                        if let workoutObjects2 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                        if let workoutObjects2 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                             
                                             //print("workoutObjects.count = \(workoutObjects.count)")
                                             
@@ -1868,21 +1905,21 @@ class CDOperation {
                                                 for a in 0..<1 {
                                                     
                                                     //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                                                    writeString.appendString("Session,Routine,Week,Try,Workout,Date\n")
+                                                    writeString.append("Session,Routine,Week,Try,Workout,Date\n")
                                                     
                                                     localSession = workoutObjects2[a].session!
                                                     localRoutine = workoutObjects2[a].routine!
                                                     localWeek = workoutObjects2[a].week!
                                                     localWorkout = workoutObjects2[a].workout!
-                                                    localDate = workoutObjects2[a].date!
+                                                    localDate = workoutObjects2[a].date! as Date
                                                     
-                                                    dateString = NSDateFormatter.localizedStringFromDate(localDate, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+                                                    dateString = DateFormatter.localizedString(from: localDate, dateStyle: .short, timeStyle: .none)
                                                     
                                                     // Add column headers for indivialual workouts based on workout index number
-                                                    writeString.appendString("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
+                                                    writeString.append("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
                                                 }
                                                 
-                                                let workoutIndex = NSNumber(integer: index)
+                                                let workoutIndex = NSNumber(value: index as Int)
                                                 
                                                 //  Add the exercise name, reps and weight
                                                 for b in 0..<tempExerciseTitlesArray.count {
@@ -1890,12 +1927,12 @@ class CDOperation {
                                                     tempExerciseName = tempExerciseTitlesArray[b]
                                                     
                                                     //  Add the exercise title to the string
-                                                    writeString.appendString("\(tempExerciseName)\n")
+                                                    writeString.append("\(tempExerciseName)\n")
                                                     
                                                     //  Add the reps to the string
                                                     for round in 0..<6 {
                                                         
-                                                        roundConverted = NSNumber(integer: round)
+                                                        roundConverted = NSNumber(value: round as Int)
                                                         tempRepData = ""
                                                         
                                                         filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
@@ -1909,7 +1946,7 @@ class CDOperation {
                                                         request.predicate = filter
                                                         
                                                         do {
-                                                            if let workoutObjects3 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                                            if let workoutObjects3 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                                                 
                                                                 //print("workoutObjects.count = \(workoutObjects.count)")
                                                                 
@@ -1922,11 +1959,11 @@ class CDOperation {
                                                                         
                                                                         if round == 5 {
                                                                             //  Last column in the row so end the line with a return mark \n
-                                                                            writeString.appendString("\(tempRepData)\n")
+                                                                            writeString.append("\(tempRepData)\n")
                                                                         }
                                                                         else {
                                                                             
-                                                                            writeString.appendString("\(tempRepData),")
+                                                                            writeString.append("\(tempRepData),")
                                                                         }
                                                                     }
                                                                 }
@@ -1935,12 +1972,12 @@ class CDOperation {
                                                                     if round == 5 {
                                                                         
                                                                         //  Inserts a "" into the string and ends the line with a return mark \n
-                                                                        writeString.appendString("\(tempRepData)\n")
+                                                                        writeString.append("\(tempRepData)\n")
                                                                     }
                                                                     else {
                                                                         
                                                                         //  Inserts a "" into the string
-                                                                        writeString.appendString("\(tempRepData),")
+                                                                        writeString.append("\(tempRepData),")
                                                                     }
                                                                 }
                                                             }
@@ -1950,7 +1987,7 @@ class CDOperation {
                                                     //  Add the weight line from the database
                                                     for round in 0..<6 {
                                                         
-                                                        roundConverted = NSNumber(integer: round)
+                                                        roundConverted = NSNumber(value: round as Int)
                                                         tempWeightData = ""
                                                         
                                                         filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
@@ -1964,7 +2001,7 @@ class CDOperation {
                                                         request.predicate = filter
                                                         
                                                         do {
-                                                            if let workoutObjects4 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                                            if let workoutObjects4 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                                                 
                                                                 //print("workoutObjects.count = \(workoutObjects.count)")
                                                                 
@@ -1977,11 +2014,11 @@ class CDOperation {
                                                                         
                                                                         if round == 5 {
                                                                             //  Last column in the row so end the line with a return mark \n
-                                                                            writeString.appendString("\(tempWeightData)\n")
+                                                                            writeString.append("\(tempWeightData)\n")
                                                                         }
                                                                         else {
                                                                             
-                                                                            writeString.appendString("\(tempWeightData),")
+                                                                            writeString.append("\(tempWeightData),")
                                                                         }
                                                                     }
                                                                 }
@@ -1990,12 +2027,12 @@ class CDOperation {
                                                                     if round == 5 {
                                                                         
                                                                         //  Inserts a "" into the string and ends the line with a return mark \n
-                                                                        writeString.appendString("\(tempWeightData)\n")
+                                                                        writeString.append("\(tempWeightData)\n")
                                                                     }
                                                                     else {
                                                                         
                                                                         //  Inserts a "" into the string
-                                                                        writeString.appendString("\(tempWeightData),")
+                                                                        writeString.append("\(tempWeightData),")
                                                                     }
                                                                 }
                                                             }
@@ -2039,7 +2076,7 @@ class CDOperation {
                 let tempExerciseTitlesArray = allExerciseTitlesArray[i]
                 
                 // Get workout data with the current session.  Sort by INDEX.
-                let request = NSFetchRequest( entityName: "Workout")
+                let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
                 let sortIndex = NSSortDescriptor( key: "index", ascending: true)
                 let sortDate = NSSortDescriptor( key: "date", ascending: true)
                 request.sortDescriptors = [sortIndex, sortDate]
@@ -2052,7 +2089,7 @@ class CDOperation {
                 request.predicate = filter
                 
                 do {
-                    if let workoutObjects1 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                    if let workoutObjects1 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                         
                         // print("workoutObjects1.count = \(workoutObjects1.count)")
                         
@@ -2066,7 +2103,7 @@ class CDOperation {
                             var localRoutine = ""
                             var localWeek = ""
                             var localWorkout = ""
-                            var localDate = NSDate()
+                            var localDate = Date()
                             var dateString = ""
                             
                             var tempExerciseName = ""
@@ -2077,10 +2114,10 @@ class CDOperation {
                             // Get the values for each index that was found for this workout
                             for index in 1...maxIndex {
                                 
-                                let convertedIndex = NSNumber(integer: index)
+                                let convertedIndex = NSNumber(value: index as Int)
                                 
                                 // Get workout data with workout index
-                                let request = NSFetchRequest( entityName: "Workout")
+                                let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
                                 
                                 var filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index == %@",
                                                          currentSessionString,
@@ -2091,7 +2128,7 @@ class CDOperation {
                                 request.predicate = filter
                                 
                                 do {
-                                    if let workoutObjects2 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                    if let workoutObjects2 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                         
                                         //print("workoutObjects.count = \(workoutObjects.count)")
                                         
@@ -2108,21 +2145,21 @@ class CDOperation {
                                             for a in 0..<1 {
                                                 
                                                 //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                                                writeString.appendString("Session,Routine,Week,Try,Workout,Date\n")
+                                                writeString.append("Session,Routine,Week,Try,Workout,Date\n")
                                                 
                                                 localSession = workoutObjects2[a].session!
                                                 localRoutine = workoutObjects2[a].routine!
                                                 localWeek = workoutObjects2[a].week!
                                                 localWorkout = workoutObjects2[a].workout!
-                                                localDate = workoutObjects2[a].date!
+                                                localDate = workoutObjects2[a].date! as Date
                                                 
-                                                dateString = NSDateFormatter.localizedStringFromDate(localDate, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+                                                dateString = DateFormatter.localizedString(from: localDate, dateStyle: .short, timeStyle: .none)
                                                 
                                                 // Add column headers for indivialual workouts based on workout index number
-                                                writeString.appendString("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
+                                                writeString.append("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
                                             }
                                             
-                                            let workoutIndex = NSNumber(integer: index)
+                                            let workoutIndex = NSNumber(value: index as Int)
                                             
                                             //  Add the exercise name, reps and weight
                                             for b in 0..<tempExerciseTitlesArray.count {
@@ -2130,12 +2167,12 @@ class CDOperation {
                                                 tempExerciseName = tempExerciseTitlesArray[b]
                                                 
                                                 //  Add the exercise title to the string
-                                                writeString.appendString("\(tempExerciseName)\n")
+                                                writeString.append("\(tempExerciseName)\n")
                                                 
                                                 //  Add the reps to the string
                                                 for round in 0..<6 {
                                                     
-                                                    roundConverted = NSNumber(integer: round)
+                                                    roundConverted = NSNumber(value: round as Int)
                                                     tempRepData = ""
                                                     
                                                     filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
@@ -2149,7 +2186,7 @@ class CDOperation {
                                                     request.predicate = filter
                                                     
                                                     do {
-                                                        if let workoutObjects3 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                                        if let workoutObjects3 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                                             
                                                             //print("workoutObjects.count = \(workoutObjects.count)")
                                                             
@@ -2162,11 +2199,11 @@ class CDOperation {
                                                                     
                                                                     if round == 5 {
                                                                         //  Last column in the row so end the line with a return mark \n
-                                                                        writeString.appendString("\(tempRepData)\n")
+                                                                        writeString.append("\(tempRepData)\n")
                                                                     }
                                                                     else {
                                                                         
-                                                                        writeString.appendString("\(tempRepData),")
+                                                                        writeString.append("\(tempRepData),")
                                                                     }
                                                                 }
                                                             }
@@ -2175,12 +2212,12 @@ class CDOperation {
                                                                 if round == 5 {
                                                                     
                                                                     //  Inserts a "" into the string and ends the line with a return mark \n
-                                                                    writeString.appendString("\(tempRepData)\n")
+                                                                    writeString.append("\(tempRepData)\n")
                                                                 }
                                                                 else {
                                                                     
                                                                     //  Inserts a "" into the string
-                                                                    writeString.appendString("\(tempRepData),")
+                                                                    writeString.append("\(tempRepData),")
                                                                 }
                                                             }
                                                         }
@@ -2190,7 +2227,7 @@ class CDOperation {
                                                 //  Add the weight line from the database
                                                 for round in 0..<6 {
                                                     
-                                                    roundConverted = NSNumber(integer: round)
+                                                    roundConverted = NSNumber(value: round as Int)
                                                     tempWeightData = ""
                                                     
                                                     filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
@@ -2204,7 +2241,7 @@ class CDOperation {
                                                     request.predicate = filter
                                                     
                                                     do {
-                                                        if let workoutObjects4 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                                        if let workoutObjects4 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                                             
                                                             //print("workoutObjects.count = \(workoutObjects.count)")
                                                             
@@ -2217,11 +2254,11 @@ class CDOperation {
                                                                     
                                                                     if round == 5 {
                                                                         //  Last column in the row so end the line with a return mark \n
-                                                                        writeString.appendString("\(tempWeightData)\n")
+                                                                        writeString.append("\(tempWeightData)\n")
                                                                     }
                                                                     else {
                                                                         
-                                                                        writeString.appendString("\(tempWeightData),")
+                                                                        writeString.append("\(tempWeightData),")
                                                                     }
                                                                 }
                                                             }
@@ -2230,12 +2267,12 @@ class CDOperation {
                                                                 if round == 5 {
                                                                     
                                                                     //  Inserts a "" into the string and ends the line with a return mark \n
-                                                                    writeString.appendString("\(tempWeightData)\n")
+                                                                    writeString.append("\(tempWeightData)\n")
                                                                 }
                                                                 else {
                                                                     
                                                                     //  Inserts a "" into the string
-                                                                    writeString.appendString("\(tempWeightData),")
+                                                                    writeString.append("\(tempWeightData),")
                                                                 }
                                                             }
                                                         }
@@ -2256,13 +2293,13 @@ class CDOperation {
         return writeString as String
     }
     
-    class func singleWorkoutStringForEmail(workoutName: String, index: Int) -> String {
+    class func singleWorkoutStringForEmail(_ workoutName: String, index: Int) -> String {
         
         let writeString = NSMutableString()
         
         let localAllWorkoutTitleArray = self.allWorkoutTitleArray()
         let localAllExerciseTitleArray = self.allExerciseTitleArray()
-        var exerciseTitleArray = []
+        var exerciseTitleArray = [String]()
         
         for arrayIndex in 0..<localAllWorkoutTitleArray.count {
             
@@ -2279,10 +2316,10 @@ class CDOperation {
         let currentRoutineString = self.getCurrentRoutine()
 
         // Convert the index Int into an NSNumber
-        let convertedIndex = NSNumber(integer: index)
+        let convertedIndex = NSNumber(value: index as Int)
         
         // Get workout data with workout index
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         
         var filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index == %@",
                                  currentSessionString,
@@ -2293,7 +2330,7 @@ class CDOperation {
         request.predicate = filter
         
         do {
-            if let workoutObjects2 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects2 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 //print("workoutObjects.count = \(workoutObjects.count)")
                 
@@ -2310,7 +2347,7 @@ class CDOperation {
                     for a in 0..<1 {
                         
                         //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                        writeString.appendString("Session,Routine,Week,Try,Workout,Date\n")
+                        writeString.append("Session,Routine,Week,Try,Workout,Date\n")
                         
                         let localSession = workoutObjects2[a].session!
                         let localRoutine = workoutObjects2[a].routine!
@@ -2318,10 +2355,10 @@ class CDOperation {
                         let localWorkout = workoutObjects2[a].workout!
                         let localDate = workoutObjects2[a].date!
                         
-                        let dateString = NSDateFormatter.localizedStringFromDate(localDate, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+                        let dateString = DateFormatter.localizedString(from: localDate as Date, dateStyle: .short, timeStyle: .none)
                         
                         // Add column headers for indivialual workouts based on workout index number
-                        writeString.appendString("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
+                        writeString.append("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
                     }
                     
                     //  Add the exercise name, reps and weight
@@ -2330,12 +2367,12 @@ class CDOperation {
                         let tempExerciseName = exerciseTitleArray[b] as! String
                         
                         //  Add the exercise title to the string
-                        writeString.appendString("\(tempExerciseName)\n")
+                        writeString.append("\(tempExerciseName)\n")
                         
                         //  Add the reps to the string
                         for round in 0..<6 {
                             
-                            let roundConverted = NSNumber(integer: round)
+                            let roundConverted = NSNumber(value: round as Int)
                             var tempRepData = ""
                             
                             filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
@@ -2349,7 +2386,7 @@ class CDOperation {
                             request.predicate = filter
                             
                             do {
-                                if let workoutObjects3 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                if let workoutObjects3 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                     
                                     //print("workoutObjects.count = \(workoutObjects.count)")
                                     
@@ -2362,11 +2399,11 @@ class CDOperation {
                                             
                                             if round == 5 {
                                                 //  Last column in the row so end the line with a return mark \n
-                                                writeString.appendString("\(tempRepData)\n")
+                                                writeString.append("\(tempRepData)\n")
                                             }
                                             else {
                                                 
-                                                writeString.appendString("\(tempRepData),")
+                                                writeString.append("\(tempRepData),")
                                             }
                                         }
                                     }
@@ -2375,12 +2412,12 @@ class CDOperation {
                                         if round == 5 {
                                             
                                             //  Inserts a "" into the string and ends the line with a return mark \n
-                                            writeString.appendString("\(tempRepData)\n")
+                                            writeString.append("\(tempRepData)\n")
                                         }
                                         else {
                                             
                                             //  Inserts a "" into the string
-                                            writeString.appendString("\(tempRepData),")
+                                            writeString.append("\(tempRepData),")
                                         }
                                     }
                                 }
@@ -2390,7 +2427,7 @@ class CDOperation {
                         //  Add the weight line from the database
                         for round in 0..<6 {
                             
-                            let roundConverted = NSNumber(integer: round)
+                            let roundConverted = NSNumber(value: round as Int)
                             var tempWeightData = ""
                             
                             filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
@@ -2404,7 +2441,7 @@ class CDOperation {
                             request.predicate = filter
                             
                             do {
-                                if let workoutObjects4 = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                                if let workoutObjects4 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                                     
                                     //print("workoutObjects.count = \(workoutObjects.count)")
                                     
@@ -2417,11 +2454,11 @@ class CDOperation {
                                             
                                             if round == 5 {
                                                 //  Last column in the row so end the line with a return mark \n
-                                                writeString.appendString("\(tempWeightData)\n")
+                                                writeString.append("\(tempWeightData)\n")
                                             }
                                             else {
                                                 
-                                                writeString.appendString("\(tempWeightData),")
+                                                writeString.append("\(tempWeightData),")
                                             }
                                         }
                                     }
@@ -2430,12 +2467,12 @@ class CDOperation {
                                         if round == 5 {
                                             
                                             //  Inserts a "" into the string and ends the line with a return mark \n
-                                            writeString.appendString("\(tempWeightData)\n")
+                                            writeString.append("\(tempWeightData)\n")
                                         }
                                         else {
                                             
                                             //  Inserts a "" into the string
-                                            writeString.appendString("\(tempWeightData),")
+                                            writeString.append("\(tempWeightData),")
                                         }
                                     }
                                 }
@@ -2453,7 +2490,7 @@ class CDOperation {
     class func findMaxSessionValue() -> String {
         
         // Workout Entity
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortSession = NSSortDescriptor( key: "session", ascending: true)
         
         request.sortDescriptors = [sortSession]
@@ -2461,7 +2498,7 @@ class CDOperation {
         var maxSessionString = "1"
         
         do {
-            if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 //print("workoutObjects.count = \(workoutObjects.count)")
                 

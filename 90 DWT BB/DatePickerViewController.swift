@@ -22,7 +22,7 @@ class DatePickerViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         let chosen = datePicker.date
@@ -32,7 +32,7 @@ class DatePickerViewController: UIViewController {
             print("Date: \(chosen)")
         }
         
-        CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex, useDate: chosen)
+        CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: chosen)
 
     }
 }

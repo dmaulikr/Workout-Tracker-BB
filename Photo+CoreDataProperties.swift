@@ -15,8 +15,8 @@ import CoreData
 extension Photo {
 
     @NSManaged var angle: String?
-    @NSManaged var date: NSDate?
-    @NSManaged var image: NSData?
+    @NSManaged var date: Date?
+    @NSManaged var image: Data?
     @NSManaged var month: String?
     @NSManaged var session: String?
 

@@ -14,9 +14,9 @@ class WebsiteViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        let url = NSURL(string: "http://www.grantdevelopers.com/fitness.html")
+        let url = URL(string: "http://www.grantdevelopers.com/fitness.html")
         
-        let request = NSURLRequest(URL: url!)
+        let request = URLRequest(url: url!)
         
         self.websiteView.loadRequest(request)
     }

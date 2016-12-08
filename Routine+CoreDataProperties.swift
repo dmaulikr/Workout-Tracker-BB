@@ -14,7 +14,7 @@ import CoreData
 
 extension Routine {
 
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var defaultRoutine: String?
 
 }

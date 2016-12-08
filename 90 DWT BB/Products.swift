@@ -24,18 +24,18 @@ import Foundation
 
 public struct Products {
     
-    private static let Prefix = "com.grantsoftware.90DWTBB."
+    fileprivate static let Prefix = "com.grantsoftware.90DWTBB."
     
     public static let removeAds = Prefix + "removeads"
     
     public static let graphView = Prefix + "graphview"
     
-    private static let productIdentifiers: Set<ProductIdentifier> = [Products.removeAds,
+    fileprivate static let productIdentifiers: Set<ProductIdentifier> = [Products.removeAds,
                                                                      Products.graphView]
     
     public static let store = IAPHelper(productIds: Products.productIdentifiers)
 }
 
-func resourceNameForProductIdentifier(productIdentifier: String) -> String? {
-    return productIdentifier.componentsSeparatedByString(".").last
+func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {
+    return productIdentifier.components(separatedBy: ".").last
 }

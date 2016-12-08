@@ -18,20 +18,20 @@ class EmailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var defaultEmail: UITextField!
     
-    @IBAction func hideKeyboard(sender: AnyObject) {
+    @IBAction func hideKeyboard(_ sender: AnyObject) {
         
         self.defaultEmail.resignFirstResponder()
     }
     
-    @IBAction func saveEmail(sender: UIBarButtonItem) {
+    @IBAction func saveEmail(_ sender: UIBarButtonItem) {
         
         // Fetch defaultEmail data.
-        let request = NSFetchRequest( entityName: "Email")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+            if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                 
                 if debug == 1 {
                     
@@ -42,10 +42,10 @@ class EmailViewController: UIViewController {
                 case 0:
                     
                     // No Matches.  Create new record and save.
-                    let insertEmailInfo = NSEntityDescription.insertNewObjectForEntityForName("Email", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Email
+                    let insertEmailInfo = NSEntityDescription.insertNewObject(forEntityName: "Email", into: CoreDataHelper.shared().context) as! Email
                     
                     insertEmailInfo.defaultEmail = self.defaultEmail.text
-                    insertEmailInfo.date = NSDate()
+                    insertEmailInfo.date = Date()
                     
                 default:
                     
@@ -53,7 +53,7 @@ class EmailViewController: UIViewController {
                     emailObjects.last?.defaultEmail = self.defaultEmail.text
                 }
                 
-                CoreDataHelper.sharedHelper().backgroundSaveContext()
+                CoreDataHelper.shared().backgroundSaveContext()
                 self.defaultEmail.placeholder = self.defaultEmail.text
                 self.defaultEmail.text = ""
             }

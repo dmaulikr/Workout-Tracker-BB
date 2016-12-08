@@ -14,7 +14,7 @@ import CoreData
 
 extension Workout {
 
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var exercise: String?
     @NSManaged var exerciseCompleted: NSNumber?
     @NSManaged var index: NSNumber?

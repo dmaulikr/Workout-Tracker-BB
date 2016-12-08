@@ -14,11 +14,11 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
     let debug = 0
     // **********
     
-    private var currentWeekWorkoutList = [[], []]
-    private var daysOfWeekNumberList = [[], []]
-    private var daysOfWeekColorList = [[], []]
-    private var optionalWorkoutList = [[], []]
-    private var workoutIndexList = [[], []]
+    fileprivate var currentWeekWorkoutList = [[], []]
+    fileprivate var daysOfWeekNumberList = [[], []]
+    fileprivate var daysOfWeekColorList = [[], []]
+    fileprivate var optionalWorkoutList = [[], []]
+    fileprivate var workoutIndexList = [[], []]
     
     var workoutRoutine = ""
     var session = ""
@@ -29,17 +29,17 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
     var bannerSize = CGSize()
     
     var longPGR = UILongPressGestureRecognizer()
-    var indexPath = NSIndexPath()
+    var indexPath = IndexPath()
     var position = NSInteger()
     var request = ""
     
-    private struct Color {
+    fileprivate struct Color {
         static let white = "White"
         static let gray = "Gray"
         static let green = "Green"
     }
     
-    private struct WorkoutName {
+    fileprivate struct WorkoutName {
         static let B1_Chest_Tri = "B1: Chest+Tri"
         static let B1_Legs = "B1: Legs"
         static let B1_Back_Bi = "B1: Back+Bi"
@@ -69,7 +69,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         loadArraysForCell()
         
         // Add rightBarButtonItem
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(WeekTVC.editButtonPressed(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(WeekTVC.editButtonPressed(_:)))
         
         if Products.store.isProductPurchased("com.grantsoftware.90DWTBB.removeads") {
             
@@ -78,9 +78,9 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         else {
             
             // Show the Banner Ad
-            self.headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 0)
+            self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0)
             
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone) {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
                 self.adView = MPAdView(adUnitId: "4046208fc4a74de38212426cf30fc747", size: MOPUB_BANNER_SIZE)
@@ -94,9 +94,9 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             }
             
             self.adView.delegate = self
-            self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           self.bannerSize.height - self.bannerSize.height,
-                                           self.bannerSize.width, self.bannerSize.height)
+            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                           y: self.bannerSize.height - self.bannerSize.height,
+                                           width: self.bannerSize.width, height: self.bannerSize.height)
         }
 
         // Add a long press gesture recognizer
@@ -107,13 +107,13 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
 
         if debug == 1 {
             
-            print("SHARED CONTEXT - \(CDOperation.objectCountForEntity("Workout", context: CoreDataHelper.sharedHelper().context))")
+            print("SHARED CONTEXT - \(CDOperation.objectCountForEntity("Workout", context: CoreDataHelper.shared().context))")
             
-            print("IMPORT CONTEXT - \(CDOperation.objectCountForEntity("Workout", context: CoreDataHelper.sharedHelper().importContext))")
+            print("IMPORT CONTEXT - \(CDOperation.objectCountForEntity("Workout", context: CoreDataHelper.shared().importContext))")
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
 
@@ -131,17 +131,17 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             
             self.adView.loadAd()
             
-            self.adView.hidden = true;
+            self.adView.isHidden = true;
         }
 
         self.tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWTBB.removeads") {
@@ -153,19 +153,19 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         } else {
             
             // Show ads
-            self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           self.bannerSize.height - self.bannerSize.height,
-                                           self.bannerSize.width, self.bannerSize.height)
-            self.adView.hidden = false
+            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                           y: self.bannerSize.height - self.bannerSize.height,
+                                           width: self.bannerSize.width, height: self.bannerSize.height)
+            self.adView.isHidden = false
         }
 
         self.tableView.reloadData()
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
         
         self.adView.removeFromSuperview()
     }
@@ -181,27 +181,27 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
 
-    func editButtonPressed(sender: UIBarButtonItem) {
+    func editButtonPressed(_ sender: UIBarButtonItem) {
         
         let tempMessage = "Set the status for all workouts of:\n\n\(workoutRoutine) - \(workoutWeek)"
         
-        let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
         
-        let notCompletedAction = UIAlertAction(title: "Not Completed", style: .Destructive, handler: {
+        let notCompletedAction = UIAlertAction(title: "Not Completed", style: .destructive, handler: {
             action in
             
             self.request = "Not Completed"
             self.verifyAddDeleteRequestFromBarButtonItem()
         })
         
-        let completedAction = UIAlertAction(title: "Completed", style: .Default, handler: {
+        let completedAction = UIAlertAction(title: "Completed", style: .default, handler: {
             action in
             
             self.request = "Completed"
             self.verifyAddDeleteRequestFromBarButtonItem()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(notCompletedAction)
         alertController.addAction(completedAction)
@@ -212,47 +212,47 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func longPressGRAction(sender: UILongPressGestureRecognizer) {
+    func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
      
         if (sender.isEqual(self.longPGR)) {
             
-            if sender.state == UIGestureRecognizerState.Began {
+            if sender.state == UIGestureRecognizerState.began {
                 
-                let p = sender.locationInView(self.tableView)
+                let p = sender.location(in: self.tableView)
                 
-                if let tempIndexPath = self.tableView.indexPathForRowAtPoint(p) {
+                if let tempIndexPath = self.tableView.indexPathForRow(at: p) {
                     
                     self.indexPath = tempIndexPath
                     self.position = self.findArrayPosition(self.indexPath)
                     
                     // get affected cell and label
-                    let cell = self.tableView.cellForRowAtIndexPath(self.indexPath) as! WeekTVC_TableViewCell
+                    let cell = self.tableView.cellForRow(at: self.indexPath) as! WeekTVC_TableViewCell
                     
                     let tempMessage = ("Set the status for:\n\n\(workoutRoutine) - \(workoutWeek) - \(cell.titleLabel.text!)")
                     
-                    let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .ActionSheet)
+                    let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
                     
-                    let notCompletedAction = UIAlertAction(title: "Not Completed", style: .Destructive, handler: {
+                    let notCompletedAction = UIAlertAction(title: "Not Completed", style: .destructive, handler: {
                         action in
                         
                         self.request = "Not Completed"
                         self.verifyAddDeleteRequestFromTableViewCell()
                     })
                     
-                    let completedAction = UIAlertAction(title: "Completed", style: .Default, handler: {
+                    let completedAction = UIAlertAction(title: "Completed", style: .default, handler: {
                         action in
                         
                         self.request = "Completed"
                         self.verifyAddDeleteRequestFromTableViewCell()
                     })
                     
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                     
                     alertController.addAction(notCompletedAction)
                     alertController.addAction(completedAction)
@@ -263,10 +263,10 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                         popover.sourceView = cell
                         popover.delegate = self
                         popover.sourceRect = (cell.bounds)
-                        popover.permittedArrowDirections = .Any
+                        popover.permittedArrowDirections = .any
                     }
                     
-                    presentViewController(alertController, animated: true, completion: nil)
+                    present(alertController, animated: true, completion: nil)
                 }
             }
         }
@@ -275,47 +275,47 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
     func verifyAddDeleteRequestFromTableViewCell() {
         
         // get affected cell
-        let cell = self.tableView.cellForRowAtIndexPath(self.indexPath) as! WeekTVC_TableViewCell
+        let cell = self.tableView.cellForRow(at: self.indexPath) as! WeekTVC_TableViewCell
         
         self.position = self.findArrayPosition(self.indexPath)
         
         let tempMessage = ("You are about to set the status for\n\n\(CDOperation.getCurrentRoutine()) - \(workoutWeek) - \(cell.titleLabel.text!)\n\nto:\n\n\(self.request)\n\nDo you want to proceed?")
         
-        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
-        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: {
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             
             self.addDeleteDate()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func verifyAddDeleteRequestFromBarButtonItem() {
         
         let tempMessage = "You are about to set the status for all workouts of:\n\n\(workoutRoutine) - \(workoutWeek)\n\nto:\n\n\(self.request)\n\nDo you want to proceed?"
         
-        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
-        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: {
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             
             self.AddDeleteDatesFromOneWeek()
             self.tableView.reloadData()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func addDeleteDate() {
@@ -334,7 +334,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for _ in 0..<nameArray.count {
                     
-                    CDOperation.deleteDate(session, routine: workoutRoutine, workout: nameArray[position], index: indexArray[position])
+                    CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[position] as NSString, index: indexArray[position] as NSNumber)
                 }
                 
             default:
@@ -345,12 +345,12 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for _ in 0..<nameArray.count {
                     
-                    CDOperation.deleteDate(session, routine: workoutRoutine, workout: nameArray[position], index: indexArray[position])
+                    CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[position] as NSString, index: indexArray[position] as NSNumber)
                 }
             }
 
             // Update TableViewCell Accessory Icon - Arrow
-            let cell = self.tableView.cellForRowAtIndexPath(self.indexPath) as! WeekTVC_TableViewCell
+            let cell = self.tableView.cellForRow(at: self.indexPath) as! WeekTVC_TableViewCell
             if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
                 
                 cell.accessoryView = tempAccessoryView
@@ -371,7 +371,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for _ in 0..<nameArray.count {
                     
-                    CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: nameArray[position], index: indexArray[position], useDate: NSDate())
+                    CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[position] as NSString, index: indexArray[position] as NSNumber, useDate: Date())
                 }
 
             default:
@@ -382,12 +382,12 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for _ in 0..<nameArray.count {
                     
-                    CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: nameArray[position], index: indexArray[position], useDate: NSDate())
+                    CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[position] as NSString, index: indexArray[position] as NSNumber, useDate: Date())
                 }
             }
             
             // Update TableViewCell Accessory Icon - Checkmark
-            let cell = self.tableView.cellForRowAtIndexPath(self.indexPath) as! WeekTVC_TableViewCell
+            let cell = self.tableView.cellForRow(at: self.indexPath) as! WeekTVC_TableViewCell
             if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
                 
                 cell.accessoryView = tempAccessoryView
@@ -411,7 +411,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.deleteDate(session, routine: workoutRoutine, workout: nameArray[i], index: indexArray[i])
+                    CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber)
                 }
                 
             default:
@@ -422,7 +422,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.deleteDate(session, routine: workoutRoutine, workout: nameArray[i], index: indexArray[i])
+                    CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber)
                 }
             }
             
@@ -441,7 +441,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: nameArray[i], index: indexArray[i], useDate: NSDate())
+                    CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
                 }
                 
             default:
@@ -452,13 +452,13 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 
                 for i in 0..<nameArray.count {
                     
-                    CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: nameArray[i], index: indexArray[i], useDate: NSDate())
+                    CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
                 }
             }
         }
     }
     
-    func findArrayPosition(indexPath: NSIndexPath) -> NSInteger {
+    func findArrayPosition(_ indexPath: IndexPath) -> NSInteger {
         
         var position = NSInteger(0)
         
@@ -470,7 +470,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             }
             else {
                 
-                let totalRowsInSection = self.tableView.numberOfRowsInSection(i)
+                let totalRowsInSection = self.tableView.numberOfRows(inSection: i)
                 
                 position = position + totalRowsInSection
             }
@@ -481,36 +481,36 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         return currentWeekWorkoutList.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return currentWeekWorkoutList[section].count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! WeekTVC_TableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! WeekTVC_TableViewCell
 
         // Configure the cell...
         
         cell.titleLabel.text = trimStringForWorkoutName((currentWeekWorkoutList[indexPath.section][indexPath.row] as? String)!)
         cell.dayOfWeekTextField.text = daysOfWeekNumberList[indexPath.section][indexPath.row] as? String
         
-        if optionalWorkoutList[indexPath.section][indexPath.row] as! NSObject == false {
+        if optionalWorkoutList[indexPath.section][indexPath.row] as! Bool == false {
             
             // Don't show the "Select 1"
-            cell.detailLabel.hidden = true
+            cell.detailLabel.isHidden = true
         }
         else {
-            cell.detailLabel.hidden = false
+            cell.detailLabel.isHidden = false
         }
         
-        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session, routine: workoutRoutine, workout: currentWeekWorkoutList[indexPath.section][indexPath.row] as! NSString, index: workoutIndexList[indexPath.section][indexPath.row] as! NSNumber)
+        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, routine: workoutRoutine as NSString, workout: currentWeekWorkoutList[indexPath.section][indexPath.row] as! NSString, index: workoutIndexList[indexPath.section][indexPath.row] as! NSNumber)
         
         if workoutCompletedObjects.count != 0 {
             
@@ -531,16 +531,16 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
 
         switch daysOfWeekColorList[indexPath.section][indexPath.row] as! String {
         case "White":
-            cell.dayOfWeekTextField.backgroundColor = UIColor .whiteColor()
-            cell.dayOfWeekTextField.textColor = UIColor .blackColor()
+            cell.dayOfWeekTextField.backgroundColor = UIColor.white
+            cell.dayOfWeekTextField.textColor = UIColor.black
             
         case "Gray":
-            cell.dayOfWeekTextField.backgroundColor = UIColor .grayColor()
-            cell.dayOfWeekTextField.textColor = UIColor .whiteColor()
+            cell.dayOfWeekTextField.backgroundColor = UIColor.gray
+            cell.dayOfWeekTextField.textColor = UIColor.white
             
         case "Green":
             cell.dayOfWeekTextField.backgroundColor = UIColor(red: 8/255, green: 175/255, blue: 90/255, alpha: 1.0)
-            cell.dayOfWeekTextField.textColor = UIColor .whiteColor()
+            cell.dayOfWeekTextField.textColor = UIColor.white
             
         default: break
 
@@ -549,7 +549,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0 {
             
@@ -563,7 +563,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
             
@@ -574,35 +574,35 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         }
     }
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return 10
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? WeekTVC_TableViewCell {
+        if let cell = tableView.cellForRow(at: indexPath) as? WeekTVC_TableViewCell {
             
             if cell.titleLabel.text == "Rest" || cell.titleLabel.text == "Cardio" || cell.titleLabel.text == "Ab Workout" {
                 
-                self.performSegueWithIdentifier("toNotes", sender: indexPath)
+                self.performSegue(withIdentifier: "toNotes", sender: indexPath)
             }
             else {
                 
-                self.performSegueWithIdentifier("toWorkout", sender: indexPath)
+                self.performSegue(withIdentifier: "toWorkout", sender: indexPath)
             }
         }
     }
     
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "toWorkout" {
             
-            let destinationVC = segue.destinationViewController as? WorkoutTVC
+            let destinationVC = segue.destination as? WorkoutTVC
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.navigationItem.title = (self.currentWeekWorkoutList[(selectedRow?.section)!][(selectedRow?.row)!] as? String)!
@@ -615,7 +615,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         else {
             // NotesViewController
             
-            let destinationVC = segue.destinationViewController as? NotesViewController
+            let destinationVC = segue.destination as? NotesViewController
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.navigationItem.title = (self.currentWeekWorkoutList[(selectedRow?.section)!][(selectedRow?.row)!] as? String)!
@@ -627,17 +627,17 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         }
     }
     
-    private func trimStringForWorkoutName(originalString: String) -> String {
+    fileprivate func trimStringForWorkoutName(_ originalString: String) -> String {
         
         switch originalString {
             
         case originalString where originalString.hasPrefix("B"):
             
-            return originalString.substringFromIndex(originalString.startIndex.advancedBy(4))
+            return originalString.substring(from: originalString.characters.index(originalString.startIndex, offsetBy: 4))
             
         case originalString where originalString.hasPrefix("T"):
             
-            var tempString = originalString.substringFromIndex(originalString.startIndex.advancedBy(4))
+            var tempString = originalString.substring(from: originalString.characters.index(originalString.startIndex, offsetBy: 4))
             tempString = "T - \(tempString)"
             return tempString
             
@@ -701,7 +701,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         }
     }
     
-    private func loadArraysForCell() {
+    fileprivate func loadArraysForCell() {
         
         if workoutRoutine == "Bulk" {
             
@@ -1147,23 +1147,23 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         return self
     }
     
-    func adViewDidLoadAd(view: MPAdView!) {
+    func adViewDidLoadAd(_ view: MPAdView!) {
         
         let size = view.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
         let bottomAlignedY = self.bannerSize.height - size.height
-        view.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height)
+        view.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
         
         if (self.headerView.frame.size.height == 0) {
             
             // No ads shown yet.  Animate showing the ad.
-            let headerViewFrame = CGRectMake(0, 0, self.view.bounds.size.width, self.bannerSize.height)
+            let headerViewFrame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.bannerSize.height)
             
-            UIView.animateWithDuration(0.25, animations: {self.headerView.frame = headerViewFrame
+            UIView.animate(withDuration: 0.25, animations: {self.headerView.frame = headerViewFrame
                 self.tableView.tableHeaderView = self.headerView
-                self.adView.hidden = true},
+                self.adView.isHidden = true},
                                        completion: {(finished: Bool) in
-                                        self.adView.hidden = false
+                                        self.adView.isHidden = false
                                         
             })
         }
@@ -1174,20 +1174,20 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         }
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        self.adView.hidden = true
-        self.adView.rotateToOrientation(toInterfaceOrientation)
+        self.adView.isHidden = true
+        self.adView.rotate(to: toInterfaceOrientation)
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         
         let size = self.adView.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
         let bottomAlignedY = self.headerView.bounds.size.height - size.height
         
-        self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height)
+        self.adView.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
         
-        self.adView.hidden = false
+        self.adView.isHidden = false
     }
 }

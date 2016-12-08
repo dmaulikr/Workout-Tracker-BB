@@ -15,6 +15,6 @@ import CoreData
 extension Session {
 
     @NSManaged var currentSession: String?
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
 
 }

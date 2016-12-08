@@ -30,16 +30,16 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     
-    static let priceFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
+    static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
         
-        formatter.formatterBehavior = .Behavior10_4
-        formatter.numberStyle = .CurrencyStyle
+        formatter.formatterBehavior = .behavior10_4
+        formatter.numberStyle = .currency
         
         return formatter
     }()
     
-    var buyButtonHandler: ((product: SKProduct) -> ())?
+    var buyButtonHandler: ((_ product: SKProduct) -> ())?
     
     var product: SKProduct? {
         didSet {
@@ -48,27 +48,27 @@ class ProductCell: UITableViewCell {
             ProductCell.priceFormatter.locale = product.priceLocale
             
             titleLabel.text = product.localizedTitle
-            priceLabel.text = ProductCell.priceFormatter.stringFromNumber(product.price)
+            priceLabel.text = ProductCell.priceFormatter.string(from: product.price)
             descriptionLabel.text = product.localizedDescription
 
             if Products.store.isProductPurchased(product.productIdentifier) {
                 
                 // The product was purchased so show the checkmark.
-                buyButton.setTitle("", forState: UIControlState.Normal)
-                buyButton.setImage(UIImage(named: "RED_White_CheckMark"), forState: UIControlState.Normal)
-                buyButton.userInteractionEnabled = false
+                buyButton.setTitle("", for: UIControlState())
+                buyButton.setImage(UIImage(named: "RED_White_CheckMark"), for: UIControlState())
+                buyButton.isUserInteractionEnabled = false
                 
             } else if IAPHelper.canMakePayments() {
                 
                 // The product has not been purchased.
                 // The customer is allowed to purchase it.
-                buyButton.hidden = false
-                buyButton.userInteractionEnabled = true
+                buyButton.isHidden = false
+                buyButton.isUserInteractionEnabled = true
                 
             } else {
                 
                 // The customer is not allowed to purchase it.
-                buyButton.hidden = true
+                buyButton.isHidden = true
                 priceLabel.text = "Not Available"
             }
         }
@@ -82,21 +82,21 @@ class ProductCell: UITableViewCell {
         accessoryView = nil
     }
     
-    @IBAction func buyButtonPressedDown(sender: UIButton) {
+    @IBAction func buyButtonPressedDown(_ sender: UIButton) {
         
         // Set the default alpha state for the animation.
         buyButton.titleLabel?.alpha = 0.15
     }
     
-    @IBAction func buyButtonTapped(sender: UIButton) {
+    @IBAction func buyButtonTapped(_ sender: UIButton) {
         
         // User released the buy button so start the ainimation back to full alpha.
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             
             self.buyButton.titleLabel?.alpha = 1.0
         })
         
-        buyButtonHandler?(product: product!)
+        buyButtonHandler?(product!)
     }
 
 //    func newBuyButton() -> UIButton {

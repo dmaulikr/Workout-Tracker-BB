@@ -32,17 +32,17 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
         self.htmlView.loadHTMLString(self.createHTML() as String, baseURL: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -53,32 +53,32 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
         self.htmlView.loadHTMLString(self.createHTML() as String, baseURL: nil)
     }
 
-    @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
         
-        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .actionSheet)
         
-        let emailAction = UIAlertAction(title: "Email", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
             action in
             
             self.emailSummary()
         })
         
-        let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: {
+        let facebookAction = UIAlertAction(title: "Facebook", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -87,29 +87,29 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: {
+        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -118,14 +118,14 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(emailAction)
         alertController.addAction(facebookAction)
@@ -137,10 +137,10 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func emailSummary() {
@@ -148,7 +148,7 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
         // Create MailComposerViewController object.
         let mailcomposer = MFMailComposeViewController()
         mailcomposer.mailComposeDelegate = self
-        mailcomposer.navigationBar.tintColor = UIColor.whiteColor()
+        mailcomposer.navigationBar.tintColor = UIColor.white
         
         let writeString = NSMutableString()
         
@@ -159,7 +159,7 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
             let measurementsArray = [self.month1Array, self.month2Array, self.month3Array, self.finalArray]
             let measurementsMonth = ["Start Month 1", "Start Month 2", "Start Month 3", "Final"]
             
-            writeString.appendString("Session,Month,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n")
+            writeString.append("Session,Month,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n")
             
             for i in 0..<measurementsMonth.count {
                 
@@ -170,23 +170,23 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                     writeString.appendFormat(",%@", measurementsArray[i][j] as! String)
                 }
                 
-                writeString.appendString("\n")
+                writeString.append("\n")
             }
         }
         
         // Send email
-        let csvData = writeString.dataUsingEncoding(NSASCIIStringEncoding)
+        let csvData = writeString.data(using: String.Encoding.ascii.rawValue)
         let subject = NSString .localizedStringWithFormat("90 DWT BB %@ Measurements - Session %@", self.navigationItem.title!, session)
         let fileName = NSString .localizedStringWithFormat("90 DWT BB %@ Measurements - Session %@.csv", self.navigationItem.title!, session)
         var emailAddress = [""]
         
         // Fetch defaultEmail data.
-        let request = NSFetchRequest( entityName: "Email")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+            if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                 
                 if debug == 1 {
                     
@@ -211,14 +211,14 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
         mailcomposer.setSubject(subject as String)
         mailcomposer.addAttachmentData(csvData!, mimeType: "text/csv", fileName: fileName as String)
         
-        presentViewController(mailcomposer, animated: true, completion: {
-            UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        present(mailcomposer, animated: true, completion: {
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         })
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     func loadMeasurements() {
@@ -229,7 +229,7 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                           "4"]
         
         // Get workout data with the current session
-        let request = NSFetchRequest( entityName: "Measurement")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Measurement")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -242,7 +242,7 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
             request.predicate = filter
 
             do {
-                if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
+                if let measurementObjects = try CoreDataHelper.shared().context.fetch(request) as? [Measurement] {
                     
                     if debug == 1 {
                         
@@ -255,66 +255,66 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                             
                             // Weight
                             if measurementObjects.last?.weight == "" || measurementObjects.last?.weight == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.weight)!)
+                                self.month1Array.add((measurementObjects.last?.weight)!)
                             }
                             
                             // Chest
                             if measurementObjects.last?.chest == "" || measurementObjects.last?.chest == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.chest)!)
+                                self.month1Array.add((measurementObjects.last?.chest)!)
                             }
                             
                             // Left Arm
                             if measurementObjects.last?.leftArm == "" || measurementObjects.last?.leftArm == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.leftArm)!)
+                                self.month1Array.add((measurementObjects.last?.leftArm)!)
                             }
                             
                             // Right Arm
                             if measurementObjects.last?.rightArm == "" || measurementObjects.last?.rightArm == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.rightArm)!)
+                                self.month1Array.add((measurementObjects.last?.rightArm)!)
                             }
                             
                             // Waist
                             if measurementObjects.last?.waist == "" || measurementObjects.last?.waist == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.waist)!)
+                                self.month1Array.add((measurementObjects.last?.waist)!)
                             }
                             
                             // Hips
                             if measurementObjects.last?.hips == "" || measurementObjects.last?.hips == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.hips)!)
+                                self.month1Array.add((measurementObjects.last?.hips)!)
                             }
                             
                             // Left Thigh
                             if measurementObjects.last?.leftThigh == "" || measurementObjects.last?.leftThigh == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.leftThigh)!)
+                                self.month1Array.add((measurementObjects.last?.leftThigh)!)
                             }
                             
                             // Right Thigh
                             if measurementObjects.last?.rightThigh == "" || measurementObjects.last?.rightThigh == nil {
-                                self.month1Array.addObject("0")
+                                self.month1Array.add("0")
                             }
                             else {
-                                self.month1Array.addObject((measurementObjects.last?.rightThigh)!)
+                                self.month1Array.add((measurementObjects.last?.rightThigh)!)
                             }
                         }
                         
@@ -322,66 +322,66 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                             
                             // Weight
                             if measurementObjects.last?.weight == "" || measurementObjects.last?.weight == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.weight)!)
+                                self.month2Array.add((measurementObjects.last?.weight)!)
                             }
                             
                             // Chest
                             if measurementObjects.last?.chest == "" || measurementObjects.last?.chest == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.chest)!)
+                                self.month2Array.add((measurementObjects.last?.chest)!)
                             }
                             
                             // Left Arm
                             if measurementObjects.last?.leftArm == "" || measurementObjects.last?.leftArm == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.leftArm)!)
+                                self.month2Array.add((measurementObjects.last?.leftArm)!)
                             }
                             
                             // Right Arm
                             if measurementObjects.last?.rightArm == "" || measurementObjects.last?.rightArm == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.rightArm)!)
+                                self.month2Array.add((measurementObjects.last?.rightArm)!)
                             }
                             
                             // Waist
                             if measurementObjects.last?.waist == "" || measurementObjects.last?.waist == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.waist)!)
+                                self.month2Array.add((measurementObjects.last?.waist)!)
                             }
                             
                             // Hips
                             if measurementObjects.last?.hips == "" || measurementObjects.last?.hips == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.hips)!)
+                                self.month2Array.add((measurementObjects.last?.hips)!)
                             }
                             
                             // Left Thigh
                             if measurementObjects.last?.leftThigh == "" || measurementObjects.last?.leftThigh == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.leftThigh)!)
+                                self.month2Array.add((measurementObjects.last?.leftThigh)!)
                             }
                             
                             // Right Thigh
                             if measurementObjects.last?.rightThigh == "" || measurementObjects.last?.rightThigh == nil {
-                                self.month2Array.addObject("0")
+                                self.month2Array.add("0")
                             }
                             else {
-                                self.month2Array.addObject((measurementObjects.last?.rightThigh)!)
+                                self.month2Array.add((measurementObjects.last?.rightThigh)!)
                             }
                         }
 
@@ -389,66 +389,66 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                             
                             // Weight
                             if measurementObjects.last?.weight == "" || measurementObjects.last?.weight == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.weight)!)
+                                self.month3Array.add((measurementObjects.last?.weight)!)
                             }
                             
                             // Chest
                             if measurementObjects.last?.chest == "" || measurementObjects.last?.chest == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.chest)!)
+                                self.month3Array.add((measurementObjects.last?.chest)!)
                             }
                             
                             // Left Arm
                             if measurementObjects.last?.leftArm == "" || measurementObjects.last?.leftArm == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.leftArm)!)
+                                self.month3Array.add((measurementObjects.last?.leftArm)!)
                             }
                             
                             // Right Arm
                             if measurementObjects.last?.rightArm == "" || measurementObjects.last?.rightArm == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.rightArm)!)
+                                self.month3Array.add((measurementObjects.last?.rightArm)!)
                             }
                             
                             // Waist
                             if measurementObjects.last?.waist == "" || measurementObjects.last?.waist == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.waist)!)
+                                self.month3Array.add((measurementObjects.last?.waist)!)
                             }
                             
                             // Hips
                             if measurementObjects.last?.hips == "" || measurementObjects.last?.hips == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.hips)!)
+                                self.month3Array.add((measurementObjects.last?.hips)!)
                             }
                             
                             // Left Thigh
                             if measurementObjects.last?.leftThigh == "" || measurementObjects.last?.leftThigh == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.leftThigh)!)
+                                self.month3Array.add((measurementObjects.last?.leftThigh)!)
                             }
                             
                             // Right Thigh
                             if measurementObjects.last?.rightThigh == "" || measurementObjects.last?.rightThigh == nil {
-                                self.month3Array.addObject("0")
+                                self.month3Array.add("0")
                             }
                             else {
-                                self.month3Array.addObject((measurementObjects.last?.rightThigh)!)
+                                self.month3Array.add((measurementObjects.last?.rightThigh)!)
                             }
                         }
 
@@ -456,66 +456,66 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                             
                             // Weight
                             if measurementObjects.last?.weight == "" || measurementObjects.last?.weight == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.weight)!)
+                                self.finalArray.add((measurementObjects.last?.weight)!)
                             }
                             
                             // Chest
                             if measurementObjects.last?.chest == "" || measurementObjects.last?.chest == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.chest)!)
+                                self.finalArray.add((measurementObjects.last?.chest)!)
                             }
                             
                             // Left Arm
                             if measurementObjects.last?.leftArm == "" || measurementObjects.last?.leftArm == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.leftArm)!)
+                                self.finalArray.add((measurementObjects.last?.leftArm)!)
                             }
                             
                             // Right Arm
                             if measurementObjects.last?.rightArm == "" || measurementObjects.last?.rightArm == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.rightArm)!)
+                                self.finalArray.add((measurementObjects.last?.rightArm)!)
                             }
                             
                             // Waist
                             if measurementObjects.last?.waist == "" || measurementObjects.last?.waist == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.waist)!)
+                                self.finalArray.add((measurementObjects.last?.waist)!)
                             }
                             
                             // Hips
                             if measurementObjects.last?.hips == "" || measurementObjects.last?.hips == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.hips)!)
+                                self.finalArray.add((measurementObjects.last?.hips)!)
                             }
                             
                             // Left Thigh
                             if measurementObjects.last?.leftThigh == "" || measurementObjects.last?.leftThigh == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.leftThigh)!)
+                                self.finalArray.add((measurementObjects.last?.leftThigh)!)
                             }
                             
                             // Right Thigh
                             if measurementObjects.last?.rightThigh == "" || measurementObjects.last?.rightThigh == nil {
-                                self.finalArray.addObject("0")
+                                self.finalArray.add("0")
                             }
                             else {
-                                self.finalArray.addObject((measurementObjects.last?.rightThigh)!)
+                                self.finalArray.add((measurementObjects.last?.rightThigh)!)
                             }
                         }
                     }
@@ -524,50 +524,50 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
                         
                         if monthArray[i] == "1" {
                             
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
-                            self.month1Array.addObject("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
+                            self.month1Array.add("0")
                         }
                         
                         else if monthArray[i] == "2" {
                             
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
-                            self.month2Array.addObject("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
+                            self.month2Array.add("0")
                         }
                         
                         else if monthArray[i] == "3" {
                             
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
-                            self.month3Array.addObject("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
+                            self.month3Array.add("0")
                         }
                         
                         else if monthArray[i] == "4" {
                             
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
-                            self.finalArray.addObject("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
+                            self.finalArray.add("0")
                         }
                     }
                 }
@@ -585,27 +585,27 @@ class MeasurementsReportViewController: UIViewController, MFMailComposeViewContr
         var myHTML = "<html><head>"
         
         // Table Style
-        myHTML = myHTML.stringByAppendingFormat("<STYLE TYPE='text/css'><!--TD{font-family: Arial; font-size: 12pt;}TH{font-family: Arial; font-size: 14pt;}---></STYLE></head><body><table border='1' bordercolor='#3399FF' style='background-color:#CCCCCC' width='%f' cellpadding='2' cellspacing='1'>", self.htmlView.frame.size.width - 15)
+        myHTML = myHTML.appendingFormat("<STYLE TYPE='text/css'><!--TD{font-family: Arial; font-size: 12pt;}TH{font-family: Arial; font-size: 14pt;}---></STYLE></head><body><table border='1' bordercolor='#3399FF' style='background-color:#CCCCCC' width='%f' cellpadding='2' cellspacing='1'>", self.htmlView.frame.size.width - 15)
         
         // Table Headers
-        myHTML = myHTML.stringByAppendingFormat("<tr><th style='background-color:#999999'>Session %@</th><th style='background-color:#999999'>1</th><th style='background-color:#999999'>2</th><th style='background-color:#999999'>3</th><th style='background-color:#999999'>Final</th></tr>", session)
+        myHTML = myHTML.appendingFormat("<tr><th style='background-color:#999999'>Session %@</th><th style='background-color:#999999'>1</th><th style='background-color:#999999'>2</th><th style='background-color:#999999'>3</th><th style='background-color:#999999'>Final</th></tr>", session)
         
         // Table Data
         for i in 0..<measurementsNameArray.count {
             
-            myHTML = myHTML.stringByAppendingFormat("<tr><td style='background-color:#999999'>%@</td>", measurementsNameArray[i])
+            myHTML = myHTML.appendingFormat("<tr><td style='background-color:#999999'>%@</td>", measurementsNameArray[i])
             
             for a in 0..<measurementsArray.count {
                 
-                myHTML = myHTML.stringByAppendingFormat("<td>%@</td>", measurementsArray[a][i] as! String)
+                myHTML = myHTML.appendingFormat("<td>%@</td>", measurementsArray[a][i] as! String)
             }
             
-            myHTML = myHTML.stringByAppendingString("</tr>")
+            myHTML = myHTML + "</tr>"
         }
         
         // HTML closing tags
-        myHTML = myHTML.stringByAppendingString("</table></body></html>")
+        myHTML = myHTML + "</table></body></html>"
         
-        return myHTML
+        return myHTML as NSString
     }
 }

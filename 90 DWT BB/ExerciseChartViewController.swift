@@ -8,6 +8,30 @@
 
 import UIKit
 import CoreData
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class ExerciseChartViewController: UIViewController, SChartDatasource {
     
@@ -24,23 +48,23 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     
     var workoutObjects = [Workout]()
     
-    @IBAction func dismissButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func dismissButtonPressed(_ sender: UIBarButtonItem) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         // Create the chart
-        let chart = ShinobiChart(frame: CGRectInset(chartView.bounds, 0, 0))
+        let chart = ShinobiChart(frame: chartView.bounds.insetBy(dx: 0, dy: 0))
         chart.title = exerciseName
         chart.titleLabel.textColor = UIColor (red: 175/255, green: 89/255, blue: 8/255, alpha: 1)
-        chart.titleCentresOn = SChartTitleCentresOn.Chart
+        chart.titleCentresOn = SChartTitleCentresOn.chart
         
-        chart.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        chart.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
         // Add a pair of axes
         let xAxis = SChartCategoryAxis()
@@ -64,10 +88,10 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         chart.datasource = self
         
         // Show the legend on all devices
-        chart.legend.hidden = false
+        chart.legend.isHidden = false
         chart.legend.style.font = UIFont(name: "HelveticaNeue-Light", size: 17)
-        chart.legend.placement = .OutsidePlotArea
-        chart.legend.position = .BottomMiddle
+        chart.legend.placement = .outsidePlotArea
+        chart.legend.position = .bottomMiddle
         
         // Enable gestures
         yAxis.enableGesturePanning = true;
@@ -82,14 +106,14 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     
     // MARK:- SChartDatasource Functions
     
-    func numberOfSeriesInSChart(chart: ShinobiChart) -> Int {
+    func numberOfSeries(inSChart chart: ShinobiChart) -> Int {
         
         let highestIndexFound = NSInteger(GetHighestDatabaseIndex())
         
         return highestIndexFound;
     }
     
-    func sChart(chart: ShinobiChart, seriesAtIndex index: Int) -> SChartSeries {
+    func sChart(_ chart: ShinobiChart, seriesAt index: Int) -> SChartSeries {
         /*
          NSString *tempString = [NSString stringWithFormat:@"%@ - %@", self.appDelegate.graphWorkout, self.appDelegate.graphTitle];
          
@@ -156,7 +180,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         // Enable area fill
         //columnSeries.style.areaColorGradient = [UIColor clearColor];
         
-        let tryNumber = NSNumber(int: index + 1)
+        let tryNumber = NSNumber(value: index + 1 as Int32)
         
         if (ColumnSeriesMatchAtIndex(index)) {
             
@@ -180,7 +204,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         return columnSeries;
     }
     
-    func sChart(chart: ShinobiChart, numberOfDataPointsForSeriesAtIndex seriesIndex: Int) -> Int {
+    func sChart(_ chart: ShinobiChart, numberOfDataPointsForSeriesAt seriesIndex: Int) -> Int {
     
         // Get the number of reps labels in the cell that aren't ""
         var counter = 0
@@ -196,7 +220,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         return counter
     }
     
-    func sChart(chart: ShinobiChart, dataPointAtIndex dataIndex: Int, forSeriesAtIndex seriesIndex: Int) -> SChartData {
+    func sChart(_ chart: ShinobiChart, dataPointAt dataIndex: Int, forSeriesAt seriesIndex: Int) -> SChartData {
     
         let dataPoint = SChartDataPoint()
         
@@ -220,7 +244,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                 
                 if (duplicate > 1) {
                     
-                    tempString2 = createXAxisString(tempReps!, spacesToAdd: duplicate - 1)
+                    tempString2 = createXAxisString(tempReps! as NSString, spacesToAdd: duplicate - 1 as NSNumber)
                     
                 }else {
                     
@@ -235,14 +259,14 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         if (self.workoutObjects.count == 0) {
             
             // No Matches
-            dataPoint.yValue = NSNumber(double: 0.0)
+            dataPoint.yValue = NSNumber(value: 0.0 as Double)
         }
         else {
             
             // Found a match
             let matches = workoutObjects.last!
             let yValue = Double(matches.weight!)
-            dataPoint.yValue = NSNumber(double: yValue!)
+            dataPoint.yValue = NSNumber(value: yValue! as Double)
         }
         
         return dataPoint
@@ -253,7 +277,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     func GetHighestDatabaseIndex() -> NSInteger {
     
         // Get Data from the database
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "index", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -266,7 +290,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         request.predicate = filter
         
         do {
-            if let tempWorkoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let tempWorkoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 self.workoutObjects = tempWorkoutObjects
                 //print("workoutObjects.count = \(workoutObjects.count)")
@@ -277,9 +301,9 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                     
                     let objectIndex = object.index
                     
-                    if objectIndex?.integerValue > highestDatabaseIndex {
+                    if objectIndex?.intValue > highestDatabaseIndex {
                         
-                        highestDatabaseIndex = (objectIndex?.integerValue)!
+                        highestDatabaseIndex = (objectIndex?.intValue)!
                     }
                 }
                 
@@ -291,12 +315,12 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         return 0
     }
     
-    func ColumnSeriesMatchAtIndex(workoutIndex: NSInteger) -> Bool {
+    func ColumnSeriesMatchAtIndex(_ workoutIndex: NSInteger) -> Bool {
     
-        let tempWorkoutIndex = NSNumber(integer: workoutIndex + 1)
+        let tempWorkoutIndex = NSNumber(value: workoutIndex + 1 as Int)
         
         // Get Data from the database.
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
         request.sortDescriptors = [sortRound]
         
@@ -310,7 +334,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         request.predicate = filter
         
         do {
-            if let tempWorkoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let tempWorkoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 self.workoutObjects = tempWorkoutObjects
                 //print("workoutObjects.count = \(workoutObjects.count)")
@@ -329,21 +353,21 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         return false
     }
     
-    func matchAtIndex(round: NSInteger, workoutIndex: NSInteger) {
+    func matchAtIndex(_ round: NSInteger, workoutIndex: NSInteger) {
     
-        var roundConverted = NSNumber(integer: round)
+        var roundConverted = NSNumber(value: round as Int)
         
-        let tempWorkoutIndex = NSNumber(integer: workoutIndex + 1)
+        let tempWorkoutIndex = NSNumber(value: workoutIndex + 1 as Int)
         
         // @"B2: Chest - Russian Twist" is the only one that starts out in the second index of an array.
         let tempString = "\(selectedWorkout) - \(exerciseName)"
         
         if tempString == "B2: Chest - Russian Twist" {
             
-            roundConverted = NSNumber(integer: round + 1)
+            roundConverted = NSNumber(value: round + 1 as Int)
         }
         
-        let request = NSFetchRequest( entityName: "Workout")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -358,7 +382,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         request.predicate = filter
 
         do {
-            if let tempWorkoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+            if let tempWorkoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                 
                 //print("workoutObjects.count = \(workoutObjects.count)")
                 self.workoutObjects = tempWorkoutObjects
@@ -366,14 +390,14 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    func createXAxisString(initialString: NSString, spacesToAdd: NSNumber) -> String {
+    func createXAxisString(_ initialString: NSString, spacesToAdd: NSNumber) -> String {
     
         var tempString = initialString
         let spacesString = " "
         
-        for _ in 0..<spacesToAdd.integerValue {
+        for _ in 0..<spacesToAdd.intValue {
             
-            tempString = tempString.stringByAppendingString(spacesString)
+            tempString = tempString.appending(spacesString) as NSString
         }
         
         return tempString as String

@@ -24,22 +24,22 @@ class MeasurementsTVC: UITableViewController {
         session = CDOperation.getCurrentSession()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Get the current session
         session = CDOperation.getCurrentSession()
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         self.tableView.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -50,12 +50,12 @@ class MeasurementsTVC: UITableViewController {
 
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
             
@@ -67,9 +67,9 @@ class MeasurementsTVC: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.textLabel!.text = cellTitles[indexPath.section][indexPath.row]
         
@@ -83,7 +83,7 @@ class MeasurementsTVC: UITableViewController {
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0 {
             
@@ -95,7 +95,7 @@ class MeasurementsTVC: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.section {
         case 0:
@@ -114,22 +114,22 @@ class MeasurementsTVC: UITableViewController {
                 monthString = "4"
             }
             
-            self.performSegueWithIdentifier("toRecordMeasurements", sender: indexPath)
+            self.performSegue(withIdentifier: "toRecordMeasurements", sender: indexPath)
             
         default:
             // Section = 1
-            self.performSegueWithIdentifier("toViewMeasurements", sender: indexPath)
+            self.performSegue(withIdentifier: "toViewMeasurements", sender: indexPath)
         }
     }
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "toRecordMeasurements" {
             
-            let destinationVC = segue.destinationViewController as? MeasurementsRecordViewController
+            let destinationVC = segue.destination as? MeasurementsRecordViewController
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.navigationItem.title = cellTitles[(selectedRow?.section)!][(selectedRow?.row)!]
@@ -139,7 +139,7 @@ class MeasurementsTVC: UITableViewController {
         else {
             // MeasurementsReportViewController
             
-            let destinationVC = segue.destinationViewController as? MeasurementsReportViewController
+            let destinationVC = segue.destination as? MeasurementsReportViewController
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.navigationItem.title = cellTitles[(selectedRow?.section)!][(selectedRow?.row)!]

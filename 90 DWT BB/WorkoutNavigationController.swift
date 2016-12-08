@@ -10,7 +10,7 @@ import UIKit
 
 class WorkoutNavigationController: UINavigationController {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         let parentTBC = self.tabBarController as! MainTBC
         
@@ -26,7 +26,7 @@ class WorkoutNavigationController: UINavigationController {
                 parentTBC.sessionChangedForWorkoutNC = false
             }
             
-            self.popToRootViewControllerAnimated(true)
+            self.popToRootViewController(animated: true)
         }
     }
         

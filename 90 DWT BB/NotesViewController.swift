@@ -47,26 +47,26 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         currentNotes.delegate = self
         
-        self.roundLabel.hidden = true
+        self.roundLabel.isHidden = true
         
         // Apply Border to TextViews
         self.currentNotes.layer.borderWidth = 0.5
-        self.currentNotes.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.currentNotes.layer.borderColor = UIColor.lightGray.cgColor
         //self.currentNotes.layer.cornerRadius = 5
         self.currentNotes.clipsToBounds = true
         
         self.previousNotes.layer.borderWidth = 0.5
-        self.previousNotes.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.previousNotes.layer.borderColor = UIColor.lightGray.cgColor
         //self.previousNotes.layer.cornerRadius = 5
         self.previousNotes.clipsToBounds = true
         
         // Get data to display in the textfields
         // Current textfield
-        currentNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex)
+        currentNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex as NSNumber)
         self.originalNoteText = currentNotes.text
         
         // Previous textfield
-        previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex - 1)
+        previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex - 1  as NSNumber)
         
         updateWorkoutCompleteCellUI()
         
@@ -77,7 +77,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         else {
             
             // Show the Banner Ad
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone) {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
                 self.adView = MPAdView(adUnitId: "4046208fc4a74de38212426cf30fc747", size: MOPUB_BANNER_SIZE)
@@ -91,13 +91,13 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             }
             
             self.adView.delegate = self
-            self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
-                                           self.bannerSize.width, self.bannerSize.height)
+            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                           y: self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
+                                           width: self.bannerSize.width, height: self.bannerSize.height)
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Show or Hide Ads
@@ -113,15 +113,15 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             
             self.adView.loadAd()
             
-            self.adView.hidden = true;
+            self.adView.isHidden = true;
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWTBB.removeads") {
@@ -132,23 +132,23 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         } else {
             
             // Show ads
-            self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
-                                           self.bannerSize.width, self.bannerSize.height)
-            self.adView.hidden = false
+            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                           y: self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
+                                           width: self.bannerSize.width, height: self.bannerSize.height)
+            self.adView.isHidden = false
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         saveNote()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
         
         self.adView.removeFromSuperview()
     }
@@ -159,11 +159,11 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // Get data to display in the textfields
         // Current textfield
-        currentNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex)
+        currentNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex as NSNumber)
         self.originalNoteText = currentNotes.text
         
         // Previous textfield
-        previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex - 1)
+        previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex - 1 as NSNumber)
         
         updateWorkoutCompleteCellUI()
 
@@ -173,38 +173,38 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         if currentNotes.text != "" && currentNotes.text != originalNoteText {
             
-            CDOperation.saveNoteWithPredicateNoExercise(session, routine: workoutRoutine, workout: selectedWorkout, week: workoutWeek, index: workoutIndex, note: currentNotes.text, round: 1)
+            CDOperation.saveNoteWithPredicateNoExercise(session, routine: workoutRoutine, workout: selectedWorkout, week: workoutWeek, index: workoutIndex as NSNumber, note: currentNotes.text, round: 1)
         }
     }
     
-    @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
         
         saveNote()
         
-        let alertController = UIAlertController(title: "Share", message: "How you want to share your progress?", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Share", message: "How you want to share your progress?", preferredStyle: .actionSheet)
         
-        let emailAction = UIAlertAction(title: "Email", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
             action in
             
             self.emailResults()
         })
         
-        let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: {
+        let facebookAction = UIAlertAction(title: "Facebook", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -213,29 +213,29 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: {
+        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -244,14 +244,14 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(emailAction)
         alertController.addAction(facebookAction)
@@ -263,87 +263,87 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func deleteDateButtonPressed(sender: UIButton) {
+    @IBAction func deleteDateButtonPressed(_ sender: UIButton) {
         
-        CDOperation.deleteDate(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex)
+        CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         updateWorkoutCompleteCellUI()
     }
     
-    @IBAction func todayDateButtonPressed(sender: UIButton) {
+    @IBAction func todayDateButtonPressed(_ sender: UIButton) {
         
-        CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex, useDate: NSDate())
+        CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: Date())
         
         updateWorkoutCompleteCellUI()
     }
     
-    @IBAction func previousDateButtonPressed(sender: UIButton) {
+    @IBAction func previousDateButtonPressed(_ sender: UIButton) {
         
         if debug == 1 {
             
             print("Previous Button Pressed")
         }
         
-        let popOverContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DatePickerViewController") as! DatePickerViewController
+        let popOverContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
         
         popOverContent.session = session
         popOverContent.workoutRoutine = workoutRoutine
         popOverContent.selectedWorkout = selectedWorkout
         popOverContent.workoutIndex = workoutIndex
         
-        popOverContent.modalPresentationStyle = .Popover
+        popOverContent.modalPresentationStyle = .popover
         
         let popOver = popOverContent.popoverPresentationController
         popOver?.sourceView = sender
         popOver?.sourceRect = sender.bounds
-        popOver?.permittedArrowDirections = .Any
+        popOver?.permittedArrowDirections = .any
         popOver?.delegate = self
         
-        presentViewController(popOverContent, animated: true, completion: nil)
+        present(popOverContent, animated: true, completion: nil)
     }
     
     func updateWorkoutCompleteCellUI () {
         
-        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex)
+        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         switch  workoutCompletedObjects.count {
         case 0:
             // No match
             
             // Cell
-            datePickerView.backgroundColor = UIColor.whiteColor()
+            datePickerView.backgroundColor = UIColor.white
             
             // Label
             dateLabel.text = "Workout Completed: __/__/__";
-            dateLabel.textColor = UIColor.blackColor()
+            dateLabel.textColor = UIColor.black
             
         default:
             // Found a match.
             
             let object = workoutCompletedObjects.last
-            let completedDate = NSDateFormatter .localizedStringFromDate((object?.date)!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+            let completedDate = DateFormatter .localizedString(from: (object?.date)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
             
             // Cell
-            datePickerView.backgroundColor = UIColor.darkGrayColor()
+            datePickerView.backgroundColor = UIColor.darkGray
             
             // Label
             dateLabel.text? = "Workout Completed: \(completedDate)"
-            dateLabel.textColor = UIColor.whiteColor()
+            dateLabel.textColor = UIColor.white
         }
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         
-        return .None
+        return .none
     }
     
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         
         updateWorkoutCompleteCellUI()
     }
@@ -353,19 +353,19 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         // Create MailComposerViewController object.
         let mailcomposer = MFMailComposeViewController()
         mailcomposer.mailComposeDelegate = self
-        mailcomposer.navigationBar.tintColor = UIColor.whiteColor()
+        mailcomposer.navigationBar.tintColor = UIColor.white
         
         // Check to see if the device has at least 1 email account configured
         if MFMailComposeViewController.canSendMail() {
             
             // Get the objects for the current session
-            let workoutObjects = CDOperation.getNoteObjects(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex)
+            let workoutObjects = CDOperation.getNoteObjects(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
             
             let writeString = NSMutableString()
             
             if workoutObjects.count != 0 {
                 
-                writeString.appendString("Session,Routine,Month,Week,Workout,Notes,Date\n")
+                writeString.append("Session,Routine,Month,Week,Workout,Notes,Date\n")
                 
                 for i in 0..<workoutObjects.count {
                     
@@ -377,25 +377,25 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
                     let notes = workoutObjects[i].notes;
                     let date = workoutObjects[i].date;
 
-                    let dateString = NSDateFormatter.localizedStringFromDate(date!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+                    let dateString = DateFormatter.localizedString(from: date!, dateStyle: .short, timeStyle: .none)
                     
-                    writeString.appendString("\(session!),\(routine!),\(month),\(week),\(workout!),\(notes!),\(dateString)\n")
+                    writeString.append("\(session!),\(routine!),\(month),\(week),\(workout!),\(notes!),\(dateString)\n")
                 }
             }
             
             // Send email
             
-            let csvData = writeString.dataUsingEncoding(NSASCIIStringEncoding)
-            let workoutName = selectedWorkout.stringByAppendingString(".csv")
+            let csvData = writeString.data(using: String.Encoding.ascii.rawValue)
+            let workoutName = selectedWorkout + ".csv"
             var emailAddress = [""]
             
             // Fetch defaultEmail data.
-            let request = NSFetchRequest( entityName: "Email")
+            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
             
             do {
-                if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+                if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                     
                     if debug == 1 {
                         
@@ -420,26 +420,26 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             mailcomposer.setSubject("90 DWT BB Workout Data")
             mailcomposer.addAttachmentData(csvData!, mimeType: "text/csv", fileName: workoutName)
             
-            presentViewController(mailcomposer, animated: true, completion: {
-                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+            present(mailcomposer, animated: true, completion: {
+                UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
             })
         }
     }
 
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - UITextFieldDelegates
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         currentNotes.resignFirstResponder()
         
         return true
     }
 
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if(text == "\n") {
             currentNotes.resignFirstResponder()
@@ -450,7 +450,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         return true
     }
     
-    @IBAction func hideKeyboard(sender: UIButton) {
+    @IBAction func hideKeyboard(_ sender: UIButton) {
         
         self.currentNotes.resignFirstResponder()
         saveNote()
@@ -462,28 +462,28 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         return self
     }
     
-    func adViewDidLoadAd(view: MPAdView!) {
+    func adViewDidLoadAd(_ view: MPAdView!) {
         
         let size = view.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
         let bottomAlignedY = self.view.bounds.size.height - size.height - self.tabBarController!.tabBar.bounds.size.height
-        view.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height)
+        view.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        self.adView.hidden = true
-        self.adView.rotateToOrientation(toInterfaceOrientation)
+        self.adView.isHidden = true
+        self.adView.rotate(to: toInterfaceOrientation)
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         
         let size = self.adView.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
         let bottomAlignedY = self.view.bounds.size.height - size.height - self.tabBarController!.tabBar.bounds.size.height
         
-        self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height)
+        self.adView.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
         
-        self.adView.hidden = false
+        self.adView.isHidden = false
     }
 }

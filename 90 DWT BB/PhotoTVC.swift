@@ -28,22 +28,22 @@ class PhotoTVC: UITableViewController {
         session = CDOperation.getCurrentSession()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Get the current session
         session = CDOperation.getCurrentSession()
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         self.tableView.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -54,19 +54,19 @@ class PhotoTVC: UITableViewController {
 
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 4
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.textLabel!.text = cellTitles[indexPath.section][indexPath.row]
         
@@ -80,7 +80,7 @@ class PhotoTVC: UITableViewController {
 
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0 {
             
@@ -92,7 +92,7 @@ class PhotoTVC: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.section {
         case 0:
@@ -111,7 +111,7 @@ class PhotoTVC: UITableViewController {
                 monthString = "4"
             }
             
-            self.performSegueWithIdentifier("toTakePhotos", sender: indexPath)
+            self.performSegue(withIdentifier: "toTakePhotos", sender: indexPath)
             
         default:
             // Section = 1
@@ -185,19 +185,19 @@ class PhotoTVC: UITableViewController {
                                 "Final Back"]]
             }
 
-            self.performSegueWithIdentifier("toViewPhotos", sender: indexPath)
+            self.performSegue(withIdentifier: "toViewPhotos", sender: indexPath)
         }
     }
 
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "toTakePhotos" {
             
-            let destinationVC = segue.destinationViewController as? TakePhotosViewController
+            let destinationVC = segue.destination as? TakePhotosViewController
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.navigationItem.title = cellTitles[(selectedRow?.section)!][(selectedRow?.row)!]
@@ -207,7 +207,7 @@ class PhotoTVC: UITableViewController {
         else {
             // ViewPhotosViewController
             
-            let destinationVC = segue.destinationViewController as? ViewPhotosViewController
+            let destinationVC = segue.destination as? ViewPhotosViewController
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.navigationItem.title = cellTitles[(selectedRow?.section)!][(selectedRow?.row)!]

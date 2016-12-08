@@ -14,7 +14,7 @@ import CoreData
 
 extension AutoLock {
 
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var useAutoLock: String?
 
 }

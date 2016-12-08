@@ -41,19 +41,19 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         self.collectionView.backgroundColor = lightGrey
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         self.collectionView.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -61,32 +61,32 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         // Do nothing
     }
 
-    @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
         
-        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .actionSheet)
         
-        let emailAction = UIAlertAction(title: "Email", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
             action in
             
             self.emailPhotos()
         })
         
-        let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: {
+        let facebookAction = UIAlertAction(title: "Facebook", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -95,29 +95,29 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: {
+        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -126,14 +126,14 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(emailAction)
         alertController.addAction(facebookAction)
@@ -145,10 +145,10 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func emailPhotos() {
@@ -156,7 +156,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         // Create MailComposerViewController object.
         let mailcomposer = MFMailComposeViewController()
         mailcomposer.mailComposeDelegate = self
-        mailcomposer.navigationBar.tintColor = UIColor.whiteColor()
+        mailcomposer.navigationBar.tintColor = UIColor.white
         
         // Check to see if the device has at least 1 email account configured
         if MFMailComposeViewController.canSendMail() {
@@ -164,12 +164,12 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
             var emailAddress = [""]
             
             // Fetch defaultEmail data.
-            let request = NSFetchRequest( entityName: "Email")
+            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
             
             do {
-                if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+                if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                     
                     if debug == 1 {
                         
@@ -201,7 +201,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     
                     // Prepare string for the Subject of the email
                     var subjectTitle = ""
-                    subjectTitle = subjectTitle.stringByAppendingFormat("90 DWT BB %@ Photos - Session %@", monthArray[i], self.session)
+                    subjectTitle = subjectTitle.appendingFormat("90 DWT BB %@ Photos - Session %@", monthArray[i], self.session)
                     
                     mailcomposer.setSubject(subjectTitle)
                     
@@ -213,7 +213,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                             let imageData = UIImageJPEGRepresentation(self.arrayOfImages[b] as! UIImage, 1.0)
                             
                             var photoAttachmentFileName = ""
-                            photoAttachmentFileName = photoAttachmentFileName.stringByAppendingFormat("%@ %@ - Session %@.jpg", monthArray[i], picAngle[b], self.session)
+                            photoAttachmentFileName = photoAttachmentFileName.appendingFormat("%@ %@ - Session %@.jpg", monthArray[i], picAngle[b], self.session)
                             
                             mailcomposer.addAttachmentData(imageData!, mimeType: "image/jpg", fileName: photoAttachmentFileName)
                         }
@@ -221,15 +221,15 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                 }
             }
             
-            presentViewController(mailcomposer, animated: true, completion: {
-                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+            present(mailcomposer, animated: true, completion: {
+                UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
             })
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func getPhotosFromDatabase() {
@@ -242,7 +242,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         for i in 0..<photoAngle.count {
             
             // Fetch Photos
-            let request = NSFetchRequest( entityName: "Photo")
+            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Photo")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
             
@@ -254,7 +254,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
             request.predicate = filter
             
             do {
-                if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
+                if let photoObjects = try CoreDataHelper.shared().context.fetch(request) as? [Photo] {
                     
                     if debug == 1 {
                         
@@ -265,15 +265,15 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                         
                         // Get the image from the last object
                         let matches = photoObjects.last
-                        let image = UIImage(data: (matches?.image)!)
+                        let image = UIImage(data: (matches?.image)! as Data)
                         
                         // Add image to array.
-                        self.arrayOfImages.addObject(image!)
+                        self.arrayOfImages.add(image!)
                     }
                     else {
                         
                         // Load a placeholder image.
-                        self.arrayOfImages.addObject(UIImage(named: "PhotoPlaceHolder")!)
+                        self.arrayOfImages.add(UIImage(named: "PhotoPlaceHolder")!)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -289,16 +289,16 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
             
             // Use Camera
             
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
                 
-                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                imagePicker.sourceType = UIImagePickerControllerSourceType.camera
             }
         }
         
         else if self.whereToGetPhoto == "Photo Library" {
             
             // Use Photo Library
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         }
         
         else {
@@ -313,9 +313,9 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         // If not iPad then show the imagePicker modally.
 
         
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad) {
          
-            imagePicker.modalPresentationStyle = .Popover
+            imagePicker.modalPresentationStyle = .popover
         }
         
         if let popover = imagePicker.popoverPresentationController {
@@ -323,17 +323,17 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
             popover.sourceView = self.selectedCell
             popover.delegate = self
             popover.sourceRect = (self.selectedCell.bounds)
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let image = info[UIImagePickerControllerOriginalImage]
         
-        self.arrayOfImages.replaceObjectAtIndex(self.selectedPhotoIndex, withObject: image!)
+        self.arrayOfImages.replaceObject(at: self.selectedPhotoIndex, with: image!)
         
         var selectedAngle = ""
         
@@ -351,7 +351,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         
         // Save the image data with the current session
         // Fetch Photos
-        let request = NSFetchRequest( entityName: "Photo")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Photo")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -364,7 +364,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
         request.predicate = filter
         
         do {
-            if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
+            if let photoObjects = try CoreDataHelper.shared().context.fetch(request) as? [Photo] {
                 
                 if debug == 1 {
                     
@@ -380,25 +380,25 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                         print("No Matches")
                     }
                     
-                    let insertPhotoInfo = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Photo
+                    let insertPhotoInfo = NSEntityDescription.insertNewObject(forEntityName: "Photo", into: CoreDataHelper.shared().context) as! Photo
                     
                     insertPhotoInfo.session = session
                     insertPhotoInfo.month = monthString
                     insertPhotoInfo.angle = selectedAngle
-                    insertPhotoInfo.date = NSDate()
+                    insertPhotoInfo.date = Date()
                     insertPhotoInfo.image = imageData
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 case 1:
                     // Update existing record
                     
                     let updatePhotoInfo = photoObjects[0]
                     
-                    updatePhotoInfo.date = NSDate()
+                    updatePhotoInfo.date = Date()
                     updatePhotoInfo.image = imageData
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                     
                 default:
                     // More than one match
@@ -414,99 +414,99 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                             // Get data from the newest existing record.  Usually the last record sorted by date.
                             let updatePhotoInfo = photoObjects[index]
                             
-                            updatePhotoInfo.date = NSDate()
+                            updatePhotoInfo.date = Date()
                             updatePhotoInfo.image = imageData
                         }
                         else {
                             // Delete duplicate records.
-                            CoreDataHelper.sharedHelper().context.deleteObject(photoObjects[index])
+                            CoreDataHelper.shared().context.delete(photoObjects[index])
                         }
                     }
                     
-                    CoreDataHelper.sharedHelper().backgroundSaveContext()
+                    CoreDataHelper.shared().backgroundSaveContext()
                 }
             }
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
             self.collectionView.reloadData()
             
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: UICollectionView Datasource
     
     // 1
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.arrayOfImages.count
     }
     
     // 2
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
     }
     
     // 3
-    func collectionView(cv: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let blueColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         
-        let cell = cv .dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        let cell = cv .dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCollectionViewCell
         
-        cell.backgroundColor = UIColor.blackColor()
-        cell.myImage.image = self.arrayOfImages.objectAtIndex(indexPath.item) as? UIImage
+        cell.backgroundColor = UIColor.black
+        cell.myImage.image = self.arrayOfImages.object(at: indexPath.item) as? UIImage
         
         let photoAngle = ["Front",
                           "Side",
                           "Back"]
         
         cell.myLabel.text = photoAngle[indexPath.item]
-        cell.myLabel.backgroundColor = UIColor.blackColor()
+        cell.myLabel.backgroundColor = UIColor.black
         cell.myLabel.textColor = blueColor
-        cell.myLabel.textAlignment = NSTextAlignment.Center
+        cell.myLabel.textAlignment = NSTextAlignment.center
         
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     
-    func collectionView(cv: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ cv: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         var alertController = UIAlertController()
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             
-            alertController = UIAlertController(title: "Set Photo", message: "Select Photo Source", preferredStyle: .ActionSheet)
+            alertController = UIAlertController(title: "Set Photo", message: "Select Photo Source", preferredStyle: .actionSheet)
         }
         else {
             
-            alertController = UIAlertController(title: "Set Photo", message: "No Camera Found.  Must Use Photo Library", preferredStyle: .ActionSheet)
+            alertController = UIAlertController(title: "Set Photo", message: "No Camera Found.  Must Use Photo Library", preferredStyle: .actionSheet)
         }
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .Default, handler: {
+        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {
             action in
             
             self.whereToGetPhoto = "Camera"
             self.cameraOrPhotoLibrary()
         })
         
-        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .Default, handler: {
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: {
             action in
             
             self.whereToGetPhoto = "Photo Library"
             self.cameraOrPhotoLibrary()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
          
             alertController.addAction(cameraAction)
         }
@@ -518,37 +518,37 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                           " Side",
                           " Back"]
         
-        self.selectedPhotoTitle = (self.navigationItem.title?.stringByAppendingString(photoAngle[indexPath.item]))!
+        self.selectedPhotoTitle = ((self.navigationItem.title)! + photoAngle[indexPath.item])
         self.selectedPhotoIndex = indexPath.item
         
         if let popover = alertController.popoverPresentationController {
             
             // Get the position of the image so the popover arrow can point to it.
-            let cell = cv.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
-            self.selectedImageRect = cv .convertRect(cell.frame, toView: self.view)
+            let cell = cv.cellForItem(at: indexPath) as! PhotoCollectionViewCell
+            self.selectedImageRect = cv .convert(cell.frame, to: self.view)
             self.selectedCell = cell
             
             popover.sourceView = cell
             popover.delegate = self
             popover.sourceRect = (cell.bounds)
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // Size cell for iPhone
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
             
-            return CGSizeMake(152, 204);
+            return CGSize(width: 152, height: 204);
         }
             
             // Size cell for iPad
         else {
             
-            return CGSizeMake(304, 408);
+            return CGSize(width: 304, height: 408);
         }
     }
 }

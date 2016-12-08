@@ -14,7 +14,7 @@ import CoreData
 
 extension WorkoutCompleteDate {
 
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var index: NSNumber?
     @NSManaged var routine: String?
     @NSManaged var session: String?

@@ -38,19 +38,19 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
         self.collectionView.backgroundColor = lightGrey
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         self.collectionView.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -63,7 +63,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
     func getPhotosFromDatabase() {
         
         // Fetch Photos
-        let request = NSFetchRequest( entityName: "Photo")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Photo")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
@@ -91,7 +91,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
                 request.predicate = filter
                 
                 do {
-                    if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
+                    if let photoObjects = try CoreDataHelper.shared().context.fetch(request) as? [Photo] {
                         
                         if debug == 1 {
                             
@@ -102,50 +102,50 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
                             
                             // Get the image from the last object
                             let matches = photoObjects.last
-                            let image = UIImage(data: (matches?.image)!)
+                            let image = UIImage(data: (matches?.image)! as Data)
                             
                             // Add image to array.
-                            tempArray.addObject(image!)
+                            tempArray.add(image!)
                         }
                         else {
                             
                             // Load a placeholder image.
-                            tempArray.addObject(UIImage(named: "PhotoPlaceHolder")!)
+                            tempArray.add(UIImage(named: "PhotoPlaceHolder")!)
                         }
                     }
                 } catch { print(" ERROR executing a fetch request: \( error)") }
             }
             
-            self.arrayOfImages.insert(tempArray, atIndex: arraySection)
+            self.arrayOfImages.insert((tempArray as AnyObject) as! Array<Any>, at: arraySection)
         }
     }
     
-    @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
         
-        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .actionSheet)
         
-        let emailAction = UIAlertAction(title: "Email", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
             action in
             
             self.emailPhotos()
         })
         
-        let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: {
+        let facebookAction = UIAlertAction(title: "Facebook", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -154,29 +154,29 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: {
+        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -185,14 +185,14 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(emailAction)
         alertController.addAction(facebookAction)
@@ -204,10 +204,10 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func emailPhotos() {
@@ -215,7 +215,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
         // Create MailComposerViewController object.
         let mailcomposer = MFMailComposeViewController()
         mailcomposer.mailComposeDelegate = self
-        mailcomposer.navigationBar.tintColor = UIColor.whiteColor()
+        mailcomposer.navigationBar.tintColor = UIColor.white
         
         // Check to see if the device has at least 1 email account configured
         if MFMailComposeViewController.canSendMail() {
@@ -316,28 +316,28 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
                 }
             }
             
-            presentViewController(mailcomposer, animated: true, completion: {
-                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+            present(mailcomposer, animated: true, completion: {
+                UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
             })
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func getEmailAddresses() -> [String] {
         
         // Fetch defaultEmail data.
-        let request = NSFetchRequest( entityName: "Email")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         var emailAddressArray = [String]()
         
         do {
-            if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+            if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                 
                 if debug == 1 {
                     
@@ -364,13 +364,13 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: UICollectionView Datasource
     
     // 1
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.arrayOfImages[0].count
     }
     
     // 2
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         if self.photoTitles.count == 4 {
             
@@ -383,13 +383,13 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // 3
-    func collectionView(cv: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let blueColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         
-        let cell = cv .dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        let cell = cv .dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCollectionViewCell
         
-        cell.backgroundColor = UIColor.blackColor()
+        cell.backgroundColor = UIColor.black
         
         let section = indexPath.section
         let row = indexPath.row
@@ -402,33 +402,33 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
         cell.myImage.image = self.arrayOfImages[indexPath.section][indexPath.row] as? UIImage
         
         cell.myLabel.text = self.photoTitles[indexPath.section][indexPath.row] as? String
-        cell.myLabel.backgroundColor = UIColor.blackColor()
+        cell.myLabel.backgroundColor = UIColor.black
         cell.myLabel.textColor = blueColor
-        cell.myLabel.textAlignment = NSTextAlignment.Center
+        cell.myLabel.textAlignment = NSTextAlignment.center
         
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // Size cell for iPhone
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
             
-            return CGSizeMake(152, 204);
+            return CGSize(width: 152, height: 204);
         }
             
             // Size cell for iPad
         else {
             
-            return CGSizeMake(304, 408);
+            return CGSize(width: 304, height: 408);
         }
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", forIndexPath: indexPath) as! PhotoCollectionHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as! PhotoCollectionHeaderView
         
         if photoAngle.count == 4 {
             

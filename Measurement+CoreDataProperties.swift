@@ -15,7 +15,7 @@ import CoreData
 extension Measurement {
 
     @NSManaged var chest: String?
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var hips: String?
     @NSManaged var leftArm: String?
     @NSManaged var leftThigh: String?

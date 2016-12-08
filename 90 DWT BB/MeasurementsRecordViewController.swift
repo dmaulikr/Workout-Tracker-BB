@@ -57,17 +57,17 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
         loadMeasurements()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -78,7 +78,7 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
 
     func loadMeasurements() {
         
-        if let measurementObjects = CDOperation.getMeasurementObjects(session, month: monthString) as? [Measurement] {
+        if let measurementObjects = CDOperation.getMeasurementObjects(session as NSString, month: monthString as NSString) as? [Measurement] {
             
             if debug == 1 {
                 
@@ -103,7 +103,7 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
     
     // MARK: - UITextFieldDelegates
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
         weight.resignFirstResponder()
         chest.resignFirstResponder()
@@ -117,7 +117,7 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
         return true
     }
     
-    @IBAction func hideKeyboard(sender: UIButton) {
+    @IBAction func hideKeyboard(_ sender: UIButton) {
         
         weight.resignFirstResponder()
         chest.resignFirstResponder()
@@ -129,34 +129,34 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
         rightThigh.resignFirstResponder()
     }
     
-    @IBAction func shareAction(sender: UIBarButtonItem) {
+    @IBAction func shareAction(_ sender: UIBarButtonItem) {
         
         saveMeasurements()
         
-        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Share", message: "", preferredStyle: .actionSheet)
         
-        let emailAction = UIAlertAction(title: "Email", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
             action in
             
             self.emailResults()
         })
         
-        let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: {
+        let facebookAction = UIAlertAction(title: "Facebook", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Facebook app on your device before posting to Facebook.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -165,29 +165,29 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: {
+        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: {
             action in
             
-            if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)) {
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 //            socialController.setInitialText("Hello World!")
                 //            socialController.addImage(someUIImageInstance)
                 //            socialController.addURL(someNSURLInstance)
                 
-                self.presentViewController(socialController, animated: true, completion: nil)
+                self.present(socialController!, animated: true, completion: nil)
             }
             else {
                 
-                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .Alert)
+                let alertControllerError = UIAlertController(title: "Error", message: "Please ensure you are connected to the internet AND signed into the Twitter app on your device before posting to Twitter.", preferredStyle: .alert)
                 
-                let cancelActionError = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelActionError = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 
                 alertControllerError.addAction(cancelActionError)
                 
@@ -196,14 +196,14 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
                     popoverError.barButtonItem = sender
                     popoverError.sourceView = self.view
                     popoverError.delegate = self
-                    popoverError.permittedArrowDirections = .Any
+                    popoverError.permittedArrowDirections = .any
                 }
                 
-                self.presentViewController(alertControllerError, animated: true, completion: nil)
+                self.present(alertControllerError, animated: true, completion: nil)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(emailAction)
         alertController.addAction(facebookAction)
@@ -215,10 +215,10 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
             popover.barButtonItem = sender
             popover.sourceView = self.view
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func emailResults() {
@@ -226,18 +226,18 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
         // Create MailComposerViewController object.
         let mailcomposer = MFMailComposeViewController()
         mailcomposer.mailComposeDelegate = self
-        mailcomposer.navigationBar.tintColor = UIColor.whiteColor()
+        mailcomposer.navigationBar.tintColor = UIColor.white
         
         // Check to see if the device has at least 1 email account configured
         if MFMailComposeViewController.canSendMail() {
             
-            if let measurementObjects = CDOperation.getMeasurementObjects(session, month: monthString) as? [Measurement] {
+            if let measurementObjects = CDOperation.getMeasurementObjects(session as NSString, month: monthString as NSString) as? [Measurement] {
                 
                 let writeString = NSMutableString()
                 
                 if measurementObjects.count >= 1 {
                     
-                     writeString.appendString("Session,Month,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n")
+                     writeString.append("Session,Month,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n")
                     
                     let object = measurementObjects.last
                     
@@ -284,24 +284,24 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
                         db_RightThigh = (object?.rightThigh)!
                     }
                     
-                    writeString.appendString("\(db_Session!),\(self.navigationItem.title!),\(db_Weight),\(db_Chest),\(db_LeftArm),\(db_RightArm),\(db_Waist),\(db_Hips),\(db_LeftThigh),\(db_RightThigh)\n")
+                    writeString.append("\(db_Session!),\(self.navigationItem.title!),\(db_Weight),\(db_Chest),\(db_LeftArm),\(db_RightArm),\(db_Waist),\(db_Hips),\(db_LeftThigh),\(db_RightThigh)\n")
                 
                 }
                 
                 // Send email
                 
-                let csvData = writeString.dataUsingEncoding(NSASCIIStringEncoding)
+                let csvData = writeString.data(using: String.Encoding.ascii.rawValue)
                 let subject = NSString .localizedStringWithFormat("90 DWT BB %@ Measurements - Session %@", self.navigationItem.title!, session)
                 let fileName = NSString .localizedStringWithFormat("90 DWT BB %@ Measurements - Session %@.csv", self.navigationItem.title!, session)
                 var emailAddress = [""]
                 
                 // Fetch defaultEmail data.
-                let request = NSFetchRequest( entityName: "Email")
+                let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
                 let sortDate = NSSortDescriptor( key: "date", ascending: true)
                 request.sortDescriptors = [sortDate]
                 
                 do {
-                    if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+                    if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                         
                         if debug == 1 {
                             
@@ -326,19 +326,19 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
                 mailcomposer.setSubject(subject as String)
                 mailcomposer.addAttachmentData(csvData!, mimeType: "text/csv", fileName: fileName as String)
                 
-                presentViewController(mailcomposer, animated: true, completion: {
-                    UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+                present(mailcomposer, animated: true, completion: {
+                    UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
                     })
             }
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveAction(sender: UIButton) {
+    @IBAction func saveAction(_ sender: UIButton) {
         
         saveMeasurements()
         self.hideKeyboard(sender)

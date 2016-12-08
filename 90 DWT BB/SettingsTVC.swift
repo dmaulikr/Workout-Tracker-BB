@@ -51,7 +51,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         self.configureButtonBorder()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
@@ -65,20 +65,20 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         self.findAppUsingiCloudStatus()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Force fetch when notified of significant data changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doNothing), name: "SomethingChanged", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         self.findiCloudStatus()
         self.findAppUsingiCloudStatus()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "doNothing", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
     func doNothing() {
@@ -103,63 +103,63 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         //let lightRed = UIColor(red: 175/255, green: 89/255, blue: 8/255, alpha: 0.75)
         
         // decreaseSession Button
-        self.decreaseSessionButton.tintColor = UIColor.whiteColor()
+        self.decreaseSessionButton.tintColor = UIColor.white
         self.decreaseSessionButton.backgroundColor = red
         self.decreaseSessionButton.layer.borderWidth = 1
-        self.decreaseSessionButton.layer.borderColor = red.CGColor
+        self.decreaseSessionButton.layer.borderColor = red.cgColor
         self.decreaseSessionButton.layer.cornerRadius = 5
         self.decreaseSessionButton.clipsToBounds = true
         
         // increaseSession Button
-        self.increaseSessionButton.tintColor = UIColor.whiteColor()
+        self.increaseSessionButton.tintColor = UIColor.white
         self.increaseSessionButton.backgroundColor = red
         self.increaseSessionButton.layer.borderWidth = 1
-        self.increaseSessionButton.layer.borderColor = red.CGColor
+        self.increaseSessionButton.layer.borderColor = red.cgColor
         self.increaseSessionButton.layer.cornerRadius = 5
         self.increaseSessionButton.clipsToBounds = true
         
         // ResetAllData Button
-        self.resetAllDataButton.tintColor = UIColor.whiteColor()
+        self.resetAllDataButton.tintColor = UIColor.white
         self.resetAllDataButton.backgroundColor = red
         self.resetAllDataButton.layer.borderWidth = 1
-        self.resetAllDataButton.layer.borderColor = red.CGColor
+        self.resetAllDataButton.layer.borderColor = red.cgColor
         self.resetAllDataButton.layer.cornerRadius = 5
         self.resetAllDataButton.clipsToBounds = true
         
         // ResetCurrentSessionData Button
-        self.resetCurrentSessionDataButton.tintColor = UIColor.whiteColor()
+        self.resetCurrentSessionDataButton.tintColor = UIColor.white
         self.resetCurrentSessionDataButton.backgroundColor = red
         self.resetCurrentSessionDataButton.layer.borderWidth = 1
-        self.resetCurrentSessionDataButton.layer.borderColor = red.CGColor
+        self.resetCurrentSessionDataButton.layer.borderColor = red.cgColor
         self.resetCurrentSessionDataButton.layer.cornerRadius = 5
         self.resetCurrentSessionDataButton.clipsToBounds = true
         
         // ExportAllData Button
-        self.exportAllDataButton.tintColor = UIColor.whiteColor()
+        self.exportAllDataButton.tintColor = UIColor.white
         self.exportAllDataButton.backgroundColor = red
         self.exportAllDataButton.layer.borderWidth = 1
-        self.exportAllDataButton.layer.borderColor = red.CGColor
+        self.exportAllDataButton.layer.borderColor = red.cgColor
         self.exportAllDataButton.layer.cornerRadius = 5
         self.exportAllDataButton.clipsToBounds = true
         
         // ExportCurrentSessionData Button
-        self.exportCurrentSessionDataButton.tintColor = UIColor.whiteColor()
+        self.exportCurrentSessionDataButton.tintColor = UIColor.white
         self.exportCurrentSessionDataButton.backgroundColor = red
         self.exportCurrentSessionDataButton.layer.borderWidth = 1
-        self.exportCurrentSessionDataButton.layer.borderColor = red.CGColor
+        self.exportCurrentSessionDataButton.layer.borderColor = red.cgColor
         self.exportCurrentSessionDataButton.layer.cornerRadius = 5
         self.exportCurrentSessionDataButton.clipsToBounds = true
     }
     
-    @IBAction func selectDefaultRoutine(sender: UISegmentedControl) {
+    @IBAction func selectDefaultRoutine(_ sender: UISegmentedControl) {
         
         // Fetch Routine data.
-        let request = NSFetchRequest( entityName: "Routine")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Routine")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
+            if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
                 
                 if debug == 1 {
                     
@@ -169,18 +169,18 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                 if routineObjects.count != 0 {
                     
                     // Match Found.  Update existing record.
-                    routineObjects.last?.defaultRoutine = self.defaultRoutine.titleForSegmentAtIndex(self.defaultRoutine.selectedSegmentIndex)
+                    routineObjects.last?.defaultRoutine = self.defaultRoutine.titleForSegment(at: self.defaultRoutine.selectedSegmentIndex)
                 }
                 else {
                     
                     // No Matches Found.  Create new record and save.
-                    let insertRoutineInfo = NSEntityDescription.insertNewObjectForEntityForName("Routine", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Routine
+                    let insertRoutineInfo = NSEntityDescription.insertNewObject(forEntityName: "Routine", into: CoreDataHelper.shared().context) as! Routine
                     
-                    insertRoutineInfo.defaultRoutine = self.defaultRoutine.titleForSegmentAtIndex(self.defaultRoutine.selectedSegmentIndex)
-                    insertRoutineInfo.date = NSDate()
+                    insertRoutineInfo.defaultRoutine = self.defaultRoutine.titleForSegment(at: self.defaultRoutine.selectedSegmentIndex)
+                    insertRoutineInfo.date = Date()
                 }
                 
-                CoreDataHelper.sharedHelper().backgroundSaveContext()
+                CoreDataHelper.shared().backgroundSaveContext()
                 
                 let parentTBC = self.tabBarController as! MainTBC
                 parentTBC.routineChangedForWorkoutNC = true
@@ -188,30 +188,30 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    @IBAction func toggleAutoLock(sender: UISwitch) {
+    @IBAction func toggleAutoLock(_ sender: UISwitch) {
         
         var newAutoLockSetting = "OFF"
         
-        if sender.on {
+        if sender.isOn {
             
             // User wants to disable the autolock timer.
             newAutoLockSetting = "ON"
-            UIApplication.sharedApplication().idleTimerDisabled = true
+            UIApplication.shared.isIdleTimerDisabled = true
         }
         else {
             
             // User doesn't want to disable the autolock timer.
             newAutoLockSetting = "OFF"
-            UIApplication.sharedApplication().idleTimerDisabled = false
+            UIApplication.shared.isIdleTimerDisabled = false
         }
         
         // Fetch AutoLock data.
-        let request = NSFetchRequest( entityName: "AutoLock")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "AutoLock")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let autoLockObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [AutoLock] {
+            if let autoLockObjects = try CoreDataHelper.shared().context.fetch(request) as? [AutoLock] {
                 
                 if debug == 1 {
                     
@@ -226,42 +226,42 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                 else {
                     
                     // No Matches Found.  Create new record and save.
-                    let insertAutoLockInfo = NSEntityDescription.insertNewObjectForEntityForName("AutoLock", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! AutoLock
+                    let insertAutoLockInfo = NSEntityDescription.insertNewObject(forEntityName: "AutoLock", into: CoreDataHelper.shared().context) as! AutoLock
                     
                     insertAutoLockInfo.useAutoLock = newAutoLockSetting
-                    insertAutoLockInfo.date = NSDate()
+                    insertAutoLockInfo.date = Date()
                 }
                 
-                CoreDataHelper.sharedHelper().backgroundSaveContext()
+                CoreDataHelper.shared().backgroundSaveContext()
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    @IBAction func decreaseSession(sender: UIButton) {
+    @IBAction func decreaseSession(_ sender: UIButton) {
         
         let currentSession = CDOperation.getCurrentSession()
         
         var alertController = UIAlertController()
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         if currentSession == "1" {
             
-            alertController = UIAlertController(title: "ERROR", message: "Session cannot = 0.", preferredStyle: .Alert)
+            alertController = UIAlertController(title: "ERROR", message: "Session cannot = 0.", preferredStyle: .alert)
         }
         else {
             
-            alertController = UIAlertController(title: "WARNING - Start Previous Session", message: "Starting a previous session means you will only be able to edit the previous session.  To get to a different session click the \"+\" or \"-\" button after selecting Proceed.", preferredStyle: .Alert)
+            alertController = UIAlertController(title: "WARNING - Start Previous Session", message: "Starting a previous session means you will only be able to edit the previous session.  To get to a different session click the \"+\" or \"-\" button after selecting Proceed.", preferredStyle: .alert)
             
-            let proceed = UIAlertAction(title: "Proceed", style: .Default, handler: {
+            let proceed = UIAlertAction(title: "Proceed", style: .default, handler: {
                 action in
                 
                 // Fetch Session data.
-                let request = NSFetchRequest( entityName: "Session")
+                let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Session")
                 let sortDate = NSSortDescriptor( key: "date", ascending: true)
                 request.sortDescriptors = [sortDate]
                 
                 do {
-                    if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
+                    if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
                         
                         if self.debug == 1 {
                             
@@ -273,9 +273,9 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                             // Match Found.  Update existing record.
                             let newSessionNumber = Int(self.session)! - 1
                             sessionObjects.last?.currentSession = String(newSessionNumber)
-                            sessionObjects.last?.date = NSDate()
+                            sessionObjects.last?.date = Date()
                             
-                            CoreDataHelper.sharedHelper().backgroundSaveContext()
+                            CoreDataHelper.shared().backgroundSaveContext()
                             
                             // Update currentSessionLabel
                             self.currentSessionLabel.text = String(newSessionNumber)
@@ -302,26 +302,26 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             popover.sourceView = sender
             popover.sourceRect = sender.bounds
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func increaseSession(sender: UIButton) {
+    @IBAction func increaseSession(_ sender: UIButton) {
         
-        let alertController = UIAlertController(title: "WARNING - Start New Session", message: "Starting a new session means you will only be able to edit the new session.  To get to a different session click the \"+\" or \"-\" button after selecting Proceed.", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "WARNING - Start New Session", message: "Starting a new session means you will only be able to edit the new session.  To get to a different session click the \"+\" or \"-\" button after selecting Proceed.", preferredStyle: .alert)
         
-        let proceed = UIAlertAction(title: "Proceed", style: .Default, handler: {
+        let proceed = UIAlertAction(title: "Proceed", style: .default, handler: {
             action in
             
             // Fetch Session data.
-            let request = NSFetchRequest( entityName: "Session")
+            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Session")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
             
             do {
-                if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
+                if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
                     
                     if self.debug == 1 {
                         
@@ -333,9 +333,9 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                         // Match Found.  Update existing record.
                         let newSessionNumber = Int(self.session)! + 1
                         sessionObjects.last?.currentSession = String(newSessionNumber)
-                        sessionObjects.last?.date = NSDate()
+                        sessionObjects.last?.date = Date()
                         
-                        CoreDataHelper.sharedHelper().backgroundSaveContext()
+                        CoreDataHelper.shared().backgroundSaveContext()
                         
                         // Update currentSessionLabel
                         self.currentSessionLabel.text = String(newSessionNumber)
@@ -351,7 +351,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             } catch { print(" ERROR executing a fetch request: \( error)") }
         })
     
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(proceed)
         alertController.addAction(cancelAction)
@@ -361,38 +361,38 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             popover.sourceView = sender
             popover.sourceRect = sender.bounds
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
     }
     
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    @IBAction func exportAllData(sender: UIButton) {
+    @IBAction func exportAllData(_ sender: UIButton) {
         
         //  Get the ALL SESSIONS csvstring and then send the email
         self.sendEmail("All", cvsString: CDOperation.allSessionStringForEmail())
     }
 
-    @IBAction func exportCurrentSessionData(sender: UIButton) {
+    @IBAction func exportCurrentSessionData(_ sender: UIButton) {
         
         //  Get the CURRENT SESSION csvstring and then send the email
         self.sendEmail("Current", cvsString: CDOperation.currentSessionStringForEmail())
     }
 
-    @IBAction func resetAllData(sender: UIButton) {
+    @IBAction func resetAllData(_ sender: UIButton) {
         
-        let alertController = UIAlertController(title: "WARNING - Delete All Data", message: "You are about to delete ALL data in the app and start fresh.  If you are signed into iCloud this will delete the data there as well.", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "WARNING - Delete All Data", message: "You are about to delete ALL data in the app and start fresh.  If you are signed into iCloud this will delete the data there as well.", preferredStyle: .alert)
         
-        let proceed = UIAlertAction(title: "Proceed", style: .Default, handler: {
+        let proceed = UIAlertAction(title: "Proceed", style: .default, handler: {
             action in
             
             // Fetch Workout data.
-            var request = NSFetchRequest( entityName: "Workout")
+            var request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
             
             do {
-                if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                     
                     if self.debug == 1 {
                         
@@ -402,7 +402,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in workoutObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -411,7 +411,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "WorkoutCompleteDate")
             
             do {
-                if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
+                if let workoutCompleteDateObjects = try CoreDataHelper.shared().context.fetch(request) as? [WorkoutCompleteDate] {
                     
                     if self.debug == 1 {
                         
@@ -421,7 +421,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in workoutCompleteDateObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -430,7 +430,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Session")
             
             do {
-                if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
+                if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
                     
                     if self.debug == 1 {
                         
@@ -440,14 +440,14 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in sessionObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
             
             // Set session to default - 1
             do {
-                if let sessionObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Session] {
+                if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
                     
                     if self.debug == 1 {
                         
@@ -472,7 +472,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Photo")
             
             do {
-                if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
+                if let photoObjects = try CoreDataHelper.shared().context.fetch(request) as? [Photo] {
                     
                     if self.debug == 1 {
                         
@@ -482,7 +482,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in photoObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -491,7 +491,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Measurement")
             
             do {
-                if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
+                if let measurementObjects = try CoreDataHelper.shared().context.fetch(request) as? [Measurement] {
                     
                     if self.debug == 1 {
                         
@@ -501,7 +501,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in measurementObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -510,7 +510,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Routine")
             
             do {
-                if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
+                if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
                     
                     if self.debug == 1 {
                         
@@ -520,14 +520,14 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in routineObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
             
             // Set routine to default - Bulk
             do {
-                if let routineObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Routine] {
+                if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
                     
                     if self.debug == 1 {
                         
@@ -550,7 +550,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Email")
             
             do {
-                if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+                if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                     
                     if self.debug == 1 {
                         
@@ -560,14 +560,14 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in emailObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
             
             // Set email to default
             do {
-                if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+                if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                     
                     if self.debug == 1 {
                         
@@ -577,10 +577,10 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     if emailObjects.count == 0 {
                         
                         // No Matches.  Create new record and save.
-                        let insertEmailInfo = NSEntityDescription.insertNewObjectForEntityForName("Email", inManagedObjectContext: CoreDataHelper.sharedHelper().context) as! Email
+                        let insertEmailInfo = NSEntityDescription.insertNewObject(forEntityName: "Email", into: CoreDataHelper.shared().context) as! Email
                         
                         insertEmailInfo.defaultEmail = "youremail@abc.com"
-                        insertEmailInfo.date = NSDate()
+                        insertEmailInfo.date = Date()
                         
                         self.emailDetail.text = "youremail@abc.com"
                     }
@@ -591,7 +591,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "AutoLock")
             
             do {
-                if let autoLockObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [AutoLock] {
+                if let autoLockObjects = try CoreDataHelper.shared().context.fetch(request) as? [AutoLock] {
                     
                     if self.debug == 1 {
                         
@@ -601,20 +601,20 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in autoLockObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
             
             // Set disable autolock to default - OFF
             self.autoLockSwitch.setOn(false, animated: true)
-            UIApplication.sharedApplication().idleTimerDisabled = false
+            UIApplication.shared.isIdleTimerDisabled = false
             
             // Save data to database
-            CoreDataHelper.sharedHelper().backgroundSaveContext()
+            CoreDataHelper.shared().backgroundSaveContext()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(proceed)
         alertController.addAction(cancelAction)
@@ -624,21 +624,21 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             popover.sourceView = sender
             popover.sourceRect = sender.bounds
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func resetCurrentSessionData(sender: UIButton) {
+    @IBAction func resetCurrentSessionData(_ sender: UIButton) {
         
-        let alertController = UIAlertController(title: "WARNING - Delete Current Session Data", message: "You are about to delete the data for the current session and start fresh for that session.  If you are signed into iCloud this will delete the data there as well.", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "WARNING - Delete Current Session Data", message: "You are about to delete the data for the current session and start fresh for that session.  If you are signed into iCloud this will delete the data there as well.", preferredStyle: .alert)
         
-        let proceed = UIAlertAction(title: "Proceed", style: .Default, handler: {
+        let proceed = UIAlertAction(title: "Proceed", style: .default, handler: {
             action in
             
             // DELETE current session from entity - Workout
-            var request = NSFetchRequest( entityName: "Workout")
+            var request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
 
@@ -648,7 +648,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request.predicate = filter
 
             do {
-                if let workoutObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Workout] {
+                if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
                     
                     if self.debug == 1 {
                         
@@ -658,7 +658,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in workoutObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -668,7 +668,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "WorkoutCompleteDate")
             
             do {
-                if let workoutCompleteDateObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [WorkoutCompleteDate] {
+                if let workoutCompleteDateObjects = try CoreDataHelper.shared().context.fetch(request) as? [WorkoutCompleteDate] {
                     
                     if self.debug == 1 {
                         
@@ -678,7 +678,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in workoutCompleteDateObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -687,7 +687,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Photo")
             
             do {
-                if let photoObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Photo] {
+                if let photoObjects = try CoreDataHelper.shared().context.fetch(request) as? [Photo] {
                     
                     if self.debug == 1 {
                         
@@ -697,7 +697,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in photoObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -706,7 +706,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             request = NSFetchRequest(entityName: "Measurement")
             
             do {
-                if let measurementObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Measurement] {
+                if let measurementObjects = try CoreDataHelper.shared().context.fetch(request) as? [Measurement] {
                     
                     if self.debug == 1 {
                         
@@ -716,16 +716,16 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     for object in measurementObjects {
                         
                         // Delete duplicate records.
-                        CoreDataHelper.sharedHelper().context.deleteObject(object)
+                        CoreDataHelper.shared().context.delete(object)
                     }
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
             
             // Save data to database
-            CoreDataHelper.sharedHelper().backgroundSaveContext()
+            CoreDataHelper.shared().backgroundSaveContext()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(proceed)
         alertController.addAction(cancelAction)
@@ -735,21 +735,21 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             popover.sourceView = sender
             popover.sourceRect = sender.bounds
             popover.delegate = self
-            popover.permittedArrowDirections = .Any
+            popover.permittedArrowDirections = .any
         }
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func findEmailSetting() {
         
         // Fetch defaultEmail data.
-        let request = NSFetchRequest( entityName: "Email")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+            if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
         
                 if debug == 1 {
                     
@@ -771,7 +771,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         
         for i in 0..<2 {
             
-            if self.defaultRoutine.titleForSegmentAtIndex(i) == routine {
+            if self.defaultRoutine.titleForSegment(at: i) == routine {
                 
                 self.defaultRoutine.selectedSegmentIndex = i
             }
@@ -781,12 +781,12 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
     func findUseAutoLockSetting() {
         
         // Fetch defaultEmail data.
-        let request = NSFetchRequest( entityName: "AutoLock")
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "AutoLock")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         do {
-            if let autoLockObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [AutoLock] {
+            if let autoLockObjects = try CoreDataHelper.shared().context.fetch(request) as? [AutoLock] {
                 
                 if debug == 1 {
                     
@@ -814,17 +814,17 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    func sendEmail(sessionType: String, cvsString: String) {
+    func sendEmail(_ sessionType: String, cvsString: String) {
         
         // Create MailComposerViewController object.
         let mailcomposer = MFMailComposeViewController()
         mailcomposer.mailComposeDelegate = self
-        mailcomposer.navigationBar.tintColor = UIColor.whiteColor()
+        mailcomposer.navigationBar.tintColor = UIColor.white
         
         // Check to see if the device has at least 1 email account configured
         if MFMailComposeViewController.canSendMail() {
             
-            let csvData = cvsString.dataUsingEncoding(NSASCIIStringEncoding)
+            let csvData = cvsString.data(using: String.Encoding.ascii)
             var fileName = ""
             var subject = ""
             
@@ -843,12 +843,12 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             var emailAddress = [""]
             
             // Fetch defaultEmail data.
-            let request = NSFetchRequest( entityName: "Email")
+            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Email")
             let sortDate = NSSortDescriptor( key: "date", ascending: true)
             request.sortDescriptors = [sortDate]
             
             do {
-                if let emailObjects = try CoreDataHelper.sharedHelper().context.executeFetchRequest(request) as? [Email] {
+                if let emailObjects = try CoreDataHelper.shared().context.fetch(request) as? [Email] {
                     
                     if debug == 1 {
                         
@@ -873,21 +873,21 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             mailcomposer.setSubject(subject)
             mailcomposer.addAttachmentData(csvData!, mimeType: "text/csv", fileName: fileName)
             
-            presentViewController(mailcomposer, animated: true, completion: {
-                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+            present(mailcomposer, animated: true, completion: {
+                UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
             })
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func findiCloudStatus() {
         
         // Check if the user is signed into an iCloud account on the device.
-        if CoreDataHelper.sharedHelper().iCloudAccountIsSignedIn() {
+        if CoreDataHelper.shared().iCloudAccountIsSignedIn() {
             
             self.iCloudDriveStatusLabel.text = "ON"
         }
@@ -899,7 +899,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
     
     func findAppUsingiCloudStatus() {
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("iCloudEnabled") {
+        if UserDefaults.standard.bool(forKey: "iCloudEnabled") {
             
             self.iCloudAppStatusLabel.text = "ON"
         }

@@ -14,7 +14,7 @@ class WorkoutTVC_CompletionTableViewCell: UITableViewCell {
     var workoutRoutine = ""
     var selectedWorkout = ""
     var workoutIndex = 0
-    var indexPath = NSIndexPath()
+    var indexPath = IndexPath()
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -27,53 +27,53 @@ class WorkoutTVC_CompletionTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    @IBAction func workoutCompletedDelete(sender: UIButton) {
+    @IBAction func workoutCompletedDelete(_ sender: UIButton) {
         
-        CDOperation.deleteDate(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex)
+        CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         updateWorkoutCompleteCellUI()
     }
     
-    @IBAction func workoutCompletedToday(sender: UIButton) {
+    @IBAction func workoutCompletedToday(_ sender: UIButton) {
         
-        CDOperation.saveWorkoutCompleteDate(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex, useDate: NSDate())
+        CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: Date())
         
         updateWorkoutCompleteCellUI()
     }
     
     func updateWorkoutCompleteCellUI () {
         
-        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session, routine: workoutRoutine, workout: selectedWorkout, index: workoutIndex)
+        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         switch  workoutCompletedObjects.count {
         case 0:
             // No match
             
             // Cell
-            self.backgroundColor = UIColor.whiteColor()
+            self.backgroundColor = UIColor.white
             
             // Label
             dateLabel.text = "Workout Completed: __/__/__";
-            dateLabel.textColor = UIColor.blackColor()
+            dateLabel.textColor = UIColor.black
             
         default:
             // Found a match.
             
             let object = workoutCompletedObjects.last
-            let completedDate = NSDateFormatter .localizedStringFromDate((object?.date)!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+            let completedDate = DateFormatter .localizedString(from: (object?.date)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
 
             // Cell
-            self.backgroundColor = UIColor.darkGrayColor()
+            self.backgroundColor = UIColor.darkGray
             
             // Label
             dateLabel.text? = "Workout Completed: \(completedDate)"
-            dateLabel.textColor = UIColor.whiteColor()
+            dateLabel.textColor = UIColor.white
         }
     }
 }

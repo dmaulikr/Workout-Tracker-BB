@@ -10,14 +10,14 @@ import UIKit
 
 class MeasurementNavigationController: UINavigationController {
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         let parentTBC = self.tabBarController as! MainTBC
         
         if parentTBC.sessionChangedForMeasurementNC {
             
             parentTBC.sessionChangedForMeasurementNC = false
-            self.popToRootViewControllerAnimated(true)
+            self.popToRootViewController(animated: true)
         }
     }
 }
