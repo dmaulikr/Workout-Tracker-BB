@@ -215,7 +215,7 @@ class CDOperation {
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.weight = weight
                     insertWorkoutInfo.reps = reps
-                    insertWorkoutInfo.date = Date()
+                    insertWorkoutInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -225,7 +225,7 @@ class CDOperation {
                     let updateWorkoutInfo = workoutObjects[0]
                     
                     updateWorkoutInfo.weight = weight
-                    updateWorkoutInfo.date = Date()
+                    updateWorkoutInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -240,7 +240,7 @@ class CDOperation {
                             let updateWorkoutInfo = workoutObjects[index]
                             
                             updateWorkoutInfo.weight = weight
-                            updateWorkoutInfo.date = Date()
+                            updateWorkoutInfo.date = Date() as NSDate?
                         }
                         else {
                             // Delete duplicate records.
@@ -293,7 +293,7 @@ class CDOperation {
                     insertWorkoutInfo.round = round
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.notes = note
-                    insertWorkoutInfo.date = Date()
+                    insertWorkoutInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -303,7 +303,7 @@ class CDOperation {
                     let updateWorkoutInfo = workoutObjects[0]
                     
                     updateWorkoutInfo.notes = note
-                    updateWorkoutInfo.date = Date()
+                    updateWorkoutInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -318,7 +318,7 @@ class CDOperation {
                             let updateWorkoutInfo = workoutObjects[index]
                             
                             updateWorkoutInfo.notes = note
-                            updateWorkoutInfo.date = Date()
+                            updateWorkoutInfo.date = Date() as NSDate?
                         }
                         else {
                             // Delete duplicate records.
@@ -369,7 +369,7 @@ class CDOperation {
                     insertWorkoutInfo.round = round
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.notes = note
-                    insertWorkoutInfo.date = Date()
+                    insertWorkoutInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -379,7 +379,7 @@ class CDOperation {
                     let updateWorkoutInfo = workoutObjects[0]
                     
                     updateWorkoutInfo.notes = note
-                    updateWorkoutInfo.date = Date()
+                    updateWorkoutInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -394,7 +394,7 @@ class CDOperation {
                             let updateWorkoutInfo = workoutObjects[index]
                             
                             updateWorkoutInfo.notes = note
-                            updateWorkoutInfo.date = Date()
+                            updateWorkoutInfo.date = Date() as NSDate?
                         }
                         else {
                             // Delete duplicate records.
@@ -597,7 +597,7 @@ class CDOperation {
                     let insertRoutineInfo = NSEntityDescription.insertNewObject(forEntityName: "Routine", into: CoreDataHelper.shared().context) as! Routine
                     
                     insertRoutineInfo.defaultRoutine = "Bulk"
-                    insertRoutineInfo.date = Date()
+                    insertRoutineInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -657,7 +657,7 @@ class CDOperation {
                     let insertSessionInfo = NSEntityDescription.insertNewObject(forEntityName: "Session", into: CoreDataHelper.shared().context) as! Session
                     
                     insertSessionInfo.currentSession = "1"
-                    insertSessionInfo.date = Date()
+                    insertSessionInfo.date = Date() as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -730,7 +730,7 @@ class CDOperation {
                     insertWorkoutInfo.workout = workout as String
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.workoutCompleted = true
-                    insertWorkoutInfo.date = useDate
+                    insertWorkoutInfo.date = useDate as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -740,7 +740,7 @@ class CDOperation {
                     let updateWorkoutInfo = workoutCompleteDateObjects[0]
                     
                     updateWorkoutInfo.workoutCompleted = true
-                    updateWorkoutInfo.date = useDate
+                    updateWorkoutInfo.date = useDate as NSDate?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -755,7 +755,7 @@ class CDOperation {
                             let updateWorkoutInfo = workoutCompleteDateObjects[index]
                             
                             updateWorkoutInfo.workoutCompleted = true
-                            updateWorkoutInfo.date = useDate
+                            updateWorkoutInfo.date = useDate as NSDate?
                         }
                         else {
                             // Delete duplicate records.
@@ -886,7 +886,7 @@ class CDOperation {
                     
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.month = month
-                    insertWorkoutInfo.date = Date()
+                    insertWorkoutInfo.date = Date() as NSDate?
                     
                     if weight != "" {
                         insertWorkoutInfo.weight = weight
@@ -929,7 +929,7 @@ class CDOperation {
                     
                     updateWorkoutInfo.session = session
                     updateWorkoutInfo.month = month
-                    updateWorkoutInfo.date = Date()
+                    updateWorkoutInfo.date = Date() as NSDate?
                     
                     if weight != "" {
                         updateWorkoutInfo.weight = weight
@@ -977,7 +977,7 @@ class CDOperation {
                             
                             updateWorkoutInfo.session = session
                             updateWorkoutInfo.month = month
-                            updateWorkoutInfo.date = Date()
+                            updateWorkoutInfo.date = Date() as NSDate?
                             
                             if weight != "" {
                                 updateWorkoutInfo.weight = weight
@@ -2364,7 +2364,7 @@ class CDOperation {
                     //  Add the exercise name, reps and weight
                     for b in 0..<exerciseTitleArray.count {
                         
-                        let tempExerciseName = exerciseTitleArray[b] as! String
+                        let tempExerciseName = exerciseTitleArray[b] 
                         
                         //  Add the exercise title to the string
                         writeString.append("\(tempExerciseName)\n")

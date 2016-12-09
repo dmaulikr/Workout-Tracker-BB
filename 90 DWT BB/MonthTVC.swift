@@ -221,18 +221,24 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         if weekCompleted(weekNum) {
             
             // Week completed so put a checkmark as the accessoryview icon
-            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
-                
-                cell.accessoryView = tempAccessoryView
-            }
+            let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark"))
+            cell.accessoryView = tempAccessoryView
+            
+//            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
+//                
+//                cell.accessoryView = tempAccessoryView
+//            }
         }
         else {
             
             // Week was NOT completed so put the arrow as the accessory view icon
-            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
-                
-                cell.accessoryView = tempAccessoryView
-            }
+            let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow"))
+            cell.accessoryView = tempAccessoryView
+            
+//            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
+//                
+//                cell.accessoryView = tempAccessoryView
+//            }
         }
         
         return cell

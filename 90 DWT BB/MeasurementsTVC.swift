@@ -73,10 +73,13 @@ class MeasurementsTVC: UITableViewController {
         
         cell.textLabel!.text = cellTitles[indexPath.section][indexPath.row]
         
-        if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
-            
-            cell.accessoryView = tempAccessoryView
-        }
+        let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow"))
+        cell.accessoryView = tempAccessoryView
+        
+//        if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
+//            
+//            cell.accessoryView = tempAccessoryView
+//        }
         
         return cell
     }

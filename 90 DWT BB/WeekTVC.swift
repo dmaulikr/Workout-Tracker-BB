@@ -351,10 +351,14 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
 
             // Update TableViewCell Accessory Icon - Arrow
             let cell = self.tableView.cellForRow(at: self.indexPath) as! WeekTVC_TableViewCell
-            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
-                
-                cell.accessoryView = tempAccessoryView
-            }
+            
+            let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow"))
+            cell.accessoryView = tempAccessoryView
+            
+//            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
+//                
+//                cell.accessoryView = tempAccessoryView
+//            }
             
         default:
             
@@ -388,10 +392,13 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             
             // Update TableViewCell Accessory Icon - Checkmark
             let cell = self.tableView.cellForRow(at: self.indexPath) as! WeekTVC_TableViewCell
-            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
-                
-                cell.accessoryView = tempAccessoryView
-            }
+            let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark"))
+            cell.accessoryView = tempAccessoryView
+            
+//            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
+//                
+//                cell.accessoryView = tempAccessoryView
+//            }
         }
     }
 
@@ -515,18 +522,24 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         if workoutCompletedObjects.count != 0 {
             
             // Workout completed so put a checkmark as the accessoryview icon
-            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
-                
-                cell.accessoryView = tempAccessoryView
-            }
+            let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark"))
+            cell.accessoryView = tempAccessoryView
+            
+//            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "RED_White_CheckMark")) {
+//                
+//                cell.accessoryView = tempAccessoryView
+//            }
         }
         else {
             
             // Workout was NOT completed so put the arrow as the accessory view icon
-            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
-                
-                cell.accessoryView = tempAccessoryView
-            }
+            let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow"))
+            cell.accessoryView = tempAccessoryView
+            
+//            if let tempAccessoryView:UIImageView = UIImageView (image: UIImage (named: "next_arrow")) {
+//                
+//                cell.accessoryView = tempAccessoryView
+//            }
         }
 
         switch daysOfWeekColorList[indexPath.section][indexPath.row] as! String {

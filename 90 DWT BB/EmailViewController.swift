@@ -45,7 +45,7 @@ class EmailViewController: UIViewController {
                     let insertEmailInfo = NSEntityDescription.insertNewObject(forEntityName: "Email", into: CoreDataHelper.shared().context) as! Email
                     
                     insertEmailInfo.defaultEmail = self.defaultEmail.text
-                    insertEmailInfo.date = Date()
+                    insertEmailInfo.date = Date() as NSDate?
                     
                 default:
                     

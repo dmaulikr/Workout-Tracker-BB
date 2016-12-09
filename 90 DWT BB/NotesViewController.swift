@@ -327,7 +327,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             // Found a match.
             
             let object = workoutCompletedObjects.last
-            let completedDate = DateFormatter .localizedString(from: (object?.date)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
+            let completedDate = DateFormatter .localizedString(from: (object?.date)! as Date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
             
             // Cell
             datePickerView.backgroundColor = UIColor.darkGray
@@ -377,7 +377,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
                     let notes = workoutObjects[i].notes;
                     let date = workoutObjects[i].date;
 
-                    let dateString = DateFormatter.localizedString(from: date!, dateStyle: .short, timeStyle: .none)
+                    let dateString = DateFormatter.localizedString(from: date! as Date, dateStyle: .short, timeStyle: .none)
                     
                     writeString.append("\(session!),\(routine!),\(month),\(week),\(workout!),\(notes!),\(dateString)\n")
                 }

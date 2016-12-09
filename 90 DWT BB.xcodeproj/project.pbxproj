@@ -31,6 +31,22 @@
 		58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0018A6E61400DE043E /* QuartzCore.framework */; };
 		58F21B0318A6E62600DE043E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0218A6E62600DE043E /* Security.framework */; };
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
+		A5675DB11DFB485C00E0F2B9 /* Email+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */; };
+		A5675DB21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */; };
+		A5675DB31DFB485C00E0F2B9 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA31DFB485C00E0F2B9 /* Session+CoreDataClass.swift */; };
+		A5675DB41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift */; };
+		A5675DB51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift */; };
+		A5675DB61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift */; };
+		A5675DB71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift */; };
+		A5675DB81DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA81DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataProperties.swift */; };
+		A5675DB91DFB485C00E0F2B9 /* Measurement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA91DFB485C00E0F2B9 /* Measurement+CoreDataClass.swift */; };
+		A5675DBA1DFB485C00E0F2B9 /* Measurement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DAA1DFB485C00E0F2B9 /* Measurement+CoreDataProperties.swift */; };
+		A5675DBB1DFB485C00E0F2B9 /* Routine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DAB1DFB485C00E0F2B9 /* Routine+CoreDataClass.swift */; };
+		A5675DBC1DFB485C00E0F2B9 /* Routine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DAC1DFB485C00E0F2B9 /* Routine+CoreDataProperties.swift */; };
+		A5675DBD1DFB485C00E0F2B9 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DAD1DFB485C00E0F2B9 /* Photo+CoreDataClass.swift */; };
+		A5675DBE1DFB485C00E0F2B9 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DAE1DFB485C00E0F2B9 /* Photo+CoreDataProperties.swift */; };
+		A5675DBF1DFB485C00E0F2B9 /* AutoLock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DAF1DFB485C00E0F2B9 /* AutoLock+CoreDataClass.swift */; };
+		A5675DC01DFB485C00E0F2B9 /* AutoLock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DB01DFB485C00E0F2B9 /* AutoLock+CoreDataProperties.swift */; };
 		A59C5EBF1DA5872E00A5A189 /* CDCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5EB41DA5872E00A5A189 /* CDCloudSync.swift */; };
 		A59C5EC01DA5872E00A5A189 /* CDDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5EB51DA5872E00A5A189 /* CDDeduplicator.swift */; };
 		A59C5EC11DA5872E00A5A189 /* CDFaulter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5EB61DA5872E00A5A189 /* CDFaulter.swift */; };
@@ -72,22 +88,6 @@
 		A59C5F0D1DA588CD00A5A189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59C5F051DA588CC00A5A189 /* Main.storyboard */; };
 		A59C5F0E1DA588CD00A5A189 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F061DA588CC00A5A189 /* DatePickerViewController.swift */; };
 		A59C5F101DA588DF00A5A189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59C5F0F1DA588DF00A5A189 /* LaunchScreen.storyboard */; };
-		A59C5F211DA58AB000A5A189 /* Routine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F111DA58AB000A5A189 /* Routine+CoreDataProperties.swift */; };
-		A59C5F221DA58AB000A5A189 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F121DA58AB000A5A189 /* Routine.swift */; };
-		A59C5F231DA58AB000A5A189 /* WorkoutCompleteDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F131DA58AB000A5A189 /* WorkoutCompleteDate+CoreDataProperties.swift */; };
-		A59C5F241DA58AB000A5A189 /* WorkoutCompleteDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F141DA58AB000A5A189 /* WorkoutCompleteDate.swift */; };
-		A59C5F251DA58AB000A5A189 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F151DA58AB000A5A189 /* Photo+CoreDataProperties.swift */; };
-		A59C5F261DA58AB000A5A189 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F161DA58AB000A5A189 /* Photo.swift */; };
-		A59C5F271DA58AB000A5A189 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F171DA58AB000A5A189 /* Session+CoreDataProperties.swift */; };
-		A59C5F281DA58AB000A5A189 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F181DA58AB000A5A189 /* Session.swift */; };
-		A59C5F291DA58AB000A5A189 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F191DA58AB000A5A189 /* Workout+CoreDataProperties.swift */; };
-		A59C5F2A1DA58AB000A5A189 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F1A1DA58AB000A5A189 /* Workout.swift */; };
-		A59C5F2B1DA58AB000A5A189 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F1B1DA58AB000A5A189 /* Email+CoreDataProperties.swift */; };
-		A59C5F2C1DA58AB000A5A189 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F1C1DA58AB000A5A189 /* Email.swift */; };
-		A59C5F2D1DA58AB000A5A189 /* Measurement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F1D1DA58AB000A5A189 /* Measurement+CoreDataProperties.swift */; };
-		A59C5F2E1DA58AB000A5A189 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F1E1DA58AB000A5A189 /* Measurement.swift */; };
-		A59C5F2F1DA58AB000A5A189 /* AutoLock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F1F1DA58AB000A5A189 /* AutoLock+CoreDataProperties.swift */; };
-		A59C5F301DA58AB000A5A189 /* AutoLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5F201DA58AB000A5A189 /* AutoLock.swift */; };
 		A59C5FEB1DA58C8100A5A189 /* ExerciseChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C5FEA1DA58C8100A5A189 /* ExerciseChartViewController.swift */; };
 		A59C5FED1DA58C8E00A5A189 /* ShinobiCharts in Frameworks */ = {isa = PBXBuildFile; fileRef = A59C5FEC1DA58C8E00A5A189 /* ShinobiCharts */; };
 		A59C60021DAC1F6B00A5A189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A59C60011DAC1F6B00A5A189 /* CoreDataHelper.m */; };
@@ -328,6 +328,23 @@
 		A54E89021C29BDDC006C8FFC /* _0_DWT_BB_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_DWT_BB_v3.xcdatamodel; sourceTree = "<group>"; };
 		A54E89031C29C431006C8FFC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A54E89411C29ED1D006C8FFC /* 90 DWT BB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "90 DWT BB.entitlements"; sourceTree = "<group>"; };
+		A5675D901DFB47E100E0F2B9 /* _0_DWT_BB_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_DWT_BB_v4.xcdatamodel; sourceTree = "<group>"; };
+		A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DA31DFB485C00E0F2B9 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DA41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DA51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DA61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DA71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutCompleteDate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DA81DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutCompleteDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DA91DFB485C00E0F2B9 /* Measurement+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DAA1DFB485C00E0F2B9 /* Measurement+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DAB1DFB485C00E0F2B9 /* Routine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DAC1DFB485C00E0F2B9 /* Routine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DAD1DFB485C00E0F2B9 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DAE1DFB485C00E0F2B9 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5675DAF1DFB485C00E0F2B9 /* AutoLock+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5675DB01DFB485C00E0F2B9 /* AutoLock+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A59C5EB31DA5872D00A5A189 /* 90 DWT BB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "90 DWT BB-Bridging-Header.h"; sourceTree = "<group>"; };
 		A59C5EB41DA5872E00A5A189 /* CDCloudSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDCloudSync.swift; sourceTree = "<group>"; };
 		A59C5EB51DA5872E00A5A189 /* CDDeduplicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDDeduplicator.swift; sourceTree = "<group>"; };
@@ -370,22 +387,6 @@
 		A59C5F051DA588CC00A5A189 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A59C5F061DA588CC00A5A189 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		A59C5F0F1DA588DF00A5A189 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A59C5F111DA58AB000A5A189 /* Routine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F121DA58AB000A5A189 /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
-		A59C5F131DA58AB000A5A189 /* WorkoutCompleteDate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutCompleteDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F141DA58AB000A5A189 /* WorkoutCompleteDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteDate.swift; sourceTree = "<group>"; };
-		A59C5F151DA58AB000A5A189 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F161DA58AB000A5A189 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		A59C5F171DA58AB000A5A189 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F181DA58AB000A5A189 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		A59C5F191DA58AB000A5A189 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F1A1DA58AB000A5A189 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
-		A59C5F1B1DA58AB000A5A189 /* Email+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F1C1DA58AB000A5A189 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
-		A59C5F1D1DA58AB000A5A189 /* Measurement+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F1E1DA58AB000A5A189 /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
-		A59C5F1F1DA58AB000A5A189 /* AutoLock+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A59C5F201DA58AB000A5A189 /* AutoLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLock.swift; sourceTree = "<group>"; };
 		A59C5F351DA58C5400A5A189 /* LineSeriesDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineSeriesDrawer.h; sourceTree = "<group>"; };
 		A59C5F361DA58C5400A5A189 /* SChart+Deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SChart+Deprecated.h"; sourceTree = "<group>"; };
 		A59C5F371DA58C5400A5A189 /* SChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChart.h; sourceTree = "<group>"; };
@@ -1196,22 +1197,22 @@
 		A59C5F311DA58AD000A5A189 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				A59C5F111DA58AB000A5A189 /* Routine+CoreDataProperties.swift */,
-				A59C5F121DA58AB000A5A189 /* Routine.swift */,
-				A59C5F131DA58AB000A5A189 /* WorkoutCompleteDate+CoreDataProperties.swift */,
-				A59C5F141DA58AB000A5A189 /* WorkoutCompleteDate.swift */,
-				A59C5F151DA58AB000A5A189 /* Photo+CoreDataProperties.swift */,
-				A59C5F161DA58AB000A5A189 /* Photo.swift */,
-				A59C5F171DA58AB000A5A189 /* Session+CoreDataProperties.swift */,
-				A59C5F181DA58AB000A5A189 /* Session.swift */,
-				A59C5F191DA58AB000A5A189 /* Workout+CoreDataProperties.swift */,
-				A59C5F1A1DA58AB000A5A189 /* Workout.swift */,
-				A59C5F1B1DA58AB000A5A189 /* Email+CoreDataProperties.swift */,
-				A59C5F1C1DA58AB000A5A189 /* Email.swift */,
-				A59C5F1D1DA58AB000A5A189 /* Measurement+CoreDataProperties.swift */,
-				A59C5F1E1DA58AB000A5A189 /* Measurement.swift */,
-				A59C5F1F1DA58AB000A5A189 /* AutoLock+CoreDataProperties.swift */,
-				A59C5F201DA58AB000A5A189 /* AutoLock.swift */,
+				A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */,
+				A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */,
+				A5675DA31DFB485C00E0F2B9 /* Session+CoreDataClass.swift */,
+				A5675DA41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift */,
+				A5675DA51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift */,
+				A5675DA61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift */,
+				A5675DA71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift */,
+				A5675DA81DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataProperties.swift */,
+				A5675DA91DFB485C00E0F2B9 /* Measurement+CoreDataClass.swift */,
+				A5675DAA1DFB485C00E0F2B9 /* Measurement+CoreDataProperties.swift */,
+				A5675DAB1DFB485C00E0F2B9 /* Routine+CoreDataClass.swift */,
+				A5675DAC1DFB485C00E0F2B9 /* Routine+CoreDataProperties.swift */,
+				A5675DAD1DFB485C00E0F2B9 /* Photo+CoreDataClass.swift */,
+				A5675DAE1DFB485C00E0F2B9 /* Photo+CoreDataProperties.swift */,
+				A5675DAF1DFB485C00E0F2B9 /* AutoLock+CoreDataClass.swift */,
+				A5675DB01DFB485C00E0F2B9 /* AutoLock+CoreDataProperties.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -2126,6 +2127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5675DB11DFB485C00E0F2B9 /* Email+CoreDataClass.swift in Sources */,
 				A59C62121DAED2E000A5A189 /* MOPUBPlayerView.m in Sources */,
 				A59C5EEF1DA5884300A5A189 /* NotesViewController.swift in Sources */,
 				A59C61941DAED2E000A5A189 /* MPProgressOverlayView.m in Sources */,
@@ -2142,12 +2144,12 @@
 				A59C61EC1DAED2E000A5A189 /* MPNativeAdRendererImageHandler.m in Sources */,
 				A59C5ECE1DA587A100A5A189 /* IAPHelper.swift in Sources */,
 				A59C5EC61DA5872E00A5A189 /* CDPickerTextField.swift in Sources */,
-				A59C5F2A1DA58AB000A5A189 /* Workout.swift in Sources */,
 				A59C5ECF1DA587A100A5A189 /* Products.swift in Sources */,
 				A59C5FEB1DA58C8100A5A189 /* ExerciseChartViewController.swift in Sources */,
 				A59C62141DAED2E000A5A189 /* MOPUBReplayView.m in Sources */,
 				A59C61D61DAED2E000A5A189 /* MPVASTManager.m in Sources */,
 				A59C618E1DAED2E000A5A189 /* MPAdServerURLBuilder.m in Sources */,
+				A5675DC01DFB485C00E0F2B9 /* AutoLock+CoreDataProperties.swift in Sources */,
 				A59C61B51DAED2E000A5A189 /* MRError.m in Sources */,
 				A59C61FD1DAED2E000A5A189 /* MPNativeAdRendererConfiguration.m in Sources */,
 				A59C5EC81DA5872E00A5A189 /* CDThumbnailer.swift in Sources */,
@@ -2157,21 +2159,20 @@
 				A59C61EF1DAED2E000A5A189 /* MPNativeCache.m in Sources */,
 				A59C618F1DAED2E000A5A189 /* MPAPIEndpoints.m in Sources */,
 				A59C61F91DAED2E000A5A189 /* MPNativeAd.m in Sources */,
-				A59C5F2B1DA58AB000A5A189 /* Email+CoreDataProperties.swift in Sources */,
 				A59C61FA1DAED2E000A5A189 /* MPNativeAdConstants.m in Sources */,
 				A59C61A11DAED2E000A5A189 /* MPAdWebViewAgent.m in Sources */,
 				A59C61C31DAED2E000A5A189 /* MPGeolocationProvider.m in Sources */,
+				A5675DB41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift in Sources */,
 				A59C5EC91DA5872E00A5A189 /* MigrationVC.swift in Sources */,
+				A5675DB91DFB485C00E0F2B9 /* Measurement+CoreDataClass.swift in Sources */,
 				A59C5EC71DA5872E00A5A189 /* CDTableViewController.swift in Sources */,
 				A59C61C41DAED2E000A5A189 /* MPGlobal.m in Sources */,
 				A59C61A41DAED2E000A5A189 /* MPHTMLInterstitialViewController.m in Sources */,
 				A59C61AF1DAED2E000A5A189 /* MPMRAIDInterstitialViewController.m in Sources */,
 				A59C61EB1DAED2E000A5A189 /* MPNativeAd+Internal.m in Sources */,
 				A59C5EEC1DA5880E00A5A189 /* PhotoCollectionHeaderView.swift in Sources */,
-				A59C5F271DA58AB000A5A189 /* Session+CoreDataProperties.swift in Sources */,
 				A59C61BE1DAED2E000A5A189 /* UIColor+MPAdditions.m in Sources */,
 				A59C61A81DAED2E000A5A189 /* MPInterstitialViewController.m in Sources */,
-				A59C5F221DA58AB000A5A189 /* Routine.swift in Sources */,
 				A59C61D91DAED2E000A5A189 /* MPVASTResource.m in Sources */,
 				A59C62011DAED2E000A5A189 /* MPNativeAdSource.m in Sources */,
 				A59C61CF1DAED2E000A5A189 /* MPVASTCompanionAd.m in Sources */,
@@ -2180,8 +2181,8 @@
 				A59C5EF91DA5889100A5A189 /* TakePhotosViewController.swift in Sources */,
 				A59C61881DAED2E000A5A189 /* MPActivityViewControllerHelper.m in Sources */,
 				A59C62031DAED2E000A5A189 /* MPServerAdPositioning.m in Sources */,
-				A59C5F2C1DA58AB000A5A189 /* Email.swift in Sources */,
 				A59C61A51DAED2E000A5A189 /* MPBaseInterstitialAdapter.m in Sources */,
+				A5675DBB1DFB485C00E0F2B9 /* Routine+CoreDataClass.swift in Sources */,
 				A59C62101DAED2E000A5A189 /* MOPUBNativeVideoImpressionAgent.m in Sources */,
 				A59C5ED01DA587A100A5A189 /* ProductCell.swift in Sources */,
 				A59C61E11DAED2E000A5A189 /* MPBannerCustomEvent.m in Sources */,
@@ -2196,7 +2197,9 @@
 				A59C5EEB1DA5880E00A5A189 /* PhotoCollectionViewCell.swift in Sources */,
 				A59C619E1DAED2E000A5A189 /* MPQRunLoopOperation.m in Sources */,
 				A59C61961DAED2E000A5A189 /* MPURLResolver.m in Sources */,
+				A5675DBC1DFB485C00E0F2B9 /* Routine+CoreDataProperties.swift in Sources */,
 				A59C61E61DAED2E000A5A189 /* MPCollectionViewAdPlacerCell.m in Sources */,
+				A5675DB81DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataProperties.swift in Sources */,
 				A59C619A1DAED2E000A5A189 /* MPLogEvent.m in Sources */,
 				A59C61E31DAED2E000A5A189 /* MPInterstitialAdController.m in Sources */,
 				A59C61841DAED2E000A5A189 /* MPBaseBannerAdapter.m in Sources */,
@@ -2204,17 +2207,19 @@
 				A59C61E21DAED2E000A5A189 /* MPConstants.m in Sources */,
 				A59C622E1DAED2E000A5A189 /* MPRewardedVideo.m in Sources */,
 				A59C61861DAED2E000A5A189 /* MPAdAlertManager.m in Sources */,
-				A59C5F2E1DA58AB000A5A189 /* Measurement.swift in Sources */,
 				A59C61F61DAED2E000A5A189 /* MPAdPositioning.m in Sources */,
 				A59C61C21DAED2E000A5A189 /* MPError.m in Sources */,
 				A59C5EFE1DA588A100A5A189 /* WebsiteViewController.swift in Sources */,
 				A59C61F31DAED2E000A5A189 /* MPStaticNativeAdImpressionTimer.m in Sources */,
 				A59C620D1DAED2E000A5A189 /* MOPUBNativeVideoAdAdapter.m in Sources */,
+				A5675DBE1DFB485C00E0F2B9 /* Photo+CoreDataProperties.swift in Sources */,
 				A59C61B01DAED2E000A5A189 /* MRBridge.m in Sources */,
 				A59C61BF1DAED2E000A5A189 /* UIView+MPAdditions.m in Sources */,
 				A59C61C91DAED2E000A5A189 /* MPReachability.m in Sources */,
 				A59C61DE1DAED2E000A5A189 /* MoPub.m in Sources */,
+				A5675DBF1DFB485C00E0F2B9 /* AutoLock+CoreDataClass.swift in Sources */,
 				A59C61871DAED2E000A5A189 /* MPActivityViewControllerHelper+TweetShare.m in Sources */,
+				A5675DB51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift in Sources */,
 				A59C61E51DAED2E000A5A189 /* MPAdPlacerInvocation.m in Sources */,
 				A59C61971DAED2E000A5A189 /* MPVideoConfig.m in Sources */,
 				A59C61891DAED2E000A5A189 /* MPAdBrowserController.m in Sources */,
@@ -2222,8 +2227,6 @@
 				A59C61B81DAED2E000A5A189 /* MRProperty.m in Sources */,
 				A59C5F0A1DA588CD00A5A189 /* PhotoNavigationController.swift in Sources */,
 				A59C61DB1DAED2E000A5A189 /* MPVASTStringUtilities.m in Sources */,
-				A59C5F2D1DA58AB000A5A189 /* Measurement+CoreDataProperties.swift in Sources */,
-				A59C5F281DA58AB000A5A189 /* Session.swift in Sources */,
 				A59C61981DAED2E000A5A189 /* MPXMLParser.m in Sources */,
 				A59C619C1DAED2E000A5A189 /* MPLogEventRecorder.m in Sources */,
 				A59C61A91DAED2E000A5A189 /* MPCoreInstanceProvider.m in Sources */,
@@ -2248,6 +2251,7 @@
 				A59C62051DAED2E000A5A189 /* MPStaticNativeAdRendererSettings.m in Sources */,
 				A59C62091DAED2E000A5A189 /* MOPUBActivityIndicatorView.m in Sources */,
 				A59C61D01DAED2E000A5A189 /* MPVASTCreative.m in Sources */,
+				A5675DBA1DFB485C00E0F2B9 /* Measurement+CoreDataProperties.swift in Sources */,
 				A59C61E81DAED2E000A5A189 /* MPImageDownloadQueue.m in Sources */,
 				A59C61E41DAED2E000A5A189 /* MPInterstitialCustomEvent.m in Sources */,
 				A59C5EF51DA5888800A5A189 /* MeasurementsRecordViewController.swift in Sources */,
@@ -2260,19 +2264,19 @@
 				A59C61931DAED2E000A5A189 /* MPLastResortDelegate.m in Sources */,
 				A59C61F71DAED2E000A5A189 /* MPClientAdPositioning.m in Sources */,
 				A59C61B91DAED2E000A5A189 /* MRVideoPlayerManager.m in Sources */,
+				A5675DBD1DFB485C00E0F2B9 /* Photo+CoreDataClass.swift in Sources */,
 				A59C61EA1DAED2E000A5A189 /* MPMoPubNativeCustomEvent.m in Sources */,
 				A59C61F01DAED2E000A5A189 /* MPNativePositionResponseDeserializer.m in Sources */,
 				A59C61FC1DAED2E000A5A189 /* MPNativeAdError.m in Sources */,
 				A59C62111DAED2E000A5A189 /* MOPUBPlayerManager.m in Sources */,
 				A59C61C01DAED2E000A5A189 /* UIWebView+MPAdditions.m in Sources */,
-				A59C5F251DA58AB000A5A189 /* Photo+CoreDataProperties.swift in Sources */,
-				A59C5F291DA58AB000A5A189 /* Workout+CoreDataProperties.swift in Sources */,
 				A59C61D21DAED2E000A5A189 /* MPVASTIndustryIcon.m in Sources */,
 				A59C620A1DAED2E000A5A189 /* MOPUBAVPlayer.m in Sources */,
 				A59C61D71DAED2E000A5A189 /* MPVASTMediaFile.m in Sources */,
 				A59C61831DAED2E000A5A189 /* MPBannerCustomEventAdapter.m in Sources */,
 				A59C61DF1DAED2E000A5A189 /* MPAdConversionTracker.m in Sources */,
 				A59C61D31DAED2E000A5A189 /* MPVASTInline.m in Sources */,
+				A5675DB21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift in Sources */,
 				A59C62131DAED2E000A5A189 /* MOPUBPlayerViewController.m in Sources */,
 				A59C61851DAED2E000A5A189 /* MPAdAlertGestureRecognizer.m in Sources */,
 				A59C61C81DAED2E000A5A189 /* MPLogProvider.m in Sources */,
@@ -2280,9 +2284,9 @@
 				A59C5EE11DA587E600A5A189 /* SettingsTVC.swift in Sources */,
 				A59C61E01DAED2E000A5A189 /* MPAdView.m in Sources */,
 				A59C5EC01DA5872E00A5A189 /* CDDeduplicator.swift in Sources */,
+				A5675DB71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift in Sources */,
 				A59C5F0C1DA588CD00A5A189 /* MainTBC.swift in Sources */,
 				A59C5F0E1DA588CD00A5A189 /* DatePickerViewController.swift in Sources */,
-				A59C5F2F1DA58AB000A5A189 /* AutoLock+CoreDataProperties.swift in Sources */,
 				A59C61B21DAED2E000A5A189 /* MRCommand.m in Sources */,
 				A59C61E71DAED2E000A5A189 /* MPDiskLRUCache.m in Sources */,
 				A59C620C1DAED2E000A5A189 /* MOPUBFullscreenPlayerViewController.m in Sources */,
@@ -2293,15 +2297,14 @@
 				A59C62021DAED2E000A5A189 /* MPNativeCustomEvent.m in Sources */,
 				A59C61F81DAED2E000A5A189 /* MPCollectionViewAdPlacer.m in Sources */,
 				A59C60071DAC1FE300A5A189 /* CoreDataImporter.m in Sources */,
-				A59C5F301DA58AB000A5A189 /* AutoLock.swift in Sources */,
 				A59C62311DAED2E000A5A189 /* MPRewardedVideoReward.m in Sources */,
 				A59C62081DAED2E000A5A189 /* MPTableViewAdPlacer.m in Sources */,
+				A5675DB31DFB485C00E0F2B9 /* Session+CoreDataClass.swift in Sources */,
 				A59C61CA1DAED2E000A5A189 /* MPSessionTracker.m in Sources */,
 				A59C61AB1DAED2E000A5A189 /* MPVASTTracking.m in Sources */,
 				A59C618C1DAED2E000A5A189 /* MPAdDestinationDisplayAgent.m in Sources */,
 				A59C61F41DAED2E000A5A189 /* MPTableViewAdPlacerCell.m in Sources */,
 				A59C61B11DAED2E000A5A189 /* MRBundleManager.m in Sources */,
-				A59C5F231DA58AB000A5A189 /* WorkoutCompleteDate+CoreDataProperties.swift in Sources */,
 				A59C62061DAED2E000A5A189 /* MPStreamAdPlacementData.m in Sources */,
 				A59C5F091DA588CD00A5A189 /* WorkoutNavigationController.swift in Sources */,
 				A59C622C1DAED2E000A5A189 /* MPRewardedVideoAdManager.m in Sources */,
@@ -2324,8 +2327,8 @@
 				A59C61BC1DAED2E000A5A189 /* NSURL+MPAdditions.m in Sources */,
 				A59C620B1DAED2E000A5A189 /* MOPUBAVPlayerView.m in Sources */,
 				A59C61DC1DAED2E000A5A189 /* MPVASTTrackingEvent.m in Sources */,
-				A59C5F211DA58AB000A5A189 /* Routine+CoreDataProperties.swift in Sources */,
 				A59C620F1DAED2E000A5A189 /* MOPUBNativeVideoCustomEvent.m in Sources */,
+				A5675DB61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift in Sources */,
 				A59C60081DAC1FE300A5A189 /* Faulter.m in Sources */,
 				A59C619B1DAED2E000A5A189 /* MPLogEventCommunicator.m in Sources */,
 				A59C5EC21DA5872E00A5A189 /* CDHelper.swift in Sources */,
@@ -2338,8 +2341,6 @@
 				A59C5EC41DA5872E00A5A189 /* CDMigration.swift in Sources */,
 				A59C61AA1DAED2E000A5A189 /* MPInstanceProvider.m in Sources */,
 				A59C61E91DAED2E000A5A189 /* MPMoPubNativeAdAdapter.m in Sources */,
-				A59C5F261DA58AB000A5A189 /* Photo.swift in Sources */,
-				A59C5F241DA58AB000A5A189 /* WorkoutCompleteDate.swift in Sources */,
 				A59C61921DAED2E000A5A189 /* MPFacebookKeywordProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2599,11 +2600,12 @@
 		587CFB74189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A5675D901DFB47E100E0F2B9 /* _0_DWT_BB_v4.xcdatamodel */,
 				A54E89021C29BDDC006C8FFC /* _0_DWT_BB_v3.xcdatamodel */,
 				A5488A9B1AC3488D00BF0225 /* _0_DWT_BB 2.xcdatamodel */,
 				587CFB75189DD9B8006FA541 /* _0_DWT_BB.xcdatamodel */,
 			);
-			currentVersion = A54E89021C29BDDC006C8FFC /* _0_DWT_BB_v3.xcdatamodel */;
+			currentVersion = A5675D901DFB47E100E0F2B9 /* _0_DWT_BB_v4.xcdatamodel */;
 			path = _0_DWT_BB.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

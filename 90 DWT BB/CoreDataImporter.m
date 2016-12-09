@@ -12,7 +12,7 @@
 #import "CoreDataHelper.h"
 
 @implementation CoreDataImporter
-#define debug 0
+#define debug 1
 + (void)saveContext:(NSManagedObjectContext*)context {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
@@ -86,14 +86,24 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     NSString *uniqueAttribute = [self uniqueAttributeForEntity:entity];
+    //NSDate *dateValue = attributeValues[uniqueAttribute];
     
-    NSString *dateStringValue = uniqueAttributeValue;
+    //NSDate
+    
+    
+//    // PREPARE variables
+//    NSString *entity = object.entity.name;
+//    NSString *uniqueAttribute = [self uniqueAttributeForEntity:entity];
+//    NSString *uniqueAttributeValue = [object valueForKey:uniqueAttribute];
+
+    
+//    NSString *dateStringValue = uniqueAttributeValue;
 //    NSLog(@"uniqueAttribute = %@", uniqueAttribute);
 //    NSLog(@"uniqueAttributeValue = %@", uniqueAttributeValue);
 //    NSLog(@"dateStringValue = %@", dateStringValue);
     
     
-    NSString *dateStringValueTemp = [NSDateFormatter localizedStringFromDate:(uniqueAttributeValue)
+    NSString *dateStringValueTemp = [NSDateFormatter localizedStringFromDate:(attributeValues[uniqueAttribute])
                                                                dateStyle:NSDateFormatterShortStyle
                                                                timeStyle:NSDateFormatterLongStyle];
     

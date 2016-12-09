@@ -385,8 +385,8 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     insertPhotoInfo.session = session
                     insertPhotoInfo.month = monthString
                     insertPhotoInfo.angle = selectedAngle
-                    insertPhotoInfo.date = Date()
-                    insertPhotoInfo.image = imageData
+                    insertPhotoInfo.date = Date() as NSDate?
+                    insertPhotoInfo.image = imageData as NSData?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -395,8 +395,8 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     
                     let updatePhotoInfo = photoObjects[0]
                     
-                    updatePhotoInfo.date = Date()
-                    updatePhotoInfo.image = imageData
+                    updatePhotoInfo.date = Date() as NSDate?
+                    updatePhotoInfo.image = imageData as NSData?
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
@@ -414,8 +414,8 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                             // Get data from the newest existing record.  Usually the last record sorted by date.
                             let updatePhotoInfo = photoObjects[index]
                             
-                            updatePhotoInfo.date = Date()
-                            updatePhotoInfo.image = imageData
+                            updatePhotoInfo.date = Date() as NSDate?
+                            updatePhotoInfo.image = imageData as NSData?
                         }
                         else {
                             // Delete duplicate records.

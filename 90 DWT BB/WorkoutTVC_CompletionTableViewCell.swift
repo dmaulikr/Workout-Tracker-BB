@@ -66,7 +66,7 @@ class WorkoutTVC_CompletionTableViewCell: UITableViewCell {
             // Found a match.
             
             let object = workoutCompletedObjects.last
-            let completedDate = DateFormatter .localizedString(from: (object?.date)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
+            let completedDate = DateFormatter .localizedString(from: (object?.date)! as Date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
 
             // Cell
             self.backgroundColor = UIColor.darkGray

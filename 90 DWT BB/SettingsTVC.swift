@@ -177,7 +177,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     let insertRoutineInfo = NSEntityDescription.insertNewObject(forEntityName: "Routine", into: CoreDataHelper.shared().context) as! Routine
                     
                     insertRoutineInfo.defaultRoutine = self.defaultRoutine.titleForSegment(at: self.defaultRoutine.selectedSegmentIndex)
-                    insertRoutineInfo.date = Date()
+                    insertRoutineInfo.date = Date() as NSDate?
                 }
                 
                 CoreDataHelper.shared().backgroundSaveContext()
@@ -229,7 +229,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                     let insertAutoLockInfo = NSEntityDescription.insertNewObject(forEntityName: "AutoLock", into: CoreDataHelper.shared().context) as! AutoLock
                     
                     insertAutoLockInfo.useAutoLock = newAutoLockSetting
-                    insertAutoLockInfo.date = Date()
+                    insertAutoLockInfo.date = Date() as NSDate?
                 }
                 
                 CoreDataHelper.shared().backgroundSaveContext()
@@ -273,7 +273,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                             // Match Found.  Update existing record.
                             let newSessionNumber = Int(self.session)! - 1
                             sessionObjects.last?.currentSession = String(newSessionNumber)
-                            sessionObjects.last?.date = Date()
+                            sessionObjects.last?.date = Date() as NSDate?
                             
                             CoreDataHelper.shared().backgroundSaveContext()
                             
@@ -333,7 +333,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                         // Match Found.  Update existing record.
                         let newSessionNumber = Int(self.session)! + 1
                         sessionObjects.last?.currentSession = String(newSessionNumber)
-                        sessionObjects.last?.date = Date()
+                        sessionObjects.last?.date = Date() as NSDate?
                         
                         CoreDataHelper.shared().backgroundSaveContext()
                         
@@ -580,7 +580,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                         let insertEmailInfo = NSEntityDescription.insertNewObject(forEntityName: "Email", into: CoreDataHelper.shared().context) as! Email
                         
                         insertEmailInfo.defaultEmail = "youremail@abc.com"
-                        insertEmailInfo.date = Date()
+                        insertEmailInfo.date = Date() as NSDate?
                         
                         self.emailDetail.text = "youremail@abc.com"
                     }
