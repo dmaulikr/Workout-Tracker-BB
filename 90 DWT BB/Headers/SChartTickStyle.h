@@ -10,6 +10,8 @@
 
 #import "SChartTickLabelOrientation.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** The style properties for tick marks 
  
  */
@@ -44,7 +46,7 @@
 /** The text alignment of the labels */
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 /** The shadow color for label text */
-@property (nonatomic, retain) UIColor *labelTextShadowColor;
+@property (nullable, nonatomic, retain) UIColor *labelTextShadowColor;
 /** The gap between a tick label and its corresponding tick mark 
  
  By default, this property is set to `5`. */
@@ -54,3 +56,6 @@
 - (void)supplementStyleFromStyle:(SChartTickStyle *)style;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

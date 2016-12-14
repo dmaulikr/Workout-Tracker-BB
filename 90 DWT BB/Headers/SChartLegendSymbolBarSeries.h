@@ -9,6 +9,8 @@
 
 @class SChartBarSeries, SChartBarColumnSeriesStyle;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A symbol designed to represent a bar series in the chart legend.
  
  The symbol makes use of the series styling, in order to better represent it in the legend.
@@ -35,5 +37,7 @@
  This property allows you to query the style properties which have been used to create this legend symbol. */
 @property (nonatomic, readonly) SChartBarColumnSeriesStyle *style;
 
-
 @end
+
+NS_ASSUME_NONNULL_END
+

@@ -7,7 +7,10 @@
 //
 
 #import "SChartSeriesStyle.h"
+
 @class SChartBaselinePointStyle;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface SChartPointSeriesStyle : SChartSeriesStyle {
     @protected
@@ -20,17 +23,20 @@
  
  @warning The class type of the point style has changed from `SChartBasePointStyle` to `SChartBaselinePointStyle`.
  */
-- (SChartBaselinePointStyle*) pointStyle;
+- (SChartBaselinePointStyle* _Nullable) pointStyle;
 - (void) setPointStyle:(SChartBaselinePointStyle *)pointStyle;
 
 /** The style of points that are selected
  
  @warning The class type of the point style has changed from `SChartBasePointStyle` to `SChartBaselinePointStyle`.
  */
-- (SChartBaselinePointStyle*) selectedPointStyle;
+- (SChartBaselinePointStyle* _Nullable) selectedPointStyle;
 - (void) setSelectedPointStyle:(SChartBaselinePointStyle *) selectedPointStyle;
 
 /** Supplements this style object by taking styles this object doesn't have, from the argument, `style` */
 - (void)supplementStyleFromStyle:(SChartPointSeriesStyle *)style;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

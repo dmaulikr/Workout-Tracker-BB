@@ -10,8 +10,6 @@
 
 @interface SChartDonutSeries ()
 
-@property (nonatomic) CGFloat animationDuration DEPRECATED_MSG_ATTRIBUTE("Configure the `selectionAnimation` property instead.");
-
 /* DEPRECATED - This should be a private method, so will be taken off the public API in a future commit.
  
  Draw a slice of the series. */

@@ -6,6 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /** `SChartRange` represents a range of values on a chart.  It is used by the chart axes, which are defined in `SChartAxis`.  `SChartRange` is the base class for the concrete range types which are available in ShinobiCharts.  The concrete types are:
  
  - `SChartNumberRange` - represents numerical ranges.
@@ -27,7 +30,7 @@
  @return An initialized range object, or `nil` if the object couldn't be created.
  */
 - (id)initWithMinimum:(NSNumber *)min andMaximum:(NSNumber *)max
-    NS_DESIGNATED_INITIALIZER;
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(minimum:maximum:));
 
 /** @name Information about the range */
 
@@ -61,3 +64,6 @@
 + (SChartRange *)rangeWithRange:(SChartRange *)range;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

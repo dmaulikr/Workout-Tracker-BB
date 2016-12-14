@@ -13,6 +13,8 @@
 @class SChartCanvasRenderView;
 @class ShinobiChart;
 
+@protocol SChartRedrawCalculator;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -74,6 +76,17 @@ NS_DESIGNATED_INITIALIZER;
 
 /** This is the layer where we render things like the crosshair. */
 @property (nonatomic, retain) SChartCanvasOverlay* overlay;
+
+/**
+ *  Determines whether a subsequent redraw call to the chart should be queued.
+ *
+ *  Often, you'll want to leave this as the default `SChartRedrawCalculatorFeedbackLoop` which will
+ *  ensure that the chart is redrawn if an animation is currently in progress.
+ *
+ *  If you wish to prevent the chart from being automatically redrawn, e.g. because you are
+ *  animating a series based on an axis' span value, you can set this property to nil.
+ */
+@property (nonatomic, retain) id<SChartRedrawCalculator> animationRedrawCalculator;
 
 @end
 

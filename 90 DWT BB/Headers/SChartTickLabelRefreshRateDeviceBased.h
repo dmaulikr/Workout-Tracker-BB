@@ -8,6 +8,8 @@
 
 #import "SChartTickLabelRefreshRate.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  This class provides a simple way to adjust the rate at which tick labels are refreshed.
  *
@@ -20,8 +22,6 @@
  *  - iPhone 4S and below
  *  
  */
-
-
 @interface SChartTickLabelRefreshRateDeviceBased : NSObject <SChartTickLabelRefreshRate>
 
 /**
@@ -39,3 +39,6 @@
 NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

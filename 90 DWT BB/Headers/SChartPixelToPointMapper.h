@@ -12,6 +12,8 @@
 @class ShinobiChart;
 @class SChartPixelToPointMapping;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * A class capable of mapping a pixel point onto a datapoint, series and
  * suggested pixel point in a ShinobiChart. Intended for use by user
@@ -36,3 +38,6 @@
                                        onChart:(ShinobiChart *)chart;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

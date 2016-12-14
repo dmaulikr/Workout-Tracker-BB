@@ -21,8 +21,6 @@
  otherwise only the datapoints on the given series are searched.
  
  `chart` is the ShinobiChart on which to search.
- 
- @warning DEPRECATED - You should replace this method with `mappingForPoint:seriesToSearch:onChart:` and pass an array of series you want to search through.
  */
 - (SChartPixelToPointMapping *)mappingForPoint:(CGPoint)pixelPoint
                                       onSeries:(SChartMappedSeries *)series

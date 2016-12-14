@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** The `SChartAnimationCurve` protocol allows any object to act as a curve evaluator for series' animations, as defined in `SChartAnimation`.  
  
  Given a time point between the start and end of an animation, a curve evaluator returns a value which represents the progress of the series between its beginning and end positions.  For more information on curve evaluation, see the `valueAtTime:` method defined in the protocol.
@@ -42,6 +44,17 @@
  
  @param time Time is provided as a CGFloat between 0.f and 1.f, where 0.f is the beginning of the animation and 1.f is the end of the animation. (time = elapsed time / duration)
  */
--(CGFloat)valueAtTime:(CGFloat)time;
+-(CGFloat)valueAtTime:(CGFloat)time DEPRECATED_MSG_ATTRIBUTE("Use 'valueAtProgress' instead.");
+
+/** Should return an appropriate value for the animation curve at the given progress.
+ 
+ The value returned represents the progress of the series between its beginning and end positions, where 0.f is the start state and 1.f is, nominally, the end state.
+ It is valid to return a value 'v' where either v < 0.f or v > 1.f.
+ 
+ @param progress A double between 0.f and 1.f, where 0.f is the beginning of the animation and 1.f is the end of the animation.
+ */
+-(double)valueAtProgress:(double)progress;
 
 @end
+
+NS_ASSUME_NONNULL_END

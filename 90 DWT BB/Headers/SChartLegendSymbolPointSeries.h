@@ -9,6 +9,8 @@
 
 @class SChartPointSeries, SChartPointSeriesStyle;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A symbol designed to represent a point series in the chart legend.
  
  The symbol makes use of the series styling, in order to better represent it in the legend.
@@ -37,3 +39,6 @@
 @property (nonatomic, retain, readonly) SChartPointSeriesStyle *style;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

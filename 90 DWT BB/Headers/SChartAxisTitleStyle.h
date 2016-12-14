@@ -14,6 +14,8 @@ typedef NS_ENUM(NSInteger, SChartAxisTitleOrientation) {
     SChartAxisTitleOrientationVertical
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** The axis title style object controls the look and feel for the axis title.
  
  @available Standard
@@ -34,3 +36,5 @@ typedef NS_ENUM(NSInteger, SChartAxisTitleOrientation) {
 -(void)supplementStyleFromStyle:(SChartAxisTitleStyle *)style;
 
 @end
+
+NS_ASSUME_NONNULL_END

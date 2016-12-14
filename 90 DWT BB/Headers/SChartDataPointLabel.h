@@ -12,6 +12,8 @@
 @class SChartSeries;
 @class ShinobiChart;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A label representing a single `SChartDataPoint`, styled by `SChartDataPointLabelStyle`.
  
  @available Standard
@@ -26,3 +28,6 @@
 -(id)initWithDataPoint:(id<SChartData>)dataPoint NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

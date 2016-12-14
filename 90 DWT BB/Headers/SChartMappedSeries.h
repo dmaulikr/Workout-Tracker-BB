@@ -39,6 +39,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface SChartMappedSeries : SChartSeries
 
+/**
+ * The groupIndex property determines which series will group with each other, for example, which columns group, instead of overlapping.
+ * By default, all columns will group with all other columns, all bars with other bars, and so on.
+ *
+ * The chart's built-in series achieve this by assigning values to this property in their initializers. Negative integers for this property
+ * are reserved for the chart's own classes, in order to allow the chart's series' groupIndexes to not clash with any user-provided series' groupIndexes.
+ *
+ * You can make your series overlap instead of being positioned alongside each other by giving each series a unique groupIndex.
+ */
+@property (nonatomic) NSInteger groupIndex;
+
 /** Returns the range of the data in the X axis.
  
  @see SChartRange

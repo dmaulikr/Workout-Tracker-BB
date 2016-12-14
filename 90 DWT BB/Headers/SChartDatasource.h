@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param chart The chart for which the datasource is providing data.
  */
-- (NSInteger)numberOfSeriesInSChart:(ShinobiChart*)chart;
+- (NSInteger)numberOfSeriesInSChart:(ShinobiChart*)chart NS_SWIFT_NAME(numberOfSeries(in:));
 
 /** Returns the `SChartSeries` object at the given index in the specified chart. 
  
@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param chart The chart containing the axis.
  @param axis The axis for which we are setting the major tick values.
  */
-- (NSArray *)sChart:(ShinobiChart*)chart majorTickValuesForAxis:(SChartAxis *)axis;
+- (NSArray * _Nullable)sChart:(ShinobiChart*)chart majorTickValuesForAxis:(SChartAxis *)axis;
 
 
 #pragma mark -
@@ -153,7 +153,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param dataIndex The index of the data point within the series which contains it.
  @param seriesIndex The index of the series in the chart which contains the data point.
  */
-- (UIImage * _Nullable)sChartTextureForPoint:(ShinobiChart*)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex;
+- (UIImage * _Nullable)sChartTextureForPoint:(ShinobiChart*)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
+NS_SWIFT_NAME(sChart(_:textureForDataPointAtIndex:forSeriesAtIndex:));
 
 /** @name Custom data point radii */
 
@@ -170,7 +171,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param dataIndex The index of the data point in the series which contains it.
  @param seriesIndex The index of the series in the chart which contains the data point.
  */
-- (CGFloat)sChartRadiusForDataPoint:(ShinobiChart*)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex;
+- (CGFloat)sChartRadiusForDataPoint:(ShinobiChart*)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
+NS_SWIFT_NAME(sChart(_:radiusForDataPointAtIndex:forSeriesAtIndex:));
 
 /** Returns the inner radius of the given data point, in points.
  
@@ -182,7 +184,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param dataIndex The index of the data point in the series which contains it.
  @param seriesIndex The index of the series in the chart which contains the data point.
  */
-- (CGFloat)sChartInnerRadiusForDataPoint:(ShinobiChart*)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex;
+- (CGFloat)sChartInnerRadiusForDataPoint:(ShinobiChart*)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
+NS_SWIFT_NAME(sChart(_:innerRadiusForDataPointAtIndex:forSeriesAtIndex:));
 
 #pragma mark -
 #pragma mark Radial Chart Labels
@@ -194,7 +197,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  If this method is implemented and a non-nil UILabel is returned for a 'slice' in a radial chart series, that UILabel will be added to the chart.
  */
-- (UILabel * _Nullable)getLabelsForRadialChartSeries:(SChartSeries *)series forIndex:(NSInteger)sliceIndex;
+- (UILabel * _Nullable)getLabelsForRadialChartSeries:(SChartSeries *)series forIndex:(NSInteger)sliceIndex DEPRECATED_MSG_ATTRIBUTE("use sChart:labelForSliceAtIndex:inRadialSeries: instead");
 
 /** Returns a UILabel corresponding to a 'slice' of a radial chart series.
  

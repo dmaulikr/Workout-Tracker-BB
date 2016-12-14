@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ShinobiMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,10 +63,10 @@ This is only required for series with more than one x value and keys are specifi
  This is only required for series with more than one y value and keys are specified on the series type.  For example, OHLC keys include "low", "high", etc. For series with just a single y value, use `sChartYValue` instead. */
 - (nullable id)sChartYValueForKey:(NSString*)key;
 
-/** @name Selection */
+/* @name Selection */
 
-/** Returns `YES` if this data point is selected. */
-- (BOOL)sChartPointIsSelected;
+/* Returns `YES` if this data point is selected. */
+- (BOOL)sChartPointIsSelected SCHART_DEPRECATED("Use `selectedDataPoints` on `SChartSeries` instead.");
 
 /** @name Index */
 

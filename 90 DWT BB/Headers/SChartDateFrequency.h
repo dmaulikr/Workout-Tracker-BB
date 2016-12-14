@@ -17,6 +17,8 @@ typedef NS_ENUM(NSInteger, SChartDateFrequencyDenomination) {
     SChartDateFrequencyDenominationYears
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  An `SChartDateFrequency` is used to specify the desired frequency of tick marks on a `SChartDateTimeAxis`. For example, a frequency of 2 hours will cause the axis to attempt to display a tick mark at every 2 hour mark. No class type other than `SChartDateFrequency` (or one of its subclasses) may be used to define a date frequency on the axis.
  
@@ -208,3 +210,6 @@ typedef NS_ENUM(NSInteger, SChartDateFrequencyDenomination) {
 #pragma mark Internal: Date components
 
 @end
+
+NS_ASSUME_NONNULL_END
+

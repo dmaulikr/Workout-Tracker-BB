@@ -11,6 +11,8 @@
 
 @class SChartAxis;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A tooltip that can handle the display of multi-value data points. 
  
  To use a tooltip of this class type simply assign it to your chart's crosshair like so:
@@ -21,7 +23,6 @@
  
  A tooltip of this type is made up from an array of labels (one label for each key or value) and a main label (inherited from SChartCrosshairTooltip) which will display any left over values that do not belong to the key-value pairs.
  */
-
 @interface SChartCrosshairMultiValueTooltip : SChartCrosshairTooltip
 
 /** An array of labels that contains a label for each display key and each display value (as dictated by keyValueDisplayPairsForDataPoint:onSeries:withXAxis:withYAxis:).*/
@@ -61,3 +62,6 @@
 - (NSString*) mainLabelStringForDataPoint:(id<SChartData>) dataPoint onSeries:(SChartSeries*) series withXAxis:(SChartAxis*) xAxis withYAxis:(SChartAxis*) yAxis;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

@@ -10,6 +10,8 @@
 #import "SChartRadialLineRenderMode.h"
 #import "ShinobiMacros.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** Style properties for the major grid lines.
  
  */
@@ -45,3 +47,5 @@
 - (void)supplementStyleFromStyle:(SChartMajorGridlineStyle *)style;
 
 @end
+
+NS_ASSUME_NONNULL_END

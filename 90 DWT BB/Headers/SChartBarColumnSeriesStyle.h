@@ -10,6 +10,8 @@
 
 #import "SChartSeriesStyle.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** SChartBarColumnSeriesStyle manages the look of bar and column series on a chart.  It contains any properties which are common to both bar and column series.
  
  For properties which are specific to bar series, you should use the `SChartBarSeriesStyle`.  For properties which are specific to column series, you should use the `SChartColumnSeriesStyle`.
@@ -38,34 +40,34 @@
 @property (nonatomic)             BOOL showAreaWithGradient;
 
 /** The fill color of the area inside the bar/column if `showArea` is `YES`. */
-@property (nonatomic, retain)     UIColor *areaColor;
+@property (nonatomic, strong, nullable)     UIColor *areaColor;
 
 /** The second fill color of the area inside the bar/column if `showAreaWithGradient` is `YES`. */
-@property (nonatomic, retain)     UIColor *areaColorGradient;
+@property (nonatomic, strong, nullable)     UIColor *areaColorGradient;
 
 /** The fill color of the area inside the bar/column if `showArea` is `YES` when the data point is below the baseline of the series. 
  
  The baseline of the series is set by [SChartCartesianSeries baseline].
  */
-@property (nonatomic, retain)     UIColor *areaColorBelowBaseline;
+@property (nonatomic, strong, nullable)     UIColor *areaColorBelowBaseline;
 
 /** The second fill color of the area inside the bar/column if `showAreaWithGradient` is `YES` when the data point is below the baseline. 
  
  The baseline of the series is set by [SChartCartesianSeries baseline].
  */
-@property (nonatomic, retain)     UIColor *areaColorGradientBelowBaseline;
+@property (nonatomic, strong, nullable)     UIColor *areaColorGradientBelowBaseline;
 
 /** The color of the outline of the bar/column. */
-@property (nonatomic, retain)     UIColor *lineColor;
+@property (nonatomic, strong, nullable)     UIColor *lineColor;
 
 /** The color of the outline of the bar/column when the data point is below the baseline.
  
  The baseline of the series is set by [SChartCartesianSeries baseline].
  */
-@property (nonatomic, retain)     UIColor *lineColorBelowBaseline;
+@property (nonatomic, strong, nullable)     UIColor *lineColorBelowBaseline;
 
 /** The width of the outline of the bar/column, in points. */
-@property (nonatomic, retain)     NSNumber *lineWidth;
+@property (nonatomic, strong, nullable)     NSNumber *lineWidth;
 
 /** The ratio used to calculate a corner radius which is applied to the corners on the tip of each bar or column.
  The corner radius is calculated by multiplying this corner ratio value against half the bar or column width.
@@ -82,3 +84,5 @@
 - (void)supplementStyleFromStyle:(SChartBarColumnSeriesStyle *)style;
 
 @end
+
+NS_ASSUME_NONNULL_END

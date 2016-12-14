@@ -31,25 +31,4 @@ NS_DESIGNATED_INITIALIZER;
 /* Returns the frequency of the object, measured in seconds. */
 - (double)toSeconds DEPRECATED_MSG_ATTRIBUTE("This is used as a rough heuristic for sorting and not intended for use in user-code");
 
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)year DEPRECATED_ATTRIBUTE;
-
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)month DEPRECATED_ATTRIBUTE;
-
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)week DEPRECATED_MSG_ATTRIBUTE("Use weekOfMonth or weekOfYear, depending on which you mean");
-
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)day DEPRECATED_ATTRIBUTE;
-
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)hour DEPRECATED_ATTRIBUTE;
-
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)minute DEPRECATED_ATTRIBUTE;
-
-/* DEPRECATED - We will remove this from the public API in a future commit, as it is only intended for internal use. */
-- (NSInteger)second DEPRECATED_ATTRIBUTE;
-
 @end

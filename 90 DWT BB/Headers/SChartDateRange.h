@@ -9,6 +9,8 @@
 
 #import "SChartRange.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** An `SChartDateRange` object is an instance of `SChartRange` that is specific to NSDate - with each element in the range represented by an NSDate object. This is the likely range of choice for an `SChartDateTimeAxis`.
  
  @available Standard
@@ -34,7 +36,8 @@ __attribute__((unavailable("Use '[[SChartRange alloc] initWithMinimum:andMaximum
  */
 - (id)initWithDateMinimum:(NSDate *)min
            andDateMaximum:(NSDate *)max
-NS_DESIGNATED_INITIALIZER;
+NS_DESIGNATED_INITIALIZER
+NS_SWIFT_NAME(init(dateMinimum:dateMaximum:));
 
 /** @name Information about the range */
 
@@ -44,5 +47,7 @@ NS_DESIGNATED_INITIALIZER;
 /** Returns the maximum of the range as an NSDate object. */
 - (NSDate *)maximumAsDate;
 
-
 @end
+
+NS_ASSUME_NONNULL_END
+

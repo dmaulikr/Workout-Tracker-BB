@@ -36,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
  The orientation for bar/column series is vertical, and the orientation for column series is horizontal.
  */
 @property (nonatomic, assign) SChartSeriesOrientation orientation;
-/*
+
+/**
  The number of edges used to create a rounded corner.
  The default value is 15.
 

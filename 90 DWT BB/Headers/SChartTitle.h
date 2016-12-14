@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A title object used by the chart and chart axes to display a UILabel with appropriate text.
  
  The look and feel of titles on the chart is managed by instances of one of the sub-classes of `SChartTitleStyle`.
@@ -31,3 +33,6 @@
 @interface SChartTitle : UILabel
 
 @end
+
+NS_ASSUME_NONNULL_END
+

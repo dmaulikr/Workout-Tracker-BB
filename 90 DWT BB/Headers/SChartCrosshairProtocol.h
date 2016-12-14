@@ -11,6 +11,8 @@
 @class SChartCrosshairStyle;
 @class SChartCrosshairTooltip;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * The chart's crosshair interface - the chart will push 'show', 'move' and
  * 'hide' events onto the crosshair, which should respond appropriately.
@@ -65,3 +67,6 @@
 @property(nonatomic, retain) SChartCrosshairTooltip *tooltip DEPRECATED_ATTRIBUTE;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

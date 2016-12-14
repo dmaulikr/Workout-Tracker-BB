@@ -64,6 +64,12 @@
  */
 - (CGRect)getPlotAreaFrame DEPRECATED_MSG_ATTRIBUTE("Use 'plotAreaFrame' property.");
 
+/* Refreshes whether panning is enabled on the chart canvas.  It is called whenever the enableGesturePanning property is changed on any of the axes associated with the chart.
+ @see SChartAxis
+ @see SChartCanvas
+ */
+- (void)axisPanningChanged DEPRECATED_MSG_ATTRIBUTE("This is now updated automatically.");
+
 /* Set the method for zooming the chart
  
  - SChartGesturePanTypeNone: This property disables pan gestures on the chart.

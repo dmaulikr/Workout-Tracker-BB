@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class SChartGradientView;
 @class SChartMappedSeries;
 @class SChartGestureManager;
+@class SChartAnimationTracker;
 
 @protocol SChartDatasource;
 @protocol SChartDelegate;
@@ -84,7 +85,6 @@ typedef struct SChartSize
 @interface ShinobiChart : UIView {
 @private
     NSMutableArray *xAxes, *yAxes;
-    NSMutableArray *seriesGroups;
     BOOL shouldReloadData;
     dispatch_queue_t loadingDataQueue;
     NSInteger loadingQueueSize;
@@ -151,12 +151,6 @@ typedef struct SChartSize
  @param y The specified y value.
  */
 - (NSString *)stringForX:(double)x andY:(double)y;
-
-/** Refreshes whether panning is enabled on the chart canvas.  It is called whenever the enableGesturePanning property is changed on any of the axes associated with the chart. 
- @see SChartAxis
- @see SChartCanvas
- */
-- (void)axisPanningChanged;
 
 #pragma mark -
 #pragma mark Delegates, Data Sources and License Key
@@ -326,6 +320,15 @@ typedef struct SChartSize
  @see SChartSeries
  */
 @property (atomic, retain, readonly) NSArray SC_GENERIC(SChartSeries *) *series;
+
+#pragma mark - Animation
+/** @name Animation */
+
+/** The chart's animation tracker
+ 
+ This class enables series to be shown or hidden using any `SChartAnimation`.
+ */
+@property (nonatomic, strong, readonly) SChartAnimationTracker *animationTracker;
 
 #pragma mark -
 #pragma mark Titles
@@ -520,21 +523,24 @@ typedef struct SChartSize
  @param numberOfDataPoints  The number of data points which are available to be appended to the end of the series.
  @param seriesIndex The index of the series which should append the new data.
  */
-- (void)appendNumberOfDataPoints:(NSInteger)numberOfDataPoints toEndOfSeriesAtIndex:(NSInteger)seriesIndex;
+- (void)appendNumberOfDataPoints:(NSInteger)numberOfDataPoints toEndOfSeriesAtIndex:(NSInteger)seriesIndex
+NS_SWIFT_NAME(append(numberOfDataPoints:toEndOfSeriesAtIndex:));
 
 /** Notifies the chart that the specified number of data points are available to be prepended to the start of the specified chart series.
 
  @param numberOfDataPoints The number of data points which are available to be prepended to the start of the series.
  @param seriesIndex The index of the series to which the new data should be prepended.
  */
-- (void)prependNumberOfDataPoints:(NSInteger)numberOfDataPoints toStartOfSeriesAtIndex:(NSInteger)seriesIndex;
+- (void)prependNumberOfDataPoints:(NSInteger)numberOfDataPoints toStartOfSeriesAtIndex:(NSInteger)seriesIndex
+NS_SWIFT_NAME(prepend(numberOfDataPoints:toStartOfSeriesAtIndex:));
 
 /** Notifies the chart that the specified number of data points should be removed from the start of the specified chart series.
  
  @param numberOfPointsToRemoveFromStart The number of data points which should be removed from the start of the series.
  @param seriesIndex The index of the series which should append the new data.
  */
-- (void)removeNumberOfDataPoints:(NSInteger)numberOfDataPoints fromStartOfSeriesAtIndex:(NSInteger)seriesIndex;
+- (void)removeNumberOfDataPoints:(NSInteger)numberOfDataPoints fromStartOfSeriesAtIndex:(NSInteger)seriesIndex
+NS_SWIFT_NAME(remove(numberOfDataPoints:fromStartOfSeriesAtIndex:));
 
 /** Update the canvas to allow for axes, titles, and legend. */
 - (void)updateCanvasSize;

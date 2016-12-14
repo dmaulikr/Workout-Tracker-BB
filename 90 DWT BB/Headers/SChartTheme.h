@@ -27,6 +27,8 @@
 @class SChartBubbleSeriesStyle;
 @class SChartRadialLineSeriesStyle;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** 
  The SChartTheme class is responsible for storing styling information for the chart's visual components, such as its titles, axes & tickmarks, and series.
  
@@ -629,3 +631,6 @@
 - (SChartCandlestickSeriesStyle *)candlestickSeriesStyleForSeriesAtIndex:(NSInteger)seriesIndex selected:(BOOL)selected;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

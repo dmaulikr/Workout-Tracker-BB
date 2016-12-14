@@ -11,6 +11,8 @@
 #import "SChartGesturePanType.h"
 #import "ShinobiMacros.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  The gesture manager contains all of the gestures used by a ShinobiChart, along
  with gesture-related properties which enable certain gestures.
@@ -123,3 +125,6 @@
 @property (nonatomic) BOOL radialRotationEnabled;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

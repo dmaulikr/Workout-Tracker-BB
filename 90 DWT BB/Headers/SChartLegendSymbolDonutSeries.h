@@ -9,6 +9,8 @@
 
 @class SChartDonutSeries, SChartDonutSeriesStyle;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A symbol designed to represent a donut series in the chart legend.
  
  The symbol makes use of the series styling, in order to better represent it in the legend.
@@ -39,3 +41,6 @@
     NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

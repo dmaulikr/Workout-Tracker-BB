@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger, SChartLegendPosition) {
 @class ShinobiChart;
 @class SChartLegendStyle;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** Series data can be displayed in a legend on a `ShinobiChart`. The `SChartLegend` is a UIView-based object that represents the legend as a visual item on the chart. The legend may appear in a number of preset positions within the chart. 
  
  <img src="../docs/markdown_files/Images/api_legend.png" width=400/>
@@ -161,7 +163,7 @@ typedef NS_ENUM(NSInteger, SChartLegendPosition) {
  
  Note that if `autosizeLabels` is set to YES (the default value) then this property will be ignored.
  */
-@property (nonatomic, retain) NSNumber *fixedWidthRatio;
+@property (nonatomic, strong, nullable) NSNumber *fixedWidthRatio;
 
 #pragma mark -
 #pragma mark Styling
@@ -190,3 +192,6 @@ typedef NS_ENUM(NSInteger, SChartLegendPosition) {
 - (void)reload;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

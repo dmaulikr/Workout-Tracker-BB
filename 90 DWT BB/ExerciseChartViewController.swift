@@ -69,14 +69,14 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         // Add a pair of axes
         let xAxis = SChartCategoryAxis()
         xAxis.title = findXAxisTitle()
-        xAxis.style.titleStyle.font = UIFont(name: "HelveticaNeue-Light", size: 17)
+        xAxis.style.titleStyle.font = UIFont(name: "HelveticaNeue-Light", size: 17)!
         //xAxis.rangePaddingLow = @(0.05);
         //xAxis.rangePaddingHigh = @(0.3);
         chart.xAxis = xAxis;
         
         let yAxis = SChartNumberAxis()
         yAxis.title = findYAxisTitle()
-        yAxis.style.titleStyle.font = UIFont(name: "HelveticaNeue-Light", size: 17)
+        yAxis.style.titleStyle.font = UIFont(name: "HelveticaNeue-Light", size: 17)!
         //yAxis.rangePaddingLow = @(1.0);
         //yAxis.rangePaddingHigh = @(1.0);
         chart.yAxis = yAxis;
@@ -106,7 +106,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     
     // MARK:- SChartDatasource Functions
     
-    func numberOfSeries(inSChart chart: ShinobiChart) -> Int {
+    func numberOfSeries(in chart: ShinobiChart) -> Int {
         
         let highestIndexFound = NSInteger(GetHighestDatabaseIndex())
         

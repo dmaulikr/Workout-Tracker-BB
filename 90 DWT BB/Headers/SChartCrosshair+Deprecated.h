@@ -15,10 +15,10 @@
 /* DEPRECATED - This should be taken off the API in future releases.  It is used internally, but should not be set from outside of the class. */
 @property (nonatomic) BOOL enableCrosshairLinesSet DEPRECATED_ATTRIBUTE;
 
-/* DEPRECATED - This property will be taken off the API in future releases.
+/* DEPRECATED - When set to `YES` the lines from the target point to the axis will be displayed.
  
- By default, this property is set to `UIViewAnimationOptionCurveEaseOut`. */
-@property (nonatomic) UIViewAnimationOptions animationOptions DEPRECATED_ATTRIBUTE;
+ By default, this property is set to `YES`. */
+@property (nonatomic)         BOOL    enableCrosshairLines DEPRECATED_MSG_ATTRIBUTE("Use lineDrawer instead.");
 
 /* DEPRECATED - This property will be taken off the API in future releases.
  

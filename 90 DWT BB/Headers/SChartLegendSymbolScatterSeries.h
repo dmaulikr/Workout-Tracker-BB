@@ -10,6 +10,8 @@
 
 @class SChartScatterSeries, SChartScatterSeriesStyle;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A symbol designed to represent a scatter series in the chart legend.
  
  The symbol makes use of the series styling, in order to better represent it in the legend.
@@ -35,3 +37,6 @@
 @property (nonatomic, readonly) SChartScatterSeriesStyle *style;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

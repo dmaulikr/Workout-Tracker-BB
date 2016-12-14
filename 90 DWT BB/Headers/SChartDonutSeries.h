@@ -135,7 +135,6 @@ typedef NS_ENUM(NSInteger, SChartRadialSeriesDrawDirection) {
 /** The angle to which the slice will rotate once selected, in radians. */
 @property (nonatomic, retain) NSNumber *selectedPosition;
 
-
 /** An animation object describing the motion of the donut series when a slice is selected.
  
  The `angleCurve` of the animation describes any rotation of the series from its current position to its selected position.
@@ -143,6 +142,13 @@ typedef NS_ENUM(NSInteger, SChartRadialSeriesDrawDirection) {
  @see SChartAnimation
  */
 @property (nonatomic, retain) SChartAnimation *selectionAnimation;
+
+/**
+ *  The time taken for 'selectionAnimation' to complete, in seconds.
+ *
+ *  Default is 1.
+ */
+@property (nonatomic, assign) CGFloat selectionAnimationDuration;
 
 /** Select or deselect a slice within the series. 
  @param sliceIndex The index of the slice in the series to select or deselect.

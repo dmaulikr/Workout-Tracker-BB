@@ -6,6 +6,8 @@
 
 #import "SChartLegendSymbol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SChartLegendSymbolBlock : SChartLegendSymbol
 
 @property (nonatomic, retain)   UIColor *areaColor;
@@ -19,3 +21,5 @@
     NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END

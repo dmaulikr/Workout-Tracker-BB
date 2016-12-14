@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ShinobiMacros.h"
 
 @class ShinobiChart;
 @class SChartSeries;
@@ -16,6 +17,7 @@
 @class SChartAnimation;
 @class SChartAxis;
 @class SChartDataPointLabel;
+@protocol SChartData;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -122,19 +124,19 @@ typedef struct SChartMovementInformation
  @param pixelPoint The pixel coordinates of that data point.
  */
 - (void)sChart:(ShinobiChart *)chart toggledSelectionForSeries:(SChartSeries *)series nearPoint:(SChartDataPoint *)dataPoint
-atPixelCoordinate:(CGPoint)pixelPoint;
+atPixelCoordinate:(CGPoint)pixelPoint NS_SWIFT_NAME(sChart(_:toggledSelectionFor:near:at:));
 
 /** A notification that a data point has been selected or de-selected.
  
- A touch gesture has resulted in the `selected` property of the data point changing. The data point is passed into the method along with the current pixel coordinates of that point and the series that it belongs to.  
+ A touch gesture has resulted in the closest data point to be added to our `selectedDataPoints` set. This data point is passed into the method along with the current pixel coordinates of that point and the series that it belongs to.
  
  @param chart The chart on which the selection has occurred.
  @param dataPoint The data point which was selected or de-selected.
  @param series The chart series which contains that data point.
  @param pixelPoint The pixel coordinates of that data point.
  */
-- (void)sChart:(ShinobiChart *)chart toggledSelectionForPoint:(SChartDataPoint *)dataPoint inSeries:(SChartSeries *)series
-atPixelCoordinate:(CGPoint)pixelPoint;
+- (void)sChart:(ShinobiChart *)chart toggledSelectionForPoint:(id<SChartData>)dataPoint inSeries:(SChartSeries *)series
+atPixelCoordinate:(CGPoint)pixelPoint NS_SWIFT_NAME(sChart(_:toggledSelectionFor:in:at:));
 
 /** A notification that a data point on a pie/donut chart has changed state to 'selected' from 'deselected' or vice versa.
  
@@ -148,7 +150,7 @@ atPixelCoordinate:(CGPoint)pixelPoint;
  @warning The 'series' parameter will change to type `SChartSeries` to cope with `SChartRadialSeries` being removed in a future release.
 */
 - (void)sChart:(ShinobiChart *)chart toggledSelectionForRadialPoint:(SChartRadialDataPoint *)dataPoint inSeries:(SChartRadialSeries *)series
-atPixelCoordinate:(CGPoint)pixelPoint;
+atPixelCoordinate:(CGPoint)pixelPoint NS_SWIFT_NAME(sChart(_:toggledSelectionFor:in:at:));
 
 #pragma mark -
 #pragma mark Crosshair
@@ -162,7 +164,8 @@ atPixelCoordinate:(CGPoint)pixelPoint;
  @param x The x value of the current crosshair position.
  @param y The y value of the current crosshair position.
  */
-- (void)sChart:(ShinobiChart *)chart crosshairMovedToXValue:(id)x andYValue:(id)y;
+- (void)sChart:(ShinobiChart *)chart crosshairMovedToXValue:(id)x andYValue:(id)y
+NS_SWIFT_NAME(sChart(_:crosshairMovedToXValue:yValue:));
 
 #pragma mark -
 #pragma mark Rendering
@@ -229,7 +232,7 @@ atPixelCoordinate:(CGPoint)pixelPoint;
  
  @warning The 'series' parameter will change to type `SChartSeries` to cope with `SChartRadialSeries` being removed in a future release.
  */
--(void)sChart:(ShinobiChart *)chart alterLabel:(UILabel *)label forDatapoint:(SChartRadialDataPoint *)datapoint atSliceIndex:(NSInteger)index inRadialSeries:(SChartRadialSeries *)series;
+-(void)sChart:(ShinobiChart *)chart alterLabel:(UILabel *)label forDatapoint:(SChartRadialDataPoint *)datapoint atSliceIndex:(NSInteger)index inRadialSeries:(SChartRadialSeries *)series NS_SWIFT_NAME(sChart(_:alter:for:atSlice:in:));
 
 
 /** Set the major and minor tick frequencies for an axis.
@@ -246,7 +249,7 @@ atPixelCoordinate:(CGPoint)pixelPoint;
  @param minorTickFrequency A pointer to the minor tick frequency on the axis.  If you set this value, the axis will update to use the new value.
  @param axis The axis for which we are setting the tick frequencies.
  */
--(void)sChart:(ShinobiChart *)chart setMajorTickFrequency:(id _Nullable * const _Nonnull)majorTickFrequency andMinorTickFrequency:(id _Nullable * const _Nonnull)minorTickFrequency onGeneratingTickMarksforAxis:(SChartAxis *)axis;
+-(void)sChart:(ShinobiChart *)chart setMajorTickFrequency:(id _Nullable * const _Nonnull)majorTickFrequency andMinorTickFrequency:(id _Nullable * const _Nonnull)minorTickFrequency onGeneratingTickMarksforAxis:(SChartAxis *)axis NS_SWIFT_NAME(sChart(_:majorTickFrequency:minorTickFrequency:onGeneratingTickMarksFor:));
 
 #pragma mark - Data point labels
 /* @name Data point labels */
@@ -260,21 +263,20 @@ atPixelCoordinate:(CGPoint)pixelPoint;
  @param datapoint The data point on the chart to which the label applies.
  @param series The series containing the data point.
  */
--(void)sChart:(ShinobiChart *)chart alterDataPointLabel:(SChartDataPointLabel*)label forDataPoint:(SChartDataPoint *)dataPoint inSeries:(SChartSeries *)series;
+-(void)sChart:(ShinobiChart *)chart alterDataPointLabel:(SChartDataPointLabel*)label forDataPoint:(SChartDataPoint *)dataPoint inSeries:(SChartSeries *)series NS_SWIFT_NAME(sChart(_:alter:for:in:));
 
 #pragma mark -
 #pragma mark Animation
-/** @name Animation */
+/* @name Animation */
 
-/** A notification that an animation of a chart series has ended.
+/* A notification that an animation of a chart series has ended.
  
  Note that this callback will still be called should one animation be interrupted by another and the series continues to be animated by the second animation.
  
  @param series The chart series which has finished animating.
  @param animation The animation which finished.
  */
--(void)sChartSeries:(SChartSeries *)series animationDidFinish: (SChartAnimation *)animation;
-
+-(void)sChartSeries:(SChartSeries *)series animationDidFinish: (SChartAnimation *)animation SCHART_DEPRECATED("Use the completion block on the chart's `animationTracker` method `showSeries:animation:completion:`.");
 
 #pragma mark -
 #pragma mark Data Loading

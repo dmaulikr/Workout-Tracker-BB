@@ -20,6 +20,7 @@
 @class SChartCrosshairStyle;
 @class SChartCrosshairTooltip;
 @class SChartAxis;
+@protocol SChartCrosshairLineDrawer;
 @protocol SChartData;
 
 typedef NS_ENUM(NSInteger, SChartCrosshairMode) {
@@ -33,6 +34,7 @@ typedef NS_ENUM(NSInteger, SChartCrosshairOutOfRangeBehavior) {
     SChartCrosshairOutOfRangeBehaviorRemove,
 };
 
+NS_ASSUME_NONNULL_BEGIN
 
 /** The SChartCrosshair provides a small circle target with lines that extend to the axis. This is accompanied by a tooltip object - nominally a UIView.  The default implementation for the tooltip is provided by `SChartCrosshairTooltip`.  For data points with multiple values at a single point, another implementation, `SChartCrosshairMultiValueTooltip`, has also been provided.
  
@@ -72,7 +74,7 @@ typedef NS_ENUM(NSInteger, SChartCrosshairOutOfRangeBehavior) {
  If this property isn't set, the crosshair will lock to the nearest series on the chart when it is drawn.
  @warning The class of this property has been changed from `SChartCartesianSeries` to `SChartMappedSeries`.
  */
-@property (nonatomic, weak) SChartMappedSeries *trackingSeries;
+@property (nonatomic, retain, nullable) SChartMappedSeries *trackingSeries;
 
 /** Configures the crosshair to track a particular data point on the chart.
  
@@ -107,10 +109,11 @@ typedef NS_ENUM(NSInteger, SChartCrosshairOutOfRangeBehavior) {
 #pragma mark Customization
 /** @name Customization */
 
-/** When set to `YES` the lines from the target point to the axis will be displayed. 
+/** Allows the user to customise the crosshair line by implementing the SChartCrosshairLineDrawer protocol.
  
- By default, this property is set to `YES`. */
-@property (nonatomic)         BOOL    enableCrosshairLines;
+  By default, this will use implementation from SChartTargetLineDrawer.
+ */
+@property (nonatomic, retain) id<SChartCrosshairLineDrawer> lineDrawer;
 
 /** Returns `YES` if the crosshair should draw its tracking lines to the specified point, given the specified frame.
  
@@ -213,5 +216,7 @@ typedef NS_ENUM(NSInteger, SChartCrosshairOutOfRangeBehavior) {
  */
 - (void)moveToFloatingPosition:(SChartPoint)point onXAxis:(SChartAxis *)xAxis onYAxis:(SChartAxis *)yAxis;
 
-
 @end
+
+NS_ASSUME_NONNULL_END
+

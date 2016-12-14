@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, SChartRadialChartEffect) {
     SChartRadialChartEffectDefault = SChartRadialChartEffectChiselled
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** `SChartDonutSeriesStyle` manages the appearance of donut series on a `ShinobiChart`.  The API for donut series is defined in `SChartDonutSeries`.
  
  Donut slices (and also pie slices, as `SChartPieSeriesStyle` inherits its behavior from this class) are made up of an outline (or 'crust') and a filled area (or 'flavour').  This style object allows you to manage the following properties of a donut series:
@@ -68,7 +70,7 @@ typedef NS_ENUM(NSInteger, SChartRadialChartEffect) {
 @property (nonatomic)                   SChartRadialChartEffect     chartEffect;
 
 /** The initial rotation of the series in radians. */
-@property (nonatomic, retain)           NSNumber                    *initialRotation;
+@property (nonatomic, strong, nullable)           NSNumber                    *initialRotation;
 
 /** @name Spoke methods and properties */
 
@@ -84,7 +86,7 @@ typedef NS_ENUM(NSInteger, SChartRadialChartEffect) {
 @property (nonatomic, retain)           NSMutableArray              *crustColors;
 
 /** The thickness of the outline or 'crust' of the series, in points. */
-@property (nonatomic, retain)           NSNumber                    *crustThickness;
+@property (nonatomic, strong, nullable)           NSNumber                    *crustThickness;
 
 /** An array containing the 'flavour' colors of the slices in the series. 
  
@@ -98,21 +100,21 @@ typedef NS_ENUM(NSInteger, SChartRadialChartEffect) {
  
  A zero value means that no protrusion effect is seen when a slice is selected.
  */
-@property (nonatomic,)                  CGFloat                       protrusion;
+@property (nonatomic)                  CGFloat                       protrusion;
 
 /* DEPRECATED - This will be removed from the public API in a future commit. */
-@property (nonatomic)                   BOOL                        protrusionSet;
+@property (nonatomic)                   BOOL                        protrusionSet DEPRECATED_MSG_ATTRIBUTE("This should not be public API");
 
 /** @name Labels */
 
 /** The font used in the labels which annotate the series. */
-@property (nonatomic, retain)           UIFont                      *labelFont;
+@property (nonatomic, strong, nullable)           UIFont                      *labelFont;
 
 /** The font color used in the labels which annotate the series. */
-@property (nonatomic, retain)           UIColor                     *labelFontColor;
+@property (nonatomic, strong, nullable)           UIColor                     *labelFontColor;
 
 /** The background color of the labels which annotate the series. */
-@property (nonatomic, retain)           UIColor                     *labelBackgroundColor;
+@property (nonatomic, strong, nullable)           UIColor                     *labelBackgroundColor;
 
 /** @name Update style */
 
@@ -135,3 +137,5 @@ typedef NS_ENUM(NSInteger, SChartRadialChartEffect) {
 - (UIColor*) flavourColorAtIndex:(NSInteger)index;
 
 @end
+
+NS_ASSUME_NONNULL_END

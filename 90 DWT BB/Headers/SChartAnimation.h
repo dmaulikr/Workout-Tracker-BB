@@ -9,22 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "SChartAnimationCurve.h"
 
+@protocol SChartProgressCalculator;
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
- An `SChartAnimation` object determines how an `SChartSeries` is animated.
+ An `SChartAnimation` object determines how some elements of the chart are animated.
  
- Depending on the action which an animation is linked to, it may be triggered by different actions:
+ For example, to show a series, you should use the chart's 'animation tracker' object to schedule an animation:
  
- - Entry Animations are triggered upon the initial addition of the series to the chart and when a series is unhidden using its hidden property.
- - Exit Animations are triggered when a series is hidden using its hidden property.
+    [_chart.animationTracker showSeries:_series
+    animation:[SChartAnimation growAnimation]
+    progressCalculator:[[SChartTimeProgressCalculator alloc] initWithDuration:5]
+    completion:nil];
  
- The code snippet below demonstrates how to set a series to fade in when entering and fade out when exiting.  We set the duration of both animations to be 3 seconds:
- 
-    SChartAnimation *animation = [ SChartAnimation fadeAnimation ];
-    animation.duration = @3;
-    series.entryAnimation = [ animation copy ];
-    series.exitAnimation = [ animation copy ];
- 
- We updated the animation code in version 2.2 of charts.  As a result of these updates, the SChartAnimationCurve enum defined in earlier versions of charts has been deprecated.  Instead of using this, you should configure the properties of the animation to meet your needs.  The properties you can set on an animation are:
+ The properties you can set on an animation are:
  
  - The duration of the animation.  See `duration` for more information.
  - The origin point on the chart from where the series animates to its final position.  See `absoluteOriginX`, `absoluteOriginY`, `normalisedOriginX` and `normalisedOriginY` for more information.
@@ -163,19 +162,6 @@
 @property (retain, nonatomic)   NSObject <SChartAnimationCurve> *alphaCurve;
 
 #pragma mark -
-#pragma mark Configuring Duration
-/** @name Configuration Animation Duration */
-
-/** The duration of the animation.
- 
- The time taken, in seconds, for the animation to progress from start to finish.
- The duration of the animations returned by the factory methods provided is 2.4 seconds.
- The duration of an animation created via alloc/init is 1/64 seconds (instant).
- Use this property to configure how long an animation should take to complete.
- */
-@property (retain, nonatomic)   NSNumber    *duration;
-
-#pragma mark -
 #pragma mark Configuring Origins
 /** @name Configuring the origin of the animation */
 
@@ -184,7 +170,7 @@
  Points will scale from this value along the x axis in either direction.
  If this property is not set, the animation will use a normalized origin on x - see `normalisedOriginX`.
  */
-@property (retain, nonatomic)   id  absoluteOriginX;
+@property (retain, nonatomic)   id _Nullable absoluteOriginX;
 
 
 /** If this property is set, this will be the origin value in y in data terms - a curve returning 0 maps to this value, whereas a curve returning 1 maps to the final true value.
@@ -192,7 +178,7 @@
  Points will scale from this value along the y axis in either direction.
  If this property is not set, the animation will use a normalized origin on y - see `normalisedOriginY`.
  */
-@property (retain, nonatomic)   id  absoluteOriginY;
+@property (retain, nonatomic)   id _Nullable absoluteOriginY;
 
 
 /** This property enables you to set a normalized point of origin along the x axis for the animation.
@@ -204,7 +190,6 @@
  */
 @property (nonatomic)   CGFloat    normalisedOriginX;
 
-
 /** This property enables you to set a normalized point of origin along the y axis for the animation.
  
  This value is normalized using the range of the series which the animation is applied to.
@@ -214,5 +199,6 @@
  */
 @property (nonatomic)   CGFloat    normalisedOriginY;
 
-
 @end
+
+NS_ASSUME_NONNULL_END

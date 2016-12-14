@@ -15,6 +15,8 @@
 
 #import "SChartPointStruct.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** A simple extension of the UIView class to use as the standard cross hair tooltip.
  
  <img src="../docs/markdown_files/Images/api_crosshair.png" width=400/>
@@ -78,3 +80,6 @@
 - (void) floatingAt:(CGPoint)coords;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

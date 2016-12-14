@@ -15,16 +15,4 @@
             andText:(NSString *)text
 DEPRECATED_MSG_ATTRIBUTE("Use 'init'");
 
-@property (nonatomic) BOOL overAlternateStripe DEPRECATED_ATTRIBUTE;
-
-- (CGFloat)tickLengthModifier DEPRECATED_ATTRIBUTE;
-
-- (void)removeTickMarkView DEPRECATED_ATTRIBUTE;
-
-- (void)removeGridLineView DEPRECATED_ATTRIBUTE;
-
-- (void)removeGridStripeView DEPRECATED_ATTRIBUTE;
-
-- (void)disableTick:(SChartAxis *) axis DEPRECATED_MSG_ATTRIBUTE("Use tickEnabled instead.");
-
 @end
