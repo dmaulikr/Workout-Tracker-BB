@@ -25,7 +25,9 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
 
     var adView = MPAdView()
     var bannerSize = CGSize()
-
+    
+    var bottomAlignedY = CGFloat()
+    
     @IBOutlet weak var currentNotes: UITextView!
     @IBOutlet weak var previousNotes: UITextView!
     @IBOutlet weak var roundLabel: UILabel!
@@ -91,8 +93,11 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             }
             
             self.adView.delegate = self
+            
+            self.bottomAlignedY = self.view.bounds.size.height - self.bannerSize.height - (self.tabBarController?.tabBar.bounds.size.height)!
+            
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           y: self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
+                                           y: self.bottomAlignedY,
                                            width: self.bannerSize.width, height: self.bannerSize.height)
         }
     }
@@ -143,14 +148,18 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         super.viewWillDisappear(animated)
         saveNote()
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
+        
+        self.adView.removeFromSuperview()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
-        
-        self.adView.removeFromSuperview()
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
+//        
+//        self.adView.removeFromSuperview()
     }
     
     func doNothing() {
@@ -166,7 +175,6 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: 1, index: workoutIndex - 1 as NSNumber)
         
         updateWorkoutCompleteCellUI()
-
     }
     
     func saveNote() {
@@ -466,8 +474,15 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         let size = view.adContentViewSize()
         let centeredX = (self.view.bounds.size.width - size.width) / 2
-        let bottomAlignedY = self.view.bounds.size.height - size.height - self.tabBarController!.tabBar.bounds.size.height
-        view.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
+        
+        if (self.tabBarController?.tabBar.bounds.size.height) != nil {
+            
+            self.bottomAlignedY = self.view.bounds.size.height - size.height - (self.tabBarController?.tabBar.bounds.size.height)!
+        }
+        
+        //let bottomAlignedY = self.view.bounds.size.height - size.height - (self.tabBarController!.tabBar.bounds.size.height)
+        
+        view.frame = CGRect(x: centeredX, y: self.bottomAlignedY, width: size.width, height: size.height)
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
