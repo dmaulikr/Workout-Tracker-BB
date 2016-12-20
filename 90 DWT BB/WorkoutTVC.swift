@@ -640,7 +640,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     
                     
 //                    //  TESTING PURPOSES ONLY!!!  COMMENT OUT WHEN DONE TAKING SCREENSHOTS
-//                    cell.graphButton.hidden = false
+//                    cell.graphButton.isHidden = false
                     
                     
                     return cell
