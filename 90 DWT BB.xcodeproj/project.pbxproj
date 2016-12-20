@@ -30,6 +30,7 @@
 		58F21AFF18A6E60400DE043E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21AFE18A6E60400DE043E /* Social.framework */; };
 		58F21B0118A6E61400DE043E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0018A6E61400DE043E /* QuartzCore.framework */; };
 		58F21B0318A6E62600DE043E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F21B0218A6E62600DE043E /* Security.framework */; };
+		A50C244A1E09D7B9000C3E76 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C24491E09D7B9000C3E76 /* TutorialViewController.swift */; };
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
 		A5675DB11DFB485C00E0F2B9 /* Email+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */; };
 		A5675DB21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */; };
@@ -322,6 +323,7 @@
 		58F21AFE18A6E60400DE043E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		58F21B0018A6E61400DE043E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58F21B0218A6E62600DE043E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A50C24491E09D7B9000C3E76 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		A53170F11CA97F2700B406FE /* ShinobiGrids.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiGrids.framework; sourceTree = "<group>"; };
 		A5488A9B1AC3488D00BF0225 /* _0_DWT_BB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_BB 2.xcdatamodel"; sourceTree = "<group>"; };
 		A54E89021C29BDDC006C8FFC /* _0_DWT_BB_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_DWT_BB_v3.xcdatamodel; sourceTree = "<group>"; };
@@ -1181,6 +1183,7 @@
 			children = (
 				A59C5EFB1DA588A100A5A189 /* EmailViewController.swift */,
 				A59C5EFC1DA588A100A5A189 /* WebsiteViewController.swift */,
+				A50C24491E09D7B9000C3E76 /* TutorialViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2129,6 +2132,7 @@
 				A5C989091E01FB1C00D5D4A2 /* MPConstants.m in Sources */,
 				A5C988DD1E01FB1C00D5D4A2 /* MRExpandModalViewController.m in Sources */,
 				A59C5EE81DA5880E00A5A189 /* WeekTVC_TableViewCell.swift in Sources */,
+				A50C244A1E09D7B9000C3E76 /* TutorialViewController.swift in Sources */,
 				A59C5EFA1DA5889100A5A189 /* ViewPhotosViewController.swift in Sources */,
 				A5C989191E01FB1D00D5D4A2 /* MPNativeView.m in Sources */,
 				A5C989211E01FB1D00D5D4A2 /* MPNativeAdConstants.m in Sources */,
