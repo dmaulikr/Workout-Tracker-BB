@@ -57,6 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         }
     }
     
+    func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
+        
+        // Fetch the rewarded video ad.
+        MPRewardedVideo.loadAd(withAdUnitID: "1b90344b9bc749c4adc443909cbc09e4", withMediationSettings: nil)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
