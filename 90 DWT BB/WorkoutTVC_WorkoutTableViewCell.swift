@@ -89,6 +89,7 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var currentNotes: UITextField!
     
     @IBOutlet weak var graphButton: UIButton!
+    @IBOutlet weak var rewardVideoButton: UIButton!
     
     
     @IBAction func saveCurrentWeight1(_ sender: UITextField) {

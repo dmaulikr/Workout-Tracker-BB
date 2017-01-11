@@ -21,11 +21,14 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     var selectedWorkout = ""
     var workoutWeek = ""
     var workoutIndex = 0
+    var graphButtonText = "Reward Video = 1hr Graph"
     
     var graphViewPurchased = false
     var adView = MPAdView()
     var headerView = UIView()
     var bannerSize = CGSize()
+    
+    var timer = Timer()
     
     var selectedCellIdentifier = ""
     var workoutCompleteCell = WorkoutTVC_CompletionTableViewCell()
@@ -156,7 +159,26 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                                            width: self.bannerSize.width, height: self.bannerSize.height)
             self.adView.isHidden = false
         }
-
+        
+        
+        
+        // Setup timer if reward video was viewed
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if appDelegate.shouldShowRewardGraph {
+            
+            //  Show the Reward Graph
+            let now = Date()
+            let calendar = Calendar.current
+            
+            // Calculate the time left from now til the Reward Graph expiration date
+            let diff = calendar.dateComponents([.hour, .minute, .second], from: now, to: appDelegate.endDate as Date)
+            let seconds = (diff.minute! * 60) + diff.second!
+            
+            // Set timer to disalbe access to Graph after the 1 hour is up
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(seconds), target: self, selector: #selector(self.disableRewardedGraph), userInfo: nil, repeats: false)
+        }
+        
         self.tableView.reloadData()
     }
 
@@ -177,6 +199,20 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         
         // Do nothing
         self.tableView.reloadData()
+    }
+    
+    func disableRewardedGraph() {
+        
+        timer.invalidate()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.shouldShowRewardGraph = false
+        
+        if !self.graphViewPurchased {
+            // Graph not purchased yet
+            // Reload data so that the graph button will now be disabled
+            self.tableView.reloadData()
+        }
     }
     
     func wasGraphViewPurchased() -> Bool {
@@ -443,7 +479,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     cell.previousWeight5.text = "0.0"
                     cell.previousWeight6.text = "0.0"
                     cell.previousNotes.text = "PREVIOUS NOTES"
-                    
+
                     // Current Weight Fields and Notes
                     if let workoutObjects = CDOperation.getWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: workoutIndex as NSNumber)  as? [Workout] {
                         
@@ -624,19 +660,42 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                         }
                     }
                     
-                    if !self.graphViewPurchased {
+                    
+                    
+                                        
+                    
+                    
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    
+                    if self.graphViewPurchased {
                         
-                        cell.graphButton.isHidden = true
+                        cell.graphButton.isHidden = false
+                        cell.rewardVideoButton.isHidden = true
                         
                         if debug == 1 {
                             
-                            print("GraphView was NOT purchased")
+                            print("GraphView was purchased")
+                        }
+                    }
+                    else if appDelegate.shouldShowRewardGraph {
+                        
+                        cell.graphButton.isHidden = false
+                        cell.rewardVideoButton.isHidden = true
+                        
+                        if debug == 1 {
+                            
+                            print("Reward GraphView was purchased")
                         }
                     }
                     else {
                         
-                        cell.graphButton.isHidden = false
+                        cell.graphButton.isHidden = true
+                        cell.rewardVideoButton.isHidden = false
                     }
+                    
+                    
+                    
+                    
                     
                     
 //                    //  TESTING PURPOSES ONLY!!!  COMMENT OUT WHEN DONE TAKING SCREENSHOTS

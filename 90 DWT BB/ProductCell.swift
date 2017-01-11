@@ -98,14 +98,4 @@ class ProductCell: UITableViewCell {
         
         buyButtonHandler?(product!)
     }
-
-//    func newBuyButton() -> UIButton {
-//        let button = UIButton(type: .System)
-//        button.setTitleColor(tintColor, forState: .Normal)
-//        button.setTitle("Buy", forState: .Normal)
-//        button.addTarget(self, action: #selector(ProductCell.buyButtonTapped(_:)), forControlEvents: .TouchUpInside)
-//        button.sizeToFit()
-//        
-//        return button
-//    }
 }

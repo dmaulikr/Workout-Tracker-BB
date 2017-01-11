@@ -71,24 +71,84 @@ class StoreTVC: UITableViewController {
 extension StoreTVC {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        
+        if section == 0 {
+            
+            return products.count
+        } else {
+            
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProductCell
         
-        let product = products[indexPath.row]
-        
-        cell.product = product
-        cell.buyButtonHandler = { product in
-            Products.store.buyProduct(product)
+        if indexPath.section == 0 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PaidCell", for: indexPath) as! ProductCell
+            
+            let product = products[indexPath.row]
+            
+            cell.product = product
+            cell.buyButtonHandler = { product in
+                Products.store.buyProduct(product)
+            }
+
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AdCell", for: indexPath) as! StoreRewardVideoTableViewCell
+            
+            cell.titleLabel.text = "1-HR Graph View"
+            cell.priceLabel.text = ""
+            cell.descriptionLabel.text = "View a reward video to gain access to the Graph View for 1-hour."
+            cell.viewButton.titleLabel?.text = "VIEW"
+            
+            return cell
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return cell
+        if section == 0 {
+            
+            return "PAID"
+        }
+        else {
+            
+            return "AD SUPPORTED"
+        }
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        // Set the color of the header/footer text
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+        
+        // Set the background color of the header/footer
+        header.contentView.backgroundColor = UIColor.lightGray
+    }
+    
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == "RewardVideo" && MPRewardedVideo.hasAdAvailable(forAdUnitID: "1b90344b9bc749c4adc443909cbc09e4"){
+            
+            return true
+        }
+        else {
+            
+            return false
+        }
     }
 }
 

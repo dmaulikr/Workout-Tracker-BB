@@ -282,6 +282,10 @@
 		A5DC5F321BE3FD5D00C1E73E /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F311BE3FD5D00C1E73E /* libxml2.tbd */; };
 		A5DC5F341BE3FD6400C1E73E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F331BE3FD6400C1E73E /* CoreBluetooth.framework */; };
 		A5E7C0601BE3E353008AA325 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7C05F1BE3E353008AA325 /* libc++.tbd */; };
+		A5FEAC991E255FEA00B1788F /* StoreRewardVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FEAC981E255FEA00B1788F /* StoreRewardVideoTableViewCell.swift */; };
+		A5FEAC9B1E25802D00B1788F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FEAC9A1E25802D00B1788F /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A5FEAC9F1E258D8600B1788F /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FEAC9E1E258D8600B1788F /* Chartboost.framework */; };
+		A5FEACA11E26896700B1788F /* RewardVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FEACA01E26896700B1788F /* RewardVideoViewController.swift */; };
 		A5FFDA5F1A68557D002E6513 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */; };
 		A5FFDA611A68558E002E6513 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFDA601A68558E002E6513 /* CoreText.framework */; };
 /* End PBXBuildFile section */
@@ -937,6 +941,10 @@
 		A5DC5F311BE3FD5D00C1E73E /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		A5DC5F331BE3FD6400C1E73E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A5E7C05F1BE3E353008AA325 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A5FEAC981E255FEA00B1788F /* StoreRewardVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRewardVideoTableViewCell.swift; sourceTree = "<group>"; };
+		A5FEAC9A1E25802D00B1788F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A5FEAC9E1E258D8600B1788F /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
+		A5FEACA01E26896700B1788F /* RewardVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardVideoViewController.swift; sourceTree = "<group>"; };
 		A5FFDA5E1A68557D002E6513 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A5FFDA601A68558E002E6513 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -946,10 +954,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FEAC9B1E25802D00B1788F /* WebKit.framework in Frameworks */,
 				A5DC5F341BE3FD6400C1E73E /* CoreBluetooth.framework in Frameworks */,
 				A5DC5F321BE3FD5D00C1E73E /* libxml2.tbd in Frameworks */,
 				A5DC5F2F1BE3FD3400C1E73E /* EventKit.framework in Frameworks */,
 				A5DC5F301BE3FD3400C1E73E /* EventKitUI.framework in Frameworks */,
+				A5FEAC9F1E258D8600B1788F /* Chartboost.framework in Frameworks */,
 				A5DC5F2C1BE3FD2200C1E73E /* CoreMedia.framework in Frameworks */,
 				58F21AF118A6E5A900DE043E /* Twitter.framework in Frameworks */,
 				58F21AF318A6E5B800DE043E /* SystemConfiguration.framework in Frameworks */,
@@ -1017,6 +1027,8 @@
 		587CFB5F189DD9B8006FA541 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5FEAC9E1E258D8600B1788F /* Chartboost.framework */,
+				A5FEAC9A1E25802D00B1788F /* WebKit.framework */,
 				A53170F11CA97F2700B406FE /* ShinobiGrids.framework */,
 				A5DC5F331BE3FD6400C1E73E /* CoreBluetooth.framework */,
 				A5DC5F311BE3FD5D00C1E73E /* libxml2.tbd */,
@@ -1668,6 +1680,7 @@
 				A59C5EE51DA5880E00A5A189 /* WorkoutTVC_CompletionTableViewCell.swift */,
 				A59C5EE61DA5880E00A5A189 /* PhotoCollectionViewCell.swift */,
 				A59C5EE71DA5880E00A5A189 /* PhotoCollectionHeaderView.swift */,
+				A5FEAC981E255FEA00B1788F /* StoreRewardVideoTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -1679,6 +1692,7 @@
 				A59C5EF11DA5886000A5A189 /* Photos */,
 				A59C5EF21DA5886900A5A189 /* Settings */,
 				A59C5EEE1DA5884300A5A189 /* NotesViewController.swift */,
+				A5FEACA01E26896700B1788F /* RewardVideoViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -2199,6 +2213,7 @@
 				A5675DB41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift in Sources */,
 				A51EB6D41E1C25D40007FFF3 /* MPAPIEndpoints.m in Sources */,
 				A51EB7531E1C25D40007FFF3 /* MOPUBNativeVideoAdConfigValues.m in Sources */,
+				A5FEACA11E26896700B1788F /* RewardVideoViewController.swift in Sources */,
 				A59C5EC91DA5872E00A5A189 /* MigrationVC.swift in Sources */,
 				A5675DB91DFB485C00E0F2B9 /* Measurement+CoreDataClass.swift in Sources */,
 				A51EB73D1E1C25D40007FFF3 /* MPCollectionViewAdPlacer.m in Sources */,
@@ -2247,6 +2262,7 @@
 				A51EB73E1E1C25D40007FFF3 /* MPNativeAd.m in Sources */,
 				A59C5EFE1DA588A100A5A189 /* WebsiteViewController.swift in Sources */,
 				A51EB7001E1C25D40007FFF3 /* NSJSONSerialization+MPAdditions.m in Sources */,
+				A5FEAC991E255FEA00B1788F /* StoreRewardVideoTableViewCell.swift in Sources */,
 				A5675DBE1DFB485C00E0F2B9 /* Photo+CoreDataProperties.swift in Sources */,
 				A51EB74C1E1C25D40007FFF3 /* MPStreamAdPlacer.m in Sources */,
 				A51EB6C91E1C25D40007FFF3 /* MPBaseBannerAdapter.m in Sources */,
@@ -2472,7 +2488,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT BB/90 DWT BB-Info.plist";
@@ -2499,7 +2515,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT BB/90 DWT BB-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT BB/90 DWT BB-Info.plist";
