@@ -35,13 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         // Red Color
         UITabBar.appearance().tintColor = UIColor (red: 175/255, green: 89/255, blue: 8/255, alpha: 1)
         
-        
         // Initialize rewarded video before loading any ads.
         MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: nil, delegate: self)
         
-        // Fetch the rewarded video ad.
-        MPRewardedVideo.loadAd(withAdUnitID: "1b90344b9bc749c4adc443909cbc09e4", withMediationSettings: nil)
-
         return true
     }
     
@@ -84,6 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
+        // Fetch the rewarded video ad.
+        MPRewardedVideo.loadAd(withAdUnitID: "1b90344b9bc749c4adc443909cbc09e4", withMediationSettings: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
