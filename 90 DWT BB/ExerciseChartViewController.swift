@@ -180,7 +180,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         // Enable area fill
         //columnSeries.style.areaColorGradient = [UIColor clearColor];
         
-        let tryNumber = NSNumber(value: index + 1 as Int32)
+        let tryNumber = NSNumber(value: index + 1)
         
         if (ColumnSeriesMatchAtIndex(index)) {
             
@@ -201,7 +201,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
             columnSeries.title = "Try \(tryNumber) - "
         }
         
-        return columnSeries;
+        return columnSeries
     }
     
     func sChart(_ chart: ShinobiChart, numberOfDataPointsForSeriesAt seriesIndex: Int) -> Int {
