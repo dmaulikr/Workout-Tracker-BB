@@ -2878,7 +2878,7 @@
             <objects>
                 <tableViewController id="6Ls-nV-lhn" customClass="SettingsTVC" customModule="_0_DWT_BB" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="W75-go-iqB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2971,11 +2971,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Session" id="QQc-EU-QYG">
+                                <string key="footerTitle">Data from the previous session will be shown in the previous field of each workout the 1st time it performed.  The imported data is pulled from the last time each workout was to be performed according to the schedule.</string>
+                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="dMB-gH-OiC">
-                                        <rect key="frame" x="0.0" y="188" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="243" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dMB-gH-OiC" id="DZd-cz-P14">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Session" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-fF-q6N">
@@ -3051,15 +3056,47 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="b5B-x8-X4Q">
+                                        <rect key="frame" x="0.0" y="287" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b5B-x8-X4Q" id="Ucu-PV-CQ1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ssU-g4-TPd">
+                                                    <rect key="frame" x="534" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.61809694770000001" green="0.27303695680000001" blue="0.041807003320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="importPreviousSessionData:" destination="6Ls-nV-lhn" eventType="valueChanged" id="2H3-55-M6I"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import Previous Session Data Into New Session" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2D-cs-YOY">
+                                                    <rect key="frame" x="17" y="0.0" width="509" height="43"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="q2D-cs-YOY" secondAttribute="bottom" constant="-7" id="EHL-5h-HAM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ssU-g4-TPd" secondAttribute="trailing" constant="9" id="G6i-Ry-XqT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ssU-g4-TPd" secondAttribute="bottom" constant="-2" id="ON8-Xe-wag"/>
+                                                <constraint firstItem="ssU-g4-TPd" firstAttribute="top" secondItem="Ucu-PV-CQ1" secondAttribute="topMargin" constant="-2" id="Xwr-zk-s63"/>
+                                                <constraint firstItem="q2D-cs-YOY" firstAttribute="leading" secondItem="Ucu-PV-CQ1" secondAttribute="leadingMargin" constant="9" id="cKh-m7-xcD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="q2D-cs-YOY" secondAttribute="trailing" constant="66" id="vIs-zY-gRH"/>
+                                                <constraint firstItem="q2D-cs-YOY" firstAttribute="top" secondItem="Ucu-PV-CQ1" secondAttribute="topMargin" constant="-8" id="vtH-AC-9qh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Export Data" id="fLC-lR-spR">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="FDJ-0w-rMg">
-                                        <rect key="frame" x="0.0" y="280" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="431" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FDJ-0w-rMg" id="Nk0-qz-gTM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqE-ND-abN">
@@ -3096,10 +3133,10 @@
                             <tableViewSection headerTitle="Reset" id="fgW-b8-DFn">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="Tdd-XA-AgZ">
-                                        <rect key="frame" x="0.0" y="372" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="523" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tdd-XA-AgZ" id="Jfo-At-tu8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lf-PO-aKg">
@@ -3137,10 +3174,10 @@
                                 <string key="footerTitle">To use iCloud with this app you must be signed into an iCloud account with iCloud Drive turned on AND allow this app to use iCloud.</string>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="CYj-bJ-DdO">
-                                        <rect key="frame" x="0.0" y="471" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="623" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CYj-bJ-DdO" id="zcc-SN-Gph">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFF" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epv-Uk-TVh">
@@ -3171,10 +3208,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="hRM-74-ooj">
-                                        <rect key="frame" x="0.0" y="515" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="667" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hRM-74-ooj" id="cNE-cr-g8N">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Using iCloud" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzt-tj-c6I">
@@ -3205,10 +3242,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="y15-WX-YCs" userLabel="TutorialsCell">
-                                        <rect key="frame" x="0.0" y="559" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="711" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y15-WX-YCs" id="GIU-k2-u6C">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEM-XQ-w8z">
@@ -3246,7 +3283,7 @@
                             <tableViewSection headerTitle="About" footerTitle="For feature requests or to report a bug please visit my website." id="Zlu-iO-LQH">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" textLabel="To0-79-ykI" detailTextLabel="Y0n-Tq-eLD" style="IBUITableViewCellStyleValue1" id="Jlt-1a-1vV">
-                                        <rect key="frame" x="0.0" y="695" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="846" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jlt-1a-1vV" id="AO9-R6-N2I">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -3270,7 +3307,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" textLabel="URq-x3-JXq" detailTextLabel="dRd-H4-n8T" style="IBUITableViewCellStyleValue1" id="IkV-Dn-SdP">
-                                        <rect key="frame" x="0.0" y="739" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="890" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IkV-Dn-SdP" id="ufg-DQ-Udh">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -3304,7 +3341,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="w3B-3j-EjB"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="900"/>
+                    <size key="freeformSize" width="600" height="1100"/>
                     <connections>
                         <outlet property="appUsingiCloudCell" destination="hRM-74-ooj" id="PDT-PG-VMc"/>
                         <outlet property="autoLockCell" destination="joW-kH-UBo" id="yPa-tt-I9x"/>
@@ -3321,6 +3358,8 @@
                         <outlet property="iCloudAppStatusLabel" destination="haz-2w-VsB" id="0ht-fa-KmA"/>
                         <outlet property="iCloudDriveCell" destination="CYj-bJ-DdO" id="bjZ-kL-BPI"/>
                         <outlet property="iCloudDriveStatusLabel" destination="epv-Uk-TVh" id="ogH-iP-P6J"/>
+                        <outlet property="importPreviousSessionDataCell" destination="b5B-x8-X4Q" id="nKF-3h-iNO"/>
+                        <outlet property="importPreviusSessionDataSwitch" destination="ssU-g4-TPd" id="0oq-mq-iXY"/>
                         <outlet property="increaseSessionButton" destination="4Ym-LI-hIK" id="Vvd-Gu-7pl"/>
                         <outlet property="resetAllDataButton" destination="7lf-PO-aKg" id="WnY-0K-t1A"/>
                         <outlet property="resetCell" destination="Tdd-XA-AgZ" id="GCA-qF-hxf"/>
@@ -3332,7 +3371,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yul-Al-IdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1661" y="3471"/>
+            <point key="canvasLocation" x="1660.8" y="3470.4647676161921"/>
         </scene>
         <!--Default Email-->
         <scene sceneID="FPU-VA-Tnr">

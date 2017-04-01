@@ -703,6 +703,39 @@ class CDOperation {
         return "1"
     }
     
+    class func getImportPreviousSessionData() -> Bool {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Session")
+        let sortDate = NSSortDescriptor( key: "date", ascending: true)
+        request.sortDescriptors = [sortDate]
+        
+        do {
+            if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
+                
+                // print("sessionObjects.count = \(sessionObjects.count)")
+                
+                if sessionObjects.count != 0 {
+                    
+                    // Match Found.
+                    return (sessionObjects.last?.importPreviousSessionData)! as! Bool
+                }
+                else {
+                    
+                    // No Matches Found.  Create new record and save.
+                    let insertSessionInfo = NSEntityDescription.insertNewObject(forEntityName: "Session", into: CoreDataHelper.shared().context) as! Session
+                    
+                    insertSessionInfo.importPreviousSessionData = false
+                    
+                    CoreDataHelper.shared().backgroundSaveContext()
+                    
+                    return false
+                }
+            }
+        } catch { print(" ERROR executing a fetch request: \( error)") }
+        
+        return false
+    }
+
     class func getAutoLockSetting() -> String {
         
         // Fetch AutoLock data.
@@ -2554,5 +2587,120 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
         
         return maxSessionString
+    }
+    
+    class func findMaxIndexForWorkout(routine: String, workoutName: String) -> Int {
+        
+        switch routine {
+        case "Bulk":
+            
+            switch workoutName {
+            case "B1: Chest+Tri":
+                return 6
+                
+            case "B1: Legs":
+                return 5
+                
+            case "B1: Back+Bi":
+                return 6
+                
+            case "B1: Shoulders":
+                return 5
+                
+            case "B2: Arms":
+                return 9
+                
+            case "B2: Legs":
+                return 9
+                
+            case "B2: Shoulders":
+                return 8
+                
+            case "B2: Chest":
+                return 8
+                
+            case "B2: Back":
+                return 8
+                
+            case "T1: Chest+Tri":
+                return 5
+                
+            case "T1: Back+Bi":
+                return 5
+                
+            case "B3: Complete Body":
+                return 7
+                
+            case "B3: Cardio":
+                return 7
+                
+            case "B3: Ab Workout":
+                return 17
+                
+            case "Rest":
+                return 13
+                
+            default:
+                // No matches
+                return 0
+            }
+            
+        case "Tone":
+            
+            switch workoutName {
+            case "B1: Chest+Tri":
+                return 6
+                
+            case "B1: Legs":
+                return 6
+                
+            case "B1: Back+Bi":
+                return 6
+                
+            case "B1: Shoulders":
+                return 5
+                
+            case "B2: Arms":
+                return 7
+                
+            case "B2: Legs":
+                return 7
+                
+            case "B2: Shoulders":
+                return 7
+                
+            case "B2: Chest":
+                return 7
+                
+            case "B2: Back":
+                return 7
+                
+            case "T1: Chest+Tri":
+                return 5
+                
+            case "T1: Back+Bi":
+                return 5
+                
+            case "B3: Complete Body":
+                return 14
+                
+            case "B3: Cardio":
+                return 14
+                
+            case "B3: Ab Workout":
+                return 14
+                
+            case "Rest":
+                return 12
+                
+            default:
+                // No matches
+                return 0
+            }
+            
+        default:
+            // No matches
+            return 0
+        }
     }
 }

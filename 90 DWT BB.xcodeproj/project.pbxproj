@@ -34,8 +34,6 @@
 		A54E89041C29C431006C8FFC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A54E89031C29C431006C8FFC /* Settings.bundle */; };
 		A5675DB11DFB485C00E0F2B9 /* Email+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */; };
 		A5675DB21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */; };
-		A5675DB31DFB485C00E0F2B9 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA31DFB485C00E0F2B9 /* Session+CoreDataClass.swift */; };
-		A5675DB41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift */; };
 		A5675DB51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift */; };
 		A5675DB61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift */; };
 		A5675DB71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DA71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift */; };
@@ -93,6 +91,8 @@
 		A59C60021DAC1F6B00A5A189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A59C60011DAC1F6B00A5A189 /* CoreDataHelper.m */; };
 		A59C60071DAC1FE300A5A189 /* CoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A59C60041DAC1FE300A5A189 /* CoreDataImporter.m */; };
 		A59C60081DAC1FE300A5A189 /* Faulter.m in Sources */ = {isa = PBXBuildFile; fileRef = A59C60061DAC1FE300A5A189 /* Faulter.m */; };
+		A5A5F6FA1E8F1C9800A4FB79 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6F81E8F1C9800A4FB79 /* Session+CoreDataClass.swift */; };
+		A5A5F6FB1E8F1C9800A4FB79 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6F91E8F1C9800A4FB79 /* Session+CoreDataProperties.swift */; };
 		A5C9872F1E01FA5700D5D4A2 /* ShinobiCharts in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C9872E1E01FA5700D5D4A2 /* ShinobiCharts */; };
 		A5DC5F201BE3FC9200C1E73E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F1F1BE3FC9200C1E73E /* AdSupport.framework */; };
 		A5DC5F221BE3FCA400C1E73E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DC5F211BE3FCA400C1E73E /* AVFoundation.framework */; };
@@ -340,8 +340,6 @@
 		A5675D901DFB47E100E0F2B9 /* _0_DWT_BB_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_DWT_BB_v4.xcdatamodel; sourceTree = "<group>"; };
 		A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A5675DA31DFB485C00E0F2B9 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A5675DA41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5675DA51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5675DA61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5675DA71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutCompleteDate+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -403,6 +401,9 @@
 		A59C60041DAC1FE300A5A189 /* CoreDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataImporter.m; sourceTree = "<group>"; };
 		A59C60051DAC1FE300A5A189 /* Faulter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Faulter.h; sourceTree = "<group>"; };
 		A59C60061DAC1FE300A5A189 /* Faulter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Faulter.m; sourceTree = "<group>"; };
+		A5A5F6F31E8F1BF300A4FB79 /* _0_DWT_BB_v5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_DWT_BB_v5.xcdatamodel; sourceTree = "<group>"; };
+		A5A5F6F81E8F1C9800A4FB79 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5A5F6F91E8F1C9800A4FB79 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5C9867F1E01FA5700D5D4A2 /* SChart+Deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SChart+Deprecated.h"; sourceTree = "<group>"; };
 		A5C986801E01FA5700D5D4A2 /* SChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChart.h; sourceTree = "<group>"; };
 		A5C986811E01FA5700D5D4A2 /* SChartActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChartActivityIndicator.h; sourceTree = "<group>"; };
@@ -1212,10 +1213,10 @@
 		A59C5F311DA58AD000A5A189 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5A5F6F81E8F1C9800A4FB79 /* Session+CoreDataClass.swift */,
+				A5A5F6F91E8F1C9800A4FB79 /* Session+CoreDataProperties.swift */,
 				A5675DA11DFB485C00E0F2B9 /* Email+CoreDataClass.swift */,
 				A5675DA21DFB485C00E0F2B9 /* Email+CoreDataProperties.swift */,
-				A5675DA31DFB485C00E0F2B9 /* Session+CoreDataClass.swift */,
-				A5675DA41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift */,
 				A5675DA51DFB485C00E0F2B9 /* Workout+CoreDataClass.swift */,
 				A5675DA61DFB485C00E0F2B9 /* Workout+CoreDataProperties.swift */,
 				A5675DA71DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataClass.swift */,
@@ -2211,7 +2212,6 @@
 				A5FFC1071E8D980B00C323B1 /* MPNativeAdRendererImageHandler.m in Sources */,
 				A5FFC0D71E8D980B00C323B1 /* NSURL+MPAdditions.m in Sources */,
 				A5FFC0E11E8D980B00C323B1 /* MPInternalUtils.m in Sources */,
-				A5675DB41DFB485C00E0F2B9 /* Session+CoreDataProperties.swift in Sources */,
 				A5FFC1301E8D980B00C323B1 /* MOPUBNativeVideoAdRenderer.m in Sources */,
 				A5FFC0F41E8D980B00C323B1 /* MPVASTResource.m in Sources */,
 				A5FEACA11E26896700B1788F /* RewardVideoViewController.swift in Sources */,
@@ -2228,6 +2228,7 @@
 				A5FFC0AB1E8D980B00C323B1 /* MPEnhancedDeeplinkRequest.m in Sources */,
 				A5FFC14A1E8D980B00C323B1 /* MPRewardedVideoConnection.m in Sources */,
 				A5FFC1051E8D980B00C323B1 /* MPMoPubNativeCustomEvent.m in Sources */,
+				A5A5F6FB1E8F1C9800A4FB79 /* Session+CoreDataProperties.swift in Sources */,
 				A5FFC11C1E8D980B00C323B1 /* MPNativeAdSource.m in Sources */,
 				A59C60021DAC1F6B00A5A189 /* CoreDataHelper.m in Sources */,
 				A5FFC0A51E8D980B00C323B1 /* MPAdDestinationDisplayAgent.m in Sources */,
@@ -2254,6 +2255,7 @@
 				A5FFC0E61E8D980B00C323B1 /* MPStoreKitProvider.m in Sources */,
 				A5FFC0BA1E8D980B00C323B1 /* MPAdWebViewAgent.m in Sources */,
 				A5675DB81DFB485C00E0F2B9 /* WorkoutCompleteDate+CoreDataProperties.swift in Sources */,
+				A5A5F6FA1E8F1C9800A4FB79 /* Session+CoreDataClass.swift in Sources */,
 				A5FFC10A1E8D980B00C323B1 /* MPNativeCache.m in Sources */,
 				A5FFC0F81E8D980B00C323B1 /* MPVASTWrapper.m in Sources */,
 				A59C5EFE1DA588A100A5A189 /* WebsiteViewController.swift in Sources */,
@@ -2345,7 +2347,6 @@
 				A5FFC0D51E8D980B00C323B1 /* NSHTTPURLResponse+MPAdditions.m in Sources */,
 				A5FFC1271E8D980B00C323B1 /* MOPUBFullscreenPlayerViewController.m in Sources */,
 				A5FFC11A1E8D980B00C323B1 /* MPNativeAdRequest.m in Sources */,
-				A5675DB31DFB485C00E0F2B9 /* Session+CoreDataClass.swift in Sources */,
 				A5FFC0E71E8D980B00C323B1 /* MPTimer.m in Sources */,
 				A59C5F091DA588CD00A5A189 /* WorkoutNavigationController.swift in Sources */,
 				A5FFC0A91E8D980B00C323B1 /* MPClosableView.m in Sources */,
@@ -2634,12 +2635,13 @@
 		587CFB74189DD9B8006FA541 /* _0_DWT_BB.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A5A5F6F31E8F1BF300A4FB79 /* _0_DWT_BB_v5.xcdatamodel */,
 				A5675D901DFB47E100E0F2B9 /* _0_DWT_BB_v4.xcdatamodel */,
 				A54E89021C29BDDC006C8FFC /* _0_DWT_BB_v3.xcdatamodel */,
 				A5488A9B1AC3488D00BF0225 /* _0_DWT_BB 2.xcdatamodel */,
 				587CFB75189DD9B8006FA541 /* _0_DWT_BB.xcdatamodel */,
 			);
-			currentVersion = A5675D901DFB47E100E0F2B9 /* _0_DWT_BB_v4.xcdatamodel */;
+			currentVersion = A5A5F6F31E8F1BF300A4FB79 /* _0_DWT_BB_v5.xcdatamodel */;
 			path = _0_DWT_BB.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
